@@ -51,6 +51,8 @@ public class NyKund extends javax.swing.JFrame {
             }
         });
 
+        txtFornamn.setColumns(5);
+
         lblFornamn.setText("Förnamn");
 
         lblEfternamn.setText("Efternamn");
@@ -64,6 +66,23 @@ public class NyKund extends javax.swing.JFrame {
         lblTelefonnummer.setText("Telefonnummer");
 
         lblEpost.setText("Epost");
+
+        txtEfternamn.setColumns(5);
+
+        txtAdress.setColumns(5);
+        txtAdress.setToolTipText("");
+
+        txtPostNummer.setColumns(5);
+        txtPostNummer.setToolTipText("");
+
+        txtOrt.setColumns(5);
+        txtOrt.setToolTipText("");
+
+        txtTelefonnummer.setColumns(5);
+        txtTelefonnummer.setToolTipText("");
+
+        txtEpost.setColumns(5);
+        txtEpost.setToolTipText("");
 
         lblFyllIUppgifterOmKund.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         lblFyllIUppgifterOmKund.setText("Fyll i uppgifter om kund");
@@ -91,7 +110,7 @@ public class NyKund extends javax.swing.JFrame {
                     .addComponent(txtOrt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtTelefonnummer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtEpost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addComponent(btnRegistreraKund)
                 .addGap(30, 30, 30))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
