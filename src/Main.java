@@ -13,4 +13,16 @@ import oru.inf.InfException;
  */
 public class Main {
     private static InfDB idb;
+
+
+    public static void main(String[] args) throws InfException
+    {
+    try {
+        //Kommer behöva se över detta närmare
+        idb = new InfDB("Hattmakaren", "3306", "","");
+    }catch (InfException e)
+    {
+        System.out.println(e);
+    }
+    }
 }
