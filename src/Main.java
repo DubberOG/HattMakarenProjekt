@@ -12,5 +12,5 @@ import oru.inf.InfException;
  * @author willi
  */
 public class Main {
-    
+    private static InfDB idb;
 }
