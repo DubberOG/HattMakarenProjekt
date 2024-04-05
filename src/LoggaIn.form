@@ -23,13 +23,69 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="400" max="32767" attributes="0"/>
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="120" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="lblAnvändarnamn" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtAnvändarnamn" pref="153" max="32767" attributes="0"/>
+                          <Component id="lblLösenord" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtLösenord" alignment="1" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="158" max="-2" attributes="0"/>
+                      <Component id="btnLoggaIn" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace pref="127" max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="300" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
+              <Component id="lblAnvändarnamn" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="txtAnvändarnamn" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+              <Component id="lblLösenord" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="txtLösenord" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="btnLoggaIn" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="43" max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
   </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JTextField" name="txtAnv&#xe4;ndarnamn">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtAnv&#xe4;ndarnamnActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtL&#xf6;senord">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtL&#xf6;senordActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblAnv&#xe4;ndarnamn">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Anv&#xe4;ndarnamn"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblL&#xf6;senord">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="L&#xf6;senord"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnLoggaIn">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Logga In"/>
+      </Properties>
+    </Component>
+  </SubComponents>
 </Form>
