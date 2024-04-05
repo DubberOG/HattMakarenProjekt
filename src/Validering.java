@@ -1,10 +1,6 @@
 
 import java.util.regex.Pattern;
 import java.util.regex.*;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import oru.inf.InfDB;
-import oru.inf.InfException;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 /*
@@ -20,17 +16,7 @@ import javax.swing.JTextField;
 
 public class Validering {
     
-    private InfDB idb;
 
-    public Validering(InfDB idb) {
-        this.idb = idb;
-    }
-    
-    //Eventuellt Lösenord String
-    //Epost string @ och .
-    //Textfält string
-    //Datum
-    //int
     
     //Kollar så att fältet inte är tomt
     public static boolean txtFaltTomt(JTextField falt){
