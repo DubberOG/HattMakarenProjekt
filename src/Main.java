@@ -19,10 +19,11 @@ public class Main {
     {
     try {
         
-        idb = new InfDB("Hattmakaren", "3306", "hattmakaren","mibkey");
+        idb = new InfDB("Hattmakaren", "3306", "hattmakaren","HTM123");
     }catch (InfException e)
     {
         System.out.println(e);
     }
     }
 }
+
