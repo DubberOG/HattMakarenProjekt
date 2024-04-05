@@ -101,7 +101,10 @@ public class LaggTillBestallning extends javax.swing.JFrame {
         fyllComboBox();
     }//GEN-LAST:event_cbValjKundMouseClicked
 
-    
+    private void fyllComboBox()
+    {
+
+    }
     /**
      * @param args the command line arguments
      */
