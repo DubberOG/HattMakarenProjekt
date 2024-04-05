@@ -26,22 +26,16 @@ public class LoggaIn extends javax.swing.JFrame {
     private void initComponents() {
 
         txtAnvändarnamn = new javax.swing.JTextField();
-        txtLösenord = new javax.swing.JTextField();
         lblAnvändarnamn = new javax.swing.JLabel();
         lblLösenord = new javax.swing.JLabel();
         btnLoggaIn = new javax.swing.JButton();
+        pswordLösenord = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         txtAnvändarnamn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtAnvändarnamnActionPerformed(evt);
-            }
-        });
-
-        txtLösenord.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtLösenordActionPerformed(evt);
             }
         });
 
@@ -63,7 +57,7 @@ public class LoggaIn extends javax.swing.JFrame {
                             .addComponent(lblAnvändarnamn)
                             .addComponent(txtAnvändarnamn, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
                             .addComponent(lblLösenord)
-                            .addComponent(txtLösenord, javax.swing.GroupLayout.Alignment.TRAILING)))
+                            .addComponent(pswordLösenord)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(158, 158, 158)
                         .addComponent(btnLoggaIn)))
@@ -79,7 +73,7 @@ public class LoggaIn extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(lblLösenord)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtLösenord, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pswordLösenord, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnLoggaIn)
                 .addContainerGap(43, Short.MAX_VALUE))
@@ -92,20 +86,21 @@ public class LoggaIn extends javax.swing.JFrame {
         // verifieraInlogg();
     }//GEN-LAST:event_txtAnvändarnamnActionPerformed
 
-    private void txtLösenordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLösenordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtLösenordActionPerformed
-
     private void verifieraInlogg() {
         
         String angivetAnvändarnamn = txtAnvändarnamn.getText();
-        if//fortsätt här efter nedan metod
+        char [] angivetLösenord = pswordLösenord.getPassword();
+        String lösenordString = new String(angivetLösenord);
+        
+        if (inloggningÄrKorrekt(angivetAnvändarnamn, lösenordString)) {
+        setVisible(false);
+        new meny().setVisible(true);
     }
             
     private boolean loggaInAnställd() {
         boolean giltigtInlogg = false;
         String angivetAnvändarnamn = txtAnvändarnamn.getText();
-        char [] angivetLösenord = txtLösenord.getText();//FORTSÄTT HÄR
+        char [] angivetLösenord = pswordLösenord.getPassword();//FORTSÄTT HÄR
         
     }
     
@@ -148,7 +143,7 @@ public class LoggaIn extends javax.swing.JFrame {
     private javax.swing.JButton btnLoggaIn;
     private javax.swing.JLabel lblAnvändarnamn;
     private javax.swing.JLabel lblLösenord;
+    private javax.swing.JPasswordField pswordLösenord;
     private javax.swing.JTextField txtAnvändarnamn;
-    private javax.swing.JTextField txtLösenord;
     // End of variables declaration//GEN-END:variables
 }

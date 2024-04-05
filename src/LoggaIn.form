@@ -31,7 +31,7 @@
                           <Component id="lblAnvändarnamn" min="-2" max="-2" attributes="0"/>
                           <Component id="txtAnvändarnamn" pref="153" max="32767" attributes="0"/>
                           <Component id="lblLösenord" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtLösenord" alignment="1" max="32767" attributes="0"/>
+                          <Component id="pswordLösenord" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -53,7 +53,7 @@
               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               <Component id="lblLösenord" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="txtLösenord" min="-2" max="-2" attributes="0"/>
+              <Component id="pswordLösenord" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btnLoggaIn" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="43" max="32767" attributes="0"/>
@@ -65,11 +65,6 @@
     <Component class="javax.swing.JTextField" name="txtAnv&#xe4;ndarnamn">
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtAnv&#xe4;ndarnamnActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtL&#xf6;senord">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtL&#xf6;senordActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblAnv&#xe4;ndarnamn">
@@ -86,6 +81,8 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Logga In"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="pswordL&#xf6;senord">
     </Component>
   </SubComponents>
 </Form>
