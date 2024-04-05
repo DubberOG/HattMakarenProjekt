@@ -1,3 +1,5 @@
+CREATE DATABASE database_name;
+USE database_name;
 
 create table Kund(
     KundID int primary key,

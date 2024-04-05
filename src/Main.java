@@ -18,11 +18,12 @@ public class Main {
     public static void main(String[] args) throws InfException
     {
     try {
-        //Kommer behöva se över detta närmare
-        idb = new InfDB("Hattmakaren", "3306", "","");
+        
+        idb = new InfDB("Hattmakaren", "3306", "hattmakaren","HTM123");
     }catch (InfException e)
     {
         System.out.println(e);
     }
     }
 }
+
