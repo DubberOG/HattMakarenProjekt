@@ -10,6 +10,7 @@
 
 
 
+
 # Package Files
 
 *.war
@@ -47,3 +48,15 @@ hs_err_pid*
 # Mobile Tools for Java (J2ME)
 
 .mtj.tmp/
+
+# Project properties
+project.properties
+
+# User properties
+user.properties.files
+
+#Databas
+Hattmakaren/HattmakarenDatabas.sql
+
+#SQL
+Hattmakaren\mysql-connector-java-8.0.23
