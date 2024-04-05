@@ -50,7 +50,7 @@ hs_err_pid*
 .mtj.tmp/
 
 # Project properties
-project.properties
+nbproject\project.properties
 
 # User properties
 user.properties.files
