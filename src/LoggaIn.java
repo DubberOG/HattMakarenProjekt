@@ -25,22 +25,90 @@ public class LoggaIn extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        txtAnvändarnamn = new javax.swing.JTextField();
+        txtLösenord = new javax.swing.JTextField();
+        lblAnvändarnamn = new javax.swing.JLabel();
+        lblLösenord = new javax.swing.JLabel();
+        btnLoggaIn = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        txtAnvändarnamn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAnvändarnamnActionPerformed(evt);
+            }
+        });
+
+        txtLösenord.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtLösenordActionPerformed(evt);
+            }
+        });
+
+        lblAnvändarnamn.setText("Användarnamn");
+
+        lblLösenord.setText("Lösenord");
+
+        btnLoggaIn.setText("Logga In");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(120, 120, 120)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblAnvändarnamn)
+                            .addComponent(txtAnvändarnamn, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
+                            .addComponent(lblLösenord)
+                            .addComponent(txtLösenord, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(158, 158, 158)
+                        .addComponent(btnLoggaIn)))
+                .addContainerGap(127, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(106, 106, 106)
+                .addComponent(lblAnvändarnamn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtAnvändarnamn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lblLösenord)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtLösenord, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnLoggaIn)
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txtAnvändarnamnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAnvändarnamnActionPerformed
+        // verifieraInlogg();
+    }//GEN-LAST:event_txtAnvändarnamnActionPerformed
+
+    private void txtLösenordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLösenordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtLösenordActionPerformed
+
+    private void verifieraInlogg() {
+        
+        String angivetAnvändarnamn = txtAnvändarnamn.getText();
+        if//fortsätt här efter nedan metod
+    }
+            
+    private boolean loggaInAnställd() {
+        boolean giltigtInlogg = false;
+        String angivetAnvändarnamn = txtAnvändarnamn.getText();
+        char [] angivetLösenord = txtLösenord.getText();//FORTSÄTT HÄR
+        
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -77,5 +145,10 @@ public class LoggaIn extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnLoggaIn;
+    private javax.swing.JLabel lblAnvändarnamn;
+    private javax.swing.JLabel lblLösenord;
+    private javax.swing.JTextField txtAnvändarnamn;
+    private javax.swing.JTextField txtLösenord;
     // End of variables declaration//GEN-END:variables
 }
