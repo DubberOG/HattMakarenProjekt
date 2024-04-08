@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 import javax.swing.JOptionPane;
@@ -30,6 +31,7 @@ public class LaggTillBestallning extends javax.swing.JFrame {
         try {
             idb = new InfDB("Hattmakaren", "3306", "hattmakaren","HTM123");
         fyllCbValjKund();
+        fyllCbValjProdukt();
         } catch (InfException ex) {       
             JOptionPane.showMessageDialog(null, "Kunde inte ansluta till databasen!");
         }
@@ -50,6 +52,12 @@ public class LaggTillBestallning extends javax.swing.JFrame {
         lbBestallning = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         cbValjKund = new javax.swing.JComboBox<>();
+        lblProdukt = new javax.swing.JLabel();
+        cbValjProdukt = new javax.swing.JComboBox<>();
+        lblProdukt1 = new javax.swing.JLabel();
+        tfDatum = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        cbStatus = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,29 +75,55 @@ public class LaggTillBestallning extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setText("Välj kund");
 
+        lblProdukt.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblProdukt.setText("Välj produkt");
+
+        lblProdukt1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblProdukt1.setText("Skriv in datum");
+
+        tfDatum.setColumns(8);
+        tfDatum.setText("xxxx-xx-xx");
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel2.setText("Välj status");
+
+        cbStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Vanlig", "Special", "Företag" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(84, 84, 84)
-                        .addComponent(btnSpara))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                .addGap(84, 84, 84)
+                .addComponent(btnSpara)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
                 .addComponent(btnAvbryt)
                 .addGap(84, 84, 84))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lbBestallning)
-                .addGap(102, 102, 102))
             .addGroup(layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(cbValjKund, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(cbValjKund, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblProdukt)
+                            .addComponent(cbValjProdukt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(52, 52, 52)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblProdukt1)
+                            .addComponent(tfDatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(13, 13, 13)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(lbBestallning))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -97,10 +131,24 @@ public class LaggTillBestallning extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(lbBestallning)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cbValjKund, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblProdukt)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cbValjProdukt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblProdukt1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tfDatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cbValjKund, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 158, Short.MAX_VALUE)
+                .addComponent(cbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSpara)
                     .addComponent(btnAvbryt))
@@ -110,25 +158,44 @@ public class LaggTillBestallning extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void fyllCbValjKund(){
-        
-        String fraga = ("SELECT Namn FROM Kund;");
-        
-        ArrayList<String> allaKunder;
-        
-        try{
-        
-        allaKunder = idb.fetchColumn(fraga);
-        
-            for(String benamning : allaKunder){
+   
+    
+    private void fyllCbValjKund() {
+            try{
+        ArrayList<HashMap<String, String>> allaKunder = idb.fetchRows("SELECT KundID, Namn FROM Kund");
+                  
+                for(HashMap<String, String> kund : allaKunder){
+                // Hämta KundID och Namn från HashMap
+            String kundID = kund.get("KundID");
+            String namn = kund.get("Namn");
             
-                    cbValjKund.addItem(benamning);
-            }
-        } catch (InfException ettUndantag){
-        
+            // Skapa en sträng som innehåller både KundID och namn och lägg till i comboboxen
+            cbValjKund.addItem(kundID + " - " + namn);    
+           
+                }}
+                    
+              
+        catch(InfException ettUndantag){
             JOptionPane.showMessageDialog(null, "Databasfel!");
-            System.out.println("Internt felmeddelande" + ettUndantag.getMessage());
-        }}
+         }}
+     private void fyllCbValjProdukt() {
+            try{
+        ArrayList<HashMap<String, String>> allaProdukter = idb.fetchRows("SELECT ProduktID, Namn FROM Produkt");
+                  
+                for(HashMap<String, String> produkt : allaProdukter){
+                // Hämta KundID och Namn från HashMap
+            String produktID = produkt.get("ProduktID");
+            String namn = produkt.get("Namn");
+            
+            // Skapa en sträng som innehåller både KundID och namn och lägg till i comboboxen
+            cbValjProdukt.addItem(produktID + " - " + namn);    
+           
+                }}
+                    
+              
+        catch(InfException ettUndantag){
+            JOptionPane.showMessageDialog(null, "Databasfel!");
+         }}       
    
     /**
      * @param args the command line arguments
@@ -166,8 +233,14 @@ public class LaggTillBestallning extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAvbryt;
     private javax.swing.JButton btnSpara;
+    private javax.swing.JComboBox<String> cbStatus;
     private javax.swing.JComboBox<String> cbValjKund;
+    private javax.swing.JComboBox<String> cbValjProdukt;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lbBestallning;
+    private javax.swing.JLabel lblProdukt;
+    private javax.swing.JLabel lblProdukt1;
+    private javax.swing.JTextField tfDatum;
     // End of variables declaration//GEN-END:variables
 }
