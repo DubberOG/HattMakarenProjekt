@@ -67,6 +67,11 @@ public class LaggTillBestallning extends javax.swing.JFrame {
         btnSpara.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnSpara.setForeground(new java.awt.Color(51, 255, 51));
         btnSpara.setText("Spara");
+        btnSpara.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSparaActionPerformed(evt);
+            }
+        });
 
         btnAvbryt.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnAvbryt.setForeground(new java.awt.Color(255, 51, 0));
@@ -170,6 +175,10 @@ public class LaggTillBestallning extends javax.swing.JFrame {
         avbrytBestallning();
     }//GEN-LAST:event_btnAvbrytActionPerformed
 
+    private void btnSparaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaActionPerformed
+sparaBestallning();
+    }//GEN-LAST:event_btnSparaActionPerformed
+
    
     
     private void fyllCbValjKund() {
@@ -227,7 +236,34 @@ public class LaggTillBestallning extends javax.swing.JFrame {
           }
      }
    
-      
+     private void sparaBestallning() {
+    try {
+        // Hämta vald kund och produkt från comboboxarna
+        String valdKundProdukt = (String) cbValjKund.getSelectedItem();
+        String valdProdukt = valdKundProdukt.split(" - ")[0]; // Hämta ProduktID från kombinerad sträng
+        String valdKund = (String) cbValjProdukt.getSelectedItem();
+        String valdKundID = valdKund.split(" - ")[0]; // Hämta KundID från kombinerad sträng
+        String orderID = idb.getAutoIncrement("Orders", "OrderID");
+        // Hämta datum från textfältet
+        String datum = tfDatum.getText();
+
+        // Hämta vald status från comboboxen
+        String status = (String) cbStatus.getSelectedItem();
+
+        // SQL-fråga för att infoga data i ordertabellen
+        String orderFraga = "INSERT INTO Orders (OrderID, Datum, Status, KundID, ProduktID) VALUES ('" + orderID + "', '" + datum + "', '" + status + "', '" + valdKundID + "', '" + valdProdukt + "')";
+
+        // Utför SQL-frågan
+        idb.insert(orderFraga);
+
+        // Meddela användaren att beställningen har sparats
+        JOptionPane.showMessageDialog(null, "Beställningen har sparats!");
+
+    } catch (InfException ex) {
+        JOptionPane.showMessageDialog(null, "Kunde inte spara beställningen!");
+        System.out.println("Internt felmeddelande" + ex.getMessage());
+    }
+} 
     /**
      * @param args the command line arguments
      */
