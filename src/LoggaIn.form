@@ -38,6 +38,10 @@
                       <EmptySpace min="-2" pref="158" max="-2" attributes="0"/>
                       <Component id="btnLoggaIn" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="174" max="-2" attributes="0"/>
+                      <Component id="lblFelmeddelande" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace pref="127" max="32767" attributes="0"/>
           </Group>
@@ -56,7 +60,9 @@
               <Component id="pswordLösenord" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btnLoggaIn" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="43" max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="lblFelmeddelande" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="31" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -83,6 +89,8 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JPasswordField" name="pswordL&#xf6;senord">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblFelmeddelande">
     </Component>
   </SubComponents>
 </Form>
