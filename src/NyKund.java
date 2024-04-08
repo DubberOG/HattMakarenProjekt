@@ -184,24 +184,27 @@ public class NyKund extends javax.swing.JFrame {
     private void btnRegistreraKundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistreraKundActionPerformed
 
         try {
-          //  if (valedering)
-          String id = idb.getAutoIncrement("Kund", "KundID");
-          String namn = txtFornamn.getText();
-          String efternamn = txtEfternamn.getText();
-          String adress = txtAdress.getText();
-          String postnummer = txtPostNummer.getText();
-          String ort = txtOrt.getText();
-          String telefonnummer = txtTelefonnummer.getText();
-          String email = txtEpost.getText();
-          
-          
-          //Koppla validering så att det inte blir dubbla värden
-          String nyKund = id+",'"+namn+"',"+"'"+efternamn+"',"+"'"+email+"',"+"'"+telefonnummer+"',"+"'"+adress+"',"+"'"+ort+"',"+"'"+postnummer+"'";
-          String nyKundFraga = "INSERT INTO Kund (KundID, Namn, Efternamn, Email, Telefon, Adress, Ort, Postnummer) VALUES ("+nyKund+")";
-          idb.insert(nyKundFraga);
-          JOptionPane.showMessageDialog(null, "En ny kund är registrerad!");
-         
-        }
+          if (Validering.txtFaltTomt(txtFornamn) && Validering.txtFaltTomt(txtEfternamn) && 
+                  Validering.txtFaltTomt(txtAdress) && Validering.txtFaltTomt(txtPostNummer) && 
+                  Validering.txtFaltTomt(txtOrt) && Validering.txtFaltTomt(txtTelefonnummer) && 
+                  Validering.txtEpostKontroll(txtEpost)){
+            String id = idb.getAutoIncrement("Kund", "KundID");
+            String namn = txtFornamn.getText();
+            String efternamn = txtEfternamn.getText();
+            String adress = txtAdress.getText();
+            String postnummer = txtPostNummer.getText();
+            String ort = txtOrt.getText();
+            String telefonnummer = txtTelefonnummer.getText();
+            String email = txtEpost.getText();
+
+
+            //Koppla validering så att det inte blir dubbla värden
+            String nyKund = id+",'"+namn+"',"+"'"+efternamn+"',"+"'"+email+"',"+"'"+telefonnummer+"',"+"'"+adress+"',"+"'"+ort+"',"+"'"+postnummer+"'";
+            String nyKundFraga = "INSERT INTO Kund (KundID, Namn, Efternamn, Email, Telefon, Adress, Ort, Postnummer) VALUES ("+nyKund+")";
+            idb.insert(nyKundFraga);
+            JOptionPane.showMessageDialog(null, "En ny kund är registrerad!");
+            
+        }}
         catch  (InfException e){
             System.out.println ("internt felmedelande:" + e.getMessage());
         }
