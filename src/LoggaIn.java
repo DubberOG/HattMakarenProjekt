@@ -5,17 +5,21 @@
 
 import java.util.Arrays;
 import javax.swing.JOptionPane;
+import oru.inf.InfDB;
 /**
  *
  * @author alice
  */
 public class LoggaIn extends javax.swing.JFrame {
 
+    private static InfDB idb;
+
     /**
      * Creates new form LoggaIn
      */
-    public LoggaIn() {
+    public LoggaIn(InfDB idb) {
         initComponents();
+        this.idb = idb;
     }
 
     /**
