@@ -95,7 +95,7 @@ public class LaggTillBestallning extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("Välj status");
 
-        cbStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Vanlig", "Special", "Företag" }));
+        cbStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bekräftad", "Under tillverkning", "Redo att skickas" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
