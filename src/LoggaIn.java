@@ -6,6 +6,7 @@
 import java.util.Arrays;
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
+import oru.inf.InfException;
 /**
  *
  * @author alice
@@ -20,6 +21,16 @@ public class LoggaIn extends javax.swing.JFrame {
     public LoggaIn(InfDB idb) {
         initComponents();
         this.idb = idb;
+    }
+    
+    private LoggaIn (){
+        initComponents();
+        this.idb = idb;
+        try {
+            idb = new InfDB ("Hattmakaren", "3306", "hattmakaren", "HTM123");
+        } catch (InfException ex) {
+            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null,  ex);
+        }
     }
 
     /**
@@ -51,6 +62,17 @@ public class LoggaIn extends javax.swing.JFrame {
         lblLösenord.setText("Lösenord");
 
         btnLoggaIn.setText("Logga In");
+        btnLoggaIn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoggaInActionPerformed(evt);
+            }
+        });
+
+        pswordLösenord.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pswordLösenordActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -95,8 +117,18 @@ public class LoggaIn extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtAnvändarnamnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAnvändarnamnActionPerformed
-        // verifieraInlogg();
+        verifieraInlogg();
     }//GEN-LAST:event_txtAnvändarnamnActionPerformed
+
+    private void btnLoggaInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoggaInActionPerformed
+        // TODO add your handling code here:
+        verifieraInlogg();
+    }//GEN-LAST:event_btnLoggaInActionPerformed
+
+    private void pswordLösenordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pswordLösenordActionPerformed
+        // TODO add your handling code here:
+        verifieraInlogg();
+    }//GEN-LAST:event_pswordLösenordActionPerformed
 
     private void verifieraInlogg() {
         
@@ -106,7 +138,7 @@ public class LoggaIn extends javax.swing.JFrame {
         
         if (inloggningStämmer(angivetAnvändarnamn, lösenordString)) {
         setVisible(false); //stänger nuvarande fönster
-        new Meny().setVisible(true); //öppnar nästa Jframe, här behöver vi skicka med databsen inom () på meny
+        new Meny(idb).setVisible(true);
         } else {
             //om inloggningen är felaktig, visa ett felmeddelande
             lblFelmeddelande.setText("Fel användarnamn eller lösenord, försök igen");
@@ -124,13 +156,13 @@ public class LoggaIn extends javax.swing.JFrame {
         try {
             String anställdQuery = "Select Lösenord FROM Anställd WHERE Användarnamn = '" + angivetAnvändarnamn + "'";
             //hämtar lösenordet som är angivet vid det användarnamn som skrivs in
-            String lagratLösenord = DATABAS.fetchSingle(anställdQuery); //DATABAS ska ändras till db namnet
+            String lagratLösenord = idb.fetchSingle(anställdQuery); 
             
             if (lagratLösenord != null && Arrays.equals(angivetLösenord, lagratLösenord.toCharArray())){
             isAnställd = true;
             }
         }
-        catch (InfExeption e) {
+        catch (InfException e) {
             JOptionPane.showMessageDialog(null, "Databasfel!");
             System.out.println("Internt felmeddelande: " + e.getMessage());
         }
