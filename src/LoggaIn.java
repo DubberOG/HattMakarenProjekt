@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+import java.util.Arrays;
+import javax.swing.JOptionPane;
 /**
  *
  * @author alice
@@ -30,6 +32,7 @@ public class LoggaIn extends javax.swing.JFrame {
         lblLösenord = new javax.swing.JLabel();
         btnLoggaIn = new javax.swing.JButton();
         pswordLösenord = new javax.swing.JPasswordField();
+        lblFelmeddelande = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,7 +63,10 @@ public class LoggaIn extends javax.swing.JFrame {
                             .addComponent(pswordLösenord)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(158, 158, 158)
-                        .addComponent(btnLoggaIn)))
+                        .addComponent(btnLoggaIn))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(174, 174, 174)
+                        .addComponent(lblFelmeddelande)))
                 .addContainerGap(127, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -76,7 +82,9 @@ public class LoggaIn extends javax.swing.JFrame {
                 .addComponent(pswordLösenord, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnLoggaIn)
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblFelmeddelande)
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         pack();
@@ -88,19 +96,41 @@ public class LoggaIn extends javax.swing.JFrame {
 
     private void verifieraInlogg() {
         
-        String angivetAnvändarnamn = txtAnvändarnamn.getText();
-        char [] angivetLösenord = pswordLösenord.getPassword();
-        String lösenordString = new String(angivetLösenord);
+        String angivetAnvändarnamn = txtAnvändarnamn.getText(); //hämta angivet användarnamnt
+        char [] angivetLösenord = pswordLösenord.getPassword(); //hämtar angivet lösen
+        String lösenordString = new String(angivetLösenord); //gör om lösenordet från char till string
         
-        if (inloggningÄrKorrekt(angivetAnvändarnamn, lösenordString)) {
-        setVisible(false);
-        new meny().setVisible(true);
+        if (inloggningStämmer(angivetAnvändarnamn, lösenordString)) {
+        setVisible(false); //stänger nuvarande fönster
+        new Meny().setVisible(true); //öppnar nästa Jframe, här behöver vi skicka med databsen inom () på meny
+        } else {
+            //om inloggningen är felaktig, visa ett felmeddelande
+            lblFelmeddelande.setText("Fel användarnamn eller lösenord, försök igen");
+            
+        }
+        
     }
             
-    private boolean loggaInAnställd() {
-        boolean giltigtInlogg = false;
+    private boolean inloggningStämmer(String användarnamn, String lösenord) {
+        //metoden ska kontrollera användarnamnet och lösenordet, om 
+        boolean isAnställd = false;
         String angivetAnvändarnamn = txtAnvändarnamn.getText();
-        char [] angivetLösenord = pswordLösenord.getPassword();//FORTSÄTT HÄR
+        char [] angivetLösenord = pswordLösenord.getPassword(); 
+        
+        try {
+            String anställdQuery = "Select Lösenord FROM Anställd WHERE Användarnamn = '" + angivetAnvändarnamn + "'";
+            //hämtar lösenordet som är angivet vid det användarnamn som skrivs in
+            String lagratLösenord = DATABAS.fetchSingle(anställdQuery); //DATABAS ska ändras till db namnet
+            
+            if (lagratLösenord != null && Arrays.equals(angivetLösenord, lagratLösenord.toCharArray())){
+            isAnställd = true;
+            }
+        }
+        catch (InfExeption e) {
+            JOptionPane.showMessageDialog(null, "Databasfel!");
+            System.out.println("Internt felmeddelande: " + e.getMessage());
+        }
+        return isAnställd;
         
     }
     
@@ -142,6 +172,7 @@ public class LoggaIn extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLoggaIn;
     private javax.swing.JLabel lblAnvändarnamn;
+    private javax.swing.JLabel lblFelmeddelande;
     private javax.swing.JLabel lblLösenord;
     private javax.swing.JPasswordField pswordLösenord;
     private javax.swing.JTextField txtAnvändarnamn;
