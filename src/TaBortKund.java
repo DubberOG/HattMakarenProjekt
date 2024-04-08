@@ -3,17 +3,36 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import oru.inf.InfDB;
+import oru.inf.InfException;
+    
+
 /**
  *
  * @author William
  */
 public class TaBortKund extends javax.swing.JFrame {
 
+    private InfDB idb;
     /**
      * Creates new form TaBortKund
      */
-    public TaBortKund() {
+    public TaBortKund(InfDB idb) {
         initComponents();
+        this.idb = idb;
+    }
+    
+     private TaBortKund() {
+        initComponents();
+        this.idb = idb; 
+        try {
+            idb = new InfDB("Hattmakaren", "3306", "hattmakaren","HTM123");
+        
+        } catch (InfException ex) {
+            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE,null,ex);
+        }
     }
 
     /**
@@ -25,45 +44,78 @@ public class TaBortKund extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        txtFyllI = new javax.swing.JTextField();
+        lblRubrik = new javax.swing.JLabel();
+        lblSkrivIn = new javax.swing.JLabel();
+        btnRadera = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTextField1.setText("jTextField1");
+        txtFyllI.setColumns(5);
 
-        jLabel1.setText("Ta bort kund");
+        lblRubrik.setText("Ta bort kund");
 
-        jLabel2.setText("Skriv in Kund ID");
+        lblSkrivIn.setText("Skriv in Kund E-mail");
+
+        btnRadera.setText("Radera");
+        btnRadera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRaderaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(151, 151, 151)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel1)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(165, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(151, 151, 151)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblRubrik)
+                            .addComponent(txtFyllI, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(131, 131, 131)
+                        .addComponent(lblSkrivIn)))
+                .addContainerGap(160, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnRadera)
+                .addGap(61, 61, 61))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(jLabel1)
+                .addComponent(lblRubrik)
                 .addGap(44, 44, 44)
-                .addComponent(jLabel2)
+                .addComponent(lblSkrivIn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(172, Short.MAX_VALUE))
+                .addComponent(txtFyllI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
+                .addComponent(btnRadera)
+                .addGap(34, 34, 34))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnRaderaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRaderaActionPerformed
+        try {
+            String email = txtFyllI.getText();
+            String taBortKund = "id";
+            String nyRaderarFraga = "UPDATE Kund\n" +
+"SET Namn = NULL, Efternamn = NULL, Email = NULL, Telefon = NULL, Adress = NULL, Ort = NULL, Postnummer = NULL\n" +
+"WHERE Email = '"+email+"'";
+             idb.update(nyRaderarFraga);
+          JOptionPane.showMessageDialog(null, "Kunduppgifter har blivit raderade!");
+          
+        } catch (InfException e){
+            System.out.println ("internt felmedelande:" + e.getMessage());
+        }
+       
+    }//GEN-LAST:event_btnRaderaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -101,8 +153,9 @@ public class TaBortKund extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton btnRadera;
+    private javax.swing.JLabel lblRubrik;
+    private javax.swing.JLabel lblSkrivIn;
+    private javax.swing.JTextField txtFyllI;
     // End of variables declaration//GEN-END:variables
 }
