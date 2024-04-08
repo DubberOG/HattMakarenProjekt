@@ -6,6 +6,7 @@
 import java.util.Arrays;
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
+import oru.inf.InfException;
 /**
  *
  * @author alice
@@ -20,6 +21,16 @@ public class LoggaIn extends javax.swing.JFrame {
     public LoggaIn(InfDB idb) {
         initComponents();
         this.idb = idb;
+    }
+    
+   /** private LoggaIn (){
+        initComponents();
+        this.idb = idb;
+        try {
+            idb = new InfDB ("Hattmakaren", "3306", "hattmakaren", "HTM123");
+        } catch (InfException ex) {
+            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null,  ex);
+        }
     }
 
     /**
@@ -51,6 +62,17 @@ public class LoggaIn extends javax.swing.JFrame {
         lblLösenord.setText("Lösenord");
 
         btnLoggaIn.setText("Logga In");
+        btnLoggaIn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoggaInActionPerformed(evt);
+            }
+        });
+
+        pswordLösenord.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pswordLösenordActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -69,9 +91,9 @@ public class LoggaIn extends javax.swing.JFrame {
                         .addGap(158, 158, 158)
                         .addComponent(btnLoggaIn))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(174, 174, 174)
-                        .addComponent(lblFelmeddelande)))
-                .addContainerGap(127, Short.MAX_VALUE))
+                        .addGap(85, 85, 85)
+                        .addComponent(lblFelmeddelande, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -87,16 +109,26 @@ public class LoggaIn extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(btnLoggaIn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblFelmeddelande)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addComponent(lblFelmeddelande, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtAnvändarnamnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAnvändarnamnActionPerformed
-        // verifieraInlogg();
+        verifieraInlogg();
     }//GEN-LAST:event_txtAnvändarnamnActionPerformed
+
+    private void btnLoggaInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoggaInActionPerformed
+        // TODO add your handling code here:
+        verifieraInlogg();
+    }//GEN-LAST:event_btnLoggaInActionPerformed
+
+    private void pswordLösenordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pswordLösenordActionPerformed
+        // TODO add your handling code here:
+        verifieraInlogg();
+    }//GEN-LAST:event_pswordLösenordActionPerformed
 
     private void verifieraInlogg() {
         
@@ -106,7 +138,7 @@ public class LoggaIn extends javax.swing.JFrame {
         
         if (inloggningStämmer(angivetAnvändarnamn, lösenordString)) {
         setVisible(false); //stänger nuvarande fönster
-        new Meny().setVisible(true); //öppnar nästa Jframe, här behöver vi skicka med databsen inom () på meny
+        new Meny(idb).setVisible(true);
         } else {
             //om inloggningen är felaktig, visa ett felmeddelande
             lblFelmeddelande.setText("Fel användarnamn eller lösenord, försök igen");
@@ -124,13 +156,13 @@ public class LoggaIn extends javax.swing.JFrame {
         try {
             String anställdQuery = "Select Lösenord FROM Anställd WHERE Användarnamn = '" + angivetAnvändarnamn + "'";
             //hämtar lösenordet som är angivet vid det användarnamn som skrivs in
-            String lagratLösenord = DATABAS.fetchSingle(anställdQuery); //DATABAS ska ändras till db namnet
+            String lagratLösenord = idb.fetchSingle(anställdQuery); 
             
             if (lagratLösenord != null && Arrays.equals(angivetLösenord, lagratLösenord.toCharArray())){
             isAnställd = true;
             }
         }
-        catch (InfExeption e) {
+        catch (InfException e) {
             JOptionPane.showMessageDialog(null, "Databasfel!");
             System.out.println("Internt felmeddelande: " + e.getMessage());
         }
@@ -168,7 +200,7 @@ public class LoggaIn extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LoggaIn().setVisible(true);
+                new LoggaIn(idb).setVisible(true);
             }
         });
     }
