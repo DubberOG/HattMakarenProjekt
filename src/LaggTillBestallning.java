@@ -71,6 +71,11 @@ public class LaggTillBestallning extends javax.swing.JFrame {
         btnAvbryt.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnAvbryt.setForeground(new java.awt.Color(255, 51, 0));
         btnAvbryt.setText("Avbryt");
+        btnAvbryt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAvbrytActionPerformed(evt);
+            }
+        });
 
         lbBestallning.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lbBestallning.setText("Lägg till beställning");
@@ -161,6 +166,10 @@ public class LaggTillBestallning extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnAvbrytActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvbrytActionPerformed
+        avbrytBestallning();
+    }//GEN-LAST:event_btnAvbrytActionPerformed
+
    
     
     private void fyllCbValjKund() {
@@ -207,7 +216,17 @@ public class LaggTillBestallning extends javax.swing.JFrame {
          String dagensDatum = format.format(datum);
          tfDatum.setText(dagensDatum);
      }
+     
+     private void avbrytBestallning()
+     {
+          int val = JOptionPane.showConfirmDialog(null, "Vill du fortsätta?", "Avbryt", JOptionPane.YES_NO_OPTION);
+          if(val == JOptionPane.YES_OPTION)
+          {
+              dispose();
+          }
+     }
    
+      
     /**
      * @param args the command line arguments
      */
