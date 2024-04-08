@@ -19,8 +19,13 @@ public class LaggTillBestallning extends javax.swing.JFrame {
     /**
      * Creates new form LaggTillBestallning
      */
-    public LaggTillBestallning() {
+    public LaggTillBestallning(InfDB idb) {
         initComponents();
+        this.idb = idb;
+    }
+
+    private LaggTillBestallning() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     /**
@@ -104,20 +109,11 @@ public class LaggTillBestallning extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cbValjKundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbValjKundActionPerformed
-       fyllComboboxmedKund();
+     
     }//GEN-LAST:event_cbValjKundActionPerformed
 
     
-    private void fyllComboboxmedKund() {
-        try {
-            ArrayList<HashMap<String, String>> kundLista = idb.fetchRows("SELECT namn, efternamn from Kund");
-            for (int i = 0; i < kundLista.size(); i++) {
-                cbValjKund.addItem(kundLista.get(i).get("KundID"));
-            }
-        } catch (InfException e) 
-                {
-            JOptionPane.showMessageDialog(null, "Något gick fel!");
-        }}
+   
     /**
      * @param args the command line arguments
      */
