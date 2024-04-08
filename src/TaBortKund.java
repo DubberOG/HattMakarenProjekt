@@ -104,7 +104,7 @@ public class TaBortKund extends javax.swing.JFrame {
     //Kollar så att textfältet inte är tomt och att det är en epost inskriven
     private void btnRaderaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRaderaActionPerformed
         try {
-            if(Validering.txtFaltTomt(txtFyllI) && Validering.txtEpostKontroll(txtFyllI)){
+            if(Validering.txtEpostKontroll(txtFyllI)){
                 String email = txtFyllI.getText();
                 String taBortKund = "id";
                 String nyRaderarFraga = "UPDATE Kund\n" +
