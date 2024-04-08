@@ -23,7 +23,7 @@ public class LoggaIn extends javax.swing.JFrame {
         this.idb = idb;
     }
     
-    private LoggaIn (){
+   /** private LoggaIn (){
         initComponents();
         this.idb = idb;
         try {
@@ -91,9 +91,9 @@ public class LoggaIn extends javax.swing.JFrame {
                         .addGap(158, 158, 158)
                         .addComponent(btnLoggaIn))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(174, 174, 174)
-                        .addComponent(lblFelmeddelande)))
-                .addContainerGap(127, Short.MAX_VALUE))
+                        .addGap(85, 85, 85)
+                        .addComponent(lblFelmeddelande, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -109,8 +109,8 @@ public class LoggaIn extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(btnLoggaIn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblFelmeddelande)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addComponent(lblFelmeddelande, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -200,7 +200,7 @@ public class LoggaIn extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LoggaIn().setVisible(true);
+                new LoggaIn(idb).setVisible(true);
             }
         });
     }
