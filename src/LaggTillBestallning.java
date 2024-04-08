@@ -219,10 +219,11 @@ public class LaggTillBestallning extends javax.swing.JFrame {
      
      private void avbrytBestallning()
      {
-          int val = JOptionPane.showConfirmDialog(null, "Vill du fortsätta?", "Avbryt", JOptionPane.YES_NO_OPTION);
+          int val = JOptionPane.showConfirmDialog(null, "Vill du avbryta beställningen?", "Avbryt", JOptionPane.YES_NO_OPTION);
           if(val == JOptionPane.YES_OPTION)
           {
               dispose();
+              new Meny(idb).setVisible(true);
           }
      }
    
