@@ -196,7 +196,7 @@ public class NyKund extends javax.swing.JFrame {
           
           
           //Koppla validering så att det inte blir dubbla värden
-          String nyKund = id+",'"+namn+"',"+"'"+efternamn+"',"+"'"+email+"',"+"'"+telefonnummer+"',"+"'"+adress+"',"+"'"+ort+"',"+"'"+postnummer;
+          String nyKund = id+",'"+namn+"',"+"'"+efternamn+"',"+"'"+email+"',"+"'"+telefonnummer+"',"+"'"+adress+"',"+"'"+ort+"',"+"'"+postnummer+"'";
           String nyKundFraga = "INSERT INTO Kund (KundID, Namn, Efternamn, Email, Telefon, Adress, Ort, Postnummer) VALUES ("+nyKund+")";
           idb.insert(nyKundFraga);
           JOptionPane.showMessageDialog(null, "En ny kund är registrerad!");
