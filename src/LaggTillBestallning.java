@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.HashMap;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 import javax.swing.JOptionPane;
@@ -18,15 +17,24 @@ public class LaggTillBestallning extends javax.swing.JFrame {
     private InfDB idb;
     /**
      * Creates new form LaggTillBestallning
+     * @param idb
      */
     public LaggTillBestallning(InfDB idb) {
         initComponents();
         this.idb = idb;
-    }
 
-    private LaggTillBestallning() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+    private LaggTillBestallning() {
+        initComponents();
+        
+        try {
+            idb = new InfDB("Hattmakaren", "3306", "hattmakaren","HTM123");
+        fyllCbValjKund();
+        } catch (InfException ex) {       
+            JOptionPane.showMessageDialog(null, "Kunde inte ansluta till databasen!");
+        }
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -58,12 +66,6 @@ public class LaggTillBestallning extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setText("Välj kund");
-
-        cbValjKund.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbValjKundActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -108,11 +110,25 @@ public class LaggTillBestallning extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cbValjKundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbValjKundActionPerformed
-     
-    }//GEN-LAST:event_cbValjKundActionPerformed
-
-    
+    private void fyllCbValjKund(){
+        
+        String fraga = ("SELECT Namn FROM Kund;");
+        
+        ArrayList<String> allaKunder;
+        
+        try{
+        
+        allaKunder = idb.fetchColumn(fraga);
+        
+            for(String benamning : allaKunder){
+            
+                    cbValjKund.addItem(benamning);
+            }
+        } catch (InfException ettUndantag){
+        
+            JOptionPane.showMessageDialog(null, "Databasfel!");
+            System.out.println("Internt felmeddelande" + ettUndantag.getMessage());
+        }}
    
     /**
      * @param args the command line arguments
@@ -142,10 +158,8 @@ public class LaggTillBestallning extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new LaggTillBestallning().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new LaggTillBestallning().setVisible(true);
         });
     }
 
