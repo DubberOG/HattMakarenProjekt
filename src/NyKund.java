@@ -1,3 +1,8 @@
+
+import javax.swing.JOptionPane;
+import oru.inf.InfDB;
+import oru.inf.InfException;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -9,11 +14,27 @@
  */
 public class NyKund extends javax.swing.JFrame {
 
+    private InfDB idb;
+
+    
     /**
      * Creates new form NyKund
      */
-    public NyKund() {
+    public NyKund(InfDB idb) {
         initComponents();
+        this.idb = idb;
+        // forstätt fylla i för ev comboboxar
+    }
+
+    private NyKund() {
+        initComponents();
+        this.idb = idb; 
+        try {
+            idb = new InfDB("Hattmakaren", "3306", "hattmakaren","HTM123");
+        
+        } catch (InfException ex) {
+            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE,null,ex);
+        }
     }
 
     /**
@@ -161,7 +182,30 @@ public class NyKund extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegistreraKundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistreraKundActionPerformed
-        // TODO add your handling code here:
+
+        try {
+          //  if (valedering)
+          String id = idb.getAutoIncrement("Kund", "KundID");
+          String namn = txtFornamn.getText();
+          String efternamn = txtEfternamn.getText();
+          String adress = txtAdress.getText();
+          String postnummer = txtPostNummer.getText();
+          String ort = txtOrt.getText();
+          String telefonnummer = txtTelefonnummer.getText();
+          String email = txtEpost.getText();
+          
+          
+          //Koppla validering så att det inte blir dubbla värden
+          String nyKund = id+",'"+namn+"',"+"'"+efternamn+"',"+"'"+email+"',"+"'"+telefonnummer+"',"+"'"+adress+"',"+"'"+ort+"',"+"'"+postnummer+"'";
+          String nyKundFraga = "INSERT INTO Kund (KundID, Namn, Efternamn, Email, Telefon, Adress, Ort, Postnummer) VALUES ("+nyKund+")";
+          idb.insert(nyKundFraga);
+          JOptionPane.showMessageDialog(null, "En ny kund är registrerad!");
+         
+        }
+        catch  (InfException e){
+            System.out.println ("internt felmedelande:" + e.getMessage());
+        }
+                
     }//GEN-LAST:event_btnRegistreraKundActionPerformed
 
     /**
