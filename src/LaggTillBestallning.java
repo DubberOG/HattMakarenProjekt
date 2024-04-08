@@ -3,6 +3,8 @@ import java.util.HashMap;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 import javax.swing.JOptionPane;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -32,6 +34,7 @@ public class LaggTillBestallning extends javax.swing.JFrame {
             idb = new InfDB("Hattmakaren", "3306", "hattmakaren","HTM123");
         fyllCbValjKund();
         fyllCbValjProdukt();
+        fylliDatum();
         } catch (InfException ex) {       
             JOptionPane.showMessageDialog(null, "Kunde inte ansluta till databasen!");
         }
@@ -195,7 +198,15 @@ public class LaggTillBestallning extends javax.swing.JFrame {
               
         catch(InfException ettUndantag){
             JOptionPane.showMessageDialog(null, "Databasfel!");
-         }}       
+         }}
+     
+     private void fylliDatum()
+     {
+         Date datum = new Date();
+         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+         String dagensDatum = format.format(datum);
+         tfDatum.setText(dagensDatum);
+     }
    
     /**
      * @param args the command line arguments
