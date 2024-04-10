@@ -21,11 +21,6 @@ public class LoggaIn extends javax.swing.JFrame {
     public LoggaIn(InfDB idb) {
         initComponents();
         this.idb = idb;
-             try {
-            idb = new InfDB ("Hattmakaren", "3306", "root", "Maktspelet4ever?");
-        } catch (InfException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null,  ex);
-        }
     }
     
    /** private LoggaIn (){
@@ -56,6 +51,12 @@ public class LoggaIn extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        txtAnvändarnamn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAnvändarnamnActionPerformed(evt);
+            }
+        });
+
         lblAnvändarnamn.setText("Användarnamn");
 
         lblLösenord.setText("Lösenord");
@@ -64,6 +65,12 @@ public class LoggaIn extends javax.swing.JFrame {
         btnLoggaIn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLoggaInActionPerformed(evt);
+            }
+        });
+
+        pswordLösenord.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pswordLösenordActionPerformed(evt);
             }
         });
 
@@ -109,10 +116,19 @@ public class LoggaIn extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txtAnvändarnamnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAnvändarnamnActionPerformed
+        verifieraInlogg();
+    }//GEN-LAST:event_txtAnvändarnamnActionPerformed
+
     private void btnLoggaInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoggaInActionPerformed
         // TODO add your handling code here:
         verifieraInlogg();
     }//GEN-LAST:event_btnLoggaInActionPerformed
+
+    private void pswordLösenordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pswordLösenordActionPerformed
+        // TODO add your handling code here:
+        verifieraInlogg();
+    }//GEN-LAST:event_pswordLösenordActionPerformed
 
     private void verifieraInlogg() {
         

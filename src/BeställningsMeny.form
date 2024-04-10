@@ -23,19 +23,11 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="btnVisaTidigareBeställningar" max="32767" attributes="0"/>
-                          <Component id="btnLäggTillBeställning" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                      <Component id="btnTillbaka" min="-2" pref="121" max="-2" attributes="0"/>
-                  </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="btnVisaTidigareBeställningar" max="32767" attributes="0"/>
+                  <Component id="btnLäggTillBeställning" max="32767" attributes="0"/>
               </Group>
               <EmptySpace pref="196" max="32767" attributes="0"/>
           </Group>
@@ -48,9 +40,7 @@
               <Component id="btnLäggTillBeställning" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               <Component id="btnVisaTidigareBeställningar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="126" max="32767" attributes="0"/>
-              <Component id="btnTillbaka" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+              <EmptySpace pref="164" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -68,14 +58,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Visa tidigare best&#xe4;llningar"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnTillbaka">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Tillbaka"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTillbakaActionPerformed"/>
-      </Events>
     </Component>
   </SubComponents>
 </Form>
