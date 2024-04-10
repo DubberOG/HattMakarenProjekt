@@ -51,12 +51,6 @@ public class LoggaIn extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        txtAnvändarnamn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAnvändarnamnActionPerformed(evt);
-            }
-        });
-
         lblAnvändarnamn.setText("Användarnamn");
 
         lblLösenord.setText("Lösenord");
@@ -65,12 +59,6 @@ public class LoggaIn extends javax.swing.JFrame {
         btnLoggaIn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLoggaInActionPerformed(evt);
-            }
-        });
-
-        pswordLösenord.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pswordLösenordActionPerformed(evt);
             }
         });
 
@@ -116,19 +104,10 @@ public class LoggaIn extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtAnvändarnamnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAnvändarnamnActionPerformed
-        verifieraInlogg();
-    }//GEN-LAST:event_txtAnvändarnamnActionPerformed
-
     private void btnLoggaInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoggaInActionPerformed
         // TODO add your handling code here:
         verifieraInlogg();
     }//GEN-LAST:event_btnLoggaInActionPerformed
-
-    private void pswordLösenordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pswordLösenordActionPerformed
-        // TODO add your handling code here:
-        verifieraInlogg();
-    }//GEN-LAST:event_pswordLösenordActionPerformed
 
     private void verifieraInlogg() {
         

@@ -59,7 +59,7 @@ public class Meny extends javax.swing.JFrame {
             }
         });
 
-        lblMeny.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        lblMeny.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         lblMeny.setText("Meny");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
