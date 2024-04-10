@@ -32,7 +32,7 @@ public class LoggaIn extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Kunde inte ansluta till databasen!");
         }
     }
-
+//test
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
