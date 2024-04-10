@@ -192,8 +192,8 @@ private InfDB idb;
     private void btnSparaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaActionPerformed
 //if(Validering.valideraKundID(txtKund, idb)&& Validering.txtFaltTomt(txtKund)&& Validering.valideraProduktID(txtProdukt, idb)&& Validering.txtFaltTomt(txtProdukt)&& Validering.datumKontroll(tfDatum)&& Validering.txtFaltTomt(txtStatus)){
         try{ 
-            if(Validering.valideraKundID(txtKund, idb)&& Validering.txtFaltTomt(txtKund)&& Validering.valideraProduktID(txtProdukt, idb)&& Validering.txtFaltTomt(txtProdukt)&& Validering.datumKontroll(tfDatum)&& Validering.txtFaltTomt(txtStatus)){
-          System.out.println ("a");
+            //if(Validering.valideraKundID(txtKund, idb)&& Validering.txtFaltTomt(txtKund)&& Validering.valideraProduktID(txtProdukt, idb)&& Validering.txtFaltTomt(txtProdukt)&& Validering.datumKontroll(tfDatum)&& Validering.txtFaltTomt(txtStatus)){
+
                 String fragaOrder = "SELECT * FROM Orders";
 
             ArrayList<HashMap<String, String>> Order = idb.fetchRows(fragaOrder);
@@ -224,7 +224,7 @@ private InfDB idb;
                 
                  
             JOptionPane.showMessageDialog(null, " Informationen har ändrats." );
-            }     
+           // }     
             }catch(InfException ettUndantag){
 
             JOptionPane.showMessageDialog(null, "Databasfel!");
