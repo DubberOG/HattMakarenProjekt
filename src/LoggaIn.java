@@ -175,13 +175,18 @@ public class LoggaIn extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(LoggaIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+ try {
+            // Skapa en ny instans av InfDB
+            idb = new InfDB("Hattmakaren", "3306", "hattmakaren","HTM123");
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new LoggaIn(idb).setVisible(true);
             }
         });
+    } catch (InfException ex) {       
+            JOptionPane.showMessageDialog(null, "Kunde inte ansluta till databasen!");
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
