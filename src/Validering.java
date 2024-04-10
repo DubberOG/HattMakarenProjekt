@@ -69,6 +69,10 @@ public class Validering {
             if(ord.length() <= 10){
                 resultat = true;
             }
+            else{
+                JOptionPane.showMessageDialog(null, "Lösenordet får max vara 10 tecken");
+                falt.requestFocus();
+            }
         }
         return resultat;
     }
