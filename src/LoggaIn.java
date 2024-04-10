@@ -106,9 +106,32 @@ public class LoggaIn extends javax.swing.JFrame {
 
     private void btnLoggaInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoggaInActionPerformed
         // TODO add your handling code here:
-        verifieraInlogg();
+        loggaIn();
     }//GEN-LAST:event_btnLoggaInActionPerformed
 
+    public void loggaIn()
+    {
+        try
+        {
+            String inmatatLosenord = idb.fetchSingle("select Lösenord FROM medarbetare WHERE Epost = '" + txtAnvändarnamn.getText().toLowerCase() +"'");
+            if(inmatatLosenord == null)
+            {
+                JOptionPane.showMessageDialog(null, "Användaren finns ej");
+            }
+            else
+            {
+                if(inmatatLosenord.equals(new String(pswordLösenord.getPassword())))
+                {
+            JOptionPane.showMessageDialog(null, "Inloggad");
+        }
+            }
+                    }
+        catch (InfException E)
+        {
+            System.out.println(E);
+        }
+    }
+    /**
     private void verifieraInlogg() {
         
         String angivetAnvändarnamn = txtAnvändarnamn.getText(); //hämta angivet användarnamnt
