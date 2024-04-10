@@ -3,6 +3,8 @@ import java.util.regex.Pattern;
 import java.util.regex.*;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import oru.inf.InfDB;
+import oru.inf.InfException;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -13,9 +15,8 @@ import javax.swing.JTextField;
  * @author William
  */
 
-
 public class Validering {
-    
+ private InfDB idb;   
 
     
     //Kollar så att fältet inte är tomt
@@ -70,5 +71,52 @@ public class Validering {
         }
         return resultat;
     }
+    public static boolean valideraKundID(JTextField falt, InfDB idb) {
+    try {
+        // SQL-fråga för att kontrollera om det angivna KundID:t finns i tabellen Kund
+        String kundFraga = "SELECT KundID FROM Kund WHERE KundID = '" + falt + "'";
+
+        // Utför SQL-frågan för att hämta KundID:t från databasen
+        String resultat = idb.fetchSingle(kundFraga);
+
+        // Om resultatet är null betyder det att det angivna KundID:t inte finns i tabellen Kund
+        if (resultat == null){ 
+            JOptionPane.showMessageDialog(null, "KundID finns inte");
+            falt.requestFocus();
+            return false; // KundID:t är ogiltigt
+        } else {
+            return true; // KundID:t är giltigt
+        }
+
+    } catch (InfException ex) {
+        JOptionPane.showMessageDialog(null, "Kunde inte validera KundID:t!");
+        System.out.println("Internt felmeddelande" + ex.getMessage());
+        return false; // Om ett fel inträffar, anta att KundID:t är ogiltigt
+    }
+}
+    public static boolean valideraProduktID(JTextField falt, InfDB idb) {
+    try {
+        // SQL-fråga för att kontrollera om det angivna ProduktID:t finns i tabellen Produkt
+        String produktFraga = "SELECT ProduktID FROM Produkt WHERE ProduktID = '" + falt + "'";
+
+        // Utför SQL-frågan för att hämta ProduktID:t från databasen
+        String resultat = idb.fetchSingle(produktFraga);
+
+        // Om resultatet är null betyder det att det angivna ProduktID:t inte finns i tabellen Produkt
+        if (resultat == null) {
+            JOptionPane.showMessageDialog(null, "ProduktID finns inte");
+            falt.requestFocus();
+            return false; // ProduktID:t är ogiltigt
+            
+        } else {
+            return true; // ProduktID:t är giltigt
+        }
+
+    } catch (InfException ex) {
+        JOptionPane.showMessageDialog(null, "Kunde inte validera ProduktID:t!");
+        System.out.println("Internt felmeddelande" + ex.getMessage());
+        return false; // Om ett fel inträffar, anta att ProduktID:t är ogiltigt
+    }
+}
     }
 

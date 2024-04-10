@@ -164,7 +164,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="12" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Kund"/>
+        <Property name="text" type="java.lang.String" value="Kund ID"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblProdukt">
@@ -172,7 +172,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="12" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Produkt"/>
+        <Property name="text" type="java.lang.String" value="Produkt ID"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblProdukt1">
@@ -188,7 +188,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Helvetica Neue" size="13" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Ange orderID"/>
+        <Property name="text" type="java.lang.String" value="Ange order ID"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="cbxOrderID">
