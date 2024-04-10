@@ -51,7 +51,7 @@ public class LoggaIn extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lblAnvändarnamn.setText("Användarnamn");
+        lblAnvändarnamn.setText("E-post");
 
         lblLösenord.setText("Lösenord");
 
@@ -71,10 +71,10 @@ public class LoggaIn extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(120, 120, 120)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblAnvändarnamn)
                             .addComponent(txtAnvändarnamn, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
                             .addComponent(lblLösenord)
-                            .addComponent(pswordLösenord)))
+                            .addComponent(pswordLösenord)
+                            .addComponent(lblAnvändarnamn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(158, 158, 158)
                         .addComponent(btnLoggaIn))
