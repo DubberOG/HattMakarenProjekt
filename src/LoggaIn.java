@@ -22,17 +22,6 @@ public class LoggaIn extends javax.swing.JFrame {
         initComponents();
         this.idb = idb;
     }
-    
-   /** private LoggaIn (){
-        initComponents();
-        this.idb = idb;
-        try {
-            idb = new InfDB ("Hattmakaren", "3306", "hattmakaren", "HTM123");
-        } catch (InfException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null,  ex);
-        }
-    }
-//test
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
