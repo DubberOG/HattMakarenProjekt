@@ -133,7 +133,7 @@ public class LoggaIn extends javax.swing.JFrame {
         char [] angivetLösenord = pswordLösenord.getPassword(); 
         
         try {
-            String anställdQuery = "Select Lösenord FROM Anställd WHERE Användarnamn = '" + angivetAnvändarnamn + "'";
+            String anställdQuery = "Select Lösenord FROM Anställd WHERE Epost = '" + angivetAnvändarnamn + "'";
             //hämtar lösenordet som är angivet vid det användarnamn som skrivs in
             String lagratLösenord = idb.fetchSingle(anställdQuery); 
             
