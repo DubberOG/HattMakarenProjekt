@@ -59,5 +59,16 @@ public class Validering {
             }}
         return resultat;
     }
+    //Kollar först om fältet är tomt och sen kollar så att det är mindre än 10 tecken
+    public static boolean losenordKontroll(JTextField falt){
+        boolean resultat = false;
+        String ord = falt.getText();
+        if(txtFaltTomt(falt)){
+            if(ord.length() <= 10){
+                resultat = true;
+            }
+        }
+        return resultat;
+    }
     }
 
