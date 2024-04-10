@@ -69,6 +69,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Visa tidigare best&#xe4;llningar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVisaTidigareBest&#xe4;llningarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btn&#xc4;ndraBest&#xe4;llning">
       <Properties>
