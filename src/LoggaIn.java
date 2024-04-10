@@ -17,6 +17,7 @@ public class LoggaIn extends javax.swing.JFrame {
 
     /**
      * Creates new form LoggaIn
+     * @param idb
      */
     public LoggaIn(InfDB idb) {
         initComponents();
