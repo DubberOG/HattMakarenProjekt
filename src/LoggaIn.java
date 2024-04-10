@@ -114,12 +114,15 @@ public class LoggaIn extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Inloggad");
             new Meny(idb).setVisible(true);
             dispose();
-        }
+                } else 
+                {
+                    JOptionPane.showMessageDialog(null, "Fel lösenord");
+                }
             }
-                    }
+        }
         catch (InfException E)
         {
-            System.out.println(E);
+            JOptionPane.showMessageDialog(null, "Något gick fel!");
         }
     }
     
