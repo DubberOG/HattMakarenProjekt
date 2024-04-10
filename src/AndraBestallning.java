@@ -231,7 +231,7 @@ try{
     }//GEN-LAST:event_btnSparaActionPerformed
 
     private void btnAvbrytActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvbrytActionPerformed
-        //avbrytBestallning();
+        avbrytBestallning();
     }//GEN-LAST:event_btnAvbrytActionPerformed
 
     private void cbxOrderIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxOrderIDActionPerformed
@@ -304,6 +304,15 @@ try{
           
     }
 }
+         private void avbrytBestallning()
+     {
+          int val = JOptionPane.showConfirmDialog(null, "Vill du avbryta ändring av beställningen?", "Avbryt", JOptionPane.YES_NO_OPTION);
+          if(val == JOptionPane.YES_OPTION)
+          {
+              dispose();
+              new Meny(idb).setVisible(true);
+          }
+     }
     /**
      * @param args the command line arguments
      */

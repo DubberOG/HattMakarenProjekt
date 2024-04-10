@@ -32,7 +32,7 @@ public class LoggaIn extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null,  ex);
         }
     }
-
+//test
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -51,12 +51,6 @@ public class LoggaIn extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        txtAnvändarnamn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAnvändarnamnActionPerformed(evt);
-            }
-        });
-
         lblAnvändarnamn.setText("Användarnamn");
 
         lblLösenord.setText("Lösenord");
@@ -65,12 +59,6 @@ public class LoggaIn extends javax.swing.JFrame {
         btnLoggaIn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLoggaInActionPerformed(evt);
-            }
-        });
-
-        pswordLösenord.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pswordLösenordActionPerformed(evt);
             }
         });
 
@@ -116,19 +104,10 @@ public class LoggaIn extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtAnvändarnamnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAnvändarnamnActionPerformed
-        verifieraInlogg();
-    }//GEN-LAST:event_txtAnvändarnamnActionPerformed
-
     private void btnLoggaInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoggaInActionPerformed
         // TODO add your handling code here:
         verifieraInlogg();
     }//GEN-LAST:event_btnLoggaInActionPerformed
-
-    private void pswordLösenordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pswordLösenordActionPerformed
-        // TODO add your handling code here:
-        verifieraInlogg();
-    }//GEN-LAST:event_pswordLösenordActionPerformed
 
     private void verifieraInlogg() {
         
@@ -196,13 +175,18 @@ public class LoggaIn extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(LoggaIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+ try {
+            // Skapa en ny instans av InfDB
+            idb = new InfDB("Hattmakaren", "3306", "hattmakaren","HTM123");
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new LoggaIn(idb).setVisible(true);
             }
         });
+    } catch (InfException ex) {       
+            JOptionPane.showMessageDialog(null, "Kunde inte ansluta till databasen!");
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
