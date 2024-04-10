@@ -131,46 +131,6 @@ public class LoggaIn extends javax.swing.JFrame {
             System.out.println(E);
         }
     }
-    /**
-    private void verifieraInlogg() {
-        
-        String angivetAnvändarnamn = txtAnvändarnamn.getText(); //hämta angivet användarnamnt
-        char [] angivetLösenord = pswordLösenord.getPassword(); //hämtar angivet lösen
-        String lösenordString = new String(angivetLösenord); //gör om lösenordet från char till string
-        
-        if (inloggningStämmer(angivetAnvändarnamn, lösenordString)) {
-        setVisible(false); //stänger nuvarande fönster
-        new Meny(idb).setVisible(true);
-        } else {
-            //om inloggningen är felaktig, visa ett felmeddelande
-            lblFelmeddelande.setText("Fel användarnamn eller lösenord, försök igen");
-            
-        }
-        
-    }
-            
-    private boolean inloggningStämmer(String användarnamn, String lösenord) {
-        //metoden ska kontrollera användarnamnet och lösenordet, om 
-        boolean isAnställd = false;
-        String angivetAnvändarnamn = txtAnvändarnamn.getText();
-        char [] angivetLösenord = pswordLösenord.getPassword(); 
-        
-        try {
-            String anställdQuery = "Select Lösenord FROM Anställd WHERE Epost = '" + angivetAnvändarnamn + "'";
-            //hämtar lösenordet som är angivet vid det användarnamn som skrivs in
-            String lagratLösenord = idb.fetchSingle(anställdQuery); 
-            
-            if (lagratLösenord != null && Arrays.equals(angivetLösenord, lagratLösenord.toCharArray())){
-            isAnställd = true;
-            }
-        }
-        catch (InfException e) {
-            JOptionPane.showMessageDialog(null, "Databasfel!");
-            System.out.println("Internt felmeddelande: " + e.getMessage());
-        }
-        return isAnställd;
-        
-    }
     
     /**
      * @param args the command line arguments
