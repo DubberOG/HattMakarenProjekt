@@ -27,7 +27,6 @@ public class LoggaIn extends javax.swing.JFrame {
         
         try {
             idb = new InfDB("Hattmakaren", "3306", "hattmakaren","HTM123");
-        verifieraInlogg();
         } catch (InfException ex) {       
             JOptionPane.showMessageDialog(null, "Kunde inte ansluta till databasen!");
         }
