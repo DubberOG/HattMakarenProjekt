@@ -35,6 +35,7 @@ public class Meny extends javax.swing.JFrame {
         btnKund = new javax.swing.JButton();
         btnSkrivUtFraktsedel = new javax.swing.JButton();
         lblMeny = new javax.swing.JLabel();
+        btnLoggaUt = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -62,6 +63,13 @@ public class Meny extends javax.swing.JFrame {
         lblMeny.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         lblMeny.setText("Meny");
 
+        btnLoggaUt.setText("Logga ut");
+        btnLoggaUt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoggaUtActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -75,11 +83,17 @@ public class Meny extends javax.swing.JFrame {
                         .addComponent(btnKund, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnBeställning, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(226, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnLoggaUt)
+                .addGap(22, 22, 22))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
+                .addContainerGap()
+                .addComponent(btnLoggaUt)
+                .addGap(11, 11, 11)
                 .addComponent(lblMeny)
                 .addGap(38, 38, 38)
                 .addComponent(btnBeställning)
@@ -107,6 +121,11 @@ public class Meny extends javax.swing.JFrame {
         setVisible(false);
         new SkrivUtFraktsedel(idb).setVisible(true);
     }//GEN-LAST:event_btnSkrivUtFraktsedelActionPerformed
+
+    private void btnLoggaUtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoggaUtActionPerformed
+        setVisible(false);
+        new LoggaIn(idb).setVisible(true); 
+    }//GEN-LAST:event_btnLoggaUtActionPerformed
 
     /**
      * @param args the command line arguments
@@ -146,6 +165,7 @@ public class Meny extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBeställning;
     private javax.swing.JButton btnKund;
+    private javax.swing.JButton btnLoggaUt;
     private javax.swing.JButton btnSkrivUtFraktsedel;
     private javax.swing.JLabel lblMeny;
     // End of variables declaration//GEN-END:variables
