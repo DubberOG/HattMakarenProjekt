@@ -47,6 +47,11 @@ public class BeställningsMeny extends javax.swing.JFrame {
         });
 
         btnVisaTidigareBeställningar.setText("Visa tidigare beställningar");
+        btnVisaTidigareBeställningar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVisaTidigareBeställningarActionPerformed(evt);
+            }
+        });
 
         btnÄndraBeställning.setText("Ändra/Uppdatera beställning");
         btnÄndraBeställning.addActionListener(new java.awt.event.ActionListener() {
@@ -116,6 +121,11 @@ public class BeställningsMeny extends javax.swing.JFrame {
     private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
         setVisible(false);
         new Meny(idb).setVisible(true);    }//GEN-LAST:event_btnTillbakaActionPerformed
+
+    private void btnVisaTidigareBeställningarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisaTidigareBeställningarActionPerformed
+        setVisible(false);
+        new OrderHistorik(idb).setVisible(true); 
+    }//GEN-LAST:event_btnVisaTidigareBeställningarActionPerformed
 
     /**
      * @param args the command line arguments

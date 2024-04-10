@@ -22,17 +22,6 @@ public class LoggaIn extends javax.swing.JFrame {
         initComponents();
         this.idb = idb;
     }
-    
-   /** private LoggaIn (){
-        initComponents();
-        this.idb = idb;
-        try {
-            idb = new InfDB ("Hattmakaren", "3306", "hattmakaren", "HTM123");
-        } catch (InfException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null,  ex);
-        }
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -51,13 +40,7 @@ public class LoggaIn extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        txtAnvändarnamn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAnvändarnamnActionPerformed(evt);
-            }
-        });
-
-        lblAnvändarnamn.setText("Användarnamn");
+        lblAnvändarnamn.setText("E-post");
 
         lblLösenord.setText("Lösenord");
 
@@ -65,12 +48,6 @@ public class LoggaIn extends javax.swing.JFrame {
         btnLoggaIn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLoggaInActionPerformed(evt);
-            }
-        });
-
-        pswordLösenord.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pswordLösenordActionPerformed(evt);
             }
         });
 
@@ -83,10 +60,10 @@ public class LoggaIn extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(120, 120, 120)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblAnvändarnamn)
                             .addComponent(txtAnvändarnamn, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
                             .addComponent(lblLösenord)
-                            .addComponent(pswordLösenord)))
+                            .addComponent(pswordLösenord)
+                            .addComponent(lblAnvändarnamn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(158, 158, 158)
                         .addComponent(btnLoggaIn))
@@ -116,58 +93,34 @@ public class LoggaIn extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtAnvändarnamnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAnvändarnamnActionPerformed
-        verifieraInlogg();
-    }//GEN-LAST:event_txtAnvändarnamnActionPerformed
-
     private void btnLoggaInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoggaInActionPerformed
         // TODO add your handling code here:
-        verifieraInlogg();
+        loggaIn();
     }//GEN-LAST:event_btnLoggaInActionPerformed
 
-    private void pswordLösenordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pswordLösenordActionPerformed
-        // TODO add your handling code here:
-        verifieraInlogg();
-    }//GEN-LAST:event_pswordLösenordActionPerformed
-
-    private void verifieraInlogg() {
-        
-        String angivetAnvändarnamn = txtAnvändarnamn.getText(); //hämta angivet användarnamnt
-        char [] angivetLösenord = pswordLösenord.getPassword(); //hämtar angivet lösen
-        String lösenordString = new String(angivetLösenord); //gör om lösenordet från char till string
-        
-        if (inloggningStämmer(angivetAnvändarnamn, lösenordString)) {
-        setVisible(false); //stänger nuvarande fönster
-        new Meny(idb).setVisible(true);
-        } else {
-            //om inloggningen är felaktig, visa ett felmeddelande
-            lblFelmeddelande.setText("Fel användarnamn eller lösenord, försök igen");
-            
-        }
-        
-    }
-            
-    private boolean inloggningStämmer(String användarnamn, String lösenord) {
-        //metoden ska kontrollera användarnamnet och lösenordet, om 
-        boolean isAnställd = false;
-        String angivetAnvändarnamn = txtAnvändarnamn.getText();
-        char [] angivetLösenord = pswordLösenord.getPassword(); 
-        
-        try {
-            String anställdQuery = "Select Lösenord FROM Anställd WHERE Användarnamn = '" + angivetAnvändarnamn + "'";
-            //hämtar lösenordet som är angivet vid det användarnamn som skrivs in
-            String lagratLösenord = idb.fetchSingle(anställdQuery); 
-            
-            if (lagratLösenord != null && Arrays.equals(angivetLösenord, lagratLösenord.toCharArray())){
-            isAnställd = true;
+    public void loggaIn()
+    {
+        try
+        {
+            String inmatatLosenord = idb.fetchSingle("select Lösenord FROM medarbetare WHERE Epost = '" + txtAnvändarnamn.getText().toLowerCase() +"'");
+            if(inmatatLosenord == null)
+            {
+                JOptionPane.showMessageDialog(null, "Användaren finns ej");
             }
+            else
+            {
+                if(inmatatLosenord.equals(new String(pswordLösenord.getPassword())))
+                {
+            JOptionPane.showMessageDialog(null, "Inloggad");
+            new Meny(idb).setVisible(true);
+            dispose();
         }
-        catch (InfException e) {
-            JOptionPane.showMessageDialog(null, "Databasfel!");
-            System.out.println("Internt felmeddelande: " + e.getMessage());
+            }
+                    }
+        catch (InfException E)
+        {
+            System.out.println(E);
         }
-        return isAnställd;
-        
     }
     
     /**
@@ -196,13 +149,18 @@ public class LoggaIn extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(LoggaIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+ try {
+            // Skapa en ny instans av InfDB
+            idb = new InfDB("Hattmakaren", "3306", "hattmakaren","HTM123");
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new LoggaIn(idb).setVisible(true);
             }
         });
+    } catch (InfException ex) {       
+            JOptionPane.showMessageDialog(null, "Kunde inte ansluta till databasen!");
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

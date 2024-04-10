@@ -24,15 +24,23 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="lblEpost" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblTelefonnummer" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblOrt" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblPostNummer" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblAdress" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblEfternamn" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblFornamn" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="lblEpost" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblTelefonnummer" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblOrt" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblPostNummer" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblAdress" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblEfternamn" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblFornamn" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="btnTillbaka" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -62,7 +70,11 @@
               <Component id="lblFyllIUppgifterOmKund" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="btnRegistreraKund" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="txtFornamn" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblFornamn" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -87,20 +99,27 @@
                           <Component id="lblOrt" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtOrt" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblTelefonnummer" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtTelefonnummer" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblTelefonnummer" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtTelefonnummer" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblEpost" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtEpost" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
+                              <Component id="btnTillbaka" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblEpost" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtEpost" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="btnRegistreraKund" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -196,6 +215,14 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Fyll i uppgifter om kund"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnTillbaka">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Tillbaka"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTillbakaActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

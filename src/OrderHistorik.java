@@ -46,9 +46,9 @@ public class OrderHistorik extends javax.swing.JFrame {
         btnSok = new javax.swing.JButton();
         txtAreaOrdrar = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        lblOrderRubrik = new javax.swing.JLabel();
+        lblSoktext = new javax.swing.JLabel();
+        btnTillbaka = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -63,12 +63,17 @@ public class OrderHistorik extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         txtAreaOrdrar.setViewportView(jTextArea1);
 
-        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
-        jLabel1.setText("Orderhistorik");
+        lblOrderRubrik.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        lblOrderRubrik.setText("Orderhistorik");
 
-        jLabel2.setText("Klicka på knappen för att se orderhistorik");
+        lblSoktext.setText("Klicka på knappen för att se orderhistorik");
 
-        jButton1.setText("Tillbaka");
+        btnTillbaka.setText("Tillbaka");
+        btnTillbaka.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTillbakaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -76,17 +81,17 @@ public class OrderHistorik extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(85, 85, 85)
-                .addComponent(jLabel2)
+                .addComponent(lblSoktext)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(146, 146, 146)
-                .addComponent(jLabel1)
+                .addComponent(lblOrderRubrik)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(0, 20, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(btnTillbaka)
                         .addGap(71, 71, 71)
                         .addComponent(btnSok))
                     .addComponent(txtAreaOrdrar, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -96,15 +101,15 @@ public class OrderHistorik extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(jLabel1)
+                .addComponent(lblOrderRubrik)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtAreaOrdrar, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                .addComponent(jLabel2)
+                .addComponent(lblSoktext)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSok)
-                    .addComponent(jButton1))
+                    .addComponent(btnTillbaka))
                 .addGap(18, 18, 18))
         );
 
@@ -129,6 +134,13 @@ public class OrderHistorik extends javax.swing.JFrame {
             System.out.println ("internt felmedelande:" + e.getMessage());
         }
     }//GEN-LAST:event_btnSokActionPerformed
+
+    private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
+         {                                            
+        setVisible(false);
+        new Meny(idb).setVisible(true);    }
+
+    }//GEN-LAST:event_btnTillbakaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -167,10 +179,10 @@ public class OrderHistorik extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSok;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton btnTillbaka;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel lblOrderRubrik;
+    private javax.swing.JLabel lblSoktext;
     private javax.swing.JScrollPane txtAreaOrdrar;
     // End of variables declaration//GEN-END:variables
 }

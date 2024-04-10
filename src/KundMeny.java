@@ -31,21 +31,81 @@ public class KundMeny extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblKund = new javax.swing.JLabel();
+        btnLäggTillNyKund = new javax.swing.JButton();
+        btnTaBortKund = new javax.swing.JButton();
+        btnTillbaka = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        lblKund.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        lblKund.setText("Kund");
+
+        btnLäggTillNyKund.setText("Lägg till ny kund");
+        btnLäggTillNyKund.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLäggTillNyKundActionPerformed(evt);
+            }
+        });
+
+        btnTaBortKund.setText("Ta bort kund");
+        btnTaBortKund.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTaBortKundActionPerformed(evt);
+            }
+        });
+
+        btnTillbaka.setText("Tillbaka");
+        btnTillbaka.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTillbakaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnTillbaka)
+                    .addComponent(lblKund)
+                    .addComponent(btnTaBortKund, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnLäggTillNyKund, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE))
+                .addContainerGap(229, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(lblKund)
+                .addGap(34, 34, 34)
+                .addComponent(btnLäggTillNyKund)
+                .addGap(31, 31, 31)
+                .addComponent(btnTaBortKund)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
+                .addComponent(btnTillbaka)
+                .addGap(29, 29, 29))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnLäggTillNyKundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLäggTillNyKundActionPerformed
+        setVisible(false);
+        new NyKund(idb).setVisible(true); 
+    }//GEN-LAST:event_btnLäggTillNyKundActionPerformed
+
+    private void btnTaBortKundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortKundActionPerformed
+        setVisible(false);
+        new TaBortKund(idb).setVisible(true); 
+    }//GEN-LAST:event_btnTaBortKundActionPerformed
+
+    private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
+        setVisible(false);
+        new Meny(idb).setVisible(true);         
+    }//GEN-LAST:event_btnTillbakaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -83,5 +143,9 @@ public class KundMeny extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnLäggTillNyKund;
+    private javax.swing.JButton btnTaBortKund;
+    private javax.swing.JButton btnTillbaka;
+    private javax.swing.JLabel lblKund;
     // End of variables declaration//GEN-END:variables
 }
