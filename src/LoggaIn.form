@@ -69,6 +69,9 @@
   </Layout>
   <SubComponents>
     <Component class="javax.swing.JTextField" name="txtAnv&#xe4;ndarnamn">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtAnv&#xe4;ndarnamnActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblAnv&#xe4;ndarnamn">
       <Properties>
@@ -89,6 +92,9 @@
       </Events>
     </Component>
     <Component class="javax.swing.JPasswordField" name="pswordL&#xf6;senord">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pswordL&#xf6;senordActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblFelmeddelande">
     </Component>

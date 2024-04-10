@@ -45,16 +45,16 @@ public class OrderHistorik extends javax.swing.JFrame {
 
         lblhistorik = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        txtAreaOrderar = new javax.swing.JTextArea();
+        txtAreaOrdrar = new javax.swing.JTextArea();
         btnSok = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lblhistorik.setText("Order historik");
 
-        txtAreaOrderar.setColumns(20);
-        txtAreaOrderar.setRows(5);
-        jScrollPane1.setViewportView(txtAreaOrderar);
+        txtAreaOrdrar.setColumns(20);
+        txtAreaOrdrar.setRows(5);
+        jScrollPane1.setViewportView(txtAreaOrdrar);
 
         btnSok.setText("Sök");
         btnSok.addActionListener(new java.awt.event.ActionListener() {
@@ -99,12 +99,19 @@ public class OrderHistorik extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokActionPerformed
-        ArrayList<String> 
+        ArrayList<String> orders = new ArrayList<>(); 
         try{
             String nyOrderFraga = "SELECT * FROM Orders";
             ArrayList<HashMap<String,String>> ordrar = idb.fetchRows(nyOrderFraga);
-            txtAreaOrderar.append(resultat.get());
-            
+            for (HashMap<String,String> order : ordrar) {
+                for (String Orders : order.keySet()) {
+            orders.add(Orders + ": " + order.get(Orders));
+        }
+    }
+           for (String order : orders) {
+        txtAreaOrdrar.append(order + "\n");
+    }  
+                    
         }catch (InfException e){
             System.out.println ("internt felmedelande:" + e.getMessage());
         }
@@ -149,6 +156,6 @@ public class OrderHistorik extends javax.swing.JFrame {
     private javax.swing.JButton btnSok;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblhistorik;
-    private javax.swing.JTextArea txtAreaOrderar;
+    private javax.swing.JTextArea txtAreaOrdrar;
     // End of variables declaration//GEN-END:variables
 }
