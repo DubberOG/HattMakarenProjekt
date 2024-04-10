@@ -93,16 +93,16 @@ private InfDB idb;
         lbBestallning.setText("Ändra beställning");
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel1.setText("Kund");
+        jLabel1.setText("Kund ID");
 
         lblProdukt.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lblProdukt.setText("Produkt");
+        lblProdukt.setText("Produkt ID");
 
         lblProdukt1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblProdukt1.setText("Datum");
 
         lblOrderID.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        lblOrderID.setText("Ange orderID");
+        lblOrderID.setText("Ange order ID");
 
         cbxOrderID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -190,8 +190,11 @@ private InfDB idb;
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSparaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaActionPerformed
-try{
-           String fragaOrder = "SELECT * FROM Orders";
+//if(Validering.valideraKundID(txtKund, idb)&& Validering.txtFaltTomt(txtKund)&& Validering.valideraProduktID(txtProdukt, idb)&& Validering.txtFaltTomt(txtProdukt)&& Validering.datumKontroll(tfDatum)&& Validering.txtFaltTomt(txtStatus)){
+        try{ 
+            if(Validering.valideraKundID(txtKund, idb)&& Validering.txtFaltTomt(txtKund)&& Validering.valideraProduktID(txtProdukt, idb)&& Validering.txtFaltTomt(txtProdukt)&& Validering.datumKontroll(tfDatum)&& Validering.txtFaltTomt(txtStatus)){
+          System.out.println ("a");
+                String fragaOrder = "SELECT * FROM Orders";
 
             ArrayList<HashMap<String, String>> Order = idb.fetchRows(fragaOrder);
 
@@ -221,13 +224,14 @@ try{
                 
                  
             JOptionPane.showMessageDialog(null, " Informationen har ändrats." );
-                 
-          }catch(InfException ettUndantag){
+            }     
+            }catch(InfException ettUndantag){
 
             JOptionPane.showMessageDialog(null, "Databasfel!");
             System.out.println("Internt felmedelande" + ettUndantag.getMessage());    
        
-       }
+                   }
+
     }//GEN-LAST:event_btnSparaActionPerformed
 
     private void btnAvbrytActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvbrytActionPerformed
