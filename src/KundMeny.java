@@ -31,86 +31,21 @@ public class KundMeny extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnNyKund = new javax.swing.JButton();
-        btnTaBortKund = new javax.swing.JButton();
-        btnTillbaka = new javax.swing.JButton();
-        lblHanteraKund = new javax.swing.JLabel();
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        btnNyKund.setText("Ny kund");
-        btnNyKund.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNyKundActionPerformed(evt);
-            }
-        });
-
-        btnTaBortKund.setText("Ta bort kund");
-        btnTaBortKund.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTaBortKundActionPerformed(evt);
-            }
-        });
-
-        btnTillbaka.setText("Tillbaka");
-        btnTillbaka.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTillbakaActionPerformed(evt);
-            }
-        });
-
-        lblHanteraKund.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
-        lblHanteraKund.setText("Hantera Kund");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(btnTillbaka))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblHanteraKund)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(btnNyKund, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnTaBortKund, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)))))
-                .addContainerGap(225, Short.MAX_VALUE))
+            .addGap(0, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(lblHanteraKund)
-                .addGap(18, 18, 18)
-                .addComponent(btnNyKund)
-                .addGap(18, 18, 18)
-                .addComponent(btnTaBortKund)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
-                .addComponent(btnTillbaka)
-                .addGap(16, 16, 16))
+            .addGap(0, 300, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    //Denna kanppen tar dig till NyKund frame. 
-    private void btnNyKundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNyKundActionPerformed
-        setVisible(false);
-        new NyKund(idb).setVisible(true);
-    }//GEN-LAST:event_btnNyKundActionPerformed
-
-    //Denna knappen tar dig till TaBortKund frame.
-    private void btnTaBortKundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortKundActionPerformed
-        setVisible(false);
-        new TaBortKund(idb).setVisible(true);    }//GEN-LAST:event_btnTaBortKundActionPerformed
-
-    private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
-        setVisible(false);
-        new Meny(idb).setVisible(true);    }//GEN-LAST:event_btnTillbakaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -148,9 +83,5 @@ public class KundMeny extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnNyKund;
-    private javax.swing.JButton btnTaBortKund;
-    private javax.swing.JButton btnTillbaka;
-    private javax.swing.JLabel lblHanteraKund;
     // End of variables declaration//GEN-END:variables
 }

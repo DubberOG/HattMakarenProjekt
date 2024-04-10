@@ -24,7 +24,7 @@ public class Main {
     {
         System.out.println(e);
     }
-        
+        //new LaggTillBestallning().setVisible(true);
     }
 }
 
