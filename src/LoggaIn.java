@@ -123,6 +123,8 @@ public class LoggaIn extends javax.swing.JFrame {
                 if(inmatatLosenord.equals(new String(pswordLösenord.getPassword())))
                 {
             JOptionPane.showMessageDialog(null, "Inloggad");
+            new Meny(idb).setVisible(true);
+            dispose();
         }
             }
                     }
