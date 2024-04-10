@@ -38,9 +38,24 @@ public class OrderHistorikTva extends javax.swing.JFrame {
         btnSok = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtAreaOrdrar = new javax.swing.JTextArea();
+<<<<<<< Updated upstream:src/OrderHistorikTva.java
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+=======
+        btnSok = new javax.swing.JButton();
+        lblSökText = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        lblhistorik.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        lblhistorik.setText("Orderhistorik");
+
+        txtAreaOrdrar.setColumns(20);
+        txtAreaOrdrar.setRows(5);
+        jScrollPane1.setViewportView(txtAreaOrdrar);
+
+>>>>>>> Stashed changes:src/OrderHistorik.java
         btnSok.setText("Sök");
         btnSok.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -48,9 +63,13 @@ public class OrderHistorikTva extends javax.swing.JFrame {
             }
         });
 
+<<<<<<< Updated upstream:src/OrderHistorikTva.java
         txtAreaOrdrar.setColumns(20);
         txtAreaOrdrar.setRows(5);
         jScrollPane1.setViewportView(txtAreaOrdrar);
+=======
+        lblSökText.setText("Sök efter orderhistorik genom att klicka på knappen");
+>>>>>>> Stashed changes:src/OrderHistorik.java
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -59,6 +78,7 @@ public class OrderHistorikTva extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+<<<<<<< Updated upstream:src/OrderHistorikTva.java
                         .addGap(162, 162, 162)
                         .addComponent(btnSok))
                     .addGroup(layout.createSequentialGroup()
@@ -74,6 +94,37 @@ public class OrderHistorikTva extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
                 .addComponent(btnSok)
                 .addGap(48, 48, 48))
+=======
+                        .addContainerGap()
+                        .addComponent(jScrollPane1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(158, 158, 158)
+                                .addComponent(btnSok))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(130, 130, 130)
+                                .addComponent(lblhistorik)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(lblSökText)
+                .addContainerGap(41, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblhistorik)
+                .addGap(12, 12, 12)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addComponent(lblSökText)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnSok)
+                .addGap(38, 38, 38))
+>>>>>>> Stashed changes:src/OrderHistorik.java
         );
 
         pack();
@@ -136,6 +187,11 @@ public class OrderHistorikTva extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSok;
     private javax.swing.JScrollPane jScrollPane1;
+<<<<<<< Updated upstream:src/OrderHistorikTva.java
+=======
+    private javax.swing.JLabel lblSökText;
+    private javax.swing.JLabel lblhistorik;
+>>>>>>> Stashed changes:src/OrderHistorik.java
     private javax.swing.JTextArea txtAreaOrdrar;
     // End of variables declaration//GEN-END:variables
 }
