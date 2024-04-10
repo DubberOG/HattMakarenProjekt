@@ -80,7 +80,9 @@ public class Validering {
         String resultat = idb.fetchSingle(kundFraga);
 
         // Om resultatet är null betyder det att det angivna KundID:t inte finns i tabellen Kund
-        if (resultat == null) {
+        if (resultat == null){ 
+            JOptionPane.showMessageDialog(null, "KundID finns inte");
+            falt.requestFocus();
             return false; // KundID:t är ogiltigt
         } else {
             return true; // KundID:t är giltigt
@@ -102,7 +104,10 @@ public class Validering {
 
         // Om resultatet är null betyder det att det angivna ProduktID:t inte finns i tabellen Produkt
         if (resultat == null) {
+            JOptionPane.showMessageDialog(null, "ProduktID finns inte");
+            falt.requestFocus();
             return false; // ProduktID:t är ogiltigt
+            
         } else {
             return true; // ProduktID:t är giltigt
         }
