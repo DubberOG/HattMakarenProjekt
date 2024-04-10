@@ -21,20 +21,15 @@ public class LoggaIn extends javax.swing.JFrame {
     public LoggaIn(InfDB idb) {
         initComponents();
         this.idb = idb;
-             try {
-            idb = new InfDB ("Hattmakaren", "3306", "root", "Maktspelet4ever?");
-        } catch (InfException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null,  ex);
-        }
     }
-    
-   /** private LoggaIn (){
+    private LoggaIn() {
         initComponents();
-        this.idb = idb;
+        
         try {
-            idb = new InfDB ("Hattmakaren", "3306", "hattmakaren", "HTM123");
-        } catch (InfException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null,  ex);
+            idb = new InfDB("Hattmakaren", "3306", "hattmakaren","HTM123");
+        verifieraInlogg();
+        } catch (InfException ex) {       
+            JOptionPane.showMessageDialog(null, "Kunde inte ansluta till databasen!");
         }
     }
 
