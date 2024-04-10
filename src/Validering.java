@@ -66,6 +66,7 @@ public class Validering {
         boolean resultat = false;
         String ord = falt.getText();
         if(txtFaltTomt(falt)){
+            //kollar ifall längden är 10 eller mindre antal tecken
             if(ord.length() <= 10){
                 resultat = true;
             }
