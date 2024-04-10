@@ -74,7 +74,8 @@ public class Validering {
     public static boolean valideraKundID(JTextField falt, InfDB idb) {
     try {
         // SQL-fråga för att kontrollera om det angivna KundID:t finns i tabellen Kund
-        String kundFraga = "SELECT KundID FROM Kund WHERE KundID = '" + falt + "'";
+        String kundID = falt.getText();
+        String kundFraga = "SELECT KundID FROM Kund WHERE KundID = '" + kundID + "'";
 
         // Utför SQL-frågan för att hämta KundID:t från databasen
         String resultat = idb.fetchSingle(kundFraga);
@@ -97,7 +98,8 @@ public class Validering {
     public static boolean valideraProduktID(JTextField falt, InfDB idb) {
     try {
         // SQL-fråga för att kontrollera om det angivna ProduktID:t finns i tabellen Produkt
-        String produktFraga = "SELECT ProduktID FROM Produkt WHERE ProduktID = '" + falt + "'";
+        String produktID = falt.getText();
+        String produktFraga = "SELECT ProduktID FROM Produkt WHERE ProduktID = '" + produktID + "'";
 
         // Utför SQL-frågan för att hämta ProduktID:t från databasen
         String resultat = idb.fetchSingle(produktFraga);
