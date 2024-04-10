@@ -43,8 +43,7 @@ public class Validering {
             }}
         return resultat;
     }
-    //Kollar först ifall fältet är tomt och kontrollerar sen om det är skrivet på rätt format
-    //yyyy-mm-dd
+    
     public static boolean datumKontroll(JTextField falt){
         boolean resultat = true;
         if(txtFaltTomt(falt)){
@@ -58,18 +57,6 @@ public class Validering {
                 falt.requestFocus();
                 resultat = false;
             }}
-        return resultat;
-    }
-    
-    //Kollar först om fältet är tomt och sen kollar så att det är mindre än 10 tecken
-    public static boolean losenordKontroll(JTextField falt){
-        boolean resultat = false;
-        String ord = falt.getText();
-        if(txtFaltTomt(falt)){
-            if(ord.length() <= 10){
-                resultat = true;
-            }
-        }
         return resultat;
     }
     }

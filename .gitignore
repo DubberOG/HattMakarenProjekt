@@ -55,6 +55,12 @@ nbproject\project.properties
 # User properties
 user.properties.files
 
+#Ignore build properties
+*/build.properties
+
+#Ignore user properties
+*/user.properties
+
 #Databas
 Hattmakaren/HattmakarenDatabas.sql
 
