@@ -228,7 +228,7 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
 
        try {
             // Skapa en ny instans av InfDB
-            idb = new InfDB("Hattmakaren", "3306", "Hattmakaren","HTM123");
+            idb = new InfDB("Hattmakaren", "3306", "hattmakaren","HTM123");
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
