@@ -13,13 +13,17 @@ import oru.inf.InfDB;
 public class SkrivUtFraktsedel extends javax.swing.JFrame {
 
     private static InfDB idb;
+    private static String cbVal;
+    private static String txtVal;
 
     /**
      * Creates new form SkrivUtFraktsedel
      */
-    public SkrivUtFraktsedel(InfDB idb) {
+    public SkrivUtFraktsedel(InfDB idb, String cbVal, String txtVal) {
         initComponents();
         this.idb = idb;
+        this.cbVal = cbVal;
+        this.txtVal = txtVal;
     }
 
     /**
@@ -50,6 +54,7 @@ public class SkrivUtFraktsedel extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+    //Hela denna kod ska tas bort sen
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -77,7 +82,7 @@ public class SkrivUtFraktsedel extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SkrivUtFraktsedel(idb).setVisible(true);
+                new SkrivUtFraktsedel(idb, cbVal,txtVal).setVisible(true);
             }
         });
     }
