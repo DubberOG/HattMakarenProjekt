@@ -13,6 +13,7 @@ import oru.inf.InfDB;
 public class SkrivUtFraktsedel extends javax.swing.JFrame {
 
     private static InfDB idb;
+    //Detta ska tas bort sen
     private static String cbVal;
     private static String txtVal;
 
@@ -22,6 +23,7 @@ public class SkrivUtFraktsedel extends javax.swing.JFrame {
     public SkrivUtFraktsedel(InfDB idb, String cbVal, String txtVal) {
         initComponents();
         this.idb = idb;
+        //Dessa ska tas bort sen
         this.cbVal = cbVal;
         this.txtVal = txtVal;
     }
