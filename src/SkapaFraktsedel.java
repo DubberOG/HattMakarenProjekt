@@ -73,6 +73,11 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
         btnSkapa.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnSkapa.setForeground(new java.awt.Color(51, 255, 51));
         btnSkapa.setText("Skapa");
+        btnSkapa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSkapaActionPerformed(evt);
+            }
+        });
 
         btnAvbryt.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnAvbryt.setForeground(new java.awt.Color(255, 0, 0));
@@ -152,9 +157,9 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
                             .addComponent(btnAvbryt))
                         .addGap(33, 33, 33))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txAngeVikt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbValjOrder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cbValjOrder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txAngeVikt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
@@ -176,6 +181,15 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_txAngeViktKeyReleased
+
+    private void btnSkapaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSkapaActionPerformed
+        //Omvandlar resultatet från getSelectedItem() till en sträng
+        String cbVal = (String) cbValjOrder.getSelectedItem();
+        //Sparar vikten som angivits i variabeln txtVikt
+        String txtVikt = txAngeVikt.getText();
+        //Skickar med informationen till klassen SkrivUtFraktsedel
+        new SkrivUtFraktsedel(idb, cbVal, txtVikt).setVisible(true);
+    }//GEN-LAST:event_btnSkapaActionPerformed
     
     private void avbrytFraktsedel()
     {
