@@ -185,10 +185,20 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
     private void btnSkapaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSkapaActionPerformed
         //Omvandlar resultatet från getSelectedItem() till en sträng
         String cbVal = (String) cbValjOrder.getSelectedItem();
+        
         //Sparar vikten som angivits i variabeln txtVikt
         String txtVikt = txAngeVikt.getText();
-        //Skickar med informationen till klassen SkrivUtFraktsedel
-        new SkrivUtFraktsedel(idb, cbVal, txtVikt).setVisible(true);
+        
+        //Säkerställer att valet var avsiktligt
+        int val = JOptionPane.showConfirmDialog(null, "Vill du skapa fraktsedeln?", "Skapa fraktsedel", JOptionPane.YES_NO_OPTION );
+        
+        if(val == JOptionPane.YES_OPTION)
+        {
+           //Skickar med informationen till klassen SkrivUtFraktsedel
+            new SkrivUtFraktsedel(idb, cbVal, txtVikt).setVisible(true);
+            dispose();
+        }
+        
     }//GEN-LAST:event_btnSkapaActionPerformed
     
     private void avbrytFraktsedel()
