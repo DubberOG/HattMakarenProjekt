@@ -1,3 +1,10 @@
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import javax.swing.JOptionPane;
+import oru.inf.InfDB;
+import oru.inf.InfException;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -8,12 +15,25 @@
  * @author mallan
  */
 public class HattLager extends javax.swing.JFrame {
-
+private InfDB idb;
     /**
      * Creates new form HattLager
      */
-    public HattLager() {
+    public HattLager(InfDB idb) {
+        this.idb = idb;
         initComponents();
+    }
+
+    private HattLager() {
+        initComponents();
+        
+        try {
+            idb = new InfDB("Hattmakaren", "3306", "hattmakaren","HTM123");
+        fyllCbValjTyg();
+        fyllCbValjUtsmyckning();
+        } catch (InfException ex) {       
+            JOptionPane.showMessageDialog(null, "Kunde inte ansluta till databasen!");
+        }
     }
 
     /**
@@ -25,7 +45,7 @@ public class HattLager extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txtOrt = new javax.swing.JTextField();
+        txtAntalMeter = new javax.swing.JTextField();
         lblNamn = new javax.swing.JLabel();
         lblStorlek = new javax.swing.JLabel();
         txtUtsmyckningsantal = new javax.swing.JTextField();
@@ -45,8 +65,8 @@ public class HattLager extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        txtOrt.setColumns(5);
-        txtOrt.setToolTipText("");
+        txtAntalMeter.setColumns(5);
+        txtAntalMeter.setToolTipText("");
 
         lblNamn.setText("Namn");
 
@@ -115,7 +135,7 @@ public class HattLager extends javax.swing.JFrame {
                             .addComponent(txtNamn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtStorlek, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtAntalTimmar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtOrt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtAntalMeter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtUtsmyckningsantal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                         .addComponent(btnLagerforHatt)
@@ -160,7 +180,7 @@ public class HattLager extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblAntalMeter)
-                            .addComponent(txtOrt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtAntalMeter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
@@ -182,25 +202,35 @@ public class HattLager extends javax.swing.JFrame {
 
     private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
         setVisible(false);
-        new KundMeny(idb).setVisible(true);
+        new LagerMeny(idb).setVisible(true);
     }//GEN-LAST:event_btnTillbakaActionPerformed
 
     private void btnLagerforHattActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLagerforHattActionPerformed
 
         try {
             if (Validering.txtFaltTomt(txtNamn) && Validering.txtFaltTomt(txtStorlek) &&
-                Validering.txtFaltTomt(txtAntalTimmar) && Validering.txtFaltTomt(txtPostNummer) &&
-                Validering.txtFaltTomt(txtOrt) && Validering.txtFaltTomt(txtTelefonnummer) &&
-                Validering.txtEpostKontroll(txtUtsmyckningsantal)){
-                String id = idb.getAutoIncrement("Kund", "KundID");
+                Validering.txtFaltTomt(txtAntalTimmar)  &&
+                Validering.txtFaltTomt(txtAntalMeter)  &&
+                Validering.txtFaltTomt(txtUtsmyckningsantal)){
+                String id = idb.getAutoIncrement("Produkt", "ProduktID");
                 String namn = txtNamn.getText();
-                String efternamn = txtStorlek.getText();
-                String adress = txtAntalTimmar.getText();
-                String postnummer = txtPostNummer.getText();
-                String ort = txtOrt.getText();
-                String telefonnummer = txtTelefonnummer.getText();
-                String email = txtUtsmyckningsantal.getText();
-
+                String storlek = txtStorlek.getText();
+                String strTimmar = txtAntalTimmar.getText();
+                double antalTimmar = Double.parseDouble(strTimmar);
+                String tyg = cbValjTyg.getSelectedItem().toString();
+                String strMeter = txtAntalMeter.getText();
+                double antalMeter = Double.parseDouble(strMeter);
+                String utsmyckning = cbValjUtsmyckning.toString();
+                String strAntal = txtUtsmyckningsantal.getText();
+                double utsmyckningsantal = Double.parseDouble(strAntal);
+                
+                prisTyg - 
+                prisUtsmycknig
+                prisArbete
+                Pris = prisTyg + prisUtsmyckning + prisArbete
+                        
+                
+                
                 //Koppla validering så att det inte blir dubbla värden
                 String nyKund = id+",'"+namn+"',"+"'"+efternamn+"',"+"'"+email+"',"+"'"+telefonnummer+"',"+"'"+adress+"',"+"'"+ort+"',"+"'"+postnummer+"'";
                 String nyKundFraga = "INSERT INTO Kund (KundID, Namn, Efternamn, Email, Telefon, Adress, Ort, Postnummer) VALUES ("+nyKund+")";
@@ -214,6 +244,43 @@ public class HattLager extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnLagerforHattActionPerformed
 
+         private void fyllCbValjTyg() {
+            try{
+        ArrayList<HashMap<String, String>> allaTyger = idb.fetchRows("SELECT MaterialID, Namn FROM Tyg");
+                  
+                for(HashMap<String, String> tyg : allaTyger){
+                // Hämta KundID och Namn från HashMap
+            String tygMaterialID = tyg.get("MaterialID");
+            String tygNamn = tyg.get("Namn");
+            
+            // Skapa en sträng som innehåller både KundID och namn och lägg till i comboboxen
+            cbValjTyg.addItem(tygMaterialID + " - " + tygNamn);    
+           
+                }}
+                    
+              
+        catch(InfException ettUndantag){
+            JOptionPane.showMessageDialog(null, "Databasfel!");
+         }}
+             private void fyllCbValjUtsmyckning() {
+            try{
+        ArrayList<HashMap<String, String>> allaUtsmyckningar = idb.fetchRows("SELECT MaterialID, Namn FROM Utsmyckning");
+                  
+                for(HashMap<String, String> utsmyckning : allaUtsmyckningar){
+                // Hämta KundID och Namn från HashMap
+            String utsmyckningsMaterialID = utsmyckning.get("MaterialID");
+            String utsmyckningsNamn = utsmyckning.get("Namn");
+            
+            // Skapa en sträng som innehåller både KundID och namn och lägg till i comboboxen
+            cbValjUtsmyckning.addItem(utsmyckningsMaterialID + " - " + utsmyckningsNamn);    
+           
+                }}
+                    
+              
+        catch(InfException ettUndantag){
+            JOptionPane.showMessageDialog(null, "Databasfel!");
+         }}
+    
     /**
      * @param args the command line arguments
      */
@@ -262,9 +329,9 @@ public class HattLager extends javax.swing.JFrame {
     private javax.swing.JLabel lblUtsmyckningsAntal;
     private javax.swing.JLabel lblValjTyg;
     private javax.swing.JLabel lblValjUtsmyckning;
+    private javax.swing.JTextField txtAntalMeter;
     private javax.swing.JTextField txtAntalTimmar;
     private javax.swing.JTextField txtNamn;
-    private javax.swing.JTextField txtOrt;
     private javax.swing.JTextField txtStorlek;
     private javax.swing.JTextField txtUtsmyckningsantal;
     // End of variables declaration//GEN-END:variables
