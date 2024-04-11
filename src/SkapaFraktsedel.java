@@ -172,6 +172,17 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
 
     private void cbValjOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbValjOrderActionPerformed
         fyllICombobox();
+        
+        //Kollar om comboboxen är tom
+        if (cbValjOrder.getItemCount() == 0)
+        {
+           JOptionPane.showConfirmDialog(null, "Det finns inga aktuella orderar");
+        }else
+        {
+            //SQL-Frågor  
+        }
+        
+        
     }//GEN-LAST:event_cbValjOrderActionPerformed
 
     private void txAngeViktKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txAngeViktKeyReleased
@@ -216,7 +227,7 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
     private void fyllICombobox()
     {
          try{
-        ArrayList<HashMap<String, String>> allaOrderar = idb.fetchRows("SELECT OrderID FROM Orders");
+        ArrayList<HashMap<String, String>> allaOrderar = idb.fetchRows("SELECT OrderID FROM Orders WHERE Status = 'Redo'");
                   
                 for(HashMap<String, String> order : allaOrderar){
                 // Hämta orderId
