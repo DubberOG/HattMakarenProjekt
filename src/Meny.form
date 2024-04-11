@@ -23,22 +23,21 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblMeny" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="btnSkrivUtFraktsedel" max="32767" attributes="0"/>
-                      <Component id="btnKund" alignment="0" max="32767" attributes="0"/>
-                      <Component id="btnBeställning" alignment="0" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-              <EmptySpace pref="226" max="32767" attributes="0"/>
-          </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
               <Component id="btnLoggaUt" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="lblMeny" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnSkrivUtFraktsedel" max="32767" attributes="0"/>
+                  <Component id="btnKund" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btnBeställning" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btnLager" alignment="0" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace pref="262" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -55,7 +54,9 @@
               <Component id="btnKund" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btnSkrivUtFraktsedel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="94" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="btnLager" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="53" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -79,7 +80,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnSkrivUtFraktsedel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Skriv ut fraktsedel"/>
+        <Property name="text" type="java.lang.String" value="Frakt"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSkrivUtFraktsedelActionPerformed"/>
@@ -99,6 +100,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLoggaUtActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnLager">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Lager"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLagerActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
