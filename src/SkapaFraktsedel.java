@@ -30,7 +30,7 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
         initComponents();
         
         try {
-            idb = new InfDB("Hattmakaren", "3306", "hattmakaren","HTM123");
+            idb = new InfDB("Hattmakaren", "3306", "Hattmakaren","HTM123");
         } catch (InfException ex) {       
             JOptionPane.showMessageDialog(null, "Kunde inte ansluta till databasen!");
         }
@@ -186,7 +186,8 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
     }//GEN-LAST:event_cbValjOrderActionPerformed
 
     private void txAngeViktKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txAngeViktKeyReleased
-        if (!txAngeVikt.getText().isEmpty()) 
+       //Kollar så att vikt är ifyllt samt att en order har valts i comboboxen
+        if (!txAngeVikt.getText().isEmpty() && cbValjOrder.getSelectedItem() != null) 
         {
             btnSkapa.setEnabled(true);
         }
