@@ -35,6 +35,7 @@ public class KundMeny extends javax.swing.JFrame {
         btnLäggTillNyKund = new javax.swing.JButton();
         btnTaBortKund = new javax.swing.JButton();
         btnTillbaka = new javax.swing.JButton();
+        btnSeKundlista = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -62,6 +63,13 @@ public class KundMeny extends javax.swing.JFrame {
             }
         });
 
+        btnSeKundlista.setText("Se kundlista");
+        btnSeKundlista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSeKundlistaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -72,7 +80,8 @@ public class KundMeny extends javax.swing.JFrame {
                     .addComponent(btnTillbaka)
                     .addComponent(lblKund)
                     .addComponent(btnTaBortKund, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnLäggTillNyKund, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE))
+                    .addComponent(btnLäggTillNyKund, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
+                    .addComponent(btnSeKundlista, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(229, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -82,9 +91,11 @@ public class KundMeny extends javax.swing.JFrame {
                 .addComponent(lblKund)
                 .addGap(34, 34, 34)
                 .addComponent(btnLäggTillNyKund)
-                .addGap(31, 31, 31)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnTaBortKund)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnSeKundlista)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
                 .addComponent(btnTillbaka)
                 .addGap(29, 29, 29))
         );
@@ -106,6 +117,12 @@ public class KundMeny extends javax.swing.JFrame {
         setVisible(false);
         new Meny(idb).setVisible(true);         
     }//GEN-LAST:event_btnTillbakaActionPerformed
+
+    private void btnSeKundlistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeKundlistaActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+        new KundLista(idb).setVisible(true);
+    }//GEN-LAST:event_btnSeKundlistaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -144,6 +161,7 @@ public class KundMeny extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLäggTillNyKund;
+    private javax.swing.JButton btnSeKundlista;
     private javax.swing.JButton btnTaBortKund;
     private javax.swing.JButton btnTillbaka;
     private javax.swing.JLabel lblKund;
