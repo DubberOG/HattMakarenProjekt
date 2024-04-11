@@ -28,7 +28,6 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
     
     private SkapaFraktsedel() {
         initComponents();
-        
         try {
             idb = new InfDB("Hattmakaren", "3306", "hattmakaren","HTM123");
             fyllICombobox();
