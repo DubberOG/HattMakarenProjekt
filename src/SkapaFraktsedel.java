@@ -1,5 +1,9 @@
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import javax.swing.JOptionPane;
 import oru.inf.InfDB;
+import oru.inf.InfException;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -11,14 +15,15 @@ import oru.inf.InfDB;
  * @author willi
  */
 public class SkapaFraktsedel extends javax.swing.JFrame {
-    private InfDB idb;
+    private static InfDB idb;
 
     /**
      * Creates new form SkapaFraktsedel
      */
-    public SkapaFraktsedel() {
+    public SkapaFraktsedel(InfDB idb) {
         initComponents();
-        
+        this.idb = idb;
+        btnSkapa.setEnabled(false);
     }
 
     /**
@@ -39,7 +44,7 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea();
         lbOrderLista = new javax.swing.JLabel();
         lbValjKund = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cbValjOrder = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -49,9 +54,24 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Skapa fraktsedel");
 
+        txAngeVikt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txAngeViktKeyReleased(evt);
+            }
+        });
+
+        btnSkapa.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnSkapa.setForeground(new java.awt.Color(51, 255, 51));
         btnSkapa.setText("Skapa");
 
+        btnAvbryt.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnAvbryt.setForeground(new java.awt.Color(255, 0, 0));
         btnAvbryt.setText("Avbryt");
+        btnAvbryt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAvbrytActionPerformed(evt);
+            }
+        });
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -63,7 +83,11 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
         lbValjKund.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lbValjKund.setText("Välj order:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbValjOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbValjOrderActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -83,18 +107,16 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lbVikt))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(12, 12, 12)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbValjKund)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(lbValjKund)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cbValjOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
-                                .addComponent(txAngeVikt, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lbVikt)))
+                                .addComponent(txAngeVikt, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(85, 85, 85)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbOrderLista)
@@ -112,20 +134,71 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
                     .addComponent(lbValjKund))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txAngeVikt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSkapa)
-                    .addComponent(btnAvbryt))
-                .addGap(33, 33, 33))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnSkapa)
+                            .addComponent(btnAvbryt))
+                        .addGap(33, 33, 33))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txAngeVikt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbValjOrder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnAvbrytActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvbrytActionPerformed
+        avbrytFraktsedel();
+    }//GEN-LAST:event_btnAvbrytActionPerformed
+
+    private void cbValjOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbValjOrderActionPerformed
+        fyllICombobox();
+    }//GEN-LAST:event_cbValjOrderActionPerformed
+
+    private void txAngeViktKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txAngeViktKeyReleased
+        if (!txAngeVikt.getText().isEmpty()) 
+        {
+            btnSkapa.setEnabled(true);
+        }
+
+    }//GEN-LAST:event_txAngeViktKeyReleased
+    
+    private void avbrytFraktsedel()
+    {
+        {
+          int val = JOptionPane.showConfirmDialog(null, "Vill du avbryta beställningen?", "Avbryt", JOptionPane.YES_NO_OPTION);
+          if(val == JOptionPane.YES_OPTION)
+          {
+              dispose();
+              new Meny(idb).setVisible(true);
+          }
+     }
+    }
+    
+    private void fyllICombobox()
+    {
+         try{
+        ArrayList<HashMap<String, String>> allaOrderar = idb.fetchRows("SELECT OrderID FROM Orders");
+                  
+                for(HashMap<String, String> order : allaOrderar){
+                // Hämta orderId
+            String orderID = order.get("OrderID");
+            
+            // 
+            cbValjOrder.addItem(orderID);    
+           
+                }}
+                    
+              
+        catch(InfException ettUndantag){
+            JOptionPane.showMessageDialog(null, "Databasfel!");
+         }
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -153,18 +226,24 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
         }
         //</editor-fold>
 
+       try {
+            // Skapa en ny instans av InfDB
+            idb = new InfDB("Hattmakaren", "3306", "root","Maktspelet4ever?");
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SkapaFraktsedel().setVisible(true);
+                new SkapaFraktsedel(idb).setVisible(true);
             }
         });
+    } catch (InfException ex) {       
+            JOptionPane.showMessageDialog(null, "Kunde inte ansluta till databasen!");
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAvbryt;
     private javax.swing.JButton btnSkapa;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> cbValjOrder;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
