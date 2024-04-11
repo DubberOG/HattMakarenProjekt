@@ -36,6 +36,7 @@ public class Meny extends javax.swing.JFrame {
         btnSkrivUtFraktsedel = new javax.swing.JButton();
         lblMeny = new javax.swing.JLabel();
         btnLoggaUt = new javax.swing.JButton();
+        btnLager = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -53,7 +54,7 @@ public class Meny extends javax.swing.JFrame {
             }
         });
 
-        btnSkrivUtFraktsedel.setText("Skriv ut fraktsedel");
+        btnSkrivUtFraktsedel.setText("Frakt");
         btnSkrivUtFraktsedel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSkrivUtFraktsedelActionPerformed(evt);
@@ -70,23 +71,30 @@ public class Meny extends javax.swing.JFrame {
             }
         });
 
+        btnLager.setText("Lager");
+        btnLager.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLagerActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblMeny)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btnSkrivUtFraktsedel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnKund, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnBeställning, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(226, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnLoggaUt)
                 .addGap(22, 22, 22))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblMeny)
+                    .addComponent(btnSkrivUtFraktsedel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnKund, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnBeställning, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnLager, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(262, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -101,7 +109,9 @@ public class Meny extends javax.swing.JFrame {
                 .addComponent(btnKund)
                 .addGap(18, 18, 18)
                 .addComponent(btnSkrivUtFraktsedel)
-                .addContainerGap(94, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnLager)
+                .addContainerGap(53, Short.MAX_VALUE))
         );
 
         pack();
@@ -119,13 +129,19 @@ public class Meny extends javax.swing.JFrame {
 
     private void btnSkrivUtFraktsedelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSkrivUtFraktsedelActionPerformed
         setVisible(false);
-        new SkrivUtFraktsedel(idb).setVisible(true);
+        new SkapaFraktsedel(idb).setVisible(true);
     }//GEN-LAST:event_btnSkrivUtFraktsedelActionPerformed
 
     private void btnLoggaUtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoggaUtActionPerformed
         setVisible(false);
         new LoggaIn(idb).setVisible(true); 
     }//GEN-LAST:event_btnLoggaUtActionPerformed
+
+    private void btnLagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLagerActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+        new Lager(idb).setVisible(true);
+    }//GEN-LAST:event_btnLagerActionPerformed
 
     /**
      * @param args the command line arguments
@@ -165,6 +181,7 @@ public class Meny extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBeställning;
     private javax.swing.JButton btnKund;
+    private javax.swing.JButton btnLager;
     private javax.swing.JButton btnLoggaUt;
     private javax.swing.JButton btnSkrivUtFraktsedel;
     private javax.swing.JLabel lblMeny;
