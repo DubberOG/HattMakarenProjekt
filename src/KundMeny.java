@@ -19,13 +19,7 @@ public class KundMeny extends javax.swing.JFrame {
     /**
      * Creates new form KundMeny
      */
-    public KundMeny(InfDB idb) {
-        initComponents();
-        this.idb = idb;
-    }
-    
-    private KundMeny()
-    {
+    public KundMeny() {
         initComponents();
         try {
             idb = new InfDB("Hattmakaren", "3306", "hattmakaren","HTM123");
@@ -33,6 +27,7 @@ public class KundMeny extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Kunde inte ansluta till databasen!");
         }
     }
+   
     
 
     /**
@@ -128,7 +123,7 @@ public class KundMeny extends javax.swing.JFrame {
 
     private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
         setVisible(false);
-        new Meny(idb).setVisible(true);         
+        new Meny().setVisible(true);         
     }//GEN-LAST:event_btnTillbakaActionPerformed
 
     private void btnSeKundlistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeKundlistaActionPerformed

@@ -19,15 +19,9 @@ public class Meny extends javax.swing.JFrame {
     /**
      * Creates new form Meny
      */
-    public Meny(InfDB idb) {
+    public Meny() {
         initComponents();
-        this.idb = idb;
-    }
-    
-    private Meny()
-    {
-        initComponents();
-        try {
+          try {
             idb = new InfDB("Hattmakaren", "3306", "hattmakaren","HTM123");
         } catch (InfException ex) {       
             JOptionPane.showMessageDialog(null, "Kunde inte ansluta till databasen!");
@@ -131,12 +125,12 @@ public class Meny extends javax.swing.JFrame {
 
     private void btnBeställningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBeställningActionPerformed
     setVisible(false);
-    new BeställningsMeny(idb).setVisible(true);
+    new BeställningsMeny().setVisible(true);
     }//GEN-LAST:event_btnBeställningActionPerformed
 
     private void btnKundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKundActionPerformed
        setVisible(false);
-       new KundMeny(idb).setVisible(true);
+       new KundMeny().setVisible(true);
     }//GEN-LAST:event_btnKundActionPerformed
 
     private void btnSkrivUtFraktsedelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSkrivUtFraktsedelActionPerformed
