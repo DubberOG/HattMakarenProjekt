@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import oru.inf.InfException;
 import javax.swing.JOptionPane;
-import oru.inf.InfDB;
+
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -16,13 +16,11 @@ import oru.inf.InfDB;
  */
 public class SeHattarILager extends javax.swing.JFrame {
 
-    private InfDB idb;
     /**
      * Creates new form SeHattarILager
      */
-    public SeHattarILager(InfDB idb) {
+    public SeHattarILager() {
         initComponents();
-        this.idb = idb;
     }
 
     /**
@@ -104,7 +102,7 @@ public class SeHattarILager extends javax.swing.JFrame {
          ArrayList<String> lagerHattar = new ArrayList<>();
         try{
             String nyLagerFraga = "SELECT * FROM ProduktLager";
-            ArrayList<HashMap<String,String>> hattarLagrade = idb.fetchRows(nyLagerFraga);
+            ArrayList<HashMap<String,String>> hattarLagrade = Main.idb.fetchRows(nyLagerFraga);
             for (HashMap<String,String> hattLager : hattarLagrade) {
                 for (String ProduktLager : hattLager.keySet()) {
             lagerHattar.add(ProduktLager + ": " + hattLager.get(ProduktLager));
@@ -120,10 +118,9 @@ public class SeHattarILager extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSeHattarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-         {                                            
+    {                                            
         setVisible(false);
-        new Meny(idb).setVisible(true);    }
+        new Meny().setVisible(true);    }
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
