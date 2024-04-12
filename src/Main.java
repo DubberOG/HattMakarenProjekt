@@ -12,7 +12,7 @@ import oru.inf.InfException;
  * @author willi
  */
 public class Main {
-    private static InfDB idb;
+    public static InfDB idb;
 
 
     public static void main(String[] args) throws InfException
@@ -24,7 +24,7 @@ public class Main {
     {
         System.out.println(e);
     }
-        new LoggaIn(idb).setVisible(true);
+        new LoggaIn().setVisible(true);
     }
 }
 

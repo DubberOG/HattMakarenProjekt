@@ -2,7 +2,6 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
-import oru.inf.InfDB;
 import oru.inf.InfException;
 
 /*
@@ -15,25 +14,13 @@ import oru.inf.InfException;
  * @author willi
  */
 public class SkapaFraktsedel extends javax.swing.JFrame {
-    private InfDB idb;
 
     /**
      * Creates new form SkapaFraktsedel
      */
-    public SkapaFraktsedel(InfDB idb) {
-        initComponents();
-        this.idb = idb;
-        btnSkapa.setEnabled(false);
-    }
-    
     private SkapaFraktsedel() {
         initComponents();
-        try {
-            idb = new InfDB("Hattmakaren", "3306", "hattmakaren","HTM123");
-            fyllICombobox();
-        } catch (InfException ex) {       
-            JOptionPane.showMessageDialog(null, "Kunde inte ansluta till databasen!");
-        }
+        btnSkapa.setEnabled(false);
     }
 
     /**
@@ -190,7 +177,7 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
         if(val == JOptionPane.YES_OPTION)
         {
            //Skickar med informationen till klassen SkrivUtFraktsedel
-            new SkrivUtFraktsedel(idb, cbVal, txtVikt).setVisible(true);
+            new SkrivUtFraktsedel(Main.idb, cbVal, txtVikt).setVisible(true);
             dispose();
         }
         
@@ -203,7 +190,7 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
           if(val == JOptionPane.YES_OPTION)
           {
               dispose();
-              new Meny(idb).setVisible(true);
+              new Meny().setVisible(true);
           }
      }
     }
@@ -214,7 +201,7 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
     
          try{
     
-            allaOrderID = idb.fetchColumn(fraga);
+            allaOrderID = Main.idb.fetchColumn(fraga);
             
             for(String ettID : allaOrderID){
             
@@ -232,7 +219,7 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
     {
         //SQL-fråga för att hämta OrderID från databasen
          try{
-        ArrayList<HashMap<String, String>> allaOrderar = idb.fetchRows("SELECT OrderID, KundID FROM Orders WHERE Status = 'Redo'");
+        ArrayList<HashMap<String, String>> allaOrderar = Main.idb.fetchRows("SELECT OrderID, KundID FROM Orders WHERE Status = 'Redo'");
                   
         //Går igenom listan 
                 for(HashMap<String, String> order : allaOrderar){

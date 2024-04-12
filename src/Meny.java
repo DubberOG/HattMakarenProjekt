@@ -1,7 +1,6 @@
 
 import javax.swing.JOptionPane;
-import oru.inf.InfDB;
-import oru.inf.InfException;
+
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -14,25 +13,16 @@ import oru.inf.InfException;
  */
 public class Meny extends javax.swing.JFrame {
 
-    private InfDB idb;
 
     /**
      * Creates new form Meny
      */
-    private Meny(InfDB idb)
+    private Meny()
     {
         initComponents();
-        this.idb = idb;
     }
     
-    public Meny() {
-        initComponents();
-          try {
-            idb = new InfDB("Hattmakaren", "3306", "hattmakaren","HTM123");
-        } catch (InfException ex) {       
-            JOptionPane.showMessageDialog(null, "Kunde inte ansluta till databasen!");
-        }
-    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -141,12 +131,11 @@ public class Meny extends javax.swing.JFrame {
 
     private void btnSkrivUtFraktsedelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSkrivUtFraktsedelActionPerformed
         setVisible(false);
-        new SkapaFraktsedel(idb).setVisible(true);
+        new SkapaFraktsedel().setVisible(true);
     }//GEN-LAST:event_btnSkrivUtFraktsedelActionPerformed
 
     private void btnLoggaUtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoggaUtActionPerformed
-        setVisible(false);
-        new LoggaIn(idb).setVisible(true); 
+        dispose();
     }//GEN-LAST:event_btnLoggaUtActionPerformed
 
     private void btnLagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLagerActionPerformed

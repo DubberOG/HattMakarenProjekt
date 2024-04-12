@@ -3,22 +3,20 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 import javax.swing.JOptionPane;
-import oru.inf.InfDB;
-import oru.inf.InfException;
 /**
  *
  * @author alice
  */
 public class LoggaIn extends javax.swing.JFrame {
 
-    private static InfDB idb;
+    
 
     /**
      * Creates new form LoggaIn
      */
-    public LoggaIn(InfDB idb) {
+    public LoggaIn() {
         initComponents();
-        this.idb = idb;
+        
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -112,7 +110,7 @@ public class LoggaIn extends javax.swing.JFrame {
     {
         try
         {
-            String inmatatLosenord = idb.fetchSingle("select Lösenord FROM medarbetare WHERE Epost = '" + txtAnvändarnamn.getText().toLowerCase() +"'");
+            String inmatatLosenord = Main.idb.fetchSingle("select Lösenord FROM medarbetare WHERE Epost = '" + txtAnvändarnamn.getText().toLowerCase() +"'");
             if(inmatatLosenord == null)
             {
                 JOptionPane.showMessageDialog(null, "Användaren finns ej");
@@ -122,7 +120,7 @@ public class LoggaIn extends javax.swing.JFrame {
                 if(inmatatLosenord.equals(new String(pswordLösenord.getPassword())))
                 {
             JOptionPane.showMessageDialog(null, "Inloggad");
-            new Meny(idb).setVisible(true);
+            new Meny().setVisible(true);
             dispose();
                 } else 
                 {
@@ -162,18 +160,14 @@ public class LoggaIn extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(LoggaIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
- try {
-            // Skapa en ny instans av InfDB
-            idb = new InfDB("Hattmakaren", "3306", "hattmakaren","HTM123");
+ 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LoggaIn(idb).setVisible(true);
+                new LoggaIn().setVisible(true);
             }
         });
-    } catch (InfException ex) {       
-            JOptionPane.showMessageDialog(null, "Kunde inte ansluta till databasen!");
-        }
+    
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
