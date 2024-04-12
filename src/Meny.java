@@ -1,5 +1,7 @@
 
+import javax.swing.JOptionPane;
 import oru.inf.InfDB;
+import oru.inf.InfException;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -12,7 +14,7 @@ import oru.inf.InfDB;
  */
 public class Meny extends javax.swing.JFrame {
 
-    private static InfDB idb;
+    private InfDB idb;
 
     /**
      * Creates new form Meny
@@ -20,6 +22,15 @@ public class Meny extends javax.swing.JFrame {
     public Meny(InfDB idb) {
         initComponents();
         this.idb = idb;
+    }
+    
+    private Meny()
+    {
+        try {
+            idb = new InfDB("Hattmakaren", "3306", "hattmakaren","HTM123");
+        } catch (InfException ex) {       
+            JOptionPane.showMessageDialog(null, "Kunde inte ansluta till databasen!");
+        }
     }
 
     /**
@@ -173,7 +184,7 @@ public class Meny extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Meny(idb).setVisible(true);
+                new Meny().setVisible(true);
             }
         });
     }
