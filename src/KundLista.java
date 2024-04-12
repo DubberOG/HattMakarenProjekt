@@ -2,6 +2,8 @@
 import oru.inf.InfDB;
 import java.util.ArrayList;
 import java.util.HashMap;
+import javax.swing.JOptionPane;
+import oru.inf.InfException;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -14,15 +16,25 @@ import java.util.HashMap;
  */
 public class KundLista extends javax.swing.JFrame {
 
-    private static InfDB idb;
+    private InfDB idb;
 
-    /**
-     * Creates new form KundLista
-     */
+    
     public KundLista(InfDB idb) {
         initComponents();
         this.idb = idb;
     }
+   
+    private KundLista() {
+        initComponents();
+        this.idb = idb;
+    try {
+           idb = new InfDB("Hattmakaren", "3306", "hattmakaren","HTM123");
+        
+        } catch (InfException ex) {       
+            JOptionPane.showMessageDialog(null, "Kunde inte ansluta till databasen!");
+        }
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -88,25 +100,40 @@ public class KundLista extends javax.swing.JFrame {
 
     private void btnSeKunderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeKunderActionPerformed
         // TODO add your handling code here:
-       txtAreaKundLista.setText("");
-        
-   String query = "SELECT * FROM Kund";
-         
-   ArrayList<HashMap<String, String>> kunder = idb.fetchRows(query);
-        ArrayList<Kund> Kunder = idb.fetchRows(query);         
-           
-         txtAreaKundLista.append("KundID" + "\t" + "Namn" + "\t" + "Efternamn" + "\t" + "Email" + "\t" + "Telefon" + "\t" + "Adress" + "\t" + "Ort" + "\t" + "Postnummer" + "\n");
-
-        for (HashMap<String, String> kund : kunder) {
-        //txtAreaKundLista.append(kund.getKundID() + "\t" + kund.getNamn() + "\t" + kund.getEfternamn() + "\t" + kund.getEmail() + "\t" + kund.getTelefon() + "\t" + kund.getAdress() + "\t" + kund.getOrt() + "\t" + kund.getPostnummer() + "\n");
+      
+   
+   ArrayList<String> orders = new ArrayList<>();
+        try{
+            String nyKundFraga = "SELECT * FROM Kund";
+            ArrayList<HashMap<String,String>> kunders = idb.fetchRows(nyKundFraga);
+            for (HashMap<String,String> kunder : kunders) {
+                for (String Kund : kunder.keySet()) {
+            orders.add(Kund + ": " + kunder.get(Kund));
+        }
+    }
+           for (String order : orders) {
+            txtAreaKundLista.append(order + "\n");
     }
 
+        }catch (InfException e){
+            System.out.println ("internt felmedelande:" + e.getMessage());
+        }
+       
+
     }//GEN-LAST:event_btnSeKunderActionPerformed
-  
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
+    
+//     * @param args the command line arguments
+//     */
+    public static void main (String args[]) {
+    InfDB idb;
+    try {
+        idb = new InfDB("Hattmakaren", "3306", "hattmakaren", "HTM123");
+    } catch (InfException ex) {
+        JOptionPane.showMessageDialog(null, "Kunde inte ansluta till databasen!");
+        return; // Stanna körningen om anslutningen misslyckades
+    }
+        
+    
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -131,12 +158,14 @@ public class KundLista extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
+        
+        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new KundLista(idb).setVisible(true);
             }
         });
-    }
+    } 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSeKunder;

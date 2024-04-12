@@ -98,12 +98,6 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
         lbValjKund.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lbValjKund.setText("Välj order:");
 
-        cbValjOrder.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbValjOrderActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -172,25 +166,14 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
         avbrytFraktsedel();
     }//GEN-LAST:event_btnAvbrytActionPerformed
 
-    private void cbValjOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbValjOrderActionPerformed
-        //Kollar om comboboxen är tom
-        if (cbValjOrder.getItemCount() == 0)
-        {
-           JOptionPane.showConfirmDialog(null, "Det finns inga aktuella orderar");
-        }else
-        {
-            //SQL-Frågor  
-        }
-        
-        
-    }//GEN-LAST:event_cbValjOrderActionPerformed
-
     private void txAngeViktKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txAngeViktKeyReleased
        //Kollar så att vikt är ifyllt samt att en order har valts i comboboxen
-        if (!txAngeVikt.getText().isEmpty() && cbValjOrder.getSelectedItem() != null) 
+
+       if (!txAngeVikt.getText().isEmpty() && cbValjOrder.getSelectedItem() != null) 
         {
             btnSkapa.setEnabled(true);
         }
+        
 
     }//GEN-LAST:event_txAngeViktKeyReleased
 
@@ -224,21 +207,46 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
           }
      }
     }
+             private void fyllICombobox(){
     
-    private void fyllICombobox()
+         String fraga = "SELECT OrderID FROM Orders WHERE Status = 'Redo'";
+         ArrayList<String> allaOrderID;
+    
+         try{
+    
+            allaOrderID = idb.fetchColumn(fraga);
+            
+            for(String ettID : allaOrderID){
+            
+                cbValjOrder.addItem(ettID);
+            
+            }
+            
+         }catch(InfException ettUndantag){
+            
+              JOptionPane.showMessageDialog(null, " Databasfel! " );
+              System.out.println("Internt felmedelande" + ettUndantag.getMessage());     
+          }
+        }
+    private void fyllICombobox2()
     {
         //SQL-fråga för att hämta OrderID från databasen
          try{
-        ArrayList<HashMap<String, String>> allaOrderar = idb.fetchRows("SELECT OrderID FROM Orders WHERE Status = 'Redo'");
+        ArrayList<HashMap<String, String>> allaOrderar = idb.fetchRows("SELECT OrderID, KundID FROM Orders WHERE Status = 'Redo'");
                   
         //Går igenom listan 
                 for(HashMap<String, String> order : allaOrderar){
                 
             // Hämta orderId från listan och sparar det i en sträng
             String orderID = order.get("OrderID");
+            String kundID = order.get("KundID");
             
             //Lägger till OrderID i comboboxen
-            cbValjOrder.addItem(orderID);    
+            if(kundID != null)
+            {
+                cbValjOrder.addItem(orderID); 
+            }
+             
            
                 }}
                     
@@ -246,11 +254,6 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
         catch(InfException ettUndantag){
             JOptionPane.showMessageDialog(null, "Databasfel!");
          }
-    }
-    
-    private void fyllTextFält()
-    {
-        
     }
     
     /**

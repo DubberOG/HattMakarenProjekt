@@ -31,6 +31,7 @@ private InfDB idb;
             idb = new InfDB("Hattmakaren", "3306", "hattmakaren","HTM123");
         fyllCbValjTyg();
         fyllCbValjUtsmyckning();
+        fyllCbValjStandardhatt();
         } catch (InfException ex) {       
             JOptionPane.showMessageDialog(null, "Kunde inte ansluta till databasen!");
         }
@@ -58,10 +59,18 @@ private InfDB idb;
         lblUtsmyckningsAntal = new javax.swing.JLabel();
         txtStorlek = new javax.swing.JTextField();
         txtAntalTimmar = new javax.swing.JTextField();
-        btnLagerforHatt = new javax.swing.JButton();
+        btnSkapaHatt = new javax.swing.JButton();
         txtNamn = new javax.swing.JTextField();
         cbValjTyg = new javax.swing.JComboBox<>();
         cbValjUtsmyckning = new javax.swing.JComboBox<>();
+        cbValjStandardhatt = new javax.swing.JComboBox<>();
+        lblValjStandardhatt = new javax.swing.JLabel();
+        lblSkapaHatt = new javax.swing.JLabel();
+        btnLäggILager = new javax.swing.JButton();
+        lblNotering = new javax.swing.JLabel();
+        txtNotering = new javax.swing.JTextField();
+        txtAngeTimpris = new javax.swing.JTextField();
+        lblAngeTimpris = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,7 +87,7 @@ private InfDB idb;
         lblAntalTimmar.setText("Arbettimmar");
 
         lblLaggTillHattILager.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
-        lblLaggTillHattILager.setText("Lägg till hatt i lager");
+        lblLaggTillHattILager.setText("Skapa hatt och lägg till i lager");
 
         lblValjTyg.setText("Välj tyg");
 
@@ -100,67 +109,108 @@ private InfDB idb;
         txtAntalTimmar.setColumns(5);
         txtAntalTimmar.setToolTipText("");
 
-        btnLagerforHatt.setText("Lagerför hatt");
-        btnLagerforHatt.addActionListener(new java.awt.event.ActionListener() {
+        btnSkapaHatt.setText("Skapa hatt");
+        btnSkapaHatt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLagerforHattActionPerformed(evt);
+                btnSkapaHattActionPerformed(evt);
             }
         });
 
         txtNamn.setColumns(5);
 
+        lblValjStandardhatt.setText("Välj standardhatt");
+
+        lblSkapaHatt.setText("Skapa hatt");
+
+        btnLäggILager.setText("Lägg i lager");
+        btnLäggILager.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLäggILagerActionPerformed(evt);
+            }
+        });
+
+        lblNotering.setText("Ev Notering");
+
+        txtNotering.setColumns(5);
+        txtNotering.setText("Vänligen lämna ej tom");
+
+        txtAngeTimpris.setColumns(5);
+        txtAngeTimpris.setToolTipText("");
+
+        lblAngeTimpris.setText("Ange timpris");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblUtsmyckningsAntal)
-                            .addComponent(lblValjUtsmyckning)
-                            .addComponent(lblAntalMeter)
-                            .addComponent(lblValjTyg)
-                            .addComponent(lblAntalTimmar)
-                            .addComponent(lblStorlek)
-                            .addComponent(lblNamn)))
+                        .addGap(171, 171, 171)
+                        .addComponent(lblLaggTillHattILager))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnTillbaka)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNamn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtStorlek, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtAntalTimmar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtAntalMeter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtUtsmyckningsantal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-                        .addComponent(btnLagerforHatt)
-                        .addGap(30, 30, 30))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(cbValjTyg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(cbValjUtsmyckning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblLaggTillHattILager)
-                .addGap(92, 92, 92))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnTillbaka)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(btnLäggILager))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                    .addComponent(lblUtsmyckningsAntal)
+                                                    .addComponent(lblValjUtsmyckning)
+                                                    .addComponent(lblAntalMeter)
+                                                    .addComponent(lblValjTyg)
+                                                    .addComponent(lblAntalTimmar)
+                                                    .addComponent(lblStorlek)
+                                                    .addComponent(lblNamn)
+                                                    .addComponent(lblNotering))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(txtNamn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(txtStorlek, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(txtAntalMeter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(cbValjTyg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(cbValjUtsmyckning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addComponent(txtAntalTimmar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addGap(18, 18, 18)
+                                                        .addComponent(lblAngeTimpris)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                        .addComponent(txtAngeTimpris, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addComponent(txtUtsmyckningsantal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(txtNotering, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(btnSkapaHatt)))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(77, 77, 77)
+                                                .addComponent(lblSkapaHatt)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lblValjStandardhatt)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(6, 6, 6)
+                                                .addComponent(cbValjStandardhatt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGap(10, 10, 10)))))
+                .addGap(15, 15, 15))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(16, 16, 16)
                 .addComponent(lblLaggTillHattILager)
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblValjStandardhatt)
+                    .addComponent(lblSkapaHatt))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnLagerforHatt)
-                        .addGap(26, 26, 26))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cbValjStandardhatt, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtNamn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -172,7 +222,9 @@ private InfDB idb;
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblAntalTimmar)
-                            .addComponent(txtAntalTimmar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtAntalTimmar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblAngeTimpris)
+                            .addComponent(txtAngeTimpris, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblValjTyg)
@@ -181,20 +233,25 @@ private InfDB idb;
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblAntalMeter)
                             .addComponent(txtAntalMeter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lblValjUtsmyckning)
-                                    .addComponent(cbValjUtsmyckning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(15, 15, 15)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lblUtsmyckningsAntal)
-                                    .addComponent(txtUtsmyckningsantal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(76, 76, 76)
-                                .addComponent(btnTillbaka)))
-                        .addGap(6, 6, 6))))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblValjUtsmyckning)
+                            .addComponent(cbValjUtsmyckning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(15, 15, 15)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblUtsmyckningsAntal)
+                            .addComponent(txtUtsmyckningsantal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtNotering, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblNotering))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnLäggILager)
+                    .addComponent(btnSkapaHatt))
+                .addGap(40, 40, 40)
+                .addComponent(btnTillbaka)
+                .addGap(20, 20, 20))
         );
 
         pack();
@@ -205,7 +262,7 @@ private InfDB idb;
         new Lager(idb).setVisible(true);
     }//GEN-LAST:event_btnTillbakaActionPerformed
 
-    private void btnLagerforHattActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLagerforHattActionPerformed
+    private void btnSkapaHattActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSkapaHattActionPerformed
 
         try {
             if (Validering.txtFaltTomt(txtNamn) && Validering.txtFaltTomt(txtStorlek) &&
@@ -217,33 +274,56 @@ private InfDB idb;
                 String storlek = txtStorlek.getText();
                 String strTimmar = txtAntalTimmar.getText();
                 double antalTimmar = Double.parseDouble(strTimmar);
+                String strTimpris = txtAngeTimpris.getText();
+                double angeTimpris = Double.parseDouble(strTimpris);
                 String tyg = cbValjTyg.getSelectedItem().toString();
                 String strMeter = txtAntalMeter.getText();
                 double antalMeter = Double.parseDouble(strMeter);
                 String utsmyckning = cbValjUtsmyckning.toString();
                 String strAntal = txtUtsmyckningsantal.getText();
                 double utsmyckningsantal = Double.parseDouble(strAntal);
+                String notering = txtNotering.getText();
                 
-                prisTyg - 
-                prisUtsmycknig
-                prisArbete
-                Pris = prisTyg + prisUtsmyckning + prisArbete
+               // prisTyg - 
+               // prisUtsmycknig
+                double prisArbete = antalTimmar * angeTimpris;
+                double pris = prisArbete;
                         
                 
                 
                 //Koppla validering så att det inte blir dubbla värden
-                String nyKund = id+",'"+namn+"',"+"'"+efternamn+"',"+"'"+email+"',"+"'"+telefonnummer+"',"+"'"+adress+"',"+"'"+ort+"',"+"'"+postnummer+"'";
-                String nyKundFraga = "INSERT INTO Kund (KundID, Namn, Efternamn, Email, Telefon, Adress, Ort, Postnummer) VALUES ("+nyKund+")";
-                idb.insert(nyKundFraga);
-                JOptionPane.showMessageDialog(null, "En ny kund är registrerad!");
+                String nyHatt = id + ",'" + namn + "'," + 1 + ",'" + storlek + "'," + "'" + pris + "'";
+                String nyHattFraga = "INSERT INTO Produkt (ProduktID, Namn, Antal, Storlek, Pris) VALUES ("+nyHatt+")";
+                idb.insert(nyHattFraga);
+                JOptionPane.showMessageDialog(null, "En ny hatt har skapats!");
 
             }}
             catch  (InfException e){
                 System.out.println ("internt felmedelande:" + e.getMessage());
             }
 
-    }//GEN-LAST:event_btnLagerforHattActionPerformed
+    }//GEN-LAST:event_btnSkapaHattActionPerformed
 
+    private void btnLäggILagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLäggILagerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLäggILagerActionPerformed
+         private void fyllCbValjStandardhatt() {
+            try{
+        ArrayList<HashMap<String, String>> allaStandardhattar = idb.fetchRows("SELECT ProduktID, Namn FROM Produkt WHERE ProduktID = 331 OR ProduktID = 332 OR ProduktID = 333");
+                  
+                for(HashMap<String, String> produkt : allaStandardhattar){
+                // Hämta KundID och Namn från HashMap
+            String ProduktID = produkt.get("ProduktID");
+            String Namn = produkt.get("Namn");
+            
+            // Skapa en sträng som innehåller både KundID och namn och lägg till i comboboxen
+            cbValjStandardhatt.addItem(ProduktID + " - " + Namn);    
+           
+                }}
+            catch(InfException ettUndantag){
+            JOptionPane.showMessageDialog(null, "Databasfel!");
+         }}
+         
          private void fyllCbValjTyg() {
             try{
         ArrayList<HashMap<String, String>> allaTyger = idb.fetchRows("SELECT MaterialID, Namn FROM Tyg");
@@ -317,21 +397,29 @@ private InfDB idb;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnLagerforHatt;
+    private javax.swing.JButton btnLäggILager;
+    private javax.swing.JButton btnSkapaHatt;
     private javax.swing.JButton btnTillbaka;
+    private javax.swing.JComboBox<String> cbValjStandardhatt;
     private javax.swing.JComboBox<String> cbValjTyg;
     private javax.swing.JComboBox<String> cbValjUtsmyckning;
+    private javax.swing.JLabel lblAngeTimpris;
     private javax.swing.JLabel lblAntalMeter;
     private javax.swing.JLabel lblAntalTimmar;
     private javax.swing.JLabel lblLaggTillHattILager;
     private javax.swing.JLabel lblNamn;
+    private javax.swing.JLabel lblNotering;
+    private javax.swing.JLabel lblSkapaHatt;
     private javax.swing.JLabel lblStorlek;
     private javax.swing.JLabel lblUtsmyckningsAntal;
+    private javax.swing.JLabel lblValjStandardhatt;
     private javax.swing.JLabel lblValjTyg;
     private javax.swing.JLabel lblValjUtsmyckning;
+    private javax.swing.JTextField txtAngeTimpris;
     private javax.swing.JTextField txtAntalMeter;
     private javax.swing.JTextField txtAntalTimmar;
     private javax.swing.JTextField txtNamn;
+    private javax.swing.JTextField txtNotering;
     private javax.swing.JTextField txtStorlek;
     private javax.swing.JTextField txtUtsmyckningsantal;
     // End of variables declaration//GEN-END:variables
