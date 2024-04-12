@@ -136,12 +136,13 @@ public class Meny extends javax.swing.JFrame {
 
     private void btnLoggaUtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoggaUtActionPerformed
         dispose();
+        new Meny().setVisible(true);
     }//GEN-LAST:event_btnLoggaUtActionPerformed
 
     private void btnLagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLagerActionPerformed
         // TODO add your handling code here:
         setVisible(false);
-       // new Lager(idb).setVisible(true);
+       new Lager().setVisible(true);
     }//GEN-LAST:event_btnLagerActionPerformed
 
     /**
