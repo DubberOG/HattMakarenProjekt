@@ -15,7 +15,7 @@ import oru.inf.InfException;
  * @author willi
  */
 public class SkapaFraktsedel extends javax.swing.JFrame {
-    private static InfDB idb;
+    private InfDB idb;
 
     /**
      * Creates new form SkapaFraktsedel
@@ -207,7 +207,7 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
           }
      }
     }
-             private void fyllICombobox(){
+             private void fyllcbValjOrder(){
     
          String fraga = "SELECT OrderID FROM Orders WHERE Status = 'Redo'";
          ArrayList<String> allaOrderID;
@@ -228,7 +228,7 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
               System.out.println("Internt felmedelande" + ettUndantag.getMessage());     
           }
         }
-    private void fyllICombobox2()
+    private void fyllICombobox()
     {
         //SQL-fråga för att hämta OrderID från databasen
          try{
@@ -286,7 +286,7 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
          /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SkapaFraktsedel(idb).setVisible(true);
+                new SkapaFraktsedel().setVisible(true);
             }
         });
      
