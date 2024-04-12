@@ -228,16 +228,23 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
     }
     
     private void fyllICombobox()
-    {cbValjOrder.removeAllItems();
+    {
         //SQL-fråga för att hämta OrderID från databasen
          try{
-        ArrayList<String> allaOrderar = idb.fetchColumn("SELECT OrderID FROM Orders WHERE Status = 'Redo'");
+        ArrayList<HashMap<String, String>> allaOrderar = idb.fetchRows("SELECT OrderID, KundID FROM Orders WHERE Status = 'Redo'");
                   
         //Går igenom listan 
-                for(String order : allaOrderar){
+                for(HashMap<String, String> order : allaOrderar){
                 
             // Hämta orderId från listan och sparar det i en sträng
-            cbValjOrder.addItem(order);
+            String orderID = order.get("OrderID");
+            String kundID = order.get("KundID");
+            
+            //Lägger till OrderID i comboboxen
+            if(kundID != null)
+            {
+                cbValjOrder.addItem(orderID); 
+            }
              
            
                 }}
@@ -246,11 +253,6 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
         catch(InfException ettUndantag){
             JOptionPane.showMessageDialog(null, "Databasfel!");
          }
-    }
-    
-    private void fyllTextFält()
-    {
-        
     }
     
     /**
