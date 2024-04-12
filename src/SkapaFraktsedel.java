@@ -98,12 +98,6 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
         lbValjKund.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lbValjKund.setText("Välj order:");
 
-        cbValjOrder.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbValjOrderActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -171,19 +165,6 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
     private void btnAvbrytActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvbrytActionPerformed
         avbrytFraktsedel();
     }//GEN-LAST:event_btnAvbrytActionPerformed
-
-    private void cbValjOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbValjOrderActionPerformed
-        //Kollar om comboboxen är tom
-        if (cbValjOrder.getItemCount() == 0)
-        {
-           JOptionPane.showConfirmDialog(null, "Det finns inga aktuella orderar");
-        }else
-        {
-            //SQL-Frågor  
-        }
-        
-        
-    }//GEN-LAST:event_cbValjOrderActionPerformed
 
     private void txAngeViktKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txAngeViktKeyReleased
        //Kollar så att vikt är ifyllt samt att en order har valts i comboboxen
