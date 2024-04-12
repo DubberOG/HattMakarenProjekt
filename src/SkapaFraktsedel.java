@@ -18,7 +18,7 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
     /**
      * Creates new form SkapaFraktsedel
      */
-    private SkapaFraktsedel() {
+    public SkapaFraktsedel() {
         initComponents();
         btnSkapa.setEnabled(false);
     }
