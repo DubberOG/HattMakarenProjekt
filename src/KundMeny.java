@@ -1,5 +1,7 @@
 
+import javax.swing.JOptionPane;
 import oru.inf.InfDB;
+import oru.inf.InfException;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -21,6 +23,17 @@ public class KundMeny extends javax.swing.JFrame {
         initComponents();
         this.idb = idb;
     }
+    
+    private KundMeny()
+    {
+        initComponents();
+        try {
+            idb = new InfDB("Hattmakaren", "3306", "hattmakaren","HTM123");
+        } catch (InfException ex) {       
+            JOptionPane.showMessageDialog(null, "Kunde inte ansluta till databasen!");
+        }
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -154,7 +167,7 @@ public class KundMeny extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new KundMeny(idb).setVisible(true);
+                new KundMeny().setVisible(true);
             }
         });
     }
