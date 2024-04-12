@@ -96,7 +96,7 @@ public class BeställningsMeny extends javax.swing.JFrame {
     //Denna knappen tar dig till LaggTillBestallning frame.
     private void btnLäggTillBeställningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLäggTillBeställningActionPerformed
         setVisible(false);
-        new LaggTillBestallning(Main.idb).setVisible(true);
+        new LaggTillBestallning().setVisible(true);
     }//GEN-LAST:event_btnLäggTillBeställningActionPerformed
 
     //Denna knappen tar dig till AndraBestallning frame.
