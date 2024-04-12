@@ -48,6 +48,8 @@ public class LaggTillBestallning extends javax.swing.JFrame {
         tfDatum = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         cbStatus = new javax.swing.JComboBox<>();
+        txtPris = new javax.swing.JTextField();
+        lblpris = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,6 +77,12 @@ public class LaggTillBestallning extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setText("Välj kund");
 
+        cbValjKund.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbValjKundActionPerformed(evt);
+            }
+        });
+
         lblProdukt.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblProdukt.setText("Välj produkt");
 
@@ -88,6 +96,14 @@ public class LaggTillBestallning extends javax.swing.JFrame {
         jLabel2.setText("Välj status");
 
         cbStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bekräftad", "Tillverkas", "Redo", "Skickad" }));
+
+        txtPris.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPrisActionPerformed(evt);
+            }
+        });
+
+        lblpris.setText("Pris till kund");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -106,7 +122,10 @@ public class LaggTillBestallning extends javax.swing.JFrame {
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(14, 14, 14)
-                        .addComponent(cbValjKund, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblpris)
+                            .addComponent(txtPris, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbValjKund, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -145,14 +164,21 @@ public class LaggTillBestallning extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(tfDatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSpara)
-                    .addComponent(btnAvbryt))
-                .addGap(38, 38, 38))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnSpara)
+                            .addComponent(btnAvbryt))
+                        .addGap(38, 38, 38))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblpris)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtPris, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         pack();
@@ -165,6 +191,27 @@ public class LaggTillBestallning extends javax.swing.JFrame {
     private void btnSparaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaActionPerformed
 sparaBestallning();
     }//GEN-LAST:event_btnSparaActionPerformed
+
+    private void txtPrisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrisActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPrisActionPerformed
+
+    private void cbValjKundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbValjKundActionPerformed
+        // TODO add your handling code here:
+        try{
+            //Hämtar vald produkt
+            String valdProdukt = (String)cbValjProdukt.getSelectedItem();
+            String fraga = "SELECT Pris FROM PRODUKT WHERE Namn = '" +valdProdukt+"'";
+            double svar = Double.parseDouble(Main.idb.fetchSingle(fraga));
+            double marginal = 1.2;
+            double prisTillKund = svar * 1.25 * marginal;
+            txtPris.setText(String.valueOf(prisTillKund));
+            
+        } catch (InfException ex) {
+        JOptionPane.showMessageDialog(null, "Databasfel!");
+        System.out.println("Internt felmeddelande" + ex.getMessage());
+        }
+    }//GEN-LAST:event_cbValjKundActionPerformed
 
    
     
@@ -236,9 +283,9 @@ sparaBestallning();
 
         // Hämta vald status från comboboxen
         String status = (String) cbStatus.getSelectedItem();
-
+        String priset = txtPris.getText();
         // SQL-fråga för att infoga data i ordertabellen
-        String orderFraga = "INSERT INTO Orders (OrderID, Datum, Status, KundID, ProduktID) VALUES ('" + orderID + "', '" + datum + "', '" + status + "', '" + valdKundID + "', '" + valdProdukt + "')";
+        String orderFraga = "INSERT INTO Orders (OrderID, Datum, Status, KundID, ProduktID, Pris) VALUES ('" + orderID + "', '" + datum + "', '" + status + "', '" + valdKundID + "', '" + valdProdukt + "', '" + priset + "')";
 
         // Utför SQL-frågan
         Main.idb.insert(orderFraga);
@@ -295,6 +342,8 @@ sparaBestallning();
     private javax.swing.JLabel lbBestallning;
     private javax.swing.JLabel lblProdukt;
     private javax.swing.JLabel lblProdukt1;
+    private javax.swing.JLabel lblpris;
     private javax.swing.JTextField tfDatum;
+    private javax.swing.JTextField txtPris;
     // End of variables declaration//GEN-END:variables
 }
