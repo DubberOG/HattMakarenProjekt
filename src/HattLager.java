@@ -2,7 +2,6 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
-import oru.inf.InfDB;
 import oru.inf.InfException;
 
 /*
@@ -15,27 +14,18 @@ import oru.inf.InfException;
  * @author mallan
  */
 public class HattLager extends javax.swing.JFrame {
-private InfDB idb;
+
     /**
      * Creates new form HattLager
      */
-    public HattLager(InfDB idb) {
-        this.idb = idb;
+    public HattLager() {
         initComponents();
-    }
-
-    private HattLager() {
-        initComponents();
-        
-        try {
-            idb = new InfDB("Hattmakaren", "3306", "hattmakaren","HTM123");
         fyllCbValjTyg();
         fyllCbValjUtsmyckning();
         fyllCbValjStandardhatt();
-        } catch (InfException ex) {       
-            JOptionPane.showMessageDialog(null, "Kunde inte ansluta till databasen!");
-        }
     }
+
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -259,7 +249,7 @@ private InfDB idb;
 
     private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
         setVisible(false);
-        new Lager(idb).setVisible(true);
+        new Lager().setVisible(true);
     }//GEN-LAST:event_btnTillbakaActionPerformed
 
     private void btnSkapaHattActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSkapaHattActionPerformed
@@ -269,7 +259,7 @@ private InfDB idb;
                 Validering.txtFaltTomt(txtAntalTimmar)  &&
                 Validering.txtFaltTomt(txtAntalMeter)  &&
                 Validering.txtFaltTomt(txtUtsmyckningsantal)){
-                String id = idb.getAutoIncrement("Produkt", "ProduktID");
+                String id = Main.idb.getAutoIncrement("Produkt", "ProduktID");
                 String namn = txtNamn.getText();
                 String storlek = txtStorlek.getText();
                 String strTimmar = txtAntalTimmar.getText();
@@ -294,7 +284,7 @@ private InfDB idb;
                 //Koppla validering så att det inte blir dubbla värden
                 String nyHatt = id + ",'" + namn + "'," + 1 + ",'" + storlek + "'," + "'" + pris + "'";
                 String nyHattFraga = "INSERT INTO Produkt (ProduktID, Namn, Antal, Storlek, Pris) VALUES ("+nyHatt+")";
-                idb.insert(nyHattFraga);
+                Main.idb.insert(nyHattFraga);
                 JOptionPane.showMessageDialog(null, "En ny hatt har skapats!");
 
             }}
@@ -309,7 +299,7 @@ private InfDB idb;
     }//GEN-LAST:event_btnLäggILagerActionPerformed
          private void fyllCbValjStandardhatt() {
             try{
-        ArrayList<HashMap<String, String>> allaStandardhattar = idb.fetchRows("SELECT ProduktID, Namn FROM Produkt WHERE ProduktID = 331 OR ProduktID = 332 OR ProduktID = 333");
+        ArrayList<HashMap<String, String>> allaStandardhattar = Main.idb.fetchRows("SELECT ProduktID, Namn FROM Produkt WHERE ProduktID = 331 OR ProduktID = 332 OR ProduktID = 333");
                   
                 for(HashMap<String, String> produkt : allaStandardhattar){
                 // Hämta KundID och Namn från HashMap
@@ -326,7 +316,7 @@ private InfDB idb;
          
          private void fyllCbValjTyg() {
             try{
-        ArrayList<HashMap<String, String>> allaTyger = idb.fetchRows("SELECT MaterialID, Namn FROM Tyg");
+        ArrayList<HashMap<String, String>> allaTyger = Main.idb.fetchRows("SELECT MaterialID, Namn FROM Tyg");
                   
                 for(HashMap<String, String> tyg : allaTyger){
                 // Hämta KundID och Namn från HashMap
@@ -344,7 +334,7 @@ private InfDB idb;
          }}
              private void fyllCbValjUtsmyckning() {
             try{
-        ArrayList<HashMap<String, String>> allaUtsmyckningar = idb.fetchRows("SELECT MaterialID, Namn FROM Utsmyckning");
+        ArrayList<HashMap<String, String>> allaUtsmyckningar = Main.idb.fetchRows("SELECT MaterialID, Namn FROM Utsmyckning");
                   
                 for(HashMap<String, String> utsmyckning : allaUtsmyckningar){
                 // Hämta KundID och Namn från HashMap
