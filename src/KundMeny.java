@@ -14,7 +14,7 @@ import oru.inf.InfException;
  */
 public class KundMeny extends javax.swing.JFrame {
 
-    private static InfDB idb;
+    private InfDB idb;
 
     /**
      * Creates new form KundMeny
