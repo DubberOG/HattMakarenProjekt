@@ -3,7 +3,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
 import oru.inf.InfException;
-import oru.inf.InfDB;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -15,29 +14,12 @@ import oru.inf.InfDB;
  * @author alice
  */
 public class AndraBestallning extends javax.swing.JFrame {
-private InfDB idb;
     /**
      * Creates new form AndraBestallning
      */
-    public AndraBestallning(InfDB idb) {
-        initComponents();
-        this.idb = idb;
-        
-       
-    }
-
-    private AndraBestallning() {
+    public AndraBestallning() {
         initComponents();
         
-        try {
-            idb = new InfDB("Hattmakaren", "3306", "hattmakaren","HTM123");
-        fyllcbxOrderID();
-        //fyllCbValjKund();
-        //fyllCbValjProdukt();
-        //fylliDatum();
-        } catch (InfException ex) {       
-            JOptionPane.showMessageDialog(null, "Kunde inte ansluta till databasen!");
-        }
     }
 
     /**
@@ -192,11 +174,11 @@ private InfDB idb;
     private void btnSparaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaActionPerformed
 //if(Validering.valideraKundID(txtKund, idb)&& Validering.txtFaltTomt(txtKund)&& Validering.valideraProduktID(txtProdukt, idb)&& Validering.txtFaltTomt(txtProdukt)&& Validering.datumKontroll(tfDatum)&& Validering.txtFaltTomt(txtStatus)){
         try{ 
-            if(Validering.valideraKundID(txtKund, idb)&& Validering.txtFaltTomt(txtKund)&& Validering.valideraProduktID(txtProdukt, idb)&& Validering.txtFaltTomt(txtProdukt)&& Validering.datumKontroll(tfDatum)&& Validering.txtFaltTomt(txtStatus)){
+            if(Validering.valideraKundID(txtKund, Main.idb)&& Validering.txtFaltTomt(txtKund)&& Validering.valideraProduktID(txtProdukt, Main.idb)&& Validering.txtFaltTomt(txtProdukt)&& Validering.datumKontroll(tfDatum)&& Validering.txtFaltTomt(txtStatus)){
 
                 String fragaOrder = "SELECT * FROM Orders";
 
-            ArrayList<HashMap<String, String>> Order = idb.fetchRows(fragaOrder);
+            ArrayList<HashMap<String, String>> Order = Main.idb.fetchRows(fragaOrder);
 
            String valdOrder = cbxOrderID.getSelectedItem().toString();
            String nyttKund = txtKund.getText();
@@ -207,20 +189,20 @@ private InfDB idb;
            
            String updateQueryDatum = "UPDATE Orders SET Datum = '" + nyttDatum + "' WHERE OrderID = '" + valdOrder + "'";
            
-                 idb.update(updateQueryDatum);
+                 Main.idb.update(updateQueryDatum);
        
             String updateQueryStatus = "UPDATE Orders SET Status = '" + nyttStatus + "' WHERE OrderID = '" + valdOrder + "'";
            
-                 idb.update(updateQueryStatus);
+                 Main.idb.update(updateQueryStatus);
                 
             String updateQueryKund = "UPDATE Orders SET KundID = '" + nyttKund + "' WHERE OrderID = '" + valdOrder + "'";
            
-                 idb.update(updateQueryKund);
+                 Main.idb.update(updateQueryKund);
                  
                  
             String updateQueryProdukt = "UPDATE Orders SET ProduktID = '" + nyttProdukt + "' WHERE OrderID = '" + valdOrder + "'";
           
-                 idb.update(updateQueryProdukt);
+                 Main.idb.update(updateQueryProdukt);
                 
                  
             JOptionPane.showMessageDialog(null, " Informationen har ändrats." );
@@ -247,7 +229,7 @@ private InfDB idb;
       
           String valdOrder = cbxOrderID.getSelectedItem().toString();
           String fraga = "SELECT OrderID, Datum, Status, KundID, ProduktID FROM Orders";
-          orderIDLista = idb.fetchRows(fraga);
+          orderIDLista = Main.idb.fetchRows(fraga);
           
           for(HashMap<String, String> enOrder : orderIDLista){
         
@@ -296,7 +278,7 @@ private InfDB idb;
     String fraga = "SELECT OrderID FROM Orders";
     ArrayList<String> allaOrderID;
     try {
-        allaOrderID = idb.fetchColumn(fraga);
+        allaOrderID = Main.idb.fetchColumn(fraga);
         for(String ettID : allaOrderID) {
             cbxOrderID.addItem(ettID);
         }
@@ -314,7 +296,7 @@ private InfDB idb;
           if(val == JOptionPane.YES_OPTION)
           {
               dispose();
-              new Meny(idb).setVisible(true);
+              new Meny().setVisible(true);
           }
      }
     /**
