@@ -195,27 +195,7 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
           }
      }
     }
-             private void fyllcbValjOrder(){
     
-         String fraga = "SELECT OrderID FROM Orders WHERE Status = 'Redo'";
-         ArrayList<String> allaOrderID;
-    
-         try{
-    
-            allaOrderID = Main.idb.fetchColumn(fraga);
-            
-            for(String ettID : allaOrderID){
-            
-                cbValjOrder.addItem(ettID);
-            
-            }
-            
-         }catch(InfException ettUndantag){
-            
-              JOptionPane.showMessageDialog(null, " Databasfel! " );
-              System.out.println("Internt felmedelande" + ettUndantag.getMessage());     
-          }
-        }
     private void fyllICombobox()
     {
         //SQL-fråga för att hämta OrderID från databasen
@@ -242,6 +222,24 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
         catch(InfException ettUndantag){
             JOptionPane.showMessageDialog(null, "Databasfel!");
          }
+    }
+    
+    private void fyllTextArea()
+    {
+        String valdOrder = (String) cbValjOrder.getSelectedItem();
+        txAInformation.setText("");
+        try
+        {
+            String valdKund = Main.idb.fetchSingle("Select KundID from Orders where OrderID = '" + valdOrder + "' ");
+            String namn = Main.idb.fetchSingle("Select Namn from Kund where KundID = '"+ valdKund +"'");
+           txAInformation.append(namn);
+        }
+        
+        catch(InfException e)
+        {
+            JOptionPane.showMessageDialog(null, "Ajdå!");
+        }
+        
     }
     
     /**
