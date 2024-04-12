@@ -207,8 +207,28 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
           }
      }
     }
+             private void fyllICombobox(){
     
-    private void fyllICombobox()
+         String fraga = "SELECT OrderID FROM Orders WHERE Status = 'Redo'";
+         ArrayList<String> allaOrderID;
+    
+         try{
+    
+            allaOrderID = idb.fetchColumn(fraga);
+            
+            for(String ettID : allaOrderID){
+            
+                cbValjOrder.addItem(ettID);
+            
+            }
+            
+         }catch(InfException ettUndantag){
+            
+              JOptionPane.showMessageDialog(null, " Databasfel! " );
+              System.out.println("Internt felmedelande" + ettUndantag.getMessage());     
+          }
+        }
+    private void fyllICombobox2()
     {
         //SQL-fråga för att hämta OrderID från databasen
          try{
