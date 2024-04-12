@@ -23,68 +23,96 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
+          <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="lblUtsmyckningsAntal" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblValjUtsmyckning" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblAntalMeter" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblValjTyg" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblAntalTimmar" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblStorlek" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblNamn" alignment="1" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <EmptySpace min="-2" pref="171" max="-2" attributes="0"/>
+                      <Component id="lblLaggTillHattILager" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnTillbaka" min="-2" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txtNamn" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtStorlek" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtAntalTimmar" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtAntalMeter" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtUtsmyckningsantal" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="lblUtsmyckningsAntal" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblValjUtsmyckning" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblAntalMeter" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblValjTyg" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblAntalTimmar" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblStorlek" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblNamn" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="txtNamn" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txtStorlek" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txtAntalMeter" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txtUtsmyckningsantal" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cbValjTyg" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cbValjUtsmyckning" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="txtAntalTimmar" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="lblAngeTimpris" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="txtAngeTimpris" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
+                                      <Component id="lblSkapaHatt" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="btnSkapaOchLagerförHatt" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="139" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="lblNotering" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="txtNotering" min="-2" pref="147" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="136" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace pref="95" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblValjStandardhatt" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="cbValjStandardhatt" min="-2" max="-2" attributes="0"/>
+                                          <Component id="btnLagerforHatt" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="btnTillbaka" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace pref="40" max="32767" attributes="0"/>
-                      <Component id="btnLagerforHatt" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="cbValjTyg" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="cbValjUtsmyckning" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
-          </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="lblLaggTillHattILager" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
               <Component id="lblLaggTillHattILager" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblValjStandardhatt" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblSkapaHatt" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="btnLagerforHatt" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="cbValjStandardhatt" alignment="0" min="-2" pref="23" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="txtNamn" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblNamn" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -98,6 +126,10 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblAntalTimmar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtAntalTimmar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" alignment="3" groupAlignment="3" attributes="0">
+                              <Component id="lblAngeTimpris" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtAngeTimpris" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -109,25 +141,35 @@
                           <Component id="lblAntalMeter" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtAntalMeter" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="lblValjUtsmyckning" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="cbValjUtsmyckning" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="lblUtsmyckningsAntal" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtUtsmyckningsantal" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
-                              <Component id="btnTillbaka" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblValjUtsmyckning" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbValjUtsmyckning" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblUtsmyckningsAntal" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtUtsmyckningsantal" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="txtNotering" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblNotering" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="45" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="btnLagerforHatt" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnSkapaOchLagerförHatt" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="btnTillbaka" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -167,7 +209,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Helvetica Neue" size="18" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="L&#xe4;gg till hatt i lager"/>
+        <Property name="text" type="java.lang.String" value="Skapa hatt och l&#xe4;gg till i lager"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblValjTyg">
@@ -241,6 +283,56 @@
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cbValjStandardhatt">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="0"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblValjStandardhatt">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="V&#xe4;lj standardhatt"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblSkapaHatt">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Skapa hatt"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnSkapaOchLagerf&#xf6;rHatt">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Skapa och l&#xe4;gg i lager"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSkapaOchLagerf&#xf6;rHattActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblNotering">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ev Notering"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtNotering">
+      <Properties>
+        <Property name="columns" type="int" value="5"/>
+        <Property name="text" type="java.lang.String" value="V&#xe4;nligen l&#xe4;mna ej tom"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtAngeTimpris">
+      <Properties>
+        <Property name="columns" type="int" value="5"/>
+        <Property name="toolTipText" type="java.lang.String" value=""/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblAngeTimpris">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ange timpris"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
