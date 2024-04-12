@@ -1,6 +1,5 @@
 
 import javax.swing.JOptionPane;
-import oru.inf.InfDB;
 import oru.inf.InfException;
 
 /*
@@ -14,18 +13,12 @@ import oru.inf.InfException;
  */
 public class BeställningsMeny extends javax.swing.JFrame {
 
-    private InfDB idb;
 
     /**
      * Creates new form BeställningsMeny
      */
     public BeställningsMeny() {
         initComponents();
-        try {
-            idb = new InfDB("Hattmakaren", "3306", "hattmakaren","HTM123");
-        } catch (InfException ex) {       
-            JOptionPane.showMessageDialog(null, "Kunde inte ansluta till databasen!");
-        }
     }
     
 
@@ -103,19 +96,19 @@ public class BeställningsMeny extends javax.swing.JFrame {
     //Denna knappen tar dig till LaggTillBestallning frame.
     private void btnLäggTillBeställningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLäggTillBeställningActionPerformed
         setVisible(false);
-        new LaggTillBestallning(idb).setVisible(true);
+        new LaggTillBestallning(Main.idb).setVisible(true);
     }//GEN-LAST:event_btnLäggTillBeställningActionPerformed
 
     //Denna knappen tar dig till AndraBestallning frame.
     private void btnÄndraBeställningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnÄndraBeställningActionPerformed
         // TODO add your handling code here:
         setVisible(false);
-        new AndraBestallning(idb).setVisible(true);
+        new AndraBestallning().setVisible(true);
     }//GEN-LAST:event_btnÄndraBeställningActionPerformed
 
     private void btnVisaTidigareBeställningarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisaTidigareBeställningarActionPerformed
         setVisible(false);
-        new OrderHistorik(idb).setVisible(true); 
+        new OrderHistorik(Main.idb).setVisible(true); 
     }//GEN-LAST:event_btnVisaTidigareBeställningarActionPerformed
 
     /**
