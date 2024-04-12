@@ -178,7 +178,7 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
         if(val == JOptionPane.YES_OPTION)
         {
            //Skickar med informationen till klassen SkrivUtFraktsedel
-            new SkrivUtFraktsedel(Main.idb, cbVal, txtVikt).setVisible(true);
+            new SkrivUtFraktsedel( cbVal, txtVikt).setVisible(true);
             dispose();
         }
         
