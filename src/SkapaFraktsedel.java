@@ -51,7 +51,7 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
         btnSkapa = new javax.swing.JButton();
         btnAvbryt = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txAInformation = new javax.swing.JTextArea();
         lbOrderLista = new javax.swing.JLabel();
         lbValjKund = new javax.swing.JLabel();
         cbValjOrder = new javax.swing.JComboBox<>();
@@ -88,21 +88,15 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
             }
         });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        txAInformation.setColumns(20);
+        txAInformation.setRows(5);
+        jScrollPane1.setViewportView(txAInformation);
 
         lbOrderLista.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lbOrderLista.setText("Information om order:");
 
         lbValjKund.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lbValjKund.setText("Välj order:");
-
-        cbValjOrder.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbValjOrderActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -127,11 +121,13 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(12, 12, 12)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbValjKund)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(cbValjOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
-                                .addComponent(txAngeVikt, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(txAngeVikt, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lbValjKund)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addGap(85, 85, 85)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbOrderLista)
@@ -170,26 +166,14 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
         avbrytFraktsedel();
     }//GEN-LAST:event_btnAvbrytActionPerformed
 
-    private void cbValjOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbValjOrderActionPerformed
-
-        //Kollar om comboboxen är tom
-        if (cbValjOrder.getItemCount() == 0)
-        {
-           JOptionPane.showConfirmDialog(null, "Det finns inga aktuella orderar");
-        }else
-        {
-            //SQL-Frågor  
-        }
-        
-        
-    }//GEN-LAST:event_cbValjOrderActionPerformed
-
     private void txAngeViktKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txAngeViktKeyReleased
        //Kollar så att vikt är ifyllt samt att en order har valts i comboboxen
-        if (!txAngeVikt.getText().isEmpty() && cbValjOrder.getSelectedItem() != null) 
+
+       if (!txAngeVikt.getText().isEmpty() && cbValjOrder.getSelectedItem() != null) 
         {
             btnSkapa.setEnabled(true);
         }
+        
 
     }//GEN-LAST:event_txAngeViktKeyReleased
 
@@ -228,16 +212,21 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
     {
         //SQL-fråga för att hämta OrderID från databasen
          try{
-        ArrayList<HashMap<String, String>> allaOrderar = idb.fetchRows("SELECT OrderID FROM Orders WHERE Status = 'Redo'");
+        ArrayList<HashMap<String, String>> allaOrderar = idb.fetchRows("SELECT OrderID, KundID FROM Orders WHERE Status = 'Redo'");
                   
         //Går igenom listan 
                 for(HashMap<String, String> order : allaOrderar){
                 
             // Hämta orderId från listan och sparar det i en sträng
             String orderID = order.get("OrderID");
+            String kundID = order.get("KundID");
             
             //Lägger till OrderID i comboboxen
-            cbValjOrder.addItem(orderID);    
+            if(kundID != null)
+            {
+                cbValjOrder.addItem(orderID); 
+            }
+             
            
                 }}
                     
@@ -289,10 +278,10 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbValjOrder;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel lbOrderLista;
     private javax.swing.JLabel lbValjKund;
     private javax.swing.JLabel lbVikt;
+    private javax.swing.JTextArea txAInformation;
     private javax.swing.JTextField txAngeVikt;
     // End of variables declaration//GEN-END:variables
 }
