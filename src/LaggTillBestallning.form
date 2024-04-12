@@ -202,10 +202,11 @@
     <Component class="javax.swing.JComboBox" name="cbStatus">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="3">
+          <StringArray count="4">
             <StringItem index="0" value="Bekr&#xe4;ftad"/>
-            <StringItem index="1" value="Under tillverkning"/>
-            <StringItem index="2" value="Redo att skickas"/>
+            <StringItem index="1" value="Tillverkas"/>
+            <StringItem index="2" value="Redo"/>
+            <StringItem index="3" value="Skickad"/>
           </StringArray>
         </Property>
       </Properties>
