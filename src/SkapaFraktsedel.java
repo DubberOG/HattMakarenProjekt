@@ -21,6 +21,7 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
     public SkapaFraktsedel() {
         initComponents();
         btnSkapa.setEnabled(false);
+        fyllICombobox();
     }
 
     /**
