@@ -95,17 +95,17 @@ public class Leverantor extends javax.swing.JFrame {
 
     private void btnSeLeverantörerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeLeverantörerActionPerformed
         // TODO add your handling code here:
-         ArrayList<String> Leverantörer = new ArrayList<>();
+         ArrayList<String> Leverantorer = new ArrayList<>();
         try{
             String nyLeverantorFraga = "SELECT * FROM Leverantör";
             ArrayList<HashMap<String,String>> leverantorer = Main.idb.fetchRows(nyLeverantorFraga);
-            for (HashMap<String,String> leverantör : leverantorer) {
-                for (String Leverantorer : leverantorer.keySet()) {
-            leverantorer.add(leverantorer + ": " + leverantorer.get(leverantor));
+            for (HashMap<String,String> leverantor : leverantorer) {
+                for (String Leverantor : leverantorer.keySet()) {
+            leverantorer.add(leverantor + ": " + leverantorer.get(leverantor));
         }
     }
-           for (String leverantor : leverantorer) {
-            txtAreaSeLeverantorer.append(leverantor + "\n");
+           for (String leverantor : leverantorer){
+            txtAreaSeLeverantörer.append(leverantor + "\n");
     }
 
         }catch (InfException e){
@@ -145,7 +145,7 @@ public class Leverantor extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Leverantör().setVisible(true);
+                new Leverantor().setVisible(true);
             }
         });
     }

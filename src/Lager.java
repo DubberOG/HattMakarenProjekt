@@ -32,6 +32,7 @@ public class Lager extends javax.swing.JFrame {
 
         btnUppdateraLager = new javax.swing.JButton();
         btnTillbaka = new javax.swing.JButton();
+        btnSeHattar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -49,23 +50,36 @@ public class Lager extends javax.swing.JFrame {
             }
         });
 
+        btnSeHattar.setText("Se hattar i lager");
+        btnSeHattar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSeHattarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
+                .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnTillbaka)
-                    .addComponent(btnUppdateraLager))
-                .addContainerGap(247, Short.MAX_VALUE))
+                    .addComponent(btnSeHattar)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(btnUppdateraLager, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(btnTillbaka)
+                            .addGap(46, 46, 46))))
+                .addContainerGap(250, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(56, 56, 56)
+                .addGap(43, 43, 43)
+                .addComponent(btnSeHattar)
+                .addGap(28, 28, 28)
                 .addComponent(btnUppdateraLager)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 177, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 139, Short.MAX_VALUE)
                 .addComponent(btnTillbaka)
                 .addGap(21, 21, 21))
         );
@@ -82,6 +96,11 @@ public class Lager extends javax.swing.JFrame {
         setVisible(false);
         new Meny().setVisible(true);
     }//GEN-LAST:event_btnTillbakaActionPerformed
+
+    private void btnSeHattarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeHattarActionPerformed
+       setVisible(false);
+        new SeHattarILager().setVisible(true);
+    }//GEN-LAST:event_btnSeHattarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -119,6 +138,7 @@ public class Lager extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnSeHattar;
     private javax.swing.JButton btnTillbaka;
     private javax.swing.JButton btnUppdateraLager;
     // End of variables declaration//GEN-END:variables
