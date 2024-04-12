@@ -5,7 +5,6 @@
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import oru.inf.InfDB;
 import oru.inf.InfException;
     
 
@@ -15,25 +14,14 @@ import oru.inf.InfException;
  */
 public class TaBortKund extends javax.swing.JFrame {
 
-    private InfDB idb;
     /**
      * Creates new form TaBortKund
      */
-    public TaBortKund(InfDB idb) {
+    public TaBortKund() {
         initComponents();
-        this.idb = idb;
     }
     
-     private TaBortKund() {
-        initComponents();
-        this.idb = idb; 
-        try {
-            idb = new InfDB("Hattmakaren", "3306", "hattmakaren","HTM123");
-        
-        } catch (InfException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE,null,ex);
-        }
-    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -122,7 +110,7 @@ public class TaBortKund extends javax.swing.JFrame {
                 String nyRaderarFraga = "UPDATE Kund\n" +
     "SET Namn = NULL, Efternamn = NULL, Email = NULL, Telefon = NULL, Adress = NULL, Ort = NULL, Postnummer = NULL\n" +
     "WHERE Email = '"+email+"'";
-                 idb.update(nyRaderarFraga);
+                 Main.idb.update(nyRaderarFraga);
               JOptionPane.showMessageDialog(null, "Kunduppgifter har blivit raderade!");
           
             }} catch (InfException e){
@@ -133,7 +121,7 @@ public class TaBortKund extends javax.swing.JFrame {
 
     private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
         setVisible(false);
-        new KundMeny(idb).setVisible(true);
+        new KundMeny().setVisible(true);
     }//GEN-LAST:event_btnTillbakaActionPerformed
 
     /**
