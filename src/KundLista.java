@@ -16,23 +16,10 @@ import oru.inf.InfException;
  */
 public class KundLista extends javax.swing.JFrame {
 
-    private InfDB idb;
 
     
     public KundLista(InfDB idb) {
         initComponents();
-        this.idb = idb;
-    }
-   
-    private KundLista() {
-        initComponents();
-        this.idb = idb;
-    try {
-           idb = new InfDB("Hattmakaren", "3306", "hattmakaren","HTM123");
-        
-        } catch (InfException ex) {       
-            JOptionPane.showMessageDialog(null, "Kunde inte ansluta till databasen!");
-        }
     }
 
 
@@ -118,7 +105,7 @@ public class KundLista extends javax.swing.JFrame {
    ArrayList<String> orders = new ArrayList<>();
         try{
             String nyKundFraga = "SELECT * FROM Kund";
-            ArrayList<HashMap<String,String>> kunders = idb.fetchRows(nyKundFraga);
+            ArrayList<HashMap<String,String>> kunders = Main.idb.fetchRows(nyKundFraga);
             for (HashMap<String,String> kunder : kunders) {
                 for (String Kund : kunder.keySet()) {
             orders.add(Kund + ": " + kunder.get(Kund));
@@ -137,7 +124,7 @@ public class KundLista extends javax.swing.JFrame {
 
     private void btnKundlistaTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKundlistaTillbakaActionPerformed
    setVisible(false);
-        new Meny(idb).setVisible(true);        // TODO add your handling code here:
+        new Meny().setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_btnKundlistaTillbakaActionPerformed
     
 //     * @param args the command line arguments
