@@ -17,7 +17,7 @@ public class Meny extends javax.swing.JFrame {
     /**
      * Creates new form Meny
      */
-    private Meny()
+    public Meny()
     {
         initComponents();
     }
@@ -131,7 +131,7 @@ public class Meny extends javax.swing.JFrame {
 
     private void btnSkrivUtFraktsedelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSkrivUtFraktsedelActionPerformed
         setVisible(false);
-        new SkapaFraktsedel().setVisible(true);
+       // new SkapaFraktsedel().setVisible(true);
     }//GEN-LAST:event_btnSkrivUtFraktsedelActionPerformed
 
     private void btnLoggaUtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoggaUtActionPerformed
@@ -141,7 +141,7 @@ public class Meny extends javax.swing.JFrame {
     private void btnLagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLagerActionPerformed
         // TODO add your handling code here:
         setVisible(false);
-        new Lager(idb).setVisible(true);
+       // new Lager(idb).setVisible(true);
     }//GEN-LAST:event_btnLagerActionPerformed
 
     /**
