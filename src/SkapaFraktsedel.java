@@ -250,7 +250,9 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
             String namn = Main.idb.fetchSingle("Select Namn from Kund where KundID = '"+ valdKund +"'");
             String enamn = Main.idb.fetchSingle("Select Efternamn from Kund where KundID = '"+ valdKund +"'");
             String adress = Main.idb.fetchSingle("Select Adress from Kund where KundID = '"+ valdKund +"'");
-           txAInformation.append(namn + enamn + "\n" + adress);
+            String pNummer = Main.idb.fetchSingle("Select Postnummer from Kund where KundID = '"+ valdKund +"'");
+            String ort = Main.idb.fetchSingle("Select ort from Kund where KundID = '"+ valdKund +"'");
+           txAInformation.append(namn + " " + enamn + "\n" + adress +  " " + pNummer + " " + ort);
         }
         
         catch(InfException e)
