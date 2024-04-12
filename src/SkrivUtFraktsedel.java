@@ -14,7 +14,6 @@ import oru.inf.InfDB;
  */
 public class SkrivUtFraktsedel extends javax.swing.JFrame {
 
-    private static InfDB idb;
     //Detta ska tas bort sen
     private static String cbVal;
     private static String txtVal;
@@ -22,9 +21,8 @@ public class SkrivUtFraktsedel extends javax.swing.JFrame {
     /**
      * Creates new form SkrivUtFraktsedel
      */
-    public SkrivUtFraktsedel(InfDB idb, String cbVal, String txtVal) {
+    public SkrivUtFraktsedel(String cbVal, String txtVal) {
         initComponents();
-        this.idb = idb;
         //Dessa ska tas bort sen
         this.cbVal = cbVal;
         this.txtVal = txtVal;
@@ -236,7 +234,7 @@ public class SkrivUtFraktsedel extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SkrivUtFraktsedel(idb, cbVal,txtVal).setVisible(true);
+                new SkrivUtFraktsedel(cbVal,txtVal).setVisible(true);
             }
         });
     }
