@@ -19,6 +19,12 @@ public class Meny extends javax.swing.JFrame {
     /**
      * Creates new form Meny
      */
+    private Meny(InfDB idb)
+    {
+        initComponents();
+        this.idb = idb;
+    }
+    
     public Meny() {
         initComponents();
           try {
