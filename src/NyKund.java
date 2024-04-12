@@ -1,6 +1,5 @@
 
 import javax.swing.JOptionPane;
-import oru.inf.InfDB;
 import oru.inf.InfException;
 
 /*
@@ -14,28 +13,17 @@ import oru.inf.InfException;
  */
 public class NyKund extends javax.swing.JFrame {
 
-    private InfDB idb;
 
     
     /**
      * Creates new form NyKund
      */
-    public NyKund(InfDB idb) {
+    public NyKund() {
         initComponents();
-        this.idb = idb;
         // forstätt fylla i för ev comboboxar
     }
 
-    private NyKund() {
-        initComponents();
-        this.idb = idb; 
-        try {
-            idb = new InfDB("Hattmakaren", "3306", "hattmakaren","HTM123");
-        
-        } catch (InfException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE,null,ex);
-        }
-    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -208,7 +196,7 @@ public class NyKund extends javax.swing.JFrame {
                   Validering.txtFaltTomt(txtAdress) && Validering.txtFaltTomt(txtPostNummer) && 
                   Validering.txtFaltTomt(txtOrt) && Validering.txtFaltTomt(txtTelefonnummer) && 
                   Validering.txtEpostKontroll(txtEpost)){
-            String id = idb.getAutoIncrement("Kund", "KundID");
+            String id = Main.idb.getAutoIncrement("Kund", "KundID");
             String namn = txtFornamn.getText();
             String efternamn = txtEfternamn.getText();
             String adress = txtAdress.getText();
@@ -221,7 +209,7 @@ public class NyKund extends javax.swing.JFrame {
             //Koppla validering så att det inte blir dubbla värden
             String nyKund = id+",'"+namn+"',"+"'"+efternamn+"',"+"'"+email+"',"+"'"+telefonnummer+"',"+"'"+adress+"',"+"'"+ort+"',"+"'"+postnummer+"'";
             String nyKundFraga = "INSERT INTO Kund (KundID, Namn, Efternamn, Email, Telefon, Adress, Ort, Postnummer) VALUES ("+nyKund+")";
-            idb.insert(nyKundFraga);
+            Main.idb.insert(nyKundFraga);
             JOptionPane.showMessageDialog(null, "En ny kund är registrerad!");
             
         }}
@@ -233,7 +221,7 @@ public class NyKund extends javax.swing.JFrame {
 
     private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
         setVisible(false);
-        new KundMeny(idb).setVisible(true); 
+        new KundMeny().setVisible(true); 
     }//GEN-LAST:event_btnTillbakaActionPerformed
 
     /**
