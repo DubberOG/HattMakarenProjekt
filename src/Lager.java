@@ -1,6 +1,5 @@
 
 import javax.swing.JOptionPane;
-import oru.inf.InfDB;
 import oru.inf.InfException;
 
 /*
@@ -13,14 +12,12 @@ import oru.inf.InfException;
  * @author sofia
  */
 public class Lager extends javax.swing.JFrame {
-    private static InfDB idb;
 
     /**
      * Creates new form Lager
      */
-    public Lager(InfDB idb) {
+    public Lager() {
         initComponents();
-        this.idb = idb;
     }
 
    
@@ -78,12 +75,12 @@ public class Lager extends javax.swing.JFrame {
 
     private void btnUppdateraLagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUppdateraLagerActionPerformed
         setVisible(false);
-        new HattLager(idb).setVisible(true);
+        new HattLager().setVisible(true);
     }//GEN-LAST:event_btnUppdateraLagerActionPerformed
 
     private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
         setVisible(false);
-        new Meny(idb).setVisible(true);
+        new Meny().setVisible(true);
     }//GEN-LAST:event_btnTillbakaActionPerformed
 
     /**
@@ -116,7 +113,7 @@ public class Lager extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Lager(idb).setVisible(true);
+                new Lager().setVisible(true);
             }
         });
     }
