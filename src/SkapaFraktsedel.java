@@ -28,9 +28,9 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
     
     private SkapaFraktsedel() {
         initComponents();
-        fyllICombobox();
         try {
             idb = new InfDB("Hattmakaren", "3306", "hattmakaren","HTM123");
+            fyllICombobox();
         } catch (InfException ex) {       
             JOptionPane.showMessageDialog(null, "Kunde inte ansluta till databasen!");
         }
