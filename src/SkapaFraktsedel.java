@@ -28,9 +28,9 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
     
     private SkapaFraktsedel() {
         initComponents();
+        fyllICombobox();
         try {
             idb = new InfDB("Hattmakaren", "3306", "hattmakaren","HTM123");
-            fyllICombobox();
         } catch (InfException ex) {       
             JOptionPane.showMessageDialog(null, "Kunde inte ansluta till databasen!");
         }
@@ -187,10 +187,12 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
 
     private void txAngeViktKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txAngeViktKeyReleased
        //Kollar så att vikt är ifyllt samt att en order har valts i comboboxen
-        if (!txAngeVikt.getText().isEmpty() && cbValjOrder.getSelectedItem() != null) 
+
+       if (!txAngeVikt.getText().isEmpty() && cbValjOrder.getSelectedItem() != null) 
         {
             btnSkapa.setEnabled(true);
         }
+        
 
     }//GEN-LAST:event_txAngeViktKeyReleased
 
@@ -226,19 +228,17 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
     }
     
     private void fyllICombobox()
-    {
+    {cbValjOrder.removeAllItems();
         //SQL-fråga för att hämta OrderID från databasen
          try{
-        ArrayList<HashMap<String, String>> allaOrderar = idb.fetchRows("SELECT OrderID FROM Orders WHERE Status = 'Redo'");
+        ArrayList<String> allaOrderar = idb.fetchColumn("SELECT OrderID FROM Orders WHERE Status = 'Redo'");
                   
         //Går igenom listan 
-                for(HashMap<String, String> order : allaOrderar){
+                for(String order : allaOrderar){
                 
             // Hämta orderId från listan och sparar det i en sträng
-            String orderID = order.get("OrderID");
-            
-            //Lägger till OrderID i comboboxen
-            cbValjOrder.addItem(orderID);    
+            cbValjOrder.addItem(order);
+             
            
                 }}
                     
