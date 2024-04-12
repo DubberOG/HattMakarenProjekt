@@ -77,7 +77,8 @@ public class Lager extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnUppdateraLagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUppdateraLagerActionPerformed
-        // TODO add your handling code here:
+        setVisible(false);
+        new HattLager(idb).setVisible(true);
     }//GEN-LAST:event_btnUppdateraLagerActionPerformed
 
     private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
