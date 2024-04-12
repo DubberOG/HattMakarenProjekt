@@ -34,6 +34,7 @@ public class Lager extends javax.swing.JFrame {
     private void initComponents() {
 
         btnUppdateraLager = new javax.swing.JButton();
+        btnTillbaka = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -44,13 +45,22 @@ public class Lager extends javax.swing.JFrame {
             }
         });
 
+        btnTillbaka.setText("Tillbaka");
+        btnTillbaka.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTillbakaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(36, 36, 36)
-                .addComponent(btnUppdateraLager)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnTillbaka)
+                    .addComponent(btnUppdateraLager))
                 .addContainerGap(247, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -58,7 +68,9 @@ public class Lager extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(56, 56, 56)
                 .addComponent(btnUppdateraLager)
-                .addContainerGap(221, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 177, Short.MAX_VALUE)
+                .addComponent(btnTillbaka)
+                .addGap(21, 21, 21))
         );
 
         pack();
@@ -67,6 +79,11 @@ public class Lager extends javax.swing.JFrame {
     private void btnUppdateraLagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUppdateraLagerActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnUppdateraLagerActionPerformed
+
+    private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
+        setVisible(false);
+        new Meny(idb).setVisible(true);
+    }//GEN-LAST:event_btnTillbakaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -104,6 +121,7 @@ public class Lager extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnTillbaka;
     private javax.swing.JButton btnUppdateraLager;
     // End of variables declaration//GEN-END:variables
 }

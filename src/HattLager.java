@@ -202,7 +202,7 @@ private InfDB idb;
 
     private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
         setVisible(false);
-        new LagerMeny(idb).setVisible(true);
+        new Lager(idb).setVisible(true);
     }//GEN-LAST:event_btnTillbakaActionPerformed
 
     private void btnLagerforHattActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLagerforHattActionPerformed
