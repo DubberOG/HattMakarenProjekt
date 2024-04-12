@@ -25,6 +25,16 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
         this.idb = idb;
         btnSkapa.setEnabled(false);
     }
+    
+    private SkapaFraktsedel() {
+        initComponents();
+        try {
+            idb = new InfDB("Hattmakaren", "3306", "hattmakaren","HTM123");
+            fyllICombobox();
+        } catch (InfException ex) {       
+            JOptionPane.showMessageDialog(null, "Kunde inte ansluta till databasen!");
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -63,6 +73,11 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
         btnSkapa.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnSkapa.setForeground(new java.awt.Color(51, 255, 51));
         btnSkapa.setText("Skapa");
+        btnSkapa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSkapaActionPerformed(evt);
+            }
+        });
 
         btnAvbryt.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnAvbryt.setForeground(new java.awt.Color(255, 0, 0));
@@ -156,16 +171,46 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAvbrytActionPerformed
 
     private void cbValjOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbValjOrderActionPerformed
-        fyllICombobox();
+
+        //Kollar om comboboxen är tom
+        if (cbValjOrder.getItemCount() == 0)
+        {
+           JOptionPane.showConfirmDialog(null, "Det finns inga aktuella orderar");
+        }else
+        {
+            //SQL-Frågor  
+        }
+        
+        
     }//GEN-LAST:event_cbValjOrderActionPerformed
 
     private void txAngeViktKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txAngeViktKeyReleased
-        if (!txAngeVikt.getText().isEmpty()) 
+       //Kollar så att vikt är ifyllt samt att en order har valts i comboboxen
+        if (!txAngeVikt.getText().isEmpty() && cbValjOrder.getSelectedItem() != null) 
         {
             btnSkapa.setEnabled(true);
         }
 
     }//GEN-LAST:event_txAngeViktKeyReleased
+
+    private void btnSkapaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSkapaActionPerformed
+        //Omvandlar resultatet från getSelectedItem() till en sträng
+        String cbVal = (String) cbValjOrder.getSelectedItem();
+        
+        //Sparar vikten som angivits i variabeln txtVikt
+        String txtVikt = txAngeVikt.getText();
+        
+        //Säkerställer att valet var avsiktligt
+        int val = JOptionPane.showConfirmDialog(null, "Vill du skapa fraktsedeln?", "Skapa fraktsedel", JOptionPane.YES_NO_OPTION );
+        
+        if(val == JOptionPane.YES_OPTION)
+        {
+           //Skickar med informationen till klassen SkrivUtFraktsedel
+            new SkrivUtFraktsedel(idb, cbVal, txtVikt).setVisible(true);
+            dispose();
+        }
+        
+    }//GEN-LAST:event_btnSkapaActionPerformed
     
     private void avbrytFraktsedel()
     {
@@ -181,14 +226,17 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
     
     private void fyllICombobox()
     {
+        //SQL-fråga för att hämta OrderID från databasen
          try{
-        ArrayList<HashMap<String, String>> allaOrderar = idb.fetchRows("SELECT OrderID FROM Orders");
+        ArrayList<HashMap<String, String>> allaOrderar = idb.fetchRows("SELECT OrderID FROM Orders WHERE Status = 'Redo'");
                   
+        //Går igenom listan 
                 for(HashMap<String, String> order : allaOrderar){
-                // Hämta orderId
+                
+            // Hämta orderId från listan och sparar det i en sträng
             String orderID = order.get("OrderID");
             
-            // 
+            //Lägger till OrderID i comboboxen
             cbValjOrder.addItem(orderID);    
            
                 }}
@@ -226,18 +274,13 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-       try {
-            // Skapa en ny instans av InfDB
-            idb = new InfDB("Hattmakaren", "3306", "Hattmakaren","HTM123");
-        /* Create and display the form */
+         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new SkapaFraktsedel(idb).setVisible(true);
             }
         });
-    } catch (InfException ex) {       
-            JOptionPane.showMessageDialog(null, "Kunde inte ansluta till databasen!");
-        }
+     
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

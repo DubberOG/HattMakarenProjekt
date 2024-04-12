@@ -15,19 +15,19 @@ import java.text.SimpleDateFormat;
  *
  * @author willi
  */
-public class LaggTillBestallning extends javax.swing.JFrame {
+public class LaggTillBestallning1 extends javax.swing.JFrame {
 
     private InfDB idb;
     /**
      * Creates new form LaggTillBestallning
      * @param idb
      */
-    public LaggTillBestallning(InfDB idb) {
+    public LaggTillBestallning1(InfDB idb) {
         initComponents();
         this.idb = idb;
 
     }
-    private LaggTillBestallning() {
+    private LaggTillBestallning1() {
         initComponents();
         
         try {
@@ -88,6 +88,12 @@ public class LaggTillBestallning extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setText("Välj kund");
 
+        cbValjKund.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbValjKundActionPerformed(evt);
+            }
+        });
+
         lblProdukt.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblProdukt.setText("Välj produkt");
 
@@ -100,7 +106,7 @@ public class LaggTillBestallning extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("Välj status");
 
-        cbStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bekräftad", "Tillverkas", "Redo", "Skickad" }));
+        cbStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bekräftad", "Under tillverkning", "Redo att skickas" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -178,6 +184,10 @@ public class LaggTillBestallning extends javax.swing.JFrame {
     private void btnSparaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaActionPerformed
 sparaBestallning();
     }//GEN-LAST:event_btnSparaActionPerformed
+
+    private void cbValjKundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbValjKundActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbValjKundActionPerformed
 
    
     
@@ -293,7 +303,7 @@ sparaBestallning();
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new LaggTillBestallning().setVisible(true);
+            new LaggTillBestallning1().setVisible(true);
         });
     }
 

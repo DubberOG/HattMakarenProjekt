@@ -155,6 +155,9 @@
           <StringArray count="0"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbValjKundActionPerformed"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
@@ -202,11 +205,10 @@
     <Component class="javax.swing.JComboBox" name="cbStatus">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
+          <StringArray count="3">
             <StringItem index="0" value="Bekr&#xe4;ftad"/>
-            <StringItem index="1" value="Tillverkas"/>
-            <StringItem index="2" value="Redo"/>
-            <StringItem index="3" value="Skickad"/>
+            <StringItem index="1" value="Under tillverkning"/>
+            <StringItem index="2" value="Redo att skickas"/>
           </StringArray>
         </Property>
       </Properties>
