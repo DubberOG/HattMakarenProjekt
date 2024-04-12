@@ -17,28 +17,15 @@ import java.text.SimpleDateFormat;
  */
 public class LaggTillBestallning extends javax.swing.JFrame {
 
-    private InfDB idb;
     /**
      * Creates new form LaggTillBestallning
      * @param idb
      */
-    public LaggTillBestallning(InfDB idb) {
+    public LaggTillBestallning() {
         initComponents();
-        this.idb = idb;
 
     }
-    private LaggTillBestallning() {
-        initComponents();
-        
-        try {
-            idb = new InfDB("Hattmakaren", "3306", "hattmakaren","HTM123");
-        fyllCbValjKund();
-        fyllCbValjProdukt();
-        fylliDatum();
-        } catch (InfException ex) {       
-            JOptionPane.showMessageDialog(null, "Kunde inte ansluta till databasen!");
-        }
-    }
+
     
 
     /**
@@ -183,7 +170,7 @@ sparaBestallning();
     
     private void fyllCbValjKund() {
             try{
-        ArrayList<HashMap<String, String>> allaKunder = idb.fetchRows("SELECT KundID, Namn FROM Kund");
+        ArrayList<HashMap<String, String>> allaKunder = Main.idb.fetchRows("SELECT KundID, Namn FROM Kund");
                   
                 for(HashMap<String, String> kund : allaKunder){
                 // Hämta KundID och Namn från HashMap
@@ -201,7 +188,7 @@ sparaBestallning();
          }}
      private void fyllCbValjProdukt() {
             try{
-        ArrayList<HashMap<String, String>> allaProdukter = idb.fetchRows("SELECT ProduktID, Namn FROM Produkt");
+        ArrayList<HashMap<String, String>> allaProdukter = Main.idb.fetchRows("SELECT ProduktID, Namn FROM Produkt");
                   
                 for(HashMap<String, String> produkt : allaProdukter){
                 // Hämta KundID och Namn från HashMap
@@ -232,7 +219,7 @@ sparaBestallning();
           if(val == JOptionPane.YES_OPTION)
           {
               dispose();
-              new Meny(idb).setVisible(true);
+              new Meny().setVisible(true);
           }
      }
    
@@ -243,7 +230,7 @@ sparaBestallning();
         String valdProdukt = valdKundProdukt.split(" - ")[0]; // Hämta ProduktID från kombinerad sträng
         String valdKund = (String) cbValjProdukt.getSelectedItem();
         String valdKundID = valdKund.split(" - ")[0]; // Hämta KundID från kombinerad sträng
-        String orderID = idb.getAutoIncrement("Orders", "OrderID");
+        String orderID = Main.idb.getAutoIncrement("Orders", "OrderID");
         // Hämta datum från textfältet
         String datum = tfDatum.getText();
 
@@ -254,7 +241,7 @@ sparaBestallning();
         String orderFraga = "INSERT INTO Orders (OrderID, Datum, Status, KundID, ProduktID) VALUES ('" + orderID + "', '" + datum + "', '" + status + "', '" + valdKundID + "', '" + valdProdukt + "')";
 
         // Utför SQL-frågan
-        idb.insert(orderFraga);
+        Main.idb.insert(orderFraga);
 
         // Meddela användaren att beställningen har sparats
         JOptionPane.showMessageDialog(null, "Beställningen har sparats!");
