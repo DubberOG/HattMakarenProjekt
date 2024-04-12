@@ -49,6 +49,7 @@ public class KundLista extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         txtAreaKundLista = new javax.swing.JTextArea();
         btnSeKunder = new javax.swing.JButton();
+        btnKundlistaTillbaka = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -66,6 +67,13 @@ public class KundLista extends javax.swing.JFrame {
             }
         });
 
+        btnKundlistaTillbaka.setText("Tillbaka");
+        btnKundlistaTillbaka.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKundlistaTillbakaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -80,7 +88,10 @@ public class KundLista extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(158, 158, 158)
-                        .addComponent(btnSeKunder)))
+                        .addComponent(btnSeKunder))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(btnKundlistaTillbaka)))
                 .addContainerGap(96, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -92,7 +103,9 @@ public class KundLista extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
                 .addComponent(btnSeKunder)
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addComponent(btnKundlistaTillbaka)
+                .addGap(17, 17, 17))
         );
 
         pack();
@@ -121,6 +134,11 @@ public class KundLista extends javax.swing.JFrame {
        
 
     }//GEN-LAST:event_btnSeKunderActionPerformed
+
+    private void btnKundlistaTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKundlistaTillbakaActionPerformed
+   setVisible(false);
+        new Meny(idb).setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_btnKundlistaTillbakaActionPerformed
     
 //     * @param args the command line arguments
 //     */
@@ -168,6 +186,7 @@ public class KundLista extends javax.swing.JFrame {
     } 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnKundlistaTillbaka;
     private javax.swing.JButton btnSeKunder;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
