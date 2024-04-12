@@ -1,5 +1,7 @@
 
 import oru.inf.InfDB;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -31,22 +33,76 @@ public class KundLista extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtAreaKundLista = new javax.swing.JTextArea();
+        btnSeKunder = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setText("Kundlista");
+
+        txtAreaKundLista.setColumns(20);
+        txtAreaKundLista.setRows(5);
+        jScrollPane1.setViewportView(txtAreaKundLista);
+
+        btnSeKunder.setText("Se kunder");
+        btnSeKunder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSeKunderActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(158, 158, 158)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(90, 90, 90)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(158, 158, 158)
+                        .addComponent(btnSeKunder)))
+                .addContainerGap(96, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel1)
+                .addGap(36, 36, 36)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addComponent(btnSeKunder)
+                .addContainerGap(72, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnSeKunderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeKunderActionPerformed
+        // TODO add your handling code here:
+       txtAreaKundLista.setText("");
+        
+   String query = "SELECT * FROM Kund";
+         
+   ArrayList<HashMap<String, String>> kunder = idb.fetchRows(query);
+        ArrayList<Kund> Kunder = idb.fetchRows(query);         
+           
+         txtAreaKundLista.append("KundID" + "\t" + "Namn" + "\t" + "Efternamn" + "\t" + "Email" + "\t" + "Telefon" + "\t" + "Adress" + "\t" + "Ort" + "\t" + "Postnummer" + "\n");
+
+        for (HashMap<String, String> kund : kunder) {
+        //txtAreaKundLista.append(kund.getKundID() + "\t" + kund.getNamn() + "\t" + kund.getEfternamn() + "\t" + kund.getEmail() + "\t" + kund.getTelefon() + "\t" + kund.getAdress() + "\t" + kund.getOrt() + "\t" + kund.getPostnummer() + "\n");
+    }
+
+    }//GEN-LAST:event_btnSeKunderActionPerformed
+  
     /**
      * @param args the command line arguments
      */
@@ -83,5 +139,9 @@ public class KundLista extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnSeKunder;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea txtAreaKundLista;
     // End of variables declaration//GEN-END:variables
 }
