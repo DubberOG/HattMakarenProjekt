@@ -1,6 +1,5 @@
 
 import javax.swing.JOptionPane;
-import oru.inf.InfDB;
 import oru.inf.InfException;
 
 /*
@@ -14,18 +13,12 @@ import oru.inf.InfException;
  */
 public class BeställningsMeny extends javax.swing.JFrame {
 
-    private InfDB idb;
 
     /**
      * Creates new form BeställningsMeny
      */
     public BeställningsMeny() {
         initComponents();
-        try {
-            idb = new InfDB("Hattmakaren", "3306", "hattmakaren","HTM123");
-        } catch (InfException ex) {       
-            JOptionPane.showMessageDialog(null, "Kunde inte ansluta till databasen!");
-        }
     }
     
 
@@ -42,6 +35,7 @@ public class BeställningsMeny extends javax.swing.JFrame {
         btnVisaTidigareBeställningar = new javax.swing.JButton();
         btnÄndraBeställning = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        btnTillbaka = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -69,6 +63,13 @@ public class BeställningsMeny extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         jLabel1.setText("Beställning");
 
+        btnTillbaka.setText("Tillbaka");
+        btnTillbaka.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTillbakaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -76,6 +77,7 @@ public class BeställningsMeny extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnTillbaka)
                     .addComponent(jLabel1)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(btnVisaTidigareBeställningar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -94,7 +96,9 @@ public class BeställningsMeny extends javax.swing.JFrame {
                 .addComponent(btnVisaTidigareBeställningar)
                 .addGap(27, 27, 27)
                 .addComponent(btnÄndraBeställning, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(109, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                .addComponent(btnTillbaka)
+                .addGap(22, 22, 22))
         );
 
         pack();
@@ -103,20 +107,28 @@ public class BeställningsMeny extends javax.swing.JFrame {
     //Denna knappen tar dig till LaggTillBestallning frame.
     private void btnLäggTillBeställningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLäggTillBeställningActionPerformed
         setVisible(false);
-        new LaggTillBestallning(idb).setVisible(true);
+        new LaggTillBestallning().setVisible(true);
     }//GEN-LAST:event_btnLäggTillBeställningActionPerformed
 
     //Denna knappen tar dig till AndraBestallning frame.
     private void btnÄndraBeställningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnÄndraBeställningActionPerformed
         // TODO add your handling code here:
         setVisible(false);
-        new AndraBestallning(idb).setVisible(true);
+        new AndraBestallning().setVisible(true);
     }//GEN-LAST:event_btnÄndraBeställningActionPerformed
 
     private void btnVisaTidigareBeställningarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisaTidigareBeställningarActionPerformed
         setVisible(false);
-        new OrderHistorik(idb).setVisible(true); 
+        new OrderHistorik(Main.idb).setVisible(true); 
     }//GEN-LAST:event_btnVisaTidigareBeställningarActionPerformed
+
+    private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
+  
+        {                                            
+        setVisible(false);
+        new Meny().setVisible(true);    }
+
+    }//GEN-LAST:event_btnTillbakaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -156,6 +168,7 @@ public class BeställningsMeny extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLäggTillBeställning;
+    private javax.swing.JButton btnTillbaka;
     private javax.swing.JButton btnVisaTidigareBeställningar;
     private javax.swing.JButton btnÄndraBeställning;
     private javax.swing.JLabel jLabel1;

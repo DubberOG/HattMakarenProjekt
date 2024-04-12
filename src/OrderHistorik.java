@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 import javax.swing.JOptionPane;
-import oru.inf.InfDB;
 import oru.inf.InfException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,26 +12,14 @@ import java.util.HashMap;
  */
 public class OrderHistorik extends javax.swing.JFrame {
 
-    private InfDB idb;
     
     /**
      * Creates new form OrderHistorik
      */
-    public OrderHistorik(InfDB idb) {
+    public OrderHistorik() {
         initComponents();
-        this.idb = idb;
     }
     
-    private OrderHistorik() {
-         initComponents();
-        this.idb = idb; 
-        try {
-            idb = new InfDB("Hattmakaren", "3306", "hattmakaren","HTM123");
-
-        } catch (InfException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE,null,ex);
-        }
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -120,7 +107,7 @@ public class OrderHistorik extends javax.swing.JFrame {
         ArrayList<String> orders = new ArrayList<>();
         try{
             String nyOrderFraga = "SELECT * FROM Orders";
-            ArrayList<HashMap<String,String>> ordrar = idb.fetchRows(nyOrderFraga);
+            ArrayList<HashMap<String,String>> ordrar = Main.idb.fetchRows(nyOrderFraga);
             for (HashMap<String,String> order : ordrar) {
                 for (String Orders : order.keySet()) {
             orders.add(Orders + ": " + order.get(Orders));
@@ -138,7 +125,7 @@ public class OrderHistorik extends javax.swing.JFrame {
     private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
          {                                            
         setVisible(false);
-        new Meny(idb).setVisible(true);    }
+        new Meny().setVisible(true);    }
 
     }//GEN-LAST:event_btnTillbakaActionPerformed
 
