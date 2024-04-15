@@ -293,6 +293,16 @@ public class HattLager extends javax.swing.JFrame {
                 String nyHatt = id + ",'" + namn + "','" + storlek + "','" + pris + "'," + "'" + notering + "'";
                 String nyHattFraga = "INSERT INTO Produkt (ProduktID, Namn, Storlek, Pris, Noteringar) VALUES ("+nyHatt+")";
                 Main.idb.insert(nyHattFraga);
+                
+//String uppdateraMaterialLagerTyg = "UPDATE MaterialLager SET Antal = Antal - '" + antalMeter + "' WHERE MaterialID = '" + valdTygID + "'";
+//Main.idb.insert(uppdateraMaterialLagerTyg);
+
+//String uppdateraMaterialLagerUtsmyckning = "UPDATE MaterialLager SET Antal = Antal - '" + utsmyckningsantal + "' WHERE MaterialID = '" + valdUtsmyckningID + "'";
+//Main.idb.insert(uppdateraMaterialLagerUtsmyckning);
+
+
+
+                
                 JOptionPane.showMessageDialog(null, "En ny hatt har skapats!");
 
             }}
