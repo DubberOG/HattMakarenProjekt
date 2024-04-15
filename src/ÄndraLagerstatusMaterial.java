@@ -18,6 +18,7 @@ public class ÄndraLagerstatusMaterial extends javax.swing.JFrame {
      */
     public ÄndraLagerstatusMaterial() {
         initComponents();
+        väljMaterial();
     }
 
     /**
