@@ -27,10 +27,7 @@
               <EmptySpace pref="134" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="btnDatum" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="btnTyp" alignment="0" max="32767" attributes="0"/>
-                      <Component id="btnStatus" alignment="0" max="32767" attributes="0"/>
-                  </Group>
+                  <Component id="btnStatus" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="135" max="-2" attributes="0"/>
           </Group>
@@ -43,9 +40,7 @@
               <Component id="btnDatum" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
               <Component id="btnStatus" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-              <Component id="btnTyp" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="93" max="32767" attributes="0"/>
+              <EmptySpace pref="159" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -66,11 +61,6 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnStatusActionPerformed"/>
       </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnTyp">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Sortera p&#xe5; typ"/>
-      </Properties>
     </Component>
   </SubComponents>
 </Form>

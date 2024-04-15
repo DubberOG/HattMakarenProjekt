@@ -113,13 +113,11 @@ public class ÄndraLagerstatusMaterial extends javax.swing.JFrame {
                                 .addContainerGap()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(lbNytt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtAnge))))
+                                    .addComponent(txtAnge))
+                                .addGap(48, 48, 48)
+                                .addComponent(btnSpara)))
                         .addGap(0, 69, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(145, 145, 145)
-                .addComponent(btnSpara)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -137,10 +135,10 @@ public class ÄndraLagerstatusMaterial extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addComponent(lbNytt)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtAnge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
-                .addComponent(btnSpara)
-                .addGap(17, 17, 17)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtAnge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSpara))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
                 .addComponent(lbFinnsEj)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -188,21 +186,39 @@ public class ÄndraLagerstatusMaterial extends javax.swing.JFrame {
     public void uppdatera()
     {
         String valtÅtgärd = cbVäljÅtgärd.getSelectedItem().toString();
+        int angeAntal = Integer.parseInt(txtAnge.getText());
         if(valtÅtgärd.equals("Lägg till"))
+            
         {
             try
             {
-               int angeAntal = Integer.parseInt(txtAnge.getText());
                if(angeAntal > 0)
                {
-                 Main.idb.update("Update MaterialLager set Antal= antal +'" + angeAntal + "' where Namn ='" + cbVäljMaterial.getSelectedItem() + "'");
+                 Main.idb.update("Update MaterialLager set Antal = antal + " + angeAntal + " where Namn ='" + cbVäljMaterial.getSelectedItem() + "'");
                }
             }
             catch(InfException e)
             {
                 JOptionPane.showMessageDialog(null, "Error");
             }
+            
         }
+        
+        else if (valtÅtgärd.equals("Ta bort"))
+            
+        {
+            try
+            {
+               if(angeAntal > 0)
+               {
+                 Main.idb.update("Update MaterialLager set Antal = antal - " + angeAntal + " where Namn ='" + cbVäljMaterial.getSelectedItem() + "'");
+               }
+            }
+            catch(InfException e)
+            {
+                JOptionPane.showMessageDialog(null, "Error");
+            }
+    }
     }
     /**
      * @param args the command line arguments
