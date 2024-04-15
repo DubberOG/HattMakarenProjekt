@@ -58,8 +58,10 @@ public class SkrivUtFraktsedel extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setText("Från");
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("Till");
 
         lbNamn.setText("Namn");
@@ -85,10 +87,11 @@ public class SkrivUtFraktsedel extends javax.swing.JFrame {
 
         lbDagensDatum.setText("0000-00-00");
 
-        lbOrderID.setText("123");
+        lbOrderID.setText("OrderID: 111");
 
         lbVikt.setText("Vikt: 2,0KG");
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setText("Orderinformation");
 
         btnSkrivUT.setText("Skriv ut");
@@ -221,7 +224,7 @@ public class SkrivUtFraktsedel extends javax.swing.JFrame {
         lbAdress.setText(adress);
         lbPostNR.setText(pNummer);
         lbOrt.setText(ort);
-        lbVikt.setText(txtVikt + " KG");
+        lbVikt.setText("Vikt: "+ txtVikt + " KG");
         lbOrderID.setText("OrderID: " + cbVal);
         }
         

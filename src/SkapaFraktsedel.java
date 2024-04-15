@@ -87,9 +87,9 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
         lbValjKund.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lbValjKund.setText("Välj order:");
 
-        cbValjOrder.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                cbValjOrderMouseReleased(evt);
+        cbValjOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbValjOrderActionPerformed(evt);
             }
         });
 
@@ -209,9 +209,9 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
        fyllTextArea();
     }//GEN-LAST:event_btnSokActionPerformed
 
-    private void cbValjOrderMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbValjOrderMouseReleased
-       fyllTextArea();
-    }//GEN-LAST:event_cbValjOrderMouseReleased
+    private void cbValjOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbValjOrderActionPerformed
+        fyllTextArea();
+    }//GEN-LAST:event_cbValjOrderActionPerformed
     
     private void avbrytFraktsedel()
     {
