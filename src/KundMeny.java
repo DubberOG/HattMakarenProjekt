@@ -113,12 +113,12 @@ public class KundMeny extends javax.swing.JFrame {
 
     private void btnLäggTillNyKundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLäggTillNyKundActionPerformed
         setVisible(false);
-        new NyKund(idb).setVisible(true); 
+        new NyKund().setVisible(true); 
     }//GEN-LAST:event_btnLäggTillNyKundActionPerformed
 
     private void btnTaBortKundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortKundActionPerformed
         setVisible(false);
-        new TaBortKund(idb).setVisible(true); 
+        new TaBortKund().setVisible(true); 
     }//GEN-LAST:event_btnTaBortKundActionPerformed
 
     private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
@@ -129,7 +129,7 @@ public class KundMeny extends javax.swing.JFrame {
     private void btnSeKundlistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeKundlistaActionPerformed
         // TODO add your handling code here:
         setVisible(false);
-        new KundLista(idb).setVisible(true);
+        new KundLista(Main.idb).setVisible(true);
     }//GEN-LAST:event_btnSeKundlistaActionPerformed
 
     /**
