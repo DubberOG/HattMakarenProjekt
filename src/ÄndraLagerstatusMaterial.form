@@ -49,14 +49,14 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="lbVäljÅtgärd" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cbVäljÅtgärd" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="lbNytt" max="32767" attributes="0"/>
-                                  <Component id="txtÖka" max="32767" attributes="0"/>
+                                  <Component id="txtAnge" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -85,12 +85,12 @@
               <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="cbVäljMaterial" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cbVäljÅtgärd" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               <Component id="lbNytt" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="txtÖka" min="-2" max="-2" attributes="0"/>
+              <Component id="txtAnge" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="24" max="32767" attributes="0"/>
               <Component id="btnSpara" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
@@ -156,9 +156,9 @@
         <Property name="text" type="java.lang.String" value="V&#xe4;lj material:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txt&#xd6;ka">
+    <Component class="javax.swing.JTextField" name="txtAnge">
     </Component>
-    <Component class="javax.swing.JComboBox" name="jComboBox1">
+    <Component class="javax.swing.JComboBox" name="cbV&#xe4;lj&#xc5;tg&#xe4;rd">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="2">

@@ -19,6 +19,7 @@ public class ÄndraLagerstatusMaterial extends javax.swing.JFrame {
     public ÄndraLagerstatusMaterial() {
         initComponents();
         väljMaterial();
+        txtAnge.setEnabled(false);
     }
 
     /**
@@ -36,8 +37,8 @@ public class ÄndraLagerstatusMaterial extends javax.swing.JFrame {
         lbFinnsEj = new javax.swing.JLabel();
         btnLäggTillNytt = new javax.swing.JButton();
         lbVälj = new javax.swing.JLabel();
-        txtÖka = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        txtAnge = new javax.swing.JTextField();
+        cbVäljÅtgärd = new javax.swing.JComboBox<>();
         lbVäljÅtgärd = new javax.swing.JLabel();
         lbNytt = new javax.swing.JLabel();
         btnSpara = new javax.swing.JButton();
@@ -67,7 +68,7 @@ public class ÄndraLagerstatusMaterial extends javax.swing.JFrame {
         lbVälj.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lbVälj.setText("Välj material:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lägg till", "Ta bort" }));
+        cbVäljÅtgärd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lägg till", "Ta bort" }));
 
         lbVäljÅtgärd.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lbVäljÅtgärd.setText("Välj åtgärd:");
@@ -103,12 +104,12 @@ public class ÄndraLagerstatusMaterial extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lbVäljÅtgärd)
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(cbVäljÅtgärd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(lbNytt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtÖka))))
+                                    .addComponent(txtAnge))))
                         .addGap(0, 69, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
@@ -128,11 +129,11 @@ public class ÄndraLagerstatusMaterial extends javax.swing.JFrame {
                 .addGap(2, 2, 2)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbVäljMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbVäljÅtgärd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addComponent(lbNytt)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtÖka, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtAnge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addComponent(btnSpara)
                 .addGap(17, 17, 17)
@@ -175,9 +176,25 @@ public class ÄndraLagerstatusMaterial extends javax.swing.JFrame {
         }
     }
     
-    public void valtMaterial()
+    public void väljÅtgärd()
     {
-        
+        String valtÅtgärd = cbVäljÅtgärd.getSelectedItem().toString();
+        if(valtÅtgärd.equals("Lägg till"))
+        {
+            txtAnge.setEnabled(true);
+            try
+            {
+               int angeAntal = Integer.parseInt(txtAnge.getText());
+               if(angeAntal > 0)
+               {
+                 Main.idb.update("Update MaterialLager set Antal= antal +'" + angeAntal + "' where Namn ='" + cbVäljMaterial.getSelectedItem() + "'");
+               }
+            }
+            catch(InfException e)
+            {
+                JOptionPane.showMessageDialog(null, "Error");
+            }
+        }
     }
     /**
      * @param args the command line arguments
@@ -219,12 +236,12 @@ public class ÄndraLagerstatusMaterial extends javax.swing.JFrame {
     private javax.swing.JButton btnSpara;
     private javax.swing.JButton btnTillbaka;
     private javax.swing.JComboBox<String> cbVäljMaterial;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> cbVäljÅtgärd;
     private javax.swing.JLabel lbFinnsEj;
     private javax.swing.JLabel lbNytt;
     private javax.swing.JLabel lbVälj;
     private javax.swing.JLabel lbVäljÅtgärd;
     private javax.swing.JLabel lblRubrik;
-    private javax.swing.JTextField txtÖka;
+    private javax.swing.JTextField txtAnge;
     // End of variables declaration//GEN-END:variables
 }
