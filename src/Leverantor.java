@@ -2,6 +2,7 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import oru.inf.InfException;
+import javax.swing.JOptionPane;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -13,6 +14,8 @@ import oru.inf.InfException;
  * @author sofia
  */
 public class Leverantor extends javax.swing.JFrame {
+
+   
 
     /**
      * Creates new form Leverantör
@@ -33,9 +36,9 @@ public class Leverantor extends javax.swing.JFrame {
     private void initComponents() {
 
         txtSeLeverantörer = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txtAreaSeLeverantörer = new javax.swing.JTextArea();
         btnSeLeverantörer = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtAreaSeLeverantorer = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -46,10 +49,6 @@ public class Leverantor extends javax.swing.JFrame {
             }
         });
 
-        txtAreaSeLeverantörer.setColumns(20);
-        txtAreaSeLeverantörer.setRows(5);
-        jScrollPane1.setViewportView(txtAreaSeLeverantörer);
-
         btnSeLeverantörer.setText("Se leverantörer");
         btnSeLeverantörer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -57,31 +56,35 @@ public class Leverantor extends javax.swing.JFrame {
             }
         });
 
+        txtAreaSeLeverantorer.setColumns(20);
+        txtAreaSeLeverantorer.setRows(5);
+        jScrollPane1.setViewportView(txtAreaSeLeverantorer);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(98, Short.MAX_VALUE)
+                .addContainerGap(103, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(88, 88, 88))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(txtSeLeverantörer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(125, 125, 125))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnSeLeverantörer)
-                        .addGap(132, 132, 132))))
+                        .addGap(132, 132, 132))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(83, 83, 83))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(41, 41, 41)
                 .addComponent(txtSeLeverantörer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
+                .addGap(45, 45, 45)
                 .addComponent(btnSeLeverantörer)
                 .addContainerGap(53, Short.MAX_VALUE))
         );
@@ -95,24 +98,44 @@ public class Leverantor extends javax.swing.JFrame {
 
     private void btnSeLeverantörerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeLeverantörerActionPerformed
         // TODO add your handling code here:
-         ArrayList<String> Leverantorer = new ArrayList<>();
+        ArrayList<String> orders = new ArrayList<>();
         try{
-            String nyLeverantorFraga = "SELECT * FROM Leverantör";
+            String nyLeverantorFraga = "SELECT * FROM leverantör";
             ArrayList<HashMap<String,String>> leverantorer = Main.idb.fetchRows(nyLeverantorFraga);
             for (HashMap<String,String> leverantor : leverantorer) {
-                for (String Leverantor : leverantorer.keySet()) {
-            leverantorer.add(leverantor + ": " + leverantorer.get(leverantor));
+                for (String Leverantor : leverantor.keySet()) {
+            orders.add(leverantor + ": " + leverantor.get(leverantor));
         }
     }
-           for (String leverantor : leverantorer){
-            txtAreaSeLeverantörer.append(leverantor + "\n");
+           for (String order : orders) {
+            txtAreaSeLeverantorer.append(order + "\n");
     }
 
         }catch (InfException e){
             System.out.println ("internt felmedelande:" + e.getMessage());
         }
-    }                                      
+       
 
+    }     
+         
+       /* ArrayList<HashMap<String, String>> leverantorer = new ArrayList<>();
+    try {
+        // Hämta leverantörer från databasen och lagra dem i listan
+        String query = "SELECT * FROM Leverantor";
+        leverantorer = Main.idb.fetchRows(query);
+        
+        // Iterera över varje leverantör och lägg till deras data i textfältet
+        for (HashMap<String, String> leverantor : leverantorer) {
+            for (String key : leverantor.keySet()) {
+                String value = leverantor.get(key);
+                txtAreaSeLeverantorer.append(leverantor + "\n");
+            }
+        }
+    } catch (InfException e) {
+        // Hantera eventuella databasfel
+        System.out.println("Internt felmeddelande: " + e.getMessage());
+    }
+}     
     }//GEN-LAST:event_btnSeLeverantörerActionPerformed
 
     /**
@@ -150,10 +173,11 @@ public class Leverantor extends javax.swing.JFrame {
         });
     }
 
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSeLeverantörer;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea txtAreaSeLeverantörer;
+    private javax.swing.JTextArea txtAreaSeLeverantorer;
     private javax.swing.JTextField txtSeLeverantörer;
     // End of variables declaration//GEN-END:variables
 }
