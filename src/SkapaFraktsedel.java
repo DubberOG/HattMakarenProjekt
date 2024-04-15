@@ -172,6 +172,7 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
         //Säkerställer att valet var avsiktligt
         if(viktKorrekt)
         {
+            btnSkapa.setEnabled(true);
         int val = JOptionPane.showConfirmDialog(null, "Vill du skapa fraktsedeln?", "Skapa fraktsedel", JOptionPane.YES_NO_OPTION );
         
         if(val == JOptionPane.YES_OPTION)
