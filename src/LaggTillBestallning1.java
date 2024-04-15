@@ -99,6 +99,12 @@ public class LaggTillBestallning1 extends javax.swing.JFrame {
         lblProdukt.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblProdukt.setText("Välj produkt");
 
+        cbValjProdukt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbValjProduktActionPerformed(evt);
+            }
+        });
+
         lblProdukt1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblProdukt1.setText("Skriv in datum");
 
@@ -224,6 +230,10 @@ public class LaggTillBestallning1 extends javax.swing.JFrame {
     private void txtPrisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrisActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPrisActionPerformed
+
+    private void cbValjProduktActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbValjProduktActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbValjProduktActionPerformed
 
    
     

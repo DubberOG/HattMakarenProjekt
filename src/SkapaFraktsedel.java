@@ -164,19 +164,6 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
         avbrytFraktsedel();
     }//GEN-LAST:event_btnAvbrytActionPerformed
 
-    private void txAngeViktKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txAngeViktKeyReleased
-        //Kollar så att värdet är korrekt i vikt
-        checkTxAngeVikt();
-        //Kollar så att vikt är ifyllt samt att en order har valts i comboboxen
-
-       if (!txAngeVikt.getText().isEmpty() && cbValjOrder.getSelectedItem() != null) 
-        {
-            btnSkapa.setEnabled(true);
-        }
-        
-
-    }//GEN-LAST:event_txAngeViktKeyReleased
-
     private void btnSkapaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSkapaActionPerformed
 
         //Omvandlar resultatet från getSelectedItem() till en sträng
@@ -185,7 +172,7 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
         //Sparar vikten som angivits i variabeln txtVikt
         String txtVikt = txAngeVikt.getText();
         
-        //Säkerställer att valet var avsiktligt
+        
         int val = JOptionPane.showConfirmDialog(null, "Vill du skapa fraktsedeln?", "Skapa fraktsedel", JOptionPane.YES_NO_OPTION );
         
         if(val == JOptionPane.YES_OPTION)
@@ -200,6 +187,10 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
     private void cbValjOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbValjOrderActionPerformed
         fyllTextArea();
     }//GEN-LAST:event_cbValjOrderActionPerformed
+
+    private void txAngeViktKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txAngeViktKeyReleased
+       checkTxAngeVikt();
+    }//GEN-LAST:event_txAngeViktKeyReleased
     
     private void avbrytFraktsedel()
     {
@@ -263,21 +254,26 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
         
     }
     
-    public void checkTxAngeVikt()
+    public boolean checkTxAngeVikt()
     {
+        boolean korrekt = false;
         try{
             int vikt = Integer.parseInt(txAngeVikt.getText());
             if(vikt < 0 || vikt > 50)
             {
                 JOptionPane.showMessageDialog(null, "Vikten får inte vara mindre än 0 eller större än 50!");
+               
+            }else
+            {
+                korrekt = true;
             }
            } 
         catch(NumberFormatException e)
         {
           JOptionPane.showMessageDialog(null, "Vänligen ange ett heltal!");  
         }
-       
-      
+       btnSkapa.setEnabled(korrekt);
+      return korrekt;
     }
     
     /**
