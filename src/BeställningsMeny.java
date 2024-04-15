@@ -119,7 +119,7 @@ public class BeställningsMeny extends javax.swing.JFrame {
 
     private void btnVisaTidigareBeställningarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisaTidigareBeställningarActionPerformed
         setVisible(false);
-        new OrderHistorik(Main.idb).setVisible(true); 
+        new OrderHistorik().setVisible(true); 
     }//GEN-LAST:event_btnVisaTidigareBeställningarActionPerformed
 
     private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
