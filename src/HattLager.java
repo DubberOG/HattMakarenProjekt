@@ -270,23 +270,27 @@ public class HattLager extends javax.swing.JFrame {
                 String valdTygID = tyg.split(" - ")[0];
                 String strMeter = txtAntalMeter.getText();
                 double antalMeter = Double.parseDouble(strMeter);
-                String utsmyckning = cbValjUtsmyckning.toString();
+                String utsmyckning = cbValjUtsmyckning.getSelectedItem().toString();
+                String valdUtsmyckningID = tyg.split(" - ")[0];
                 String strAntal = txtUtsmyckningsantal.getText();
                 double utsmyckningsantal = Double.parseDouble(strAntal);
                 String notering = txtNotering.getText();
                 String tygPrisStringFraga = "SELECT PrisPerEnhet FROM Material WHERE MaterialID = '"+valdTygID+"'"; //splitta namn och ID!
                 String tygPrisStringResultat = Main.idb.fetchSingle(tygPrisStringFraga);
                 double tygPris = Double.parseDouble(tygPrisStringResultat);
+                String utsmyckningPrisStringFraga = "SELECT PrisPerEnhet FROM Material WHERE MaterialID = '"+valdUtsmyckningID+"'"; //splitta namn och ID!
+                String utsmyckningPrisStringResultat = Main.idb.fetchSingle(utsmyckningPrisStringFraga);
+                double utsmyckningPris = Double.parseDouble(utsmyckningPrisStringResultat);
                 
                 double prisTyg = tygPris * antalMeter;
-               // prisUtsmycknig
+                double prisUtsmyckning = utsmyckningPris * utsmyckningsantal;
                 double prisArbete = antalTimmar * angeTimpris;
-                double pris = prisArbete + prisTyg;
+                double pris = prisArbete + prisTyg + prisUtsmyckning;
                         
                 //Uppdatera materiallager
                 
                 //Koppla validering så att det inte blir dubbla värden
-                String nyHatt = id + ",'" + namn + "'," + storlek + ",'" + pris + "'," + "'" + notering + "'";
+                String nyHatt = id + ",'" + namn + "','" + storlek + "','" + pris + "'," + "'" + notering + "'";
                 String nyHattFraga = "INSERT INTO Produkt (ProduktID, Namn, Storlek, Pris, Noteringar) VALUES ("+nyHatt+")";
                 Main.idb.insert(nyHattFraga);
                 JOptionPane.showMessageDialog(null, "En ny hatt har skapats!");
