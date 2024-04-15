@@ -58,8 +58,10 @@ public class SkrivUtFraktsedel extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setText("Från");
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("Till");
 
         lbNamn.setText("Namn");
@@ -85,10 +87,11 @@ public class SkrivUtFraktsedel extends javax.swing.JFrame {
 
         lbDagensDatum.setText("0000-00-00");
 
-        lbOrderID.setText("OrderID");
+        lbOrderID.setText("OrderID: 111");
 
         lbVikt.setText("Vikt: 2,0KG");
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setText("Orderinformation");
 
         btnSkrivUT.setText("Skriv ut");
@@ -112,32 +115,29 @@ public class SkrivUtFraktsedel extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(lbFrakt))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addComponent(lbAdress, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGap(44, 44, 44))
-                                    .addComponent(lbFrån, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                            .addComponent(lbAdress, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addGap(44, 44, 44))
+                                        .addComponent(lbFrån, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                            .addComponent(lbPostNR, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(lbOrt)))
+                                    .addGroup(layout.createSequentialGroup()
                                         .addComponent(lbNamn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(lbENamn, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addComponent(lbPostNR, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(lbOrt)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 169, Short.MAX_VALUE)
+                                        .addComponent(lbENamn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(lbDatum)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                .addComponent(lbOrderID)
-                                                .addGap(1, 1, 1)))
+                                        .addComponent(lbDatum)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(lbDagensDatum))
                                     .addComponent(lbVikt)
-                                    .addComponent(jLabel3))
+                                    .addComponent(jLabel3)
+                                    .addComponent(lbOrderID))
                                 .addGap(5, 5, 5)))
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
@@ -198,7 +198,7 @@ public class SkrivUtFraktsedel extends javax.swing.JFrame {
 
     private void btnSkrivUTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSkrivUTActionPerformed
         JOptionPane.showMessageDialog(null, "HITTA INGEN SKRIVARE!");
-        dispose();
+       
     }//GEN-LAST:event_btnSkrivUTActionPerformed
 
     private void fylliDatum()
@@ -224,8 +224,8 @@ public class SkrivUtFraktsedel extends javax.swing.JFrame {
         lbAdress.setText(adress);
         lbPostNR.setText(pNummer);
         lbOrt.setText(ort);
-        lbVikt.setText(txtVikt + " KG");
-        lbOrderID.setText(cbVal);
+        lbVikt.setText("Vikt: "+ txtVikt + " KG");
+        lbOrderID.setText("OrderID: " + cbVal);
         }
         
         catch(InfException e)

@@ -43,7 +43,6 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
         lbOrderLista = new javax.swing.JLabel();
         lbValjKund = new javax.swing.JLabel();
         cbValjOrder = new javax.swing.JComboBox<>();
-        btnSok = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -87,10 +86,9 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
         lbValjKund.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lbValjKund.setText("Välj order:");
 
-        btnSok.setText("Sök");
-        btnSok.addActionListener(new java.awt.event.ActionListener() {
+        cbValjOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSokActionPerformed(evt);
+                cbValjOrderActionPerformed(evt);
             }
         });
 
@@ -130,9 +128,7 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
                         .addComponent(lbOrderLista)
                         .addGap(26, 26, 26))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnSok))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(14, 14, 14))))
         );
         layout.setVerticalGroup(
@@ -152,8 +148,7 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnSkapa)
-                            .addComponent(btnAvbryt)
-                            .addComponent(btnSok))
+                            .addComponent(btnAvbryt))
                         .addGap(33, 33, 33))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -170,7 +165,8 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAvbrytActionPerformed
 
     private void txAngeViktKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txAngeViktKeyReleased
-       //Kollar så att vikt är ifyllt samt att en order har valts i comboboxen
+
+        //Kollar så att vikt är ifyllt samt att en order har valts i comboboxen
 
        if (!txAngeVikt.getText().isEmpty() && cbValjOrder.getSelectedItem() != null) 
         {
@@ -181,11 +177,15 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
     }//GEN-LAST:event_txAngeViktKeyReleased
 
     private void btnSkapaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSkapaActionPerformed
+
         //Omvandlar resultatet från getSelectedItem() till en sträng
         String cbVal = (String) cbValjOrder.getSelectedItem();
         
         //Sparar vikten som angivits i variabeln txtVikt
         String txtVikt = txAngeVikt.getText();
+        
+        //Kollar att vikten är ok
+        checkTxAngeVikt();
         
         //Säkerställer att valet var avsiktligt
         int val = JOptionPane.showConfirmDialog(null, "Vill du skapa fraktsedeln?", "Skapa fraktsedel", JOptionPane.YES_NO_OPTION );
@@ -199,9 +199,9 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnSkapaActionPerformed
 
-    private void btnSokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokActionPerformed
-       fyllTextArea();
-    }//GEN-LAST:event_btnSokActionPerformed
+    private void cbValjOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbValjOrderActionPerformed
+        fyllTextArea();
+    }//GEN-LAST:event_cbValjOrderActionPerformed
     
     private void avbrytFraktsedel()
     {
@@ -265,6 +265,23 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
         
     }
     
+    public void checkTxAngeVikt()
+    {
+        try{
+            int vikt = Integer.parseInt(txAngeVikt.getText());
+            if(vikt < 0 || vikt > 50)
+            {
+                JOptionPane.showMessageDialog(null, "Vikten får inte vara mindre än 0 eller större än 50!");
+            }
+           } 
+        catch(NumberFormatException e)
+        {
+          JOptionPane.showMessageDialog(null, "Vänligen ange ett heltal!");  
+        }
+       
+      
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -304,7 +321,6 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAvbryt;
     private javax.swing.JButton btnSkapa;
-    private javax.swing.JButton btnSok;
     private javax.swing.JComboBox<String> cbValjOrder;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
