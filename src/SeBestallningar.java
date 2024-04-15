@@ -27,7 +27,6 @@ public class SeBestallningar extends javax.swing.JFrame {
 
         btnDatum = new javax.swing.JButton();
         btnStatus = new javax.swing.JButton();
-        btnTyp = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -45,8 +44,6 @@ public class SeBestallningar extends javax.swing.JFrame {
             }
         });
 
-        btnTyp.setText("Sortera på typ");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -55,9 +52,7 @@ public class SeBestallningar extends javax.swing.JFrame {
                 .addContainerGap(134, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnDatum)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(btnTyp, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnStatus, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(btnStatus))
                 .addGap(135, 135, 135))
         );
         layout.setVerticalGroup(
@@ -67,9 +62,7 @@ public class SeBestallningar extends javax.swing.JFrame {
                 .addComponent(btnDatum)
                 .addGap(43, 43, 43)
                 .addComponent(btnStatus)
-                .addGap(43, 43, 43)
-                .addComponent(btnTyp)
-                .addContainerGap(93, Short.MAX_VALUE))
+                .addContainerGap(159, Short.MAX_VALUE))
         );
 
         pack();
@@ -125,6 +118,5 @@ public class SeBestallningar extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDatum;
     private javax.swing.JButton btnStatus;
-    private javax.swing.JButton btnTyp;
     // End of variables declaration//GEN-END:variables
 }
