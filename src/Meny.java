@@ -136,7 +136,7 @@ public class Meny extends javax.swing.JFrame {
 
     private void btnLoggaUtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoggaUtActionPerformed
         dispose();
-        new Meny().setVisible(true);
+        new LoggaIn().setVisible(true);
     }//GEN-LAST:event_btnLoggaUtActionPerformed
 
     private void btnLagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLagerActionPerformed
