@@ -165,7 +165,9 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAvbrytActionPerformed
 
     private void txAngeViktKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txAngeViktKeyReleased
-       //Kollar så att vikt är ifyllt samt att en order har valts i comboboxen
+        //Kollar så att värdet är korrekt i vikt
+        checkTxAngeVikt();
+        //Kollar så att vikt är ifyllt samt att en order har valts i comboboxen
 
        if (!txAngeVikt.getText().isEmpty() && cbValjOrder.getSelectedItem() != null) 
         {
@@ -176,8 +178,7 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
     }//GEN-LAST:event_txAngeViktKeyReleased
 
     private void btnSkapaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSkapaActionPerformed
-        //Kollar så att värdet är korrekt i vikt
-        checkTxAngeVikt();
+
         //Omvandlar resultatet från getSelectedItem() till en sträng
         String cbVal = (String) cbValjOrder.getSelectedItem();
         
@@ -264,12 +265,19 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
     
     public void checkTxAngeVikt()
     {
-        int vikt = Integer.parseInt(txAngeVikt.getText());
-        if(vikt < 0 || vikt > 50)
+        try{
+            int vikt = Integer.parseInt(txAngeVikt.getText());
+            if(vikt < 0 || vikt > 50)
+            {
+                JOptionPane.showMessageDialog(null, "Vikten får inte vara mindre än 0 eller större än 50!");
+            }
+           } 
+        catch(NumberFormatException e)
         {
-            JOptionPane.showMessageDialog(null, "Vikten får inte vara mindre än 0 eller större än 50!");
+          JOptionPane.showMessageDialog(null, "Vänligen ange ett heltal!");  
         }
-        
+       
+      
     }
     
     /**
