@@ -77,6 +77,11 @@ public class ÄndraLagerstatusMaterial extends javax.swing.JFrame {
         lbNytt.setText("Ange förändring:");
 
         btnSpara.setText("Spara");
+        btnSpara.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSparaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -158,6 +163,10 @@ public class ÄndraLagerstatusMaterial extends javax.swing.JFrame {
        //new LäggTillMaterial().setVisible(true);
     }//GEN-LAST:event_btnLäggTillNyttActionPerformed
 
+    private void btnSparaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaActionPerformed
+        uppdatera();
+    }//GEN-LAST:event_btnSparaActionPerformed
+
     
     public void väljMaterial()
     {
@@ -176,7 +185,7 @@ public class ÄndraLagerstatusMaterial extends javax.swing.JFrame {
         }
     }
     
-    public void väljÅtgärd()
+    public void uppdatera()
     {
         String valtÅtgärd = cbVäljÅtgärd.getSelectedItem().toString();
         if(valtÅtgärd.equals("Lägg till"))
