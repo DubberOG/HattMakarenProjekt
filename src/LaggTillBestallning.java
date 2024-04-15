@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.HashMap;
-import oru.inf.InfDB;
 import oru.inf.InfException;
 import javax.swing.JOptionPane;
 import java.util.Date;
@@ -23,7 +22,9 @@ public class LaggTillBestallning extends javax.swing.JFrame {
      */
     public LaggTillBestallning() {
         initComponents();
-
+        fyllCbValjKund();
+        fyllCbValjProdukt();
+        fylliDatum();
     }
 
     
@@ -85,6 +86,12 @@ public class LaggTillBestallning extends javax.swing.JFrame {
 
         lblProdukt.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblProdukt.setText("Välj produkt");
+
+        cbValjProdukt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbValjProduktActionPerformed(evt);
+            }
+        });
 
         lblProdukt1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblProdukt1.setText("Skriv in datum");
@@ -189,7 +196,7 @@ public class LaggTillBestallning extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAvbrytActionPerformed
 
     private void btnSparaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaActionPerformed
-sparaBestallning();
+        sparaBestallning();
     }//GEN-LAST:event_btnSparaActionPerformed
 
     private void txtPrisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrisActionPerformed
@@ -213,20 +220,23 @@ sparaBestallning();
         }
     }//GEN-LAST:event_cbValjKundActionPerformed
 
+    private void cbValjProduktActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbValjProduktActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbValjProduktActionPerformed
+
    
     
     private void fyllCbValjKund() {
             try{
-        ArrayList<HashMap<String, String>> allaKunder = Main.idb.fetchRows("SELECT KundID, Namn FROM Kund");
-                  
+                ArrayList<HashMap<String, String>> allaKunder = Main.idb.fetchRows("SELECT KundID, Namn FROM Kund");
                 for(HashMap<String, String> kund : allaKunder){
-                // Hämta KundID och Namn från HashMap
-            String kundID = kund.get("KundID");
-            String namn = kund.get("Namn");
-            
-            // Skapa en sträng som innehåller både KundID och namn och lägg till i comboboxen
-            cbValjKund.addItem(kundID + " - " + namn);    
-           
+                    // Hämta KundID och Namn från HashMap
+                        System.out.println("a");
+                        String kundID = kund.get("KundID");
+                        String namn = kund.get("Namn");
+
+                        // Skapa en sträng som innehåller både KundID och namn och lägg till i comboboxen
+                        cbValjKund.addItem(kundID + " - " + namn);
                 }}
                     
               
@@ -243,7 +253,7 @@ sparaBestallning();
             String namn = produkt.get("Namn");
             
             // Skapa en sträng som innehåller både KundID och namn och lägg till i comboboxen
-            cbValjProdukt.addItem(produktID + " - " + namn);    
+            cbValjProdukt.addItem(produktID + " - " + namn);  
            
                 }}
                     
@@ -258,6 +268,7 @@ sparaBestallning();
          SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
          String dagensDatum = format.format(datum);
          tfDatum.setText(dagensDatum);
+         System.out.println("C");
      }
      
      private void avbrytBestallning()
