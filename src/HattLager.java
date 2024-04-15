@@ -267,23 +267,27 @@ public class HattLager extends javax.swing.JFrame {
                 String strTimpris = txtAngeTimpris.getText();
                 double angeTimpris = Double.parseDouble(strTimpris);
                 String tyg = cbValjTyg.getSelectedItem().toString();
+                String valdTygID = tyg.split(" - ")[0];
                 String strMeter = txtAntalMeter.getText();
                 double antalMeter = Double.parseDouble(strMeter);
                 String utsmyckning = cbValjUtsmyckning.toString();
                 String strAntal = txtUtsmyckningsantal.getText();
                 double utsmyckningsantal = Double.parseDouble(strAntal);
                 String notering = txtNotering.getText();
+                String tygPrisStringFraga = "SELECT PrisPerEnhet FROM Material WHERE MaterialID = '"+valdTygID+"'"; //splitta namn och ID!
+                String tygPrisStringResultat = Main.idb.fetchSingle(tygPrisStringFraga);
+                double tygPris = Double.parseDouble(tygPrisStringResultat);
                 
-               // prisTyg - 
+                double prisTyg = tygPris * antalMeter;
                // prisUtsmycknig
                 double prisArbete = antalTimmar * angeTimpris;
-                double pris = prisArbete;
+                double pris = prisArbete + prisTyg;
                         
-                
+                //Uppdatera materiallager
                 
                 //Koppla validering så att det inte blir dubbla värden
-                String nyHatt = id + ",'" + namn + "'," + 1 + ",'" + storlek + "'," + "'" + pris + "'";
-                String nyHattFraga = "INSERT INTO Produkt (ProduktID, Namn, Antal, Storlek, Pris) VALUES ("+nyHatt+")";
+                String nyHatt = id + ",'" + namn + "'," + storlek + ",'" + pris + "'," + "'" + notering + "'";
+                String nyHattFraga = "INSERT INTO Produkt (ProduktID, Namn, Storlek, Pris, Noteringar) VALUES ("+nyHatt+")";
                 Main.idb.insert(nyHattFraga);
                 JOptionPane.showMessageDialog(null, "En ny hatt har skapats!");
 
@@ -295,7 +299,9 @@ public class HattLager extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSkapaHattActionPerformed
 
     private void btnLäggILagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLäggILagerActionPerformed
-        // TODO add your handling code here:
+        // Koppla till lägg i lager
+        // Skicka med pris
+        // Uppdatera meteriallager
     }//GEN-LAST:event_btnLäggILagerActionPerformed
          private void fyllCbValjStandardhatt() {
             try{
@@ -316,7 +322,7 @@ public class HattLager extends javax.swing.JFrame {
          
          private void fyllCbValjTyg() {
             try{
-        ArrayList<HashMap<String, String>> allaTyger = Main.idb.fetchRows("SELECT MaterialID, Namn FROM Tyg");
+        ArrayList<HashMap<String, String>> allaTyger = Main.idb.fetchRows("SELECT MaterialID, Namn FROM Material WHERE Typ = 'tyg'");
                   
                 for(HashMap<String, String> tyg : allaTyger){
                 // Hämta KundID och Namn från HashMap
@@ -334,7 +340,7 @@ public class HattLager extends javax.swing.JFrame {
          }}
              private void fyllCbValjUtsmyckning() {
             try{
-        ArrayList<HashMap<String, String>> allaUtsmyckningar = Main.idb.fetchRows("SELECT MaterialID, Namn FROM Utsmyckning");
+        ArrayList<HashMap<String, String>> allaUtsmyckningar = Main.idb.fetchRows("SELECT MaterialID, Namn FROM Material WHERE Typ = 'Utsmyckning'");
                   
                 for(HashMap<String, String> utsmyckning : allaUtsmyckningar){
                 // Hämta KundID och Namn från HashMap
