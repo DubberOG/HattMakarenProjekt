@@ -1,3 +1,7 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import javax.swing.JOptionPane;
+import oru.inf.InfException;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -27,7 +31,9 @@ public class ÄndraLagerstatusMaterial extends javax.swing.JFrame {
 
         lblRubrik = new javax.swing.JLabel();
         btnTillbaka = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cbVäljMaterial = new javax.swing.JComboBox<>();
+        lbFinnsEj = new javax.swing.JLabel();
+        btnLäggTillNytt = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -41,7 +47,17 @@ public class ÄndraLagerstatusMaterial extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbVäljMaterial.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        lbFinnsEj.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbFinnsEj.setText("Finns inte materialet?");
+
+        btnLäggTillNytt.setText("Lägg till Material");
+        btnLäggTillNytt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLäggTillNyttActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -50,15 +66,22 @@ public class ÄndraLagerstatusMaterial extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(70, 70, 70)
-                        .addComponent(lblRubrik))
-                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(96, 96, 96)
+                                .addComponent(cbVäljMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(70, 70, 70)
+                                .addComponent(lblRubrik)))
+                        .addGap(0, 69, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(25, 25, 25)
-                        .addComponent(btnTillbaka))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(96, 96, 96)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(75, Short.MAX_VALUE))
+                        .addComponent(btnTillbaka)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbFinnsEj)
+                            .addComponent(btnLäggTillNytt))))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -66,9 +89,13 @@ public class ÄndraLagerstatusMaterial extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addComponent(lblRubrik)
                 .addGap(34, 34, 34)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 154, Short.MAX_VALUE)
-                .addComponent(btnTillbaka)
+                .addComponent(cbVäljMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 128, Short.MAX_VALUE)
+                .addComponent(lbFinnsEj)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnTillbaka)
+                    .addComponent(btnLäggTillNytt))
                 .addGap(23, 23, 23))
         );
 
@@ -81,6 +108,27 @@ public class ÄndraLagerstatusMaterial extends javax.swing.JFrame {
         new Meny().setVisible(true);    }
     }//GEN-LAST:event_btnTillbakaActionPerformed
 
+    private void btnLäggTillNyttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLäggTillNyttActionPerformed
+       //new LäggTillMaterial().setVisible(true);
+    }//GEN-LAST:event_btnLäggTillNyttActionPerformed
+
+    
+    public void väljMaterial()
+    {
+        try{
+             ArrayList<HashMap<String, String>> allaMaterial = Main.idb.fetchRows("SELECT Namn FROM MaterialLAger");
+             for(HashMap<String, String> ettMaterial : allaMaterial)
+             {
+                String namnMaterial = ettMaterial.get("Namn");
+             cbVäljMaterial.addItem(namnMaterial); 
+             }
+           
+        }
+        catch(InfException e)
+        {
+          JOptionPane.showMessageDialog(null, "Error");
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -117,8 +165,10 @@ public class ÄndraLagerstatusMaterial extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnLäggTillNytt;
     private javax.swing.JButton btnTillbaka;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> cbVäljMaterial;
+    private javax.swing.JLabel lbFinnsEj;
     private javax.swing.JLabel lblRubrik;
     // End of variables declaration//GEN-END:variables
 }
