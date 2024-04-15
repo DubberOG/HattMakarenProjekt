@@ -198,7 +198,7 @@ public class SkrivUtFraktsedel extends javax.swing.JFrame {
 
     private void btnSkrivUTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSkrivUTActionPerformed
         JOptionPane.showMessageDialog(null, "HITTA INGEN SKRIVARE!");
-        dispose();
+       
     }//GEN-LAST:event_btnSkrivUTActionPerformed
 
     private void fylliDatum()

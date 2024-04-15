@@ -165,8 +165,7 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAvbrytActionPerformed
 
     private void txAngeViktKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txAngeViktKeyReleased
-        //Kollar så att värdet är korrekt i vikt
-        checkTxAngeVikt();
+
         //Kollar så att vikt är ifyllt samt att en order har valts i comboboxen
 
        if (!txAngeVikt.getText().isEmpty() && cbValjOrder.getSelectedItem() != null) 
@@ -184,6 +183,9 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
         
         //Sparar vikten som angivits i variabeln txtVikt
         String txtVikt = txAngeVikt.getText();
+        
+        //Kollar att vikten är ok
+        checkTxAngeVikt();
         
         //Säkerställer att valet var avsiktligt
         int val = JOptionPane.showConfirmDialog(null, "Vill du skapa fraktsedeln?", "Skapa fraktsedel", JOptionPane.YES_NO_OPTION );
