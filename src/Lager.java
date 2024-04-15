@@ -30,17 +30,20 @@ public class Lager extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnUppdateraLager = new javax.swing.JButton();
+        btnUppdateraHattlager = new javax.swing.JButton();
         btnTillbaka = new javax.swing.JButton();
         btnSeHattar = new javax.swing.JButton();
         btnSeMaterialLagerStatus = new javax.swing.JButton();
+        btnUppsateraMateriallager = new javax.swing.JButton();
+        lblHattar = new javax.swing.JLabel();
+        lblMaterial = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        btnUppdateraLager.setText("Uppdatera lager");
-        btnUppdateraLager.addActionListener(new java.awt.event.ActionListener() {
+        btnUppdateraHattlager.setText("Uppdatera hattlager");
+        btnUppdateraHattlager.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUppdateraLagerActionPerformed(evt);
+                btnUppdateraHattlagerActionPerformed(evt);
             }
         });
 
@@ -65,6 +68,19 @@ public class Lager extends javax.swing.JFrame {
             }
         });
 
+        btnUppsateraMateriallager.setText("Uppdatera materiallager");
+        btnUppsateraMateriallager.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUppsateraMateriallagerActionPerformed(evt);
+            }
+        });
+
+        lblHattar.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        lblHattar.setText("Hattar");
+
+        lblMaterial.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        lblMaterial.setText("Material");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -72,36 +88,42 @@ public class Lager extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSeMaterialLagerStatus)
+                    .addComponent(btnTillbaka)
+                    .addComponent(lblMaterial)
+                    .addComponent(lblHattar)
+                    .addComponent(btnUppdateraHattlager)
+                    .addComponent(btnUppsateraMateriallager)
                     .addComponent(btnSeHattar)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(btnUppdateraLager, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(btnTillbaka)
-                            .addGap(46, 46, 46))))
+                    .addComponent(btnSeMaterialLagerStatus))
                 .addContainerGap(153, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(43, 43, 43)
+                .addGap(19, 19, 19)
+                .addComponent(lblHattar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSeHattar)
-                .addGap(28, 28, 28)
-                .addComponent(btnUppdateraLager)
-                .addGap(26, 26, 26)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnUppdateraHattlager)
+                .addGap(41, 41, 41)
+                .addComponent(lblMaterial)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSeMaterialLagerStatus)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnUppsateraMateriallager)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addComponent(btnTillbaka)
-                .addGap(21, 21, 21))
+                .addGap(20, 20, 20))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnUppdateraLagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUppdateraLagerActionPerformed
+    private void btnUppdateraHattlagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUppdateraHattlagerActionPerformed
         setVisible(false);
         new HattLager().setVisible(true);
-    }//GEN-LAST:event_btnUppdateraLagerActionPerformed
+    }//GEN-LAST:event_btnUppdateraHattlagerActionPerformed
 
     private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
         setVisible(false);
@@ -117,6 +139,11 @@ public class Lager extends javax.swing.JFrame {
        setVisible(false);
         new SeLagerstatusMaterial().setVisible(true);
     }//GEN-LAST:event_btnSeMaterialLagerStatusActionPerformed
+
+    private void btnUppsateraMateriallagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUppsateraMateriallagerActionPerformed
+        setVisible(false);
+        new ÄndraLagerstatusMaterial().setVisible(true);
+    }//GEN-LAST:event_btnUppsateraMateriallagerActionPerformed
 
     /**
      * @param args the command line arguments
@@ -157,6 +184,9 @@ public class Lager extends javax.swing.JFrame {
     private javax.swing.JButton btnSeHattar;
     private javax.swing.JButton btnSeMaterialLagerStatus;
     private javax.swing.JButton btnTillbaka;
-    private javax.swing.JButton btnUppdateraLager;
+    private javax.swing.JButton btnUppdateraHattlager;
+    private javax.swing.JButton btnUppsateraMateriallager;
+    private javax.swing.JLabel lblHattar;
+    private javax.swing.JLabel lblMaterial;
     // End of variables declaration//GEN-END:variables
 }
