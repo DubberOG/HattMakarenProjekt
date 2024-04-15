@@ -48,8 +48,6 @@ public class ÄndraLagerstatusMaterial extends javax.swing.JFrame {
             }
         });
 
-        cbVäljMaterial.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         lbFinnsEj.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lbFinnsEj.setText("Finns inte materialet?");
 
