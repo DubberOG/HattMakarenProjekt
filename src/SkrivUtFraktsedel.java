@@ -55,6 +55,7 @@ public class SkrivUtFraktsedel extends javax.swing.JFrame {
         lbVikt = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         btnSkrivUT = new javax.swing.JButton();
+        btnTillbaka = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -98,6 +99,13 @@ public class SkrivUtFraktsedel extends javax.swing.JFrame {
         btnSkrivUT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSkrivUTActionPerformed(evt);
+            }
+        });
+
+        btnTillbaka.setText("Tillbaka");
+        btnTillbaka.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTillbakaActionPerformed(evt);
             }
         });
 
@@ -145,11 +153,12 @@ public class SkrivUtFraktsedel extends javax.swing.JFrame {
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbFrånAdress, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbOrtFrån))
-                        .addGap(22, 300, Short.MAX_VALUE))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(162, 162, 162)
-                .addComponent(btnSkrivUT)
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(22, 300, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnTillbaka)
+                        .addGap(84, 84, 84)
+                        .addComponent(btnSkrivUT)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -185,7 +194,9 @@ public class SkrivUtFraktsedel extends javax.swing.JFrame {
                             .addComponent(lbPostNR)
                             .addComponent(lbOrt))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
-                        .addComponent(btnSkrivUT)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnSkrivUT)
+                            .addComponent(btnTillbaka))
                         .addGap(25, 25, 25))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(1, 1, 1)
@@ -200,6 +211,11 @@ public class SkrivUtFraktsedel extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "HITTA INGEN SKRIVARE!");
        
     }//GEN-LAST:event_btnSkrivUTActionPerformed
+
+    private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
+        dispose();
+        new Meny().setVisible(true);
+    }//GEN-LAST:event_btnTillbakaActionPerformed
 
     private void fylliDatum()
      {
@@ -272,6 +288,7 @@ public class SkrivUtFraktsedel extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSkrivUT;
+    private javax.swing.JButton btnTillbaka;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
