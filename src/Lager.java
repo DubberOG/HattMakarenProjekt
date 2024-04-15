@@ -88,9 +88,9 @@ public class Lager extends javax.swing.JFrame {
                 .addComponent(btnSeHattar)
                 .addGap(28, 28, 28)
                 .addComponent(btnUppdateraLager)
-                .addGap(18, 18, 18)
+                .addGap(26, 26, 26)
                 .addComponent(btnSeMaterialLagerStatus)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
                 .addComponent(btnTillbaka)
                 .addGap(21, 21, 21))
         );
