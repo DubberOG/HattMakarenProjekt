@@ -52,6 +52,12 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Skapa fraktsedel");
 
+        txAngeVikt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txAngeViktKeyReleased(evt);
+            }
+        });
+
         btnSkapa.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnSkapa.setForeground(new java.awt.Color(51, 255, 51));
         btnSkapa.setText("Skapa");
@@ -166,13 +172,7 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
         //Sparar vikten som angivits i variabeln txtVikt
         String txtVikt = txAngeVikt.getText();
         
-        //Kollar att vikten är ok
-        boolean viktKorrekt = checkTxAngeVikt();
         
-        //Säkerställer att valet var avsiktligt
-        if(viktKorrekt)
-        {
-            btnSkapa.setEnabled(true);
         int val = JOptionPane.showConfirmDialog(null, "Vill du skapa fraktsedeln?", "Skapa fraktsedel", JOptionPane.YES_NO_OPTION );
         
         if(val == JOptionPane.YES_OPTION)
@@ -181,12 +181,16 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
             new SkrivUtFraktsedel( cbVal, txtVikt).setVisible(true);
             dispose();
         }
-        }
+        
     }//GEN-LAST:event_btnSkapaActionPerformed
 
     private void cbValjOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbValjOrderActionPerformed
         fyllTextArea();
     }//GEN-LAST:event_cbValjOrderActionPerformed
+
+    private void txAngeViktKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txAngeViktKeyReleased
+       checkTxAngeVikt();
+    }//GEN-LAST:event_txAngeViktKeyReleased
     
     private void avbrytFraktsedel()
     {
