@@ -188,21 +188,39 @@ public class ÄndraLagerstatusMaterial extends javax.swing.JFrame {
     public void uppdatera()
     {
         String valtÅtgärd = cbVäljÅtgärd.getSelectedItem().toString();
+        int angeAntal = Integer.parseInt(txtAnge.getText());
         if(valtÅtgärd.equals("Lägg till"))
+            
         {
             try
             {
-               int angeAntal = Integer.parseInt(txtAnge.getText());
                if(angeAntal > 0)
                {
-                 Main.idb.update("Update MaterialLager set Antal= antal +'" + angeAntal + "' where Namn ='" + cbVäljMaterial.getSelectedItem() + "'");
+                 Main.idb.update("Update MaterialLager set Antal = antal + " + angeAntal + " where Namn ='" + cbVäljMaterial.getSelectedItem() + "'");
                }
             }
             catch(InfException e)
             {
                 JOptionPane.showMessageDialog(null, "Error");
             }
+            
         }
+        
+        else if (valtÅtgärd.equals("Ta bort"))
+            
+        {
+            try
+            {
+               if(angeAntal > 0)
+               {
+                 Main.idb.update("Update MaterialLager set Antal = antal - " + angeAntal + " where Namn ='" + cbVäljMaterial.getSelectedItem() + "'");
+               }
+            }
+            catch(InfException e)
+            {
+                JOptionPane.showMessageDialog(null, "Error");
+            }
+    }
     }
     /**
      * @param args the command line arguments
