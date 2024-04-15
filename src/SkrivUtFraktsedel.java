@@ -1,8 +1,7 @@
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
-import oru.inf.InfDB;
-
+import oru.inf.InfException;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -16,16 +15,18 @@ public class SkrivUtFraktsedel extends javax.swing.JFrame {
 
     //Detta ska tas bort sen
     private static String cbVal;
-    private static String txtVal;
+    private static String txtVikt;
 
     /**
      * Creates new form SkrivUtFraktsedel
      */
-    public SkrivUtFraktsedel(String cbVal, String txtVal) {
+    public SkrivUtFraktsedel(String cbVal, String txtVikt) {
         initComponents();
-        //Dessa ska tas bort sen
         this.cbVal = cbVal;
-        this.txtVal = txtVal;
+        this.txtVikt = txtVikt;
+        fylliDatum();
+        fyllLabels();
+        
     }
 
     /**
@@ -203,6 +204,31 @@ public class SkrivUtFraktsedel extends javax.swing.JFrame {
          String dagensDatum = format.format(datum);
          lbDagensDatum.setText(dagensDatum);
      }
+    
+    private void fyllLabels()
+    {
+        try
+        {
+         String valdKund = Main.idb.fetchSingle("Select KundID from Orders where OrderID = '" + cbVal + "' ");
+         String namn = Main.idb.fetchSingle("Select Namn from Kund where KundID = '"+ valdKund +"'");
+         String enamn = Main.idb.fetchSingle("Select Efternamn from Kund where KundID = '"+ valdKund +"'");
+         String adress = Main.idb.fetchSingle("Select Adress from Kund where KundID = '"+ valdKund +"'");
+         String pNummer = Main.idb.fetchSingle("Select Postnummer from Kund where KundID = '"+ valdKund +"'");
+         String ort = Main.idb.fetchSingle("Select ort from Kund where KundID = '"+ valdKund +"'");
+        lbNamn.setText(namn);
+        lbENamn.setText(enamn);
+        lbAdress.setText(adress);
+        lbPostNR.setText(pNummer);
+        lbOrt.setText(ort);
+        lbVikt.setText(txtVikt + " KG");
+        }
+        
+        catch(InfException e)
+        {
+            JOptionPane.showMessageDialog(null, "Kunde inte hämta kunden");
+        }
+       
+    }
     /**
      * @param args the command line arguments
      */
@@ -234,7 +260,7 @@ public class SkrivUtFraktsedel extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SkrivUtFraktsedel(cbVal,txtVal).setVisible(true);
+                new SkrivUtFraktsedel(cbVal, txtVikt).setVisible(true);
             }
         });
     }
