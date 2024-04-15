@@ -207,7 +207,7 @@ public class LaggTillBestallning extends javax.swing.JFrame {
         // TODO add your handling code here:
         try{
             //Hämtar vald produkt
-            String valdProdukt = (String)cbValjProdukt.getSelectedItem();
+            String valdProdukt = cbValjProdukt.getSelectedItem().toString();
             String fraga = "SELECT Pris FROM PRODUKT WHERE Namn = '" +valdProdukt+"'";
             double svar = Double.parseDouble(Main.idb.fetchSingle(fraga));
             double marginal = 1.2;
