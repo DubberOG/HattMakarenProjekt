@@ -268,7 +268,7 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
         {
           JOptionPane.showMessageDialog(null, "Vänligen ange ett heltal!");  
         }
-       
+       btnSkapa.setEnabled(korrekt);
       return korrekt;
     }
     
