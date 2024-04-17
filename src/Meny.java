@@ -39,6 +39,7 @@ public class Meny extends javax.swing.JFrame {
         lblMeny = new javax.swing.JLabel();
         btnLoggaUt = new javax.swing.JButton();
         btnLager = new javax.swing.JButton();
+        btnFaktura = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -80,6 +81,13 @@ public class Meny extends javax.swing.JFrame {
             }
         });
 
+        btnFaktura.setText("Faktura");
+        btnFaktura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFakturaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -95,7 +103,8 @@ public class Meny extends javax.swing.JFrame {
                     .addComponent(btnSkrivUtFraktsedel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnKund, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnBeställning, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnLager, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnLager, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnFaktura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(262, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -113,7 +122,9 @@ public class Meny extends javax.swing.JFrame {
                 .addComponent(btnSkrivUtFraktsedel)
                 .addGap(18, 18, 18)
                 .addComponent(btnLager)
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnFaktura)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         pack();
@@ -144,6 +155,12 @@ public class Meny extends javax.swing.JFrame {
         setVisible(false);
        new Lager().setVisible(true);
     }//GEN-LAST:event_btnLagerActionPerformed
+
+    private void btnFakturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFakturaActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+       new SkapaFaktura1().setVisible(true);
+    }//GEN-LAST:event_btnFakturaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -182,6 +199,7 @@ public class Meny extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBeställning;
+    private javax.swing.JButton btnFaktura;
     private javax.swing.JButton btnKund;
     private javax.swing.JButton btnLager;
     private javax.swing.JButton btnLoggaUt;

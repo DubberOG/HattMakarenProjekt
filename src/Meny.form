@@ -36,6 +36,7 @@
                   <Component id="btnKund" alignment="0" max="32767" attributes="0"/>
                   <Component id="btnBeställning" alignment="0" max="32767" attributes="0"/>
                   <Component id="btnLager" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btnFaktura" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace pref="262" max="32767" attributes="0"/>
           </Group>
@@ -56,7 +57,9 @@
               <Component id="btnSkrivUtFraktsedel" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btnLager" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="53" max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="btnFaktura" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="18" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -108,6 +111,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLagerActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnFaktura">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Faktura"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFakturaActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
