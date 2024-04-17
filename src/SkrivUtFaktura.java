@@ -2,6 +2,8 @@ import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import javax.swing.JOptionPane;
+import oru.inf.InfException;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -15,18 +17,20 @@ public class SkrivUtFaktura extends javax.swing.JFrame {
 
     private static String cbValet;
     private static String txtFakturaNr;
-
-    /**
-     * Creates new form SkrivUtFraktsedel
-     */
     
    
+<<<<<<< Updated upstream
     public SkrivUtFaktura(cbValet, txtFakturaNr) {
+=======
+    public SkrivUtFaktura(String cbValet, String txtFakturaNr ) {
+>>>>>>> Stashed changes
         initComponents();
         this.cbValet = cbValet;
         this.txtFakturaNr = txtFakturaNr;
         fyllDatum();
         fyllDatumEnManad();
+        fyllILabels();
+
     }
     
     private void fyllDatum()
@@ -56,6 +60,58 @@ public class SkrivUtFaktura extends javax.swing.JFrame {
 }   
 
     
+        private void fyllILabels()
+    {
+        txAllinfo.setText("");
+
+        try
+        {
+         String valdKund = Main.idb.fetchSingle("Select KundID from Orders where OrderID = '" + cbValet + "' ");
+         String namn = Main.idb.fetchSingle("Select Namn from Kund where KundID = '"+ valdKund +"'");
+         String enamn = Main.idb.fetchSingle("Select Efternamn from Kund where KundID = '"+ valdKund +"'");
+         String adress = Main.idb.fetchSingle("Select Adress from Kund where KundID = '"+ valdKund +"'");
+         String pNummer = Main.idb.fetchSingle("Select Postnummer from Kund where KundID = '"+ valdKund +"'");
+         String ort = Main.idb.fetchSingle("Select ort from Kund where KundID = '"+ valdKund +"'");
+         String summa = Main.idb.fetchSingle("Select summa from bestallning where OrderID = '"+ cbValet +"'");
+         String faktura = Main.idb.fetchSingle("Select fakturaID from Kund where KundID = '"+ valdKund +"'");
+         String kund = Main.idb.fetchSingle("Select kund from Kund where KundID = '"+ valdKund +"'");
+         String produkt = Main.idb.fetchSingle("Select produkttyp from order where OrderID = '"+ cbValet +"'");
+         String antalProdukt = Main.idb.fetchSingle("Select antal from order where OrderID = '"+ cbValet +"'");
+        
+
+        
+        lbKundNamnVisas.setText(namn + enamn);
+        lbKundNummerVisas.setText(kund);
+        lbFaktureringsadressVisas.setText(adress + pNummer + ort);
+        lbOrderNummerVisa.setText(valdKund);
+        lbSummaVisas.setText(summa);
+        lbAttBetalaVisas.setText(summa);
+        lbSummaAttBetala2Visas.setText(summa);
+        lbFakturaNrVisasHar.setText(faktura);
+        
+        double summastr = Double.parseDouble(summa);
+        double svar = summastr;
+        double utanmoms = 0.75;
+        double prisUtanMoms = svar * utanmoms;
+        String prisUtanMomsVisas = Double.toString(prisUtanMoms);
+        lbExklMomsVisas.setText(prisUtanMomsVisas);
+        
+        double svarMoms = summastr;
+        double moms = 0.75;
+        double prisMoms = svarMoms * moms;
+        String MomsVisas = Double.toString(prisMoms);
+        lbExklMomsVisas.setText(MomsVisas);
+        
+        txAllinfo.append(produkt + " " + antalProdukt);
+
+        }
+        
+        catch(InfException e)
+        {
+            JOptionPane.showMessageDialog(null, "Kunde inte hämta kunden");
+        }
+       
+    }
     
     
     
@@ -88,8 +144,6 @@ public class SkrivUtFaktura extends javax.swing.JFrame {
         lbBangiroNummer = new javax.swing.JLabel();
         lbManadFramDatum = new javax.swing.JLabel();
         lbBetalningsvillkor = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblFakturaInfo = new javax.swing.JTable();
         AttBetala = new javax.swing.JLabel();
         lbAttBetalaVisas = new javax.swing.JLabel();
         lbExlMoms = new javax.swing.JLabel();
@@ -106,6 +160,9 @@ public class SkrivUtFaktura extends javax.swing.JFrame {
         lbFaktureringsadressVisas = new javax.swing.JLabel();
         lbOrderID = new javax.swing.JLabel();
         lbOrderNummerVisa = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txAllinfo = new javax.swing.JTextArea();
+        Produktbeskrivning = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -142,30 +199,17 @@ public class SkrivUtFaktura extends javax.swing.JFrame {
 
         lbFakturanummer.setText("Fakturanummer");
 
-        lbPlusGiroNummer.setText("00000");
+        lbPlusGiroNummer.setText("123 481");
 
         lbFrånAdressen.setText("Fakultetsgatan 1");
 
         lbFakturaNrVisasHar.setText("00000");
 
-        lbBangiroNummer.setText("00000");
+        lbBangiroNummer.setText("444 88");
 
         lbManadFramDatum.setText("00000");
 
         lbBetalningsvillkor.setText("Betalningsvillkor: 30 dagar");
-
-        tblFakturaInfo.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "Artikel", "Benämning", "Antal", "À-pris", "Belopp"
-            }
-        ));
-        jScrollPane1.setViewportView(tblFakturaInfo);
 
         AttBetala.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         AttBetala.setText("Att betala SEK:");
@@ -201,101 +245,107 @@ public class SkrivUtFaktura extends javax.swing.JFrame {
 
         lbOrderNummerVisa.setText("000");
 
+        txAllinfo.setColumns(20);
+        txAllinfo.setRows(5);
+        jScrollPane2.setViewportView(txAllinfo);
+
+        Produktbeskrivning.setText("Produktbeskrivning:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(lbExlMoms)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lbExklMomsVisas))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(lbSumma)
+                            .addGap(69, 69, 69)
+                            .addComponent(lbSummaVisas)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbMomsbelopp)
+                            .addComponent(lbAttBetala2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbSummaAttBetala2Visas)
+                            .addComponent(lbMomsVisas))))
+                .addGap(20, 20, 20))
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1)
-                        .addContainerGap())
+                        .addGap(45, 45, 45)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(lbExlMoms)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lbExklMomsVisas))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(lbSumma)
-                                    .addGap(69, 69, 69)
-                                    .addComponent(lbSummaVisas)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lbMomsbelopp)
-                                    .addComponent(lbAttBetala2))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lbSummaAttBetala2Visas)
-                                    .addComponent(lbMomsVisas))))
-                        .addGap(20, 20, 20))
+                        .addContainerGap(26, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(lbBetalningsvillkor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lbOttosHattmakeri, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Produktbeskrivning, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(257, 257, 257)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbFrånAdressen, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbOttosHattmakeriIgen, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbOrtFrån)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(39, 39, 39)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 20, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(lbBetalningsvillkor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lbOttosHattmakeri, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addGap(257, 257, 257)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbFrånAdressen, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbOttosHattmakeriIgen, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbOrtFrån)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lbDatum)
+                                    .addComponent(lbDagensDatumVisa))
+                                .addGap(35, 35, 35)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Bankgiro)
+                                    .addComponent(Förfallodatum)
+                                    .addComponent(PlusGiro)
+                                    .addComponent(AttBetala))
+                                .addGap(35, 35, 35)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lbBangiroNummer)
+                                    .addComponent(lbPlusGiroNummer)
+                                    .addComponent(lbManadFramDatum)
+                                    .addComponent(lbAttBetalaVisas)))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(1, 1, 1)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lbDatum)
-                                            .addComponent(lbDagensDatumVisa))
-                                        .addGap(35, 35, 35)
+                                            .addComponent(lbFaktura)
+                                            .addComponent(lbKundNamn))
+                                        .addGap(18, 18, 18)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(Bankgiro)
-                                            .addComponent(Förfallodatum)
-                                            .addComponent(PlusGiro)
-                                            .addComponent(AttBetala))
-                                        .addGap(35, 35, 35)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lbBangiroNummer)
-                                            .addComponent(lbPlusGiroNummer)
-                                            .addComponent(lbManadFramDatum)
-                                            .addComponent(lbAttBetalaVisas)))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(lbFakturanummer)
+                                                    .addComponent(lbFakturaNrVisasHar))
+                                                .addGap(35, 35, 35))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addComponent(lbFaktureringsAdress)
+                                                .addGap(18, 18, 18))))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(lbFaktura)
-                                                    .addComponent(lbKundNamn))
-                                                .addGap(18, 18, 18)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addGroup(layout.createSequentialGroup()
-                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                            .addComponent(lbFakturanummer)
-                                                            .addComponent(lbFakturaNrVisasHar))
-                                                        .addGap(35, 35, 35))
-                                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                        .addComponent(lbFaktureringsAdress)
-                                                        .addGap(18, 18, 18))))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(lbKundNamnVisas)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(lbFaktureringsadressVisas)
-                                                .addGap(27, 27, 27)))
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lbOrderNummerVisa)
-                                            .addComponent(lbOrderID)
-                                            .addComponent(lbKundNummerVisas)
-                                            .addComponent(lbKundnummer)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(10, 10, 10)
-                                                .addComponent(btnSkrivUT)))))))
-                        .addContainerGap())))
+                                        .addComponent(lbKundNamnVisas)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(lbFaktureringsadressVisas)
+                                        .addGap(27, 27, 27)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lbOrderNummerVisa)
+                                    .addComponent(lbOrderID)
+                                    .addComponent(lbKundNummerVisas)
+                                    .addComponent(lbKundnummer)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(10, 10, 10)
+                                        .addComponent(btnSkrivUT)))))))
+                .addContainerGap())
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 756, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -311,9 +361,7 @@ public class SkrivUtFaktura extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addGap(128, 128, 128)
-                        .addComponent(lbBetalningsvillkor)
-                        .addGap(6, 6, 6))
+                        .addGap(657, 657, 657))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbDatum)
@@ -351,14 +399,14 @@ public class SkrivUtFaktura extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Förfallodatum)
-                            .addComponent(lbManadFramDatum))
+                            .addComponent(lbManadFramDatum)
+                            .addComponent(lbBetalningsvillkor))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(AttBetala)
-                            .addComponent(lbAttBetalaVisas))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 489, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                            .addComponent(lbAttBetalaVisas)
+                            .addComponent(Produktbeskrivning))
+                        .addGap(513, 513, 513)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbSumma)
                     .addComponent(lbSummaVisas))
@@ -375,6 +423,11 @@ public class SkrivUtFaktura extends javax.swing.JFrame {
                     .addComponent(lbAttBetala2)
                     .addComponent(lbSummaAttBetala2Visas))
                 .addContainerGap(47, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(323, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 498, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(135, Short.MAX_VALUE)))
         );
 
         pack();
@@ -411,7 +464,7 @@ public class SkrivUtFaktura extends javax.swing.JFrame {
          /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SkrivUtFaktura().setVisible(true);
+                new SkrivUtFaktura(cbValet, txtFakturaNr).setVisible(true);
             }
         });
      
@@ -423,9 +476,10 @@ public class SkrivUtFaktura extends javax.swing.JFrame {
     private javax.swing.JLabel Bankgiro;
     private javax.swing.JLabel Förfallodatum;
     private javax.swing.JLabel PlusGiro;
+    private javax.swing.JLabel Produktbeskrivning;
     private javax.swing.JButton btnSkrivUT;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lbAttBetala2;
     private javax.swing.JLabel lbAttBetalaVisas;
     private javax.swing.JLabel lbBangiroNummer;
@@ -456,6 +510,6 @@ public class SkrivUtFaktura extends javax.swing.JFrame {
     private javax.swing.JLabel lbSumma;
     private javax.swing.JLabel lbSummaAttBetala2Visas;
     private javax.swing.JLabel lbSummaVisas;
-    private javax.swing.JTable tblFakturaInfo;
+    private javax.swing.JTextArea txAllinfo;
     // End of variables declaration//GEN-END:variables
 }
