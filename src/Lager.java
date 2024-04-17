@@ -38,10 +38,11 @@ public class Lager extends javax.swing.JFrame {
         lblHattar = new javax.swing.JLabel();
         lblMaterial = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        btnLagerförStandardhatt = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        btnUppdateraHattlager.setText("Uppdatera hattlager");
+        btnUppdateraHattlager.setText("Skapa och lagerför specialhatt");
         btnUppdateraHattlager.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUppdateraHattlagerActionPerformed(evt);
@@ -89,6 +90,13 @@ public class Lager extends javax.swing.JFrame {
             }
         });
 
+        btnLagerförStandardhatt.setText("Lagerför standardhatt");
+        btnLagerförStandardhatt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLagerförStandardhattActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -97,29 +105,33 @@ public class Lager extends javax.swing.JFrame {
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnTillbaka)
                             .addComponent(lblMaterial)
                             .addComponent(lblHattar)
                             .addComponent(btnUppsateraMateriallager)
                             .addComponent(btnSeHattar)
-                            .addComponent(btnSeMaterialLagerStatus)
                             .addComponent(btnUppdateraHattlager))
-                        .addContainerGap(153, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnSeMaterialLagerStatus)
+                            .addComponent(btnLagerförStandardhatt)
+                            .addComponent(jButton1))
+                        .addGap(0, 159, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addContainerGap()
                 .addComponent(lblHattar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(7, 7, 7)
                 .addComponent(btnSeHattar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnUppdateraHattlager)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnLagerförStandardhatt)
+                .addGap(1, 1, 1)
                 .addComponent(lblMaterial)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSeMaterialLagerStatus)
@@ -166,6 +178,11 @@ public class Lager extends javax.swing.JFrame {
         new LagerförNyttMaterial().setVisible(true);    }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void btnLagerförStandardhattActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLagerförStandardhattActionPerformed
+        setVisible(false);
+        new LagerförStandardhatt().setVisible(true);
+    }//GEN-LAST:event_btnLagerförStandardhattActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -202,6 +219,7 @@ public class Lager extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnLagerförStandardhatt;
     private javax.swing.JButton btnSeHattar;
     private javax.swing.JButton btnSeMaterialLagerStatus;
     private javax.swing.JButton btnTillbaka;
