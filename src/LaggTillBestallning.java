@@ -349,7 +349,7 @@ public class LaggTillBestallning extends javax.swing.JFrame {
         String priset = txtPris.getText();
         String orderFraga = "INSERT INTO Orders (OrderID, Datum, Status, KundID, Pris) VALUES ('" + orderID + "', '" + datum + "', '" + status + "', '" + valdKundID + "','" + priset + "')";
         Main.idb.insert(orderFraga);
-        String getLastIDQuery = "SELECT LAST_INSERT_ID() AS lastID";
+        String getLastIDQuery = "SELECT OrderID FROM Orders ORDER BY OrderID DESC LIMIT 1";
         String lastIDResult = Main.idb.fetchSingle(getLastIDQuery);
         int lastInsertedID = Integer.parseInt(lastIDResult);
         String [] delad = produkter.split("\n");
