@@ -2,7 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
+import java.util.ArrayList;
+import java.util.HashMap;
+import oru.inf.InfException;
+import javax.swing.JOptionPane;
 /**
  *
  * @author oliviacleve
@@ -14,8 +17,10 @@ public class LagerförNyttMaterial extends javax.swing.JFrame {
      */
     public LagerförNyttMaterial() {
         initComponents();
+        ValjTyp();
     }
-
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,7 +31,7 @@ public class LagerförNyttMaterial extends javax.swing.JFrame {
     private void initComponents() {
 
         lblRubrik = new javax.swing.JLabel();
-        CbValjTyp = new javax.swing.JComboBox<>();
+        cbValjTyp = new javax.swing.JComboBox<>();
         lblVäljTyp = new javax.swing.JLabel();
         txtNamn = new javax.swing.JTextField();
         lblNamn = new javax.swing.JLabel();
@@ -35,13 +40,14 @@ public class LagerförNyttMaterial extends javax.swing.JFrame {
         txtPris = new javax.swing.JTextField();
         lblPris = new javax.swing.JLabel();
         btnTillbaka = new javax.swing.JButton();
+        btnLäggTill = new javax.swing.JButton();
+        txtAntal = new javax.swing.JTextField();
+        lblAntal = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lblRubrik.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         lblRubrik.setText("Fyll i värden för att lagerföra nytt material");
-
-        CbValjTyp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         lblVäljTyp.setText("Välj typ:");
 
@@ -64,61 +70,82 @@ public class LagerförNyttMaterial extends javax.swing.JFrame {
             }
         });
 
+        btnLäggTill.setText("Lägg till");
+        btnLäggTill.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLäggTillActionPerformed(evt);
+            }
+        });
+
+        txtAntal.setColumns(5);
+
+        lblAntal.setText("Antal:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(lblRubrik))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(btnTillbaka)
+                        .addGap(211, 211, 211)
+                        .addComponent(btnLäggTill))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(lblRubrik)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(42, 42, 42)
-                                .addComponent(lblVäljTyp))
+                                .addComponent(lblVäljTyp)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cbValjTyp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(40, 40, 40)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblFärg)
+                                    .addComponent(lblPris)
                                     .addComponent(lblNamn)
-                                    .addComponent(lblPris))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(CbValjTyp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNamn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtFärg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPris, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(btnTillbaka)))
-                .addContainerGap(48, Short.MAX_VALUE))
+                                    .addComponent(lblAntal))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtNamn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtFärg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtPris, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtAntal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(lblRubrik)
-                .addGap(41, 41, 41)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CbValjTyp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblVäljTyp))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNamn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNamn))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtFärg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblFärg))
-                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblVäljTyp)
+                        .addGap(12, 12, 12))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(cbValjTyp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtAntal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblAntal))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblNamn)
+                    .addComponent(txtNamn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblFärg)
+                    .addComponent(txtFärg, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtPris, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblPris))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                .addComponent(btnTillbaka)
-                .addGap(18, 18, 18))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnLäggTill)
+                    .addComponent(btnTillbaka))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         pack();
@@ -130,6 +157,64 @@ public class LagerförNyttMaterial extends javax.swing.JFrame {
         new Meny().setVisible(true);    }
     }//GEN-LAST:event_btnTillbakaActionPerformed
 
+    private void btnLäggTillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLäggTillActionPerformed
+        // TODO add your handling code here:
+        ValjTyp();
+        JOptionPane.showMessageDialog(null, "Nytt material har lagts till i lagret");
+    }//GEN-LAST:event_btnLäggTillActionPerformed
+
+    
+     public void ValjTyp()
+    {
+        try{
+             ArrayList<HashMap<String, String>> allaTyper = Main.idb.fetchRows("SELECT Typ FROM Material");
+             for(HashMap<String, String> enTyp : allaTyper)
+             {
+                String namnTyp = enTyp.get("Typ");
+             cbValjTyp.addItem(namnTyp); 
+             }
+           
+        }
+        catch(InfException e)
+        {
+          JOptionPane.showMessageDialog(null, "Error");
+        }
+    }
+    
+      public void LäggTill()
+    {
+        int angeAntal = Integer.parseInt(txtAntal.getText());
+            try
+            {
+               if(!txtNamn.getText().toString().isEmpty() && 
+            !txtFärg.getText().toString().isEmpty() && 
+            !txtPris.getText().toString().isEmpty()) 
+                  
+                   
+                   
+               {
+               String id = Main.idb.getAutoIncrement("Material", "MaterialID");
+
+                Main.idb.insert("INSERT INTO material (MaterialID, Typ, Namn, Färg, PrisPerEnhet) " +
+                "VALUES ('"+id+"', '"+cbValjTyp.getSelectedItem()+"', '"+txtNamn.getText().toString()+"', '"+txtFärg.getText().toString()+"', '"+txtPris.getText().toString()+"')");
+
+                
+                String lagerID = Main.idb.getAutoIncrement("MaterialLager", "MaterialLagerID");
+                
+                Main.idb.insert("INSERT INTO materialLager (MaterialLagerID, MaterialID, Typ, Namn, Antal, PrisPerEnhet) " +
+                "VALUES ('"+lagerID+"', '"+id+"', '"+cbValjTyp.getSelectedItem()+"', '"+txtNamn.getText().toString()+"', '"+angeAntal+"', "+txtPris.getText().toString()+"')");
+               }
+            }
+            catch(InfException e)
+            {
+                JOptionPane.showMessageDialog(null, "Error");
+            }
+            
+        }
+    
+    
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -166,13 +251,16 @@ public class LagerförNyttMaterial extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> CbValjTyp;
+    private javax.swing.JButton btnLäggTill;
     private javax.swing.JButton btnTillbaka;
+    private javax.swing.JComboBox<String> cbValjTyp;
+    private javax.swing.JLabel lblAntal;
     private javax.swing.JLabel lblFärg;
     private javax.swing.JLabel lblNamn;
     private javax.swing.JLabel lblPris;
     private javax.swing.JLabel lblRubrik;
     private javax.swing.JLabel lblVäljTyp;
+    private javax.swing.JTextField txtAntal;
     private javax.swing.JTextField txtFärg;
     private javax.swing.JTextField txtNamn;
     private javax.swing.JTextField txtPris;
