@@ -39,6 +39,7 @@ public class Leverantor extends javax.swing.JFrame {
         btnSeLeverantörer = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtAreaSeLeverantorer = new javax.swing.JTextArea();
+        btnTillbaka = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,6 +61,13 @@ public class Leverantor extends javax.swing.JFrame {
         txtAreaSeLeverantorer.setRows(5);
         jScrollPane1.setViewportView(txtAreaSeLeverantorer);
 
+        btnTillbaka.setText("Tillbaka");
+        btnTillbaka.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTillbakaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -71,22 +79,31 @@ public class Leverantor extends javax.swing.JFrame {
                         .addComponent(txtSeLeverantörer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(125, 125, 125))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnSeLeverantörer)
-                        .addGap(132, 132, 132))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(83, 83, 83))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(btnTillbaka)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnSeLeverantörer)
+                .addGap(132, 132, 132))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(41, 41, 41)
                 .addComponent(txtSeLeverantörer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
-                .addComponent(btnSeLeverantörer)
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(45, 45, 45)
+                        .addComponent(btnSeLeverantörer)
+                        .addContainerGap(53, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnTillbaka)
+                        .addGap(31, 31, 31))))
         );
 
         pack();
@@ -138,6 +155,13 @@ public class Leverantor extends javax.swing.JFrame {
 }     
     }//GEN-LAST:event_btnSeLeverantörerActionPerformed
 
+    private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
+        // TODO add your handling code here:
+    setVisible(false);
+    new Meny().setVisible(true);
+    
+    }//GEN-LAST:event_btnTillbakaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -176,6 +200,7 @@ public class Leverantor extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSeLeverantörer;
+    private javax.swing.JButton btnTillbaka;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea txtAreaSeLeverantorer;
     private javax.swing.JTextField txtSeLeverantörer;
