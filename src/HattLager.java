@@ -299,7 +299,7 @@ public class HattLager extends javax.swing.JFrame {
                 Main.idb.insert(nyHattFraga);
                 String uppdateraMaterialLagerTyg = "UPDATE MaterialLager SET Antal = Antal - '" + antalMeter + "' WHERE MaterialID = '" + valdTygID + "'";
                 Main.idb.update(uppdateraMaterialLagerTyg);
-                Main.idb.update(uppdateraHattlager);
+                Main.idb.insert(uppdateraHattlager);
 
                 String uppdateraMaterialLagerUtsmyckning = "UPDATE MaterialLager SET Antal = Antal - '" + utsmyckningsantal + "' WHERE MaterialID = '" + valdUtsmyckningID + "'";
                 Main.idb.update(uppdateraMaterialLagerUtsmyckning);
