@@ -295,7 +295,7 @@ public class HattLager extends javax.swing.JFrame {
                 String nyHatt = id + ",'" + namn + "','" + storlek + "','" + pris + "'," + "'" + notering + "'";
                 String nyHattFraga = "INSERT INTO Produkt (ProduktID, Namn, Storlek, Pris, Noteringar) VALUES ("+nyHatt+")";
                 String uppdateraHatt = lagerID + ",'" + id + "','" + namn + "', 1 ";
-                String uppdateraHattlager = "INSERT INTO Pruduktlager (ProduktLagerID, ProduktID, Namn, Antal) VALUES ("+uppdateraHatt+")";
+                String uppdateraHattlager = "INSERT INTO Produktlager (ProduktLagerID, ProduktID, Namn, Antal) VALUES ("+uppdateraHatt+")";
                 Main.idb.insert(nyHattFraga);
                 String uppdateraMaterialLagerTyg = "UPDATE MaterialLager SET Antal = Antal - '" + antalMeter + "' WHERE MaterialID = '" + valdTygID + "'";
                 Main.idb.update(uppdateraMaterialLagerTyg);
