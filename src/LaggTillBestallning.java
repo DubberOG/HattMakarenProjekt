@@ -347,18 +347,26 @@ public class LaggTillBestallning extends javax.swing.JFrame {
         // Hämta vald status från comboboxen
         String status = (String) cbStatus.getSelectedItem();
         String priset = txtPris.getText();
+        String [] delad = priset.split("\n");
+        
+        for(String enDel : delad)
+        {
+        String[] del = enDel.split("-");
+        String deladOrderID = del[0].trim();
+        //String deladOrderNamn = del[1].trim();
+        
         // SQL-fråga för att infoga data i ordertabellen
         String orderFraga = "INSERT INTO Orders (OrderID, Datum, Status, KundID, Pris) VALUES ('" + orderID + "', '" + datum + "', '" + status + "', '" + valdKundID + "','" + priset + "')";
-        String produktFraga = "INSERT INTO ProdukterIOrder (OrdersID, ProduktID) VALUES ('" + orderID +  "', '" + produkter+ "')";
+        String produktFraga = "INSERT INTO ProdukterIOrder (OrdersID, ProduktID) VALUES ('" + orderID +  "', '" + deladOrderID+ "')";
         // Utför SQL-frågan
-        Main.idb.insert(orderFraga);
+         Main.idb.insert(orderFraga);
          Main.idb.insert(produktFraga);
         
         //Vi måste lagra infon i Orders och ProdukterIOREDRS.
         
         // Meddela användaren att beställningen har sparats
         JOptionPane.showMessageDialog(null, "Beställningen har sparats!");
-
+        }
     } catch (InfException ex) {
         JOptionPane.showMessageDialog(null, "Kunde inte spara beställningen!");
         System.out.println("Internt felmeddelande" + ex.getMessage());
