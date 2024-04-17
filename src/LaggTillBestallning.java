@@ -337,7 +337,7 @@ public class LaggTillBestallning extends javax.swing.JFrame {
         String valdKund = (String) cbValjKund.getSelectedItem();
         String valdKundID = valdKund.split(" - ")[0]; // Hämta ProduktID från kombinerad sträng
         String valdProdukt = (String) cbValjProdukt.getSelectedItem();
-        String valdProduktID = valdKund.split(" - ")[0]; // Hämta KundID från kombinerad sträng
+        String valdProduktID = valdProdukt.split(" - ")[0]; // Hämta KundID från kombinerad sträng
         String orderID = Main.idb.getAutoIncrement("Orders", "OrderID");
         // Hämta datum från textfältet
         String datum = tfDatum.getText();
