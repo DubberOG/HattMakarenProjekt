@@ -288,7 +288,7 @@ public class LaggTillBestallning1 extends javax.swing.JFrame {
           if(val == JOptionPane.YES_OPTION)
           {
               dispose();
-              new Meny(idb).setVisible(true);
+              new Meny().setVisible(true);
           }
      }
    
@@ -353,7 +353,7 @@ public class LaggTillBestallning1 extends javax.swing.JFrame {
             new LaggTillBestallning1().setVisible(true);
         });
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAvbryt;
     private javax.swing.JButton btnSpara;
