@@ -17,7 +17,7 @@ public class LagerförNyttMaterial extends javax.swing.JFrame {
      */
     public LagerförNyttMaterial() {
         initComponents();
-        ValjTyp();
+        fyllComboBox();
     }
     
     
@@ -159,12 +159,12 @@ public class LagerförNyttMaterial extends javax.swing.JFrame {
 
     private void btnLäggTillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLäggTillActionPerformed
         // TODO add your handling code here:
-        ValjTyp();
-        JOptionPane.showMessageDialog(null, "Nytt material har lagts till i lagret");
+        läggTill();
+
     }//GEN-LAST:event_btnLäggTillActionPerformed
 
     
-     public void ValjTyp()
+     public void fyllComboBox()
     {
         try{
              ArrayList<HashMap<String, String>> allaTyper = Main.idb.fetchRows("SELECT Typ FROM Material");
@@ -181,8 +181,10 @@ public class LagerförNyttMaterial extends javax.swing.JFrame {
         }
     }
     
-      public void LäggTill()
+      public void läggTill()
     {
+        String stringPris = txtPris.getText();
+        double pris = Double.parseDouble(stringPris);
         int angeAntal = Integer.parseInt(txtAntal.getText());
             try
             {
@@ -190,24 +192,26 @@ public class LagerförNyttMaterial extends javax.swing.JFrame {
             !txtFärg.getText().toString().isEmpty() && 
             !txtPris.getText().toString().isEmpty()) 
                   
-                   
+              
+               
                    
                {
                String id = Main.idb.getAutoIncrement("Material", "MaterialID");
 
                 Main.idb.insert("INSERT INTO material (MaterialID, Typ, Namn, Färg, PrisPerEnhet) " +
-                "VALUES ('"+id+"', '"+cbValjTyp.getSelectedItem()+"', '"+txtNamn.getText().toString()+"', '"+txtFärg.getText().toString()+"', '"+txtPris.getText().toString()+"')");
+                "VALUES ('"+id+"', '"+cbValjTyp.getSelectedItem()+"', '"+txtNamn.getText()+"', '"+txtFärg.getText()+"', '"+pris+"')");
 
                 
                 String lagerID = Main.idb.getAutoIncrement("MaterialLager", "MaterialLagerID");
                 
                 Main.idb.insert("INSERT INTO materialLager (MaterialLagerID, MaterialID, Typ, Namn, Antal, PrisPerEnhet) " +
-                "VALUES ('"+lagerID+"', '"+id+"', '"+cbValjTyp.getSelectedItem()+"', '"+txtNamn.getText().toString()+"', '"+angeAntal+"', "+txtPris.getText().toString()+"')");
+                "VALUES ('"+lagerID+"', '"+id+"', '"+cbValjTyp.getSelectedItem()+"', '"+txtNamn.getText()+"', '"+angeAntal+"', "+pris+"')");
+                      JOptionPane.showMessageDialog(null, "Nytt material har lagts till i lagret");
                }
             }
             catch(InfException e)
             {
-                JOptionPane.showMessageDialog(null, "Error");
+                JOptionPane.showMessageDialog(null, e);
             }
             
         }
