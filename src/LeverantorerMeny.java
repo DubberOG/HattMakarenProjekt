@@ -25,21 +25,91 @@ public class LeverantorerMeny extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblLeverantorMeny = new javax.swing.JLabel();
+        btnSeLeverantorer = new javax.swing.JButton();
+        btnLaggTillLeverantor = new javax.swing.JButton();
+        btnTillbaka = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        lblLeverantorMeny.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblLeverantorMeny.setText("Leverantörmeny: ");
+
+        btnSeLeverantorer.setText("Se leverantörer");
+        btnSeLeverantorer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSeLeverantorerActionPerformed(evt);
+            }
+        });
+
+        btnLaggTillLeverantor.setText("Lägg till leverantör");
+        btnLaggTillLeverantor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLaggTillLeverantorActionPerformed(evt);
+            }
+        });
+
+        btnTillbaka.setText("Tillbaka");
+        btnTillbaka.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTillbakaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(118, 118, 118)
+                        .addComponent(lblLeverantorMeny, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(136, 136, 136)
+                        .addComponent(btnSeLeverantorer))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(127, 127, 127)
+                        .addComponent(btnLaggTillLeverantor))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(btnTillbaka)))
+                .addContainerGap(121, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(lblLeverantorMeny)
+                .addGap(33, 33, 33)
+                .addComponent(btnSeLeverantorer)
+                .addGap(18, 18, 18)
+                .addComponent(btnLaggTillLeverantor)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
+                .addComponent(btnTillbaka)
+                .addGap(28, 28, 28))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnSeLeverantorerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeLeverantorerActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+        new Leverantor().setVisible(true);
+    }//GEN-LAST:event_btnSeLeverantorerActionPerformed
+
+    private void btnLaggTillLeverantorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLaggTillLeverantorActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+        new LaggTillLeverantor().setVisible(true);
+    }//GEN-LAST:event_btnLaggTillLeverantorActionPerformed
+
+    private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+        new Meny().setVisible(true);
+    }//GEN-LAST:event_btnTillbakaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -77,5 +147,9 @@ public class LeverantorerMeny extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnLaggTillLeverantor;
+    private javax.swing.JButton btnSeLeverantorer;
+    private javax.swing.JButton btnTillbaka;
+    private javax.swing.JLabel lblLeverantorMeny;
     // End of variables declaration//GEN-END:variables
 }

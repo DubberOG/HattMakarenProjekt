@@ -40,6 +40,7 @@ public class Meny extends javax.swing.JFrame {
         btnLoggaUt = new javax.swing.JButton();
         btnLager = new javax.swing.JButton();
         btnFaktura = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -88,6 +89,13 @@ public class Meny extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Leverantörer");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -105,7 +113,9 @@ public class Meny extends javax.swing.JFrame {
                     .addComponent(btnBeställning, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnLager, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnFaktura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(262, Short.MAX_VALUE))
+                .addGap(30, 30, 30)
+                .addComponent(jButton1)
+                .addContainerGap(136, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -115,7 +125,9 @@ public class Meny extends javax.swing.JFrame {
                 .addGap(11, 11, 11)
                 .addComponent(lblMeny)
                 .addGap(38, 38, 38)
-                .addComponent(btnBeställning)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnBeställning)
+                    .addComponent(jButton1))
                 .addGap(18, 18, 18)
                 .addComponent(btnKund)
                 .addGap(18, 18, 18)
@@ -162,6 +174,12 @@ public class Meny extends javax.swing.JFrame {
        new SkapaFaktura1().setVisible(true);
     }//GEN-LAST:event_btnFakturaActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+        new LeverantorerMeny().setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -204,6 +222,7 @@ public class Meny extends javax.swing.JFrame {
     private javax.swing.JButton btnLager;
     private javax.swing.JButton btnLoggaUt;
     private javax.swing.JButton btnSkrivUtFraktsedel;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel lblMeny;
     // End of variables declaration//GEN-END:variables
 }
