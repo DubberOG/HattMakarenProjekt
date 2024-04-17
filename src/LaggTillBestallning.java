@@ -347,13 +347,13 @@ public class LaggTillBestallning extends javax.swing.JFrame {
         // Hämta vald status från comboboxen
         String status = (String) cbStatus.getSelectedItem();
         String priset = txtPris.getText();
-        String [] delad = priset.split("\n");
+        String [] delad = produkter.split("\n");
         
         for(String enDel : delad)
         {
         String[] del = enDel.split("-");
-        String deladOrderID = del[0].trim();
-        //String deladOrderNamn = del[1].trim();
+        String deladOrderID = del[0];
+        //String deladOrderNamn = del[1];
         
         // SQL-fråga för att infoga data i ordertabellen
         String orderFraga = "INSERT INTO Orders (OrderID, Datum, Status, KundID, Pris) VALUES ('" + orderID + "', '" + datum + "', '" + status + "', '" + valdKundID + "','" + priset + "')";
