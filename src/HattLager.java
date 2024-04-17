@@ -293,12 +293,12 @@ public class HattLager extends javax.swing.JFrame {
                 //Koppla validering så att det inte blir dubbla värden
                 String nyHatt = id + ",'" + namn + "','" + storlek + "','" + pris + "'," + "'" + notering + "'";
                 String nyHattFraga = "INSERT INTO Produkt (ProduktID, Namn, Storlek, Pris, Noteringar) VALUES ("+nyHatt+")";
-                String hämtaAntal = "select antal from produtklager where produktid = ";
                 String uppdateraHatt = lagerID + ",'" + id + "','" + namn + "', 1 ";
                 String uppdateraHattlager = "INSERT INTO Pruduktlager (ProduktLagerID, ProduktID, Namn, Antal) VALUES ("+uppdateraHatt+")";
                 Main.idb.insert(nyHattFraga);
                 String uppdateraMaterialLagerTyg = "UPDATE MaterialLager SET Antal = Antal - '" + antalMeter + "' WHERE MaterialID = '" + valdTygID + "'";
                 Main.idb.update(uppdateraMaterialLagerTyg);
+                Main.idb.update(uppdateraHattlager);
 
                 String uppdateraMaterialLagerUtsmyckning = "UPDATE MaterialLager SET Antal = Antal - '" + utsmyckningsantal + "' WHERE MaterialID = '" + valdUtsmyckningID + "'";
                 Main.idb.update(uppdateraMaterialLagerUtsmyckning);
