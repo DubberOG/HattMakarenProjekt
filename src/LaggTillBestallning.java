@@ -347,6 +347,9 @@ public class LaggTillBestallning extends javax.swing.JFrame {
         // Hämta vald status från comboboxen
         String status = (String) cbStatus.getSelectedItem();
         String priset = txtPris.getText();
+        String orderFraga = "INSERT INTO Orders (OrderID, Datum, Status, KundID, Pris) VALUES ('" + orderID + "', '" + datum + "', '" + status + "', '" + valdKundID + "','" + priset + "')";
+        Main.idb.insert(orderFraga);
+        
         String [] delad = produkter.split("\n");
         
         for(String enDel : delad)
@@ -356,10 +359,10 @@ public class LaggTillBestallning extends javax.swing.JFrame {
         //String deladOrderNamn = del[1];
         
         // SQL-fråga för att infoga data i ordertabellen
-        String orderFraga = "INSERT INTO Orders (OrderID, Datum, Status, KundID, Pris) VALUES ('" + orderID + "', '" + datum + "', '" + status + "', '" + valdKundID + "','" + priset + "')";
+        //String orderFraga = "INSERT INTO Orders (OrderID, Datum, Status, KundID, Pris) VALUES ('" + orderID + "', '" + datum + "', '" + status + "', '" + valdKundID + "','" + priset + "')";
         String produktFraga = "INSERT INTO ProdukterIOrder (OrdersID, ProduktID) VALUES ('" + orderID +  "', '" + deladOrderID+ "')";
         // Utför SQL-frågan
-         Main.idb.insert(orderFraga);
+         //Main.idb.insert(orderFraga);
          Main.idb.insert(produktFraga);
         
         //Vi måste lagra infon i Orders och ProdukterIOREDRS.
