@@ -205,19 +205,7 @@ public class LaggTillBestallning extends javax.swing.JFrame {
 
     private void cbValjKundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbValjKundActionPerformed
         // TODO add your handling code here:
-        try{
-            //Hämtar vald produkt
-            String valdProdukt = cbValjProdukt.getSelectedItem().toString();
-            String fraga = "SELECT Pris FROM PRODUKT WHERE Namn = '" +valdProdukt+"'";
-            double svar = Double.parseDouble(Main.idb.fetchSingle(fraga));
-            double marginal = 1.2;
-            double prisTillKund = svar * 1.25 * marginal;
-            txtPris.setText(String.valueOf(prisTillKund));
-            
-        } catch (InfException ex) {
-        JOptionPane.showMessageDialog(null, "Databasfel!");
-        System.out.println("Internt felmeddelande" + ex.getMessage());
-        }
+        fyllPris();
     }//GEN-LAST:event_cbValjKundActionPerformed
 
     private void cbValjProduktActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbValjProduktActionPerformed
@@ -225,6 +213,26 @@ public class LaggTillBestallning extends javax.swing.JFrame {
     }//GEN-LAST:event_cbValjProduktActionPerformed
 
    
+    private void fyllPris(){
+        Object kollarNull = cbValjProdukt.getSelectedItem();
+        if(kollarNull != null){
+            try{
+                //Hämtar vald produkt
+                String valdProdukt = cbValjProdukt.getSelectedItem().toString();
+                String fraga = "SELECT Pris FROM PRODUKT WHERE Namn = '" +valdProdukt+"'";
+                double svar = Double.parseDouble(Main.idb.fetchSingle(fraga));
+                double marginal = 1.2;
+                double prisTillKund = svar * 1.25 * marginal;
+                txtPris.setText(String.valueOf(prisTillKund));
+
+            } catch (InfException ex) {
+            JOptionPane.showMessageDialog(null, "Databasfel!");
+            System.out.println("Internt felmeddelande" + ex.getMessage());
+        }}
+        else{
+            System.out.println("null");
+        }
+    }
     
     private void fyllCbValjKund() {
             try{
