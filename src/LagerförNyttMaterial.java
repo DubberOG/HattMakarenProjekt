@@ -205,7 +205,7 @@ public class LagerförNyttMaterial extends javax.swing.JFrame {
                 String lagerID = Main.idb.getAutoIncrement("MaterialLager", "MaterialLagerID");
                 
                 Main.idb.insert("INSERT INTO materialLager (MaterialLagerID, MaterialID, Typ, Namn, Antal, PrisPerEnhet) " +
-                "VALUES ('"+lagerID+"', '"+id+"', '"+cbValjTyp.getSelectedItem()+"', '"+txtNamn.getText()+"', '"+angeAntal+"', "+pris+"')");
+                "VALUES ('"+lagerID+"', '"+id+"', '"+cbValjTyp.getSelectedItem()+"', '"+txtNamn.getText()+"', '"+angeAntal+"', '"+pris+"')");
                       JOptionPane.showMessageDialog(null, "Nytt material har lagts till i lagret");
                }
             }
