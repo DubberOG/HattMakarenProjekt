@@ -111,14 +111,13 @@ public class SeBestallningarStatus extends javax.swing.JFrame {
         String valdStatus = cbStatus.getSelectedItem().toString();
         String query = "SELECT * FROM Orders WHERE Status = '" + valdStatus + "'";
         Bestallningar = Main.idb.fetchRows(query);
-        txtAreaSeBestallningar.append("OrderID" + "\t" + "Datum" + "\t" + "Status" + "\t" + "KundID" + "\t" + "ProduktID" +"\t" + "Pris" + "\n");
+        txtAreaSeBestallningar.append("OrderID" + "\t" + "Datum" + "\t" + "Status" + "\t" + "KundID" +"\t" + "Pris" + "\n");
         
         for(HashMap<String, String> bestallning : Bestallningar) {
             txtAreaSeBestallningar.append(bestallning.get("OrderID") + "\t");
                     txtAreaSeBestallningar.append(bestallning.get("Datum") + "\t");
                     txtAreaSeBestallningar.append(bestallning.get("Status") + "\n");
                     txtAreaSeBestallningar.append(bestallning.get("KundID") + "\n");
-                    txtAreaSeBestallningar.append(bestallning.get("ProduktID") + "\n");
                     txtAreaSeBestallningar.append(bestallning.get("Pris") + "\n");
                     
         
