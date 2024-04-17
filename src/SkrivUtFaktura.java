@@ -21,7 +21,7 @@ public class SkrivUtFaktura extends javax.swing.JFrame {
      */
     
    
-    public SkrivUtFaktura(cbValet, txtFakturaNr ) {
+    public SkrivUtFaktura(cbValet, txtFakturaNr) {
         initComponents();
         this.cbValet = cbValet;
         this.txtFakturaNr = txtFakturaNr;
