@@ -130,12 +130,9 @@ public class Leverantor extends javax.swing.JFrame {
 
         }catch (InfException e){
             System.out.println ("internt felmedelande:" + e.getMessage());
-        }
-       
-
-    }     
+        }     
          
-       /* ArrayList<HashMap<String, String>> leverantorer = new ArrayList<>();
+        ArrayList<HashMap<String, String>> leverantorer = new ArrayList<>();
     try {
         // Hämta leverantörer från databasen och lagra dem i listan
         String query = "SELECT * FROM Leverantor";
@@ -152,11 +149,10 @@ public class Leverantor extends javax.swing.JFrame {
         // Hantera eventuella databasfel
         System.out.println("Internt felmeddelande: " + e.getMessage());
     }
-}     
     }//GEN-LAST:event_btnSeLeverantörerActionPerformed
 
     private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
-        // TODO add your handling code here:
+  
     setVisible(false);
     new Meny().setVisible(true);
     
