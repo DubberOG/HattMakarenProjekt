@@ -22,7 +22,6 @@ public class HattLager extends javax.swing.JFrame {
         initComponents();
         fyllCbValjTyg();
         fyllCbValjUtsmyckning();
-        fyllCbValjStandardhatt();
     }
 
 
@@ -107,6 +106,12 @@ public class HattLager extends javax.swing.JFrame {
         });
 
         txtNamn.setColumns(5);
+
+        cbValjStandardhatt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbValjStandardhattActionPerformed(evt);
+            }
+        });
 
         lblValjStandardhatt.setText("Välj standardhatt");
 
@@ -320,6 +325,10 @@ public class HattLager extends javax.swing.JFrame {
         // Skicka med pris
         // Uppdatera meteriallager
     }//GEN-LAST:event_btnLäggILagerActionPerformed
+
+    private void cbValjStandardhattActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbValjStandardhattActionPerformed
+        fyllCbValjStandardhatt();
+    }//GEN-LAST:event_cbValjStandardhattActionPerformed
          private void fyllCbValjStandardhatt() {
             try{
         ArrayList<HashMap<String, String>> allaStandardhattar = Main.idb.fetchRows("SELECT ProduktID, Namn FROM Produkt WHERE ProduktID = 331 OR ProduktID = 332 OR ProduktID = 333");
