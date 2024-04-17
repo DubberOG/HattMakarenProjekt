@@ -334,10 +334,10 @@ public class LaggTillBestallning extends javax.swing.JFrame {
      private void sparaBestallning() {
     try {
         // Hämta vald kund och produkt från comboboxarna
-        String valdKundProdukt = (String) cbValjKund.getSelectedItem();
-        String valdProdukt = valdKundProdukt.split(" - ")[0]; // Hämta ProduktID från kombinerad sträng
-        String valdKund = (String) cbValjProdukt.getSelectedItem();
-        String valdKundID = valdKund.split(" - ")[0]; // Hämta KundID från kombinerad sträng
+        String valdKund = (String) cbValjKund.getSelectedItem();
+        String valdKundID = valdKund.split(" - ")[0]; // Hämta ProduktID från kombinerad sträng
+        String valdProdukt = (String) cbValjProdukt.getSelectedItem();
+        String valdProduktID = valdKund.split(" - ")[0]; // Hämta KundID från kombinerad sträng
         String orderID = Main.idb.getAutoIncrement("Orders", "OrderID");
         // Hämta datum från textfältet
         String datum = tfDatum.getText();
@@ -349,7 +349,9 @@ public class LaggTillBestallning extends javax.swing.JFrame {
         String priset = txtPris.getText();
         String orderFraga = "INSERT INTO Orders (OrderID, Datum, Status, KundID, Pris) VALUES ('" + orderID + "', '" + datum + "', '" + status + "', '" + valdKundID + "','" + priset + "')";
         Main.idb.insert(orderFraga);
-        
+        String getLastIDQuery = "SELECT LAST_INSERT_ID() AS lastID";
+        String lastIDResult = Main.idb.fetchSingle(getLastIDQuery);
+        int lastInsertedID = Integer.parseInt(lastIDResult);
         String [] delad = produkter.split("\n");
         
         for(String enDel : delad)
@@ -360,7 +362,7 @@ public class LaggTillBestallning extends javax.swing.JFrame {
         
         // SQL-fråga för att infoga data i ordertabellen
         //String orderFraga = "INSERT INTO Orders (OrderID, Datum, Status, KundID, Pris) VALUES ('" + orderID + "', '" + datum + "', '" + status + "', '" + valdKundID + "','" + priset + "')";
-        String produktFraga = "INSERT INTO ProdukterIOrder (OrdersID, ProduktID) VALUES ('" + orderID +  "', '" + deladOrderID+ "')";
+        String produktFraga = "INSERT INTO ProdukterIOrder (OrdersID, ProduktID) VALUES ('" + lastInsertedID +  "', '" + deladOrderID+ "')";
         // Utför SQL-frågan
          //Main.idb.insert(orderFraga);
          Main.idb.insert(produktFraga);
