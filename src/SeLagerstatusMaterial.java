@@ -94,7 +94,7 @@ public class SeLagerstatusMaterial extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSokKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokKnappActionPerformed
-        
+        txtAreaRuta.setText("");
          ArrayList<String> lagerMaterialStatus = new ArrayList<>();
         try{
             String nyLagerMaterialFraga = "SELECT Namn, Antal FROM MaterialLager";
