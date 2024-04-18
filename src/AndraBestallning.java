@@ -19,6 +19,7 @@ public class AndraBestallning extends javax.swing.JFrame {
      */
     public AndraBestallning() {
         initComponents();
+        fyllcbxOrderID(); 
         
     }
 
@@ -41,9 +42,12 @@ public class AndraBestallning extends javax.swing.JFrame {
         lblProdukt1 = new javax.swing.JLabel();
         lblOrderID = new javax.swing.JLabel();
         cbxOrderID = new javax.swing.JComboBox<>();
-        txtProdukt = new javax.swing.JTextField();
         txtKund = new javax.swing.JTextField();
         txtStatus = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtAreaProdukter = new javax.swing.JTextArea();
+        lblPris = new javax.swing.JLabel();
+        txtPris = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -92,11 +96,16 @@ public class AndraBestallning extends javax.swing.JFrame {
             }
         });
 
-        txtProdukt.setColumns(5);
-
         txtKund.setColumns(5);
 
         txtStatus.setColumns(5);
+
+        txtAreaProdukter.setColumns(20);
+        txtAreaProdukter.setRows(5);
+        jScrollPane1.setViewportView(txtAreaProdukter);
+
+        lblPris.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        lblPris.setText("Pris");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -111,30 +120,30 @@ public class AndraBestallning extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(120, 120, 120)
                 .addComponent(lbBestallning)
-                .addGap(0, 199, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblOrderID, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(35, 35, 35)
-                                .addComponent(cbxOrderID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(lblOrderID, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35)
+                        .addComponent(cbxOrderID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblProdukt)
-                            .addComponent(lblProdukt1))
+                            .addComponent(lblProdukt1)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblPris))
                         .addGap(48, 48, 48)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(tfDatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtProdukt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtKund, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtKund, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(txtPris, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtStatus, javax.swing.GroupLayout.Alignment.LEADING)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,19 +158,31 @@ public class AndraBestallning extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtKund, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblProdukt)
-                    .addComponent(txtProdukt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblProdukt1)
-                    .addComponent(tfDatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblProdukt)
+                        .addGap(0, 40, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblProdukt1)
+                        .addGap(26, 26, 26))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(tfDatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addComponent(txtStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(lblPris))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtPris, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSpara)
                     .addComponent(btnAvbryt))
@@ -171,10 +192,11 @@ public class AndraBestallning extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //Denna metoden sparar informationen som skrevs vid eventuella ändringar.
     private void btnSparaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaActionPerformed
 //if(Validering.valideraKundID(txtKund, idb)&& Validering.txtFaltTomt(txtKund)&& Validering.valideraProduktID(txtProdukt, idb)&& Validering.txtFaltTomt(txtProdukt)&& Validering.datumKontroll(tfDatum)&& Validering.txtFaltTomt(txtStatus)){
         try{ 
-            if(Validering.valideraKundID(txtKund, Main.idb)&& Validering.txtFaltTomt(txtKund)&& Validering.valideraProduktID(txtProdukt, Main.idb)&& Validering.txtFaltTomt(txtProdukt)&& Validering.datumKontroll(tfDatum)&& Validering.txtFaltTomt(txtStatus)){
+            if(Validering.valideraKundID(txtKund, Main.idb)&& Validering.txtFaltTomt(txtKund)&& Validering.valideraProduktID(txtPris, Main.idb)&& Validering.txtFaltTomt(txtPris)&& Validering.datumKontroll(tfDatum)&& Validering.txtFaltTomt(txtStatus)){
 
                 String fragaOrder = "SELECT * FROM Orders";
 
@@ -182,7 +204,7 @@ public class AndraBestallning extends javax.swing.JFrame {
 
            String valdOrder = cbxOrderID.getSelectedItem().toString();
            String nyttKund = txtKund.getText();
-           String nyttProdukt = txtProdukt.getText();
+           String nyttPris = txtPris.getText();
            String nyttDatum = tfDatum.getText();
            String nyttStatus = txtStatus.getText();
          
@@ -200,10 +222,11 @@ public class AndraBestallning extends javax.swing.JFrame {
                  Main.idb.update(updateQueryKund);
                  
                  
-            String updateQueryProdukt = "UPDATE Orders SET ProduktID = '" + nyttProdukt + "' WHERE OrderID = '" + valdOrder + "'";
+            String updateQueryProdukt = "UPDATE Orders SET Pris = '" + nyttPris + "' WHERE OrderID = '" + valdOrder + "'";
           
                  Main.idb.update(updateQueryProdukt);
                 
+                 //Vi måste upppdatera produktid med de produkter som valdes
                  
             JOptionPane.showMessageDialog(null, " Informationen har ändrats." );
            }     
@@ -220,6 +243,7 @@ public class AndraBestallning extends javax.swing.JFrame {
         avbrytBestallning();
     }//GEN-LAST:event_btnAvbrytActionPerformed
 
+    //Denna metoden skriver in alla värden beroende på OrderID som valdes i comboboxen.
     private void cbxOrderIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxOrderIDActionPerformed
 
      
@@ -228,7 +252,7 @@ public class AndraBestallning extends javax.swing.JFrame {
       try{
       
           String valdOrder = cbxOrderID.getSelectedItem().toString();
-          String fraga = "SELECT OrderID, Datum, Status, KundID, ProduktID FROM Orders";
+          String fraga = "SELECT OrderID, Datum, Status, KundID, Pris FROM Orders";
           orderIDLista = Main.idb.fetchRows(fraga);
           
           for(HashMap<String, String> enOrder : orderIDLista){
@@ -236,7 +260,8 @@ public class AndraBestallning extends javax.swing.JFrame {
               String orderIDFranLista = enOrder.get("OrderID");
                  
                 if (orderIDFranLista.equals(valdOrder)){
-                    //Sätter in anställningsdatum för agenten i anst.dat.rutan
+                   
+                    //Sätter in datumet för orden i txt rutan.
                  tfDatum.setText(enOrder.get("Datum"));
                  }
                  
@@ -252,10 +277,10 @@ public class AndraBestallning extends javax.swing.JFrame {
                 
                 if (orderIDFranLista.equals(valdOrder)){
                     //Sätter in epost för agenten i epostrutan
-                 txtProdukt.setText(enOrder.get("ProduktID"));
+                 txtPris.setText(enOrder.get("Pris"));
                 }
     
-                     
+                     //Måste lägga till att få upp alla produkter som orden innehåller.
                     
                    }
                
@@ -340,13 +365,16 @@ public class AndraBestallning extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbxOrderID;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbBestallning;
     private javax.swing.JLabel lblOrderID;
+    private javax.swing.JLabel lblPris;
     private javax.swing.JLabel lblProdukt;
     private javax.swing.JLabel lblProdukt1;
     private javax.swing.JTextField tfDatum;
+    private javax.swing.JTextArea txtAreaProdukter;
     private javax.swing.JTextField txtKund;
-    private javax.swing.JTextField txtProdukt;
+    private javax.swing.JTextField txtPris;
     private javax.swing.JTextField txtStatus;
     // End of variables declaration//GEN-END:variables
 }
