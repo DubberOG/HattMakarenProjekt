@@ -25,8 +25,7 @@ public class LaggTillBestallning extends javax.swing.JFrame {
         fyllCbValjKund();
         fyllCbValjProdukt();
         fylliDatum();
-        fyllIPris();
-        txtPris.setEnabled(false);
+        
     }
 
     
@@ -388,17 +387,6 @@ public class LaggTillBestallning extends javax.swing.JFrame {
         System.out.println("Internt felmeddelande" + ex.getMessage());
     }
 } 
-     private void fyllIPris()
-     {
-         try{
-            String hämtaPris = Main.idb.fetchSingle("Select Timpris from Medarbetere where epost = '" + Main.epost.toLowerCase() +"'");
-            txtPris.setText(hämtaPris);
-         }
-         catch(InfException e)
-         {
-             JOptionPane.showMessageDialog(null, "Timpris saknas!");
-         }
-     }
     /**
      * @param args the command line arguments
      */
