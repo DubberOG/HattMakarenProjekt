@@ -4,6 +4,7 @@ import java.util.HashMap;
 import javax.swing.JOptionPane;
 import oru.inf.InfException;
 
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -27,6 +28,7 @@ public class SkapaFaktura1 extends javax.swing.JFrame {
         initComponents();
         btnSkapa.setEnabled(false);
         fyllICombobox();
+
     }
 
     /**
@@ -120,9 +122,9 @@ public class SkapaFaktura1 extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbOrderLista)
-                    .addComponent(lbValjKund))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbValjKund, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lbOrderLista))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -145,24 +147,30 @@ public class SkapaFaktura1 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAvbrytActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvbrytActionPerformed
-        avbrytFraktsedel();
+        avbrytFaktura();
     }//GEN-LAST:event_btnAvbrytActionPerformed
 
     private void btnSkapaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSkapaActionPerformed
         //Omvandlar resultatet från getSelectedItem() till en sträng
         String cbVal = (String) cbValjOrderVal.getSelectedItem();
         
+        //Sparar vikten som angivits i variabeln txtVikt
+        String txtFaktura = txtFakturaNummer.getText();
+            
         //Säkerställer att valet var avsiktligt
         int val = JOptionPane.showConfirmDialog(null, "Vill du skriva ut fakturan?", "Skapa faktura", JOptionPane.YES_NO_OPTION );
         
         if(val == JOptionPane.YES_OPTION)
         {
            //Skickar med informationen till klassen SkrivUtFraktsedel
-            new SkrivUtFaktura( cbValjOrderVal, txtFakturaNummer).setVisible(true);
+            new SkrivUtFaktura( cbVal, txtFaktura).setVisible(true);
             dispose();
-        
+        }
     }//GEN-LAST:event_btnSkapaActionPerformed
     
+    private void txtFakturaNummerKeyReleased(java.awt.event.KeyEvent evt) {                                       
+       checkTxtFakturaNummer();
+    }
     private void avbrytFaktura()
     {
         {
@@ -221,6 +229,30 @@ public class SkapaFaktura1 extends javax.swing.JFrame {
          }
     }
     
+    
+    
+    public boolean checkTxtFakturaNummer() {
+    String fakturaNummer = txtFakturaNummer.getText();
+    ArrayList<HashMap<String, String>> listaAvExisterandeFakturaNummer = new ArrayList<>();
+
+    // Loopa igenom alla existerande fakturanummer
+    for (HashMap<String, String> faktura : listaAvExisterandeFakturaNummer) {
+         String fakturaID = faktura.get("FakturaID");
+
+        // Jämför det angivna fakturanumret med varje existerande fakturanummer
+        if (fakturaID.equals(fakturaNummer)) {
+            JOptionPane.showMessageDialog(null, "Fakturanumret finns redan. Välj ett annat fakturanummer.", "Fel", JOptionPane.ERROR_MESSAGE);
+            return false; // Fakturanumret finns redan, returnera false
+        }
+    }
+    
+    // Om loopen avslutas utan att hitta någon matchning, anses fakturanumret vara unikt
+    JOptionPane.showMessageDialog(null, "Fakturanumret godkänt.", "Rätt", JOptionPane.INFORMATION_MESSAGE);
+    return true; // Fakturanumret är unikt, returnera true
+}
+
+
+ 
     /**
      * @param args the command line arguments
      */

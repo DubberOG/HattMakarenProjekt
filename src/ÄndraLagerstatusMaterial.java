@@ -157,7 +157,9 @@ public class ÄndraLagerstatusMaterial extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTillbakaActionPerformed
 
     private void btnLäggTillNyttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLäggTillNyttActionPerformed
-       //new LäggTillMaterial().setVisible(true);
+       {                                            
+        setVisible(false);
+        new LagerförNyttMaterial().setVisible(true);    }
     }//GEN-LAST:event_btnLäggTillNyttActionPerformed
 
     private void btnSparaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaActionPerformed

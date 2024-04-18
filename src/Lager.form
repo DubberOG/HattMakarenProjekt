@@ -26,34 +26,49 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btnTillbaka" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblMaterial" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblHattar" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnUppdateraHattlager" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnUppsateraMateriallager" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnSeHattar" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnSeMaterialLagerStatus" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="btnTillbaka" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblMaterial" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblHattar" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnUppsateraMateriallager" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnSeHattar" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnUppdateraHattlager" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="btnSeMaterialLagerStatus" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnLagerförStandardhatt" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="0" pref="159" max="32767" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace pref="153" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-              <Component id="lblHattar" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
+              <Component id="lblHattar" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
               <Component id="btnSeHattar" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="btnUppdateraHattlager" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="btnLagerförStandardhatt" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
               <Component id="lblMaterial" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="btnSeMaterialLagerStatus" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="btnUppsateraMateriallager" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="29" max="32767" attributes="0"/>
+              <EmptySpace pref="35" max="32767" attributes="0"/>
               <Component id="btnTillbaka" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
           </Group>
@@ -63,7 +78,7 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="btnUppdateraHattlager">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Uppdatera hattlager"/>
+        <Property name="text" type="java.lang.String" value="Skapa och lagerf&#xf6;r specialhatt"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUppdateraHattlagerActionPerformed"/>
@@ -116,6 +131,22 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Material"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Lagerf&#xf6;r nytt material"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnLagerf&#xf6;rStandardhatt">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Lagerf&#xf6;r standardhatt"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLagerf&#xf6;rStandardhattActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

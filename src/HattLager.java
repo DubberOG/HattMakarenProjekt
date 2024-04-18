@@ -23,6 +23,7 @@ public class HattLager extends javax.swing.JFrame {
         fyllCbValjTyg();
         fyllCbValjUtsmyckning();
         fyllCbValjStandardhatt();
+        
     }
 
 
@@ -260,6 +261,7 @@ public class HattLager extends javax.swing.JFrame {
                 Validering.txtFaltTomt(txtAntalMeter)  &&
                 Validering.txtFaltTomt(txtUtsmyckningsantal)){
                 String id = Main.idb.getAutoIncrement("Produkt", "ProduktID");
+                String lagerID = Main.idb.getAutoIncrement("ProduktLager", "ProduktLagerID");
                 String namn = txtNamn.getText();
                 String storlek = txtStorlek.getText();
                 String strTimmar = txtAntalTimmar.getText();
@@ -271,7 +273,7 @@ public class HattLager extends javax.swing.JFrame {
                 String strMeter = txtAntalMeter.getText();
                 double antalMeter = Double.parseDouble(strMeter);
                 String utsmyckning = cbValjUtsmyckning.getSelectedItem().toString();
-                String valdUtsmyckningID = tyg.split(" - ")[0];
+                String valdUtsmyckningID = utsmyckning.split(" - ")[0];
                 String strAntal = txtUtsmyckningsantal.getText();
                 double utsmyckningsantal = Double.parseDouble(strAntal);
                 String notering = txtNotering.getText();
@@ -292,13 +294,15 @@ public class HattLager extends javax.swing.JFrame {
                 //Koppla validering så att det inte blir dubbla värden
                 String nyHatt = id + ",'" + namn + "','" + storlek + "','" + pris + "'," + "'" + notering + "'";
                 String nyHattFraga = "INSERT INTO Produkt (ProduktID, Namn, Storlek, Pris, Noteringar) VALUES ("+nyHatt+")";
+                String uppdateraHatt = lagerID + ",'" + id + "','" + namn + "', 1 ";
+                String uppdateraHattlager = "INSERT INTO Produktlager (ProduktLagerID, ProduktID, Namn, Antal) VALUES ("+uppdateraHatt+")";
                 Main.idb.insert(nyHattFraga);
-                
-//String uppdateraMaterialLagerTyg = "UPDATE MaterialLager SET Antal = Antal - '" + antalMeter + "' WHERE MaterialID = '" + valdTygID + "'";
-//Main.idb.insert(uppdateraMaterialLagerTyg);
+                String uppdateraMaterialLagerTyg = "UPDATE MaterialLager SET Antal = Antal - '" + antalMeter + "' WHERE MaterialID = '" + valdTygID + "'";
+                Main.idb.update(uppdateraMaterialLagerTyg);
+                Main.idb.insert(uppdateraHattlager);
 
-//String uppdateraMaterialLagerUtsmyckning = "UPDATE MaterialLager SET Antal = Antal - '" + utsmyckningsantal + "' WHERE MaterialID = '" + valdUtsmyckningID + "'";
-//Main.idb.insert(uppdateraMaterialLagerUtsmyckning);
+                String uppdateraMaterialLagerUtsmyckning = "UPDATE MaterialLager SET Antal = Antal - '" + utsmyckningsantal + "' WHERE MaterialID = '" + valdUtsmyckningID + "'";
+                Main.idb.update(uppdateraMaterialLagerUtsmyckning);
 
 
 
