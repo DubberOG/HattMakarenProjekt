@@ -226,7 +226,7 @@ public class AndraBestallning extends javax.swing.JFrame {
           
                  Main.idb.update(updateQueryProdukt);
                 
-                 //Vi måste upppdatera produktid med de produkter som valdes
+                 //Vi måste upppdatera produktid med de produkter som valdes!!!!!!!!!
                  
             JOptionPane.showMessageDialog(null, " Informationen har ändrats." );
            }     
@@ -248,12 +248,14 @@ public class AndraBestallning extends javax.swing.JFrame {
 
      
      ArrayList<HashMap<String, String>> orderIDLista = new ArrayList<HashMap<String, String>>();
- 
+    // ArrayList<HashMap<String, String>> produkterIOrderLista = new ArrayList<HashMap<String, String>>();
       try{
       
           String valdOrder = cbxOrderID.getSelectedItem().toString();
           String fraga = "SELECT OrderID, Datum, Status, KundID, Pris FROM Orders";
+          //String fragaProduktID = "SELECT OrdersID, ProduktID FROM ProdukterIOrder";
           orderIDLista = Main.idb.fetchRows(fraga);
+         // produkterIOrderLista = Main.idb.fetchRow(fragaProduktID);
           
           for(HashMap<String, String> enOrder : orderIDLista){
         
