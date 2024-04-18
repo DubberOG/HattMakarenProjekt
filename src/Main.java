@@ -13,6 +13,7 @@ import oru.inf.InfException;
  */
 public class Main {
     public static InfDB idb;
+    public static String epost;
 
 
     public static void main(String[] args) throws InfException
