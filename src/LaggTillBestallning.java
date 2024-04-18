@@ -18,7 +18,6 @@ public class LaggTillBestallning extends javax.swing.JFrame {
 
     /**
      * Creates new form LaggTillBestallning
-     * @param idb
      */
     public LaggTillBestallning() {
         initComponents();
