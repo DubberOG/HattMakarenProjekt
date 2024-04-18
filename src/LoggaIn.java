@@ -124,7 +124,7 @@ public class LoggaIn extends javax.swing.JFrame {
             {
                 if(inmatatLosenord.equals(new String(pswordLösenord.getPassword())))
                 {
-                    //Main.epost = txtAnvändarnamn.getText().toLowerCase();
+                    Main.epost = txtAnvändarnamn.getText();
                     new Meny().setVisible(true);
                     dispose();
                 } else 
