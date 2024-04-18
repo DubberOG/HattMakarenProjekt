@@ -102,6 +102,7 @@ public class Meny extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Bilder/5.png"))); // NOI18N
 
+        lbAnvändare.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lbAnvändare.setText("Otto");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
