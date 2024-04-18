@@ -391,7 +391,7 @@ public class LaggTillBestallning extends javax.swing.JFrame {
      private void fyllIPris()
      {
          try{
-            String hämtaPris = Main.idb.fetchSingle("Select Timpris from Medarbetere where epost = '" + Main.epost +"'");
+            String hämtaPris = Main.idb.fetchSingle("Select Timpris from Medarbetere where epost = '" + Main.epost.toLowerCase() +"'");
             txtPris.setText(hämtaPris);
          }
          catch(InfException e)
