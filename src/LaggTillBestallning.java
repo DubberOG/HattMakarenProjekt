@@ -334,10 +334,10 @@ public class LaggTillBestallning extends javax.swing.JFrame {
      private void sparaBestallning() {
     try {
         // Hämta vald kund och produkt från comboboxarna
-        String valdKundProdukt = (String) cbValjKund.getSelectedItem();
-        String valdProdukt = valdKundProdukt.split(" - ")[0]; // Hämta ProduktID från kombinerad sträng
-        String valdKund = (String) cbValjProdukt.getSelectedItem();
-        String valdKundID = valdKund.split(" - ")[0]; // Hämta KundID från kombinerad sträng
+        String valdKund = (String) cbValjKund.getSelectedItem();
+        String valdKundID = valdKund.split(" - ")[0]; // Hämta ProduktID från kombinerad sträng
+        // String valdProdukt = (String) cbValjProdukt.getSelectedItem();
+        // String valdProduktID = valdProdukt.split(" - ")[0]; // Hämta KundID från kombinerad sträng
         String orderID = Main.idb.getAutoIncrement("Orders", "OrderID");
         // Hämta datum från textfältet
         String datum = tfDatum.getText();
@@ -349,7 +349,7 @@ public class LaggTillBestallning extends javax.swing.JFrame {
         String priset = txtPris.getText();
         String orderFraga = "INSERT INTO Orders (OrderID, Datum, Status, KundID, Pris) VALUES ('" + orderID + "', '" + datum + "', '" + status + "', '" + valdKundID + "','" + priset + "')";
         Main.idb.insert(orderFraga);
-        
+
         String [] delad = produkter.split("\n");
         
         for(String enDel : delad)
