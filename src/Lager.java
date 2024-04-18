@@ -40,6 +40,7 @@ public class Lager extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         btnLagerförStandardhatt = new javax.swing.JButton();
         btnTaBortHattFrånLager = new javax.swing.JButton();
+        btnTaBortMaterialFrånLager = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -100,6 +101,13 @@ public class Lager extends javax.swing.JFrame {
             }
         });
 
+        btnTaBortMaterialFrånLager.setText("Ta bort material från lager");
+        btnTaBortMaterialFrånLager.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTaBortMaterialFrånLagerActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -123,7 +131,10 @@ public class Lager extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnSeMaterialLagerStatus)
                             .addComponent(btnLagerförStandardhatt)
-                            .addComponent(jButton1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnTaBortMaterialFrånLager)))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -144,7 +155,9 @@ public class Lager extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSeMaterialLagerStatus)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(btnTaBortMaterialFrånLager))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnUppsateraMateriallager)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
@@ -191,6 +204,11 @@ public class Lager extends javax.swing.JFrame {
         new TaBortHattFrånLager().setVisible(true);
     }//GEN-LAST:event_btnTaBortHattFrånLagerActionPerformed
 
+    private void btnTaBortMaterialFrånLagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortMaterialFrånLagerActionPerformed
+        setVisible(false);
+        new TaBortMaterialFrånLager().setVisible(true);
+    }//GEN-LAST:event_btnTaBortMaterialFrånLagerActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -231,6 +249,7 @@ public class Lager extends javax.swing.JFrame {
     private javax.swing.JButton btnSeHattar;
     private javax.swing.JButton btnSeMaterialLagerStatus;
     private javax.swing.JButton btnTaBortHattFrånLager;
+    private javax.swing.JButton btnTaBortMaterialFrånLager;
     private javax.swing.JButton btnTillbaka;
     private javax.swing.JButton btnUppdateraHattlager;
     private javax.swing.JButton btnUppsateraMateriallager;
