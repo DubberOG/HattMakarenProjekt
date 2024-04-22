@@ -45,6 +45,7 @@ public class Meny extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         lbAnvändare = new javax.swing.JLabel();
+        btnHattmakare = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -105,6 +106,13 @@ public class Meny extends javax.swing.JFrame {
         lbAnvändare.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lbAnvändare.setText("Otto");
 
+        btnHattmakare.setText("Hattmakare");
+        btnHattmakare.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHattmakareActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -121,8 +129,13 @@ public class Meny extends javax.swing.JFrame {
                             .addComponent(btnLager, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnFaktura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(30, 30, 30)
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnHattmakare)
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel1)
@@ -150,7 +163,9 @@ public class Meny extends javax.swing.JFrame {
                     .addComponent(btnBeställning)
                     .addComponent(jButton1))
                 .addGap(45, 45, 45)
-                .addComponent(btnKund)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnKund)
+                    .addComponent(btnHattmakare))
                 .addGap(18, 18, 18)
                 .addComponent(btnSkrivUtFraktsedel)
                 .addGap(18, 18, 18)
@@ -201,6 +216,11 @@ public class Meny extends javax.swing.JFrame {
         new LeverantorerMeny().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void btnHattmakareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHattmakareActionPerformed
+        setVisible(false);
+       new AndraTimprisForHattmakare().setVisible(true);
+    }//GEN-LAST:event_btnHattmakareActionPerformed
+
     public void listaAnvändare()
     {
         try{
@@ -249,6 +269,7 @@ public class Meny extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBeställning;
     private javax.swing.JButton btnFaktura;
+    private javax.swing.JButton btnHattmakare;
     private javax.swing.JButton btnKund;
     private javax.swing.JButton btnLager;
     private javax.swing.JButton btnLoggaUt;
