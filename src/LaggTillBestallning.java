@@ -245,11 +245,12 @@ public class LaggTillBestallning extends javax.swing.JFrame {
 
     private void cbValjKundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbValjKundActionPerformed
         // TODO add your handling code here:
-        fyllPris();
+        
     }//GEN-LAST:event_cbValjKundActionPerformed
 
     private void cbValjProduktActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbValjProduktActionPerformed
         // TODO add your handling code here:
+        fyllPris();
     }//GEN-LAST:event_cbValjProduktActionPerformed
 
     //Denna metoden lägger till de valda produkterna i en TextArea när man trycker på lägg till.
@@ -266,12 +267,18 @@ public class LaggTillBestallning extends javax.swing.JFrame {
         if(kollarNull != null){
             try{
                 //Hämtar vald produkt
-                String valdProdukt = cbValjProdukt.getSelectedItem().toString();
-                String fraga = "SELECT Pris FROM PRODUKT WHERE Namn = '" +valdProdukt+"'";
-                double svar = Double.parseDouble(Main.idb.fetchSingle(fraga));
-                double marginal = 1.2;
-                double prisTillKund = svar * 1.25 * marginal;
-                txtPris.setText(String.valueOf(prisTillKund));
+                String valdProdukt = (String) cbValjProdukt.getSelectedItem();
+                String[] parts = valdProdukt.split(" - ");
+                String valdProduktID = parts[0];
+                System.out.println(valdProduktID);
+                String fraga = "SELECT Pris FROM PRODUKT WHERE ProduktID = '" +valdProduktID+"'";
+                String prisString = Main.idb.fetchSingle(fraga);
+                if (prisString != null) {
+                    double svar = Double.parseDouble(Main.idb.fetchSingle(fraga));
+                    System.out.println(svar);
+                    double marginal = 1.2;
+                    double prisTillKund = svar * 1.25 * marginal;
+                    txtPris.setText(String.valueOf(prisTillKund));}
 
             } catch (InfException ex) {
             JOptionPane.showMessageDialog(null, "Databasfel!");
