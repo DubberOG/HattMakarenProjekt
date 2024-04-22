@@ -116,7 +116,7 @@ public class AvbrytBeställning extends javax.swing.JFrame {
              String produktID = Main.idb.fetchSingle("Select ProduktID from ProdukterIOrder where OrderID = '" + orderID + "'");
              String produktNamn = Main.idb.fetchSingle("SELECT Namn FROM Produkt WHERE ProduktID = '" + produktID + "'");
              
-             txaBeställningar.append(orderID + namn + produktNamn);
+             txaBeställningar.append(orderID + " "+ namn + " "+ produktNamn);
              
              
          }
