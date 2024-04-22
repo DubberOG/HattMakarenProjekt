@@ -125,7 +125,7 @@ public class AvbrytBeställning extends javax.swing.JFrame {
     }
     catch(InfException e)
     {
-        JOptionPane.showMessageDialog(null, "Error");
+        JOptionPane.showMessageDialog(null, e);
     }
     }//GEN-LAST:event_btnAvbrytOrderActionPerformed
 
