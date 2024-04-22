@@ -33,7 +33,7 @@ public class LeverantorerMeny extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lblLeverantorMeny.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblLeverantorMeny.setText("Leverantörmeny: ");
+        lblLeverantorMeny.setText("Leverantörmeny ");
 
         btnSeLeverantorer.setText("Se leverantörer");
         btnSeLeverantorer.addActionListener(new java.awt.event.ActionListener() {
