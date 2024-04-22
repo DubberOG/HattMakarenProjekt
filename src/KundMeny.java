@@ -44,6 +44,7 @@ public class KundMeny extends javax.swing.JFrame {
         btnTaBortKund = new javax.swing.JButton();
         btnTillbaka = new javax.swing.JButton();
         btnSeKundlista = new javax.swing.JButton();
+        btnUppdateraKund = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,6 +79,13 @@ public class KundMeny extends javax.swing.JFrame {
             }
         });
 
+        btnUppdateraKund.setText("Uppdatera kunduppgifter");
+        btnUppdateraKund.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUppdateraKundActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -88,9 +96,10 @@ public class KundMeny extends javax.swing.JFrame {
                     .addComponent(btnTillbaka)
                     .addComponent(lblKund)
                     .addComponent(btnTaBortKund, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnLäggTillNyKund, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
-                    .addComponent(btnSeKundlista, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(229, Short.MAX_VALUE))
+                    .addComponent(btnLäggTillNyKund, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnSeKundlista, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnUppdateraKund, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(200, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,7 +112,9 @@ public class KundMeny extends javax.swing.JFrame {
                 .addComponent(btnTaBortKund)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnSeKundlista)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnUppdateraKund)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addComponent(btnTillbaka)
                 .addGap(29, 29, 29))
         );
@@ -131,6 +142,12 @@ public class KundMeny extends javax.swing.JFrame {
         setVisible(false);
         new KundLista(Main.idb).setVisible(true);
     }//GEN-LAST:event_btnSeKundlistaActionPerformed
+
+    private void btnUppdateraKundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUppdateraKundActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+        new AndraKund().setVisible(true);
+    }//GEN-LAST:event_btnUppdateraKundActionPerformed
 
     /**
      * @param args the command line arguments
@@ -172,6 +189,7 @@ public class KundMeny extends javax.swing.JFrame {
     private javax.swing.JButton btnSeKundlista;
     private javax.swing.JButton btnTaBortKund;
     private javax.swing.JButton btnTillbaka;
+    private javax.swing.JButton btnUppdateraKund;
     private javax.swing.JLabel lblKund;
     // End of variables declaration//GEN-END:variables
 }
