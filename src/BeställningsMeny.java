@@ -37,6 +37,7 @@ public class BeställningsMeny extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btnTillbaka = new javax.swing.JButton();
         btnAvbryt = new javax.swing.JToggleButton();
+        btnÄndraStatus = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,6 +79,13 @@ public class BeställningsMeny extends javax.swing.JFrame {
             }
         });
 
+        btnÄndraStatus.setText("Ändra status");
+        btnÄndraStatus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnÄndraStatusActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -92,6 +100,10 @@ public class BeställningsMeny extends javax.swing.JFrame {
                     .addComponent(btnÄndraBeställning, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnAvbryt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(179, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnÄndraStatus)
+                .addGap(36, 36, 36))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -100,7 +112,9 @@ public class BeställningsMeny extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(btnLäggTillBeställning)
-                .addGap(30, 30, 30)
+                .addGap(1, 1, 1)
+                .addComponent(btnÄndraStatus)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnVisaTidigareBeställningar)
                 .addGap(27, 27, 27)
                 .addComponent(btnÄndraBeställning, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -142,6 +156,11 @@ public class BeställningsMeny extends javax.swing.JFrame {
     private void btnAvbrytActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvbrytActionPerformed
         new AvbrytBeställning().setVisible(true);
     }//GEN-LAST:event_btnAvbrytActionPerformed
+
+    private void btnÄndraStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnÄndraStatusActionPerformed
+        setVisible(false);
+        new ReklameraOrder().setVisible(true);
+    }//GEN-LAST:event_btnÄndraStatusActionPerformed
 
     /**
      * @param args the command line arguments
@@ -185,6 +204,7 @@ public class BeställningsMeny extends javax.swing.JFrame {
     private javax.swing.JButton btnTillbaka;
     private javax.swing.JButton btnVisaTidigareBeställningar;
     private javax.swing.JButton btnÄndraBeställning;
+    private javax.swing.JButton btnÄndraStatus;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

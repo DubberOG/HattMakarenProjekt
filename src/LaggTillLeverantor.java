@@ -137,7 +137,7 @@ public class LaggTillLeverantor extends javax.swing.JFrame {
    
             //Koppla validering så att det inte blir dubbla värden
             String nyLeverantor = id +",'" + namn + "','" + telefonummer + "'";
-            String nyLeverantorFraga = "INSERT INTO Leverantör (LeverantörID, Namn, Telefon, VALUES ("+nyLeverantor+")";
+            String nyLeverantorFraga = "INSERT INTO Leverantör (LeverantörID, Namn, Telefon) VALUES ("+nyLeverantor+")";
             Main.idb.insert(nyLeverantorFraga);
             JOptionPane.showMessageDialog(null, "En ny leverantör är registrerad!");
             
