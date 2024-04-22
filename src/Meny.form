@@ -25,14 +25,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btnKund" min="-2" pref="94" max="-2" attributes="0"/>
-                  <Component id="btnSkrivUtFraktsedel" alignment="0" min="-2" pref="94" max="-2" attributes="0"/>
-                  <Component id="btnFaktura" alignment="0" min="-2" pref="94" max="-2" attributes="0"/>
-                  <Component id="btnLager" alignment="0" min="-2" pref="94" max="-2" attributes="0"/>
-                  <Component id="jButton1" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnBeställning" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnHattmakare" alignment="0" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -44,6 +37,13 @@
                           <Component id="lblMeny" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
+                  <Component id="btnBeställning" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btnKund" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btnSkrivUtFraktsedel" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btnFaktura" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btnLager" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jButton1" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btnHattmakare" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace pref="159" max="32767" attributes="0"/>
               <Component id="btnLoggaUt" min="-2" max="-2" attributes="0"/>
