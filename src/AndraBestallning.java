@@ -249,52 +249,36 @@ public class AndraBestallning extends javax.swing.JFrame {
      
      ArrayList<HashMap<String, String>> orderIDLista = new ArrayList<HashMap<String, String>>();
     // ArrayList<HashMap<String, String>> produkterIOrderLista = new ArrayList<HashMap<String, String>>();
-      try{
-      
-          String valdOrder = cbxOrderID.getSelectedItem().toString();
-          String fraga = "SELECT OrderID, Datum, Status, KundID, Pris FROM Orders";
-          //String fragaProduktID = "SELECT OrdersID, ProduktID FROM ProdukterIOrder";
-          orderIDLista = Main.idb.fetchRows(fraga);
-         // produkterIOrderLista = Main.idb.fetchRow(fragaProduktID);
-          
-          for(HashMap<String, String> enOrder : orderIDLista){
-        
-              String orderIDFranLista = enOrder.get("OrderID");
-                 
-                if (orderIDFranLista.equals(valdOrder)){
-                   
-                    //Sätter in datumet för orden i txt rutan.
-                 tfDatum.setText(enOrder.get("Datum"));
-                 }
-                 
-                 if (orderIDFranLista.equals(valdOrder)){
-                    //Sätter in namnet för agenten i namnrutan
-                 txtStatus.setText(enOrder.get("Status"));
-                 }
-                 
-                if (orderIDFranLista.equals(valdOrder)){
-                    //Sätter in telefonnumret för agenten i telefonrutan
-                 txtKund.setText(enOrder.get("KundID"));
-                }
-                
-                if (orderIDFranLista.equals(valdOrder)){
-                    //Sätter in epost för agenten i epostrutan
-                 txtPris.setText(enOrder.get("Pris"));
-                }
-    
-                     //Måste lägga till att få upp alla produkter som orden innehåller.
-                    
-                   }
-               
-                }catch (InfException UndantagEn) {
-                    JOptionPane.showMessageDialog(null, "Databasfel!");
-                    System.out.println("Internt felmeddelande" + UndantagEn.getMessage());
-                    
-                }
-                catch (Exception UndantagEn) {
-                    JOptionPane.showMessageDialog(null, "Ett fel uppstod!");
-                    System.out.println("Internt felmeddelande" + UndantagEn.getMessage());
-          }
+try {
+    String valdOrder = cbxOrderID.getSelectedItem().toString();
+    String fraga = "SELECT Orders.OrderID, Orders.Datum, Orders.Status, Orders.KundID, Orders.Pris, ProdukterIOrder.ProduktID FROM Orders JOIN ProdukterIOrder ON Orders.OrderID = ProdukterIOrder.OrdersID";
+
+    orderIDLista = Main.idb.fetchRows(fraga);
+
+    for (HashMap<String, String> enOrder : orderIDLista) {
+        String orderIDFranLista = enOrder.get("OrderID");
+
+        if (orderIDFranLista.equals(valdOrder)) {
+            // Sätter in datumet för orden i txt rutan.
+            tfDatum.setText(enOrder.get("Datum"));
+            // Sätter in namnet för agenten i namnrutan
+            txtStatus.setText(enOrder.get("Status"));
+            // Sätter in telefonnumret för agenten i telefonrutan
+            txtKund.setText(enOrder.get("KundID"));
+            // Sätter in epost för agenten i epostrutan
+            txtPris.setText(enOrder.get("Pris"));
+            // Lägger till ProduktID i txtAreaProdukter
+            txtAreaProdukter.append(enOrder.get("ProduktID") + "\n");
+        }
+    }
+} catch (InfException UndantagEn) {
+    JOptionPane.showMessageDialog(null, "Databasfel!");
+    System.out.println("Internt felmeddelande" + UndantagEn.getMessage());
+} catch (Exception UndantagEn) {
+    JOptionPane.showMessageDialog(null, "Ett fel uppstod!");
+    System.out.println("Internt felmeddelande" + UndantagEn.getMessage());
+}
+
      
      
      
