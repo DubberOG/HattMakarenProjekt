@@ -149,7 +149,9 @@ public class SkapaFaktura1 extends javax.swing.JFrame {
 
     private void btnSkapaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSkapaActionPerformed
         //Omvandlar resultatet från getSelectedItem() till en sträng
-        String cbVal = (String) cbValjOrderVal.getSelectedItem();
+        checkTxtFakturaNummer();
+
+        String cbValet = (String) cbValjOrderVal.getSelectedItem();
         
         //Sparar vikten som angivits i variabeln txtVikt
         String txtFaktura = txtFakturaNummer.getText();
@@ -160,13 +162,13 @@ public class SkapaFaktura1 extends javax.swing.JFrame {
         if(val == JOptionPane.YES_OPTION)
         {
            //Skickar med informationen till klassen SkrivUtFraktsedel
-            new SkrivUtFaktura( cbVal, txtFaktura).setVisible(true);
+            new SkrivUtFaktura( cbValet, txtFaktura).setVisible(true);
             dispose();
         }
     }//GEN-LAST:event_btnSkapaActionPerformed
     
     private void txtFakturaNummerKeyReleased(java.awt.event.KeyEvent evt) {                                       
-       checkTxtFakturaNummer();
+    
     }
     private void avbrytFaktura()
     {
