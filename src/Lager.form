@@ -27,25 +27,25 @@
               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btnTillbaka" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblHattar" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnSeHattar" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnUppdateraHattlager" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="285" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btnTaBortMaterialFrånLager" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnTaBortHattFrånLager" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="lblMaterial" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnUppsateraMateriallager" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnSeMaterialLagerStatus" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButton1" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnLagerförStandardhatt" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnSeMaterialLagerStatus" max="32767" attributes="0"/>
+                          <Component id="jButton1" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnUppsateraMateriallager" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnTaBortMaterialFrånLager" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="btnTaBortHattFrånLager" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnLagerförStandardhatt" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnTillbaka" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblHattar" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnUppdateraHattlager" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnSeHattar" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="285" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>

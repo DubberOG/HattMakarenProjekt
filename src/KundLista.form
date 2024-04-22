@@ -88,7 +88,7 @@
     </Container>
     <Component class="javax.swing.JButton" name="btnSeKunder">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Se kunder"/>
+        <Property name="text" type="java.lang.String" value="Visa kunder"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSeKunderActionPerformed"/>
