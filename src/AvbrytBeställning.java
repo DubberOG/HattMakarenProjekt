@@ -118,7 +118,15 @@ public class AvbrytBeställning extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSökActionPerformed
 
     private void btnAvbrytOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvbrytOrderActionPerformed
-    
+    String valdOrder = cbVälj.getSelectedItem().toString();
+    try
+    {
+       Main.idb.update("update Orders set status 'avbruten' where OrderID = '" + valdOrder + "'" );
+    }
+    catch(InfException e)
+    {
+        JOptionPane.showMessageDialog(null, "Error");
+    }
     }//GEN-LAST:event_btnAvbrytOrderActionPerformed
 
     private void sökBeställning()
