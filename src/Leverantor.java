@@ -135,20 +135,10 @@ public class Leverantor extends javax.swing.JFrame {
                 String value = leverantor.get(key);
                 txtAreaSeLeverantorer.append(key + ": " + value + "\n");
             }
+            txtAreaSeLeverantorer.append("\n");
+
         }
 
-        // Andra delen: Hämta leverantörer från databasen och lagra dem i en ny ArrayList
-        ArrayList<HashMap<String, String>> leverantorer2 = new ArrayList<>();
-        String query = "SELECT * FROM Leverantor";
-        leverantorer2 = Main.idb.fetchRows(query);
-        
-        // Loopa igenom leverantörerna och lägg till dem i textarean
-        for (HashMap<String, String> leverantor : leverantorer2) {
-            for (String key : leverantor.keySet()) {
-                String value = leverantor.get(key);
-                txtAreaSeLeverantorer.append(key + ": " + value + "\n");
-            }
-        }
     } catch (InfException e) {
         // Hantera eventuella databasfel
         System.out.println("Internt felmeddelande: " + e.getMessage());
