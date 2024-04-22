@@ -43,11 +43,12 @@ public class AndraBestallning extends javax.swing.JFrame {
         lblOrderID = new javax.swing.JLabel();
         cbxOrderID = new javax.swing.JComboBox<>();
         txtKund = new javax.swing.JTextField();
-        txtStatus = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtAreaProdukter = new javax.swing.JTextArea();
         lblPris = new javax.swing.JLabel();
         txtPris = new javax.swing.JTextField();
+        lblStatus = new javax.swing.JLabel();
+        btnÄndraStatus = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -96,14 +97,19 @@ public class AndraBestallning extends javax.swing.JFrame {
 
         txtKund.setColumns(5);
 
-        txtStatus.setColumns(5);
-
         txtAreaProdukter.setColumns(20);
         txtAreaProdukter.setRows(5);
         jScrollPane1.setViewportView(txtAreaProdukter);
 
         lblPris.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         lblPris.setText("Pris");
+
+        btnÄndraStatus.setText("Ändra status");
+        btnÄndraStatus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnÄndraStatusActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -114,9 +120,9 @@ public class AndraBestallning extends javax.swing.JFrame {
                 .addComponent(lbBestallning)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
+                .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblProdukt)
@@ -128,20 +134,20 @@ public class AndraBestallning extends javax.swing.JFrame {
                             .addComponent(tfDatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtKund, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(txtPris, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtStatus, javax.swing.GroupLayout.Alignment.LEADING))))
+                            .addComponent(txtPris, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblStatus)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
                         .addComponent(lblOrderID, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(35, 35, 35)
                         .addComponent(cbxOrderID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(172, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(42, 42, 42)
                 .addComponent(btnAvbryt)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnSpara)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnÄndraStatus)
+                    .addComponent(btnSpara))
                 .addGap(52, 52, 52))
         );
         layout.setVerticalGroup(
@@ -161,7 +167,7 @@ public class AndraBestallning extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblProdukt)
-                        .addGap(0, 40, Short.MAX_VALUE))
+                        .addGap(0, 41, Short.MAX_VALUE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -172,8 +178,11 @@ public class AndraBestallning extends javax.swing.JFrame {
                         .addComponent(tfDatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(txtStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel2)
+                        .addComponent(btnÄndraStatus))
+                    .addComponent(lblStatus))
+                .addGap(2, 2, 2)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(8, 8, 8)
@@ -181,7 +190,7 @@ public class AndraBestallning extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtPris, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSpara)
                     .addComponent(btnAvbryt))
@@ -194,47 +203,45 @@ public class AndraBestallning extends javax.swing.JFrame {
     //Denna metoden sparar informationen som skrevs vid eventuella ändringar.
     private void btnSparaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaActionPerformed
 //if(Validering.valideraKundID(txtKund, idb)&& Validering.txtFaltTomt(txtKund)&& Validering.valideraProduktID(txtProdukt, idb)&& Validering.txtFaltTomt(txtProdukt)&& Validering.datumKontroll(tfDatum)&& Validering.txtFaltTomt(txtStatus)){
-        try{ 
-            if(Validering.valideraKundID(txtKund, Main.idb)&& Validering.txtFaltTomt(txtKund)&& Validering.valideraProduktID(txtPris, Main.idb)&& Validering.txtFaltTomt(txtPris)&& Validering.datumKontroll(tfDatum)&& Validering.txtFaltTomt(txtStatus)){
+       try {
+        if (Validering.valideraKundID(txtKund, Main.idb) && Validering.txtFaltTomt(txtKund) && Validering.txtFaltTomt(txtPris) && Validering.datumKontroll(tfDatum)) {
+            String valdOrder = cbxOrderID.getSelectedItem().toString();
+            String nyttKund = txtKund.getText();
+            String nyttPris = txtPris.getText();
+            String nyttDatum = tfDatum.getText();
+           // String nyttStatus = txtStatus.getText();
+            String produkter = txtAreaProdukter.getText();
 
-                String fragaOrder = "SELECT * FROM Orders";
-
-            ArrayList<HashMap<String, String>> Order = Main.idb.fetchRows(fragaOrder);
-
-           String valdOrder = cbxOrderID.getSelectedItem().toString();
-           String nyttKund = txtKund.getText();
-           String nyttPris = txtPris.getText();
-           String nyttDatum = tfDatum.getText();
-           String nyttStatus = txtStatus.getText();
-         
-           
-           String updateQueryDatum = "UPDATE Orders SET Datum = '" + nyttDatum + "' WHERE OrderID = '" + valdOrder + "'";
-           
-                 Main.idb.update(updateQueryDatum);
-       
-            String updateQueryStatus = "UPDATE Orders SET Status = '" + nyttStatus + "' WHERE OrderID = '" + valdOrder + "'";
-           
-                 Main.idb.update(updateQueryStatus);
-                
+            // Uppdatera Orders-tabellen med de nya värdena
+            String updateQueryDatum = "UPDATE Orders SET Datum = '" + nyttDatum + "' WHERE OrderID = '" + valdOrder + "'";
+            Main.idb.update(updateQueryDatum);
+           // String updateQueryStatus = "UPDATE Orders SET Status = '" + nyttStatus + "' WHERE OrderID = '" + valdOrder + "'";
+           // Main.idb.update(updateQueryStatus);
             String updateQueryKund = "UPDATE Orders SET KundID = '" + nyttKund + "' WHERE OrderID = '" + valdOrder + "'";
-           
-                 Main.idb.update(updateQueryKund);
-                 
-                 
+            Main.idb.update(updateQueryKund);
             String updateQueryProdukt = "UPDATE Orders SET Pris = '" + nyttPris + "' WHERE OrderID = '" + valdOrder + "'";
-          
-                 Main.idb.update(updateQueryProdukt);
-                
-                 //Vi måste upppdatera produktid med de produkter som valdes!!!!!!!!!
-                 
-            JOptionPane.showMessageDialog(null, " Informationen har ändrats." );
-           }     
-            }catch(InfException ettUndantag){
+            Main.idb.update(updateQueryProdukt);
 
-            JOptionPane.showMessageDialog(null, "Databasfel!");
-            System.out.println("Internt felmedelande" + ettUndantag.getMessage());    
-       
-                   }
+            // Ta bort befintliga poster från ProdukterIOrder-tabellen för den valda ordern
+            String TaBort = "DELETE FROM ProdukterIOrder WHERE OrdersID = '" + valdOrder + "'";
+            Main.idb.delete(TaBort);
+
+            // Dela upp produkterna från textarean och loopa igenom dem
+            String[] produkterArray = produkter.split("\n");
+            for (String produkt : produkterArray) {
+                // Extrahera ProduktID från varje rad
+                String produktID = produkt.trim();
+                // Spara kombinationen av OrderID och ProduktID i ProdukterIOrder-tabellen
+                String insertQuery = "INSERT INTO ProdukterIOrder (OrdersID, ProduktID) VALUES ('" + valdOrder + "', '" + produktID + "')";
+                Main.idb.insert(insertQuery);
+            }
+
+            JOptionPane.showMessageDialog(null, "Informationen har ändrats.");
+        }
+    } catch (InfException ettUndantag) {
+        JOptionPane.showMessageDialog(null, "Databasfel!");
+        System.out.println("Internt felmeddelande" + ettUndantag.getMessage());
+    }
 
     }//GEN-LAST:event_btnSparaActionPerformed
 
@@ -245,7 +252,7 @@ public class AndraBestallning extends javax.swing.JFrame {
     //Denna metoden skriver in alla värden beroende på OrderID som valdes i comboboxen.
     private void cbxOrderIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxOrderIDActionPerformed
 
-     
+     txtAreaProdukter.setText("");
      ArrayList<HashMap<String, String>> orderIDLista = new ArrayList<HashMap<String, String>>();
     // ArrayList<HashMap<String, String>> produkterIOrderLista = new ArrayList<HashMap<String, String>>();
 try {
@@ -261,7 +268,7 @@ try {
             // Sätter in datumet för orden i txt rutan.
             tfDatum.setText(enOrder.get("Datum"));
             // Sätter in namnet för agenten i namnrutan
-            txtStatus.setText(enOrder.get("Status"));
+            lblStatus.setText(enOrder.get("Status"));
             // Sätter in telefonnumret för agenten i telefonrutan
             txtKund.setText(enOrder.get("KundID"));
             // Sätter in epost för agenten i epostrutan
@@ -283,6 +290,11 @@ try {
      
      
     }//GEN-LAST:event_cbxOrderIDActionPerformed
+
+    private void btnÄndraStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnÄndraStatusActionPerformed
+        setVisible(false);
+        new ReklameraOrder().setVisible(true);
+    }//GEN-LAST:event_btnÄndraStatusActionPerformed
 
     private void fyllcbxOrderID() {
     String fraga = "SELECT OrderID FROM Orders";
@@ -347,6 +359,7 @@ try {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAvbryt;
     private javax.swing.JButton btnSpara;
+    private javax.swing.JButton btnÄndraStatus;
     private javax.swing.JComboBox<String> cbxOrderID;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -356,10 +369,10 @@ try {
     private javax.swing.JLabel lblPris;
     private javax.swing.JLabel lblProdukt;
     private javax.swing.JLabel lblProdukt1;
+    private javax.swing.JLabel lblStatus;
     private javax.swing.JTextField tfDatum;
     private javax.swing.JTextArea txtAreaProdukter;
     private javax.swing.JTextField txtKund;
     private javax.swing.JTextField txtPris;
-    private javax.swing.JTextField txtStatus;
     // End of variables declaration//GEN-END:variables
 }
