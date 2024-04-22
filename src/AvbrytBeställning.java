@@ -35,8 +35,9 @@ public class AvbrytBeställning extends javax.swing.JFrame {
         btnSök = new javax.swing.JToggleButton();
         lbTitel2 = new javax.swing.JLabel();
         btnAvbrytOrder = new javax.swing.JToggleButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        listBeställningar = new javax.swing.JList<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        listBeställningar = new javax.swing.JTextArea();
+        cbVälj = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -61,7 +62,9 @@ public class AvbrytBeställning extends javax.swing.JFrame {
             }
         });
 
-        jScrollPane2.setViewportView(listBeställningar);
+        listBeställningar.setColumns(20);
+        listBeställningar.setRows(5);
+        jScrollPane1.setViewportView(listBeställningar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -77,11 +80,13 @@ public class AvbrytBeställning extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbTitel2, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnSök, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(121, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addComponent(cbVälj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAvbrytOrder))
         );
         layout.setVerticalGroup(
@@ -96,11 +101,13 @@ public class AvbrytBeställning extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(btnAvbrytOrder))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnAvbrytOrder)
+                            .addComponent(cbVälj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(38, 38, 38))
+                        .addGap(8, 8, 8)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(81, 81, 81))
         );
 
         pack();
@@ -111,19 +118,11 @@ public class AvbrytBeställning extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSökActionPerformed
 
     private void btnAvbrytOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvbrytOrderActionPerformed
-        try
-        {
-            
-        }
-        catch(InfException e)
-        {
-            
-        }
+    
     }//GEN-LAST:event_btnAvbrytOrderActionPerformed
 
     private void sökBeställning()
     {
-        DefaultListModel<String> nyLista = new DefaultListModel<>();
 
         try
         {
@@ -137,19 +136,15 @@ public class AvbrytBeställning extends javax.swing.JFrame {
              String produktNamn = Main.idb.fetchSingle("SELECT Namn FROM Produkt WHERE ProduktID = '" + produktID + "'");
              
              String information = orderID + " "+ namn + " "+ produktNamn;
-             nyLista.addElement(information);
+             listBeställningar.append(information);
+             
+             cbVälj.addItem(orderID);
          }
-         listBeställningar.setModel(nyLista);
         }
         catch(InfException e)
         {
             JOptionPane.showMessageDialog(null, e);
         }
-    }
-    
-    public void fyllCB()
-    {
-        
     }
     /**
      * @param args the command line arguments
@@ -189,9 +184,10 @@ public class AvbrytBeställning extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnAvbrytOrder;
     private javax.swing.JToggleButton btnSök;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JComboBox<String> cbVälj;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbTitel;
     private javax.swing.JLabel lbTitel2;
-    private javax.swing.JList<String> listBeställningar;
+    private javax.swing.JTextArea listBeställningar;
     // End of variables declaration//GEN-END:variables
 }
