@@ -269,16 +269,20 @@ public class LaggTillBestallning extends javax.swing.JFrame {
                 //Hämtar vald produkt
                 String valdProdukt = (String) cbValjProdukt.getSelectedItem();
                 String[] parts = valdProdukt.split(" - ");
+                //Hämtar id från den valda produkten
                 String valdProduktID = parts[0];
-                System.out.println(valdProduktID);
                 String fraga = "SELECT Pris FROM PRODUKT WHERE ProduktID = '" +valdProduktID+"'";
                 String prisString = Main.idb.fetchSingle(fraga);
+                //Kollar så att priset inte är null
                 if (prisString != null) {
                     double svar = Double.parseDouble(Main.idb.fetchSingle(fraga));
                     System.out.println(svar);
                     double marginal = 1.2;
                     double prisTillKund = svar * 1.25 * marginal;
                     txtPris.setText(String.valueOf(prisTillKund));}
+                else{
+                    JOptionPane.showMessageDialog(null, "Finns inget pris!");
+                }
 
             } catch (InfException ex) {
             JOptionPane.showMessageDialog(null, "Databasfel!");
