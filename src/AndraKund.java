@@ -232,7 +232,7 @@ private String valdKundID;
             //Koppla validering så att det inte blir dubbla värden
             String nyKundFraga = "UPDATE Kund SET Namn = '" + namn + "', Efternamn = '" + efternamn + "', Email = '" + email + "', Telefon = '" + telefonnummer + "', Adress = '" + adress + "', Ort = '" + ort + "', Postnummer = '" + postnummer + "' WHERE KundID = " + valdKundID;
             Main.idb.update(nyKundFraga);
-            JOptionPane.showMessageDialog(null, "En ny kund är registrerad!");
+            JOptionPane.showMessageDialog(null, "Kunduppgifterna är uppdaterade!");
             
         }}
         catch  (InfException e){
@@ -271,7 +271,7 @@ private String valdKundID;
           String fraga = "SELECT KundID, Namn, Efternamn, Email, Telefon, Adress, Ort, Postnummer FROM Kund";
           kundLista = Main.idb.fetchRows(fraga);
           String[] parts = valdKund.split(" - ");
-          String valdKundID = parts[0];
+          valdKundID = parts[0];
           
           for(HashMap<String, String> enKund : kundLista){
         
@@ -322,10 +322,6 @@ private String valdKundID;
                     System.out.println("Internt felmeddelande" + UndantagEn.getMessage());
                     
                 }
-                catch (Exception UndantagEn) {
-                    JOptionPane.showMessageDialog(null, "Ett fel uppstod!");
-                    System.out.println("Internt felmeddelande" + UndantagEn.getMessage());
-          }
     }//GEN-LAST:event_cbValjKundActionPerformed
 
     /**
