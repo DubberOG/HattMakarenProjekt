@@ -25,7 +25,6 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-<<<<<<< HEAD
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="btnTillbaka" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
@@ -33,16 +32,6 @@
                   <Component id="btnLäggTillBeställning" max="32767" attributes="0"/>
                   <Component id="btnÄndraBeställning" max="32767" attributes="0"/>
                   <Component id="btnAvbryt" alignment="0" max="32767" attributes="0"/>
-=======
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btnVisaTidigareBeställningar" min="-2" pref="197" max="-2" attributes="0"/>
-                  <Component id="btnTillbaka" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="btnLäggTillBeställning" max="32767" attributes="0"/>
-                      <Component id="btnÄndraBeställning" max="32767" attributes="0"/>
-                  </Group>
->>>>>>> dc5321b340881db2a4064c09a51d52c475a9e9aa
               </Group>
               <EmptySpace pref="179" max="32767" attributes="0"/>
           </Group>
@@ -55,17 +44,13 @@
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btnLäggTillBeställning" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+              <Component id="btnVisaTidigareBeställningar" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               <Component id="btnÄndraBeställning" min="-2" pref="22" max="-2" attributes="0"/>
-<<<<<<< HEAD
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               <Component id="btnAvbryt" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="14" max="32767" attributes="0"/>
-=======
-              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-              <Component id="btnVisaTidigareBeställningar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="51" max="32767" attributes="0"/>
->>>>>>> dc5321b340881db2a4064c09a51d52c475a9e9aa
               <Component id="btnTillbaka" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
           </Group>
