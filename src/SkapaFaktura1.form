@@ -99,9 +99,6 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnSkapa">
       <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="12" style="0"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Skapa"/>
       </Properties>
       <Events>
@@ -110,9 +107,6 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnAvbryt">
       <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="12" style="0"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Avbryt"/>
       </Properties>
       <Events>
@@ -136,17 +130,11 @@
     </Container>
     <Component class="javax.swing.JLabel" name="lbOrderLista">
       <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="12" style="0"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Information om order:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lbValjKund">
       <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="12" style="0"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="V&#xe4;lj order:"/>
       </Properties>
     </Component>
@@ -167,9 +155,6 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lbFakturaNummer">
       <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="12" style="0"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Fakturanummer:"/>
       </Properties>
     </Component>
