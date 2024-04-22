@@ -124,9 +124,9 @@ public class LoggaIn extends javax.swing.JFrame {
             {
                 if(inmatatLosenord.equals(new String(pswordLösenord.getPassword())))
                 {
-            JOptionPane.showMessageDialog(null, "Inloggad");
-            new Meny().setVisible(true);
-            dispose();
+                    Main.epost = txtAnvändarnamn.getText();
+                    new Meny().setVisible(true);
+                    dispose();
                 } else 
                 {
                     JOptionPane.showMessageDialog(null, "Fel lösenord");

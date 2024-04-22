@@ -132,14 +132,13 @@ public class SeBestallningarDatum extends javax.swing.JFrame {
         try {
         String query = "SELECT * FROM Orders WHERE Datum BETWEEN '" + datum1 + "' AND '" + datum2 + "'";
         Bestallningar = Main.idb.fetchRows(query);
-        txtAreaBestallningar.append("OrderID" + "\t" + "Datum" + "\t" + "Status" + "\t" + "KundID" + "\t" + "ProduktID" + "\t" + "Pris" + "\n");
+        txtAreaBestallningar.append("OrderID" + "\t" + "Datum" + "\t" + "Status" + "\t" + "KundID" + "\t" + "\t" + "Pris" + "\n");
         
         for(HashMap<String, String> bestallning : Bestallningar) {
             txtAreaBestallningar.append(bestallning.get("OrderID") + "\t");
                     txtAreaBestallningar.append(bestallning.get("Datum") + "\t");
                     txtAreaBestallningar.append(bestallning.get("Status") + "\n");
                     txtAreaBestallningar.append(bestallning.get("KundID") + "\n");
-                    txtAreaBestallningar.append(bestallning.get("ProduktID") + "\n");
                     txtAreaBestallningar.append(bestallning.get("Pris") + "\n");
                     
         

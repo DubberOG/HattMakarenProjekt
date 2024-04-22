@@ -112,8 +112,7 @@ public class BeställningsMeny extends javax.swing.JFrame {
 
     //Denna knappen tar dig till AndraBestallning frame.
     private void btnÄndraBeställningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnÄndraBeställningActionPerformed
-        // TODO add your handling code here:
-        setVisible(false);
+         setVisible(false);
         new AndraBestallning().setVisible(true);
     }//GEN-LAST:event_btnÄndraBeställningActionPerformed
 
