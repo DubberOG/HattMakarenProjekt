@@ -4,6 +4,7 @@
  */
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import oru.inf.InfException;
 import javax.swing.JOptionPane;
 /**
@@ -165,14 +166,24 @@ public class LagerförNyttMaterial extends javax.swing.JFrame {
     
      public void fyllComboBox()
     {
-        try{
-             ArrayList<HashMap<String, String>> allaTyper = Main.idb.fetchRows("SELECT Typ FROM Material");
-             for(HashMap<String, String> enTyp : allaTyper)
-             {
-                String namnTyp = enTyp.get("Typ");
-             cbValjTyp.addItem(namnTyp); 
-             }
-           
+        
+        cbValjTyp.removeAllItems();
+
+        HashSet<String> unikaTyper = new HashSet<>();
+
+    try {
+    
+    ArrayList<HashMap<String, String>> allaTyper = Main.idb.fetchRows("SELECT Typ FROM Material");
+
+    for (HashMap<String, String> enTyp : allaTyper) {
+        String namnTyp = enTyp.get("Typ");
+        unikaTyper.add(namnTyp);
+    }
+
+    for (String typ : unikaTyper) {
+        cbValjTyp.addItem(typ);
+    }
+    
         }
         catch(InfException e)
         {
