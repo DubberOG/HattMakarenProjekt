@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import oru.inf.InfException;
 
@@ -32,10 +33,10 @@ public class AvbrytBeställning extends javax.swing.JFrame {
 
         lbTitel = new javax.swing.JLabel();
         btnSök = new javax.swing.JToggleButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txaBeställningar = new javax.swing.JTextArea();
-        btnAvbrytB = new javax.swing.JButton();
         lbTitel2 = new javax.swing.JLabel();
+        btnAvbrytOrder = new javax.swing.JToggleButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        listBeställningar = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -49,14 +50,18 @@ public class AvbrytBeställning extends javax.swing.JFrame {
             }
         });
 
-        txaBeställningar.setColumns(20);
-        txaBeställningar.setRows(5);
-        jScrollPane1.setViewportView(txaBeställningar);
-
-        btnAvbrytB.setText("Avbryt");
-
         lbTitel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lbTitel2.setText("Välj en beställning");
+        lbTitel2.setText("Sök beställning");
+
+        btnAvbrytOrder.setForeground(new java.awt.Color(255, 51, 51));
+        btnAvbrytOrder.setText("Anullera");
+        btnAvbrytOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAvbrytOrderActionPerformed(evt);
+            }
+        });
+
+        jScrollPane2.setViewportView(listBeställningar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -69,31 +74,33 @@ public class AvbrytBeställning extends javax.swing.JFrame {
                         .addComponent(lbTitel))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAvbrytB))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(lbTitel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
-                            .addComponent(btnSök, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(102, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbTitel2, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnSök, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(121, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnAvbrytOrder))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lbTitel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                 .addComponent(lbTitel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnSök)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnSök)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnAvbrytB, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(btnAvbrytOrder))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(38, 38, 38))
         );
 
         pack();
@@ -103,9 +110,21 @@ public class AvbrytBeställning extends javax.swing.JFrame {
        sökBeställning();
     }//GEN-LAST:event_btnSökActionPerformed
 
+    private void btnAvbrytOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvbrytOrderActionPerformed
+        try
+        {
+            
+        }
+        catch(InfException e)
+        {
+            
+        }
+    }//GEN-LAST:event_btnAvbrytOrderActionPerformed
+
     private void sökBeställning()
     {
-        txaBeställningar.setText("");
+        DefaultListModel<String> nyLista = new DefaultListModel<>();
+
         try
         {
          ArrayList<HashMap<String, String>> allaBeställningar = Main.idb.fetchRows("Select OrderID from Orders where status = 'bekräftad'");
@@ -117,13 +136,20 @@ public class AvbrytBeställning extends javax.swing.JFrame {
              String produktID = Main.idb.fetchSingle("Select ProduktID from ProdukterIOrder where OrdersID = '" + orderID + "'");
              String produktNamn = Main.idb.fetchSingle("SELECT Namn FROM Produkt WHERE ProduktID = '" + produktID + "'");
              
-             txaBeställningar.append(orderID + " "+ namn + " "+ produktNamn);
+             String information = orderID + " "+ namn + " "+ produktNamn;
+             nyLista.addElement(information);
          }
+         listBeställningar.setModel(nyLista);
         }
         catch(InfException e)
         {
             JOptionPane.showMessageDialog(null, e);
         }
+    }
+    
+    public void fyllCB()
+    {
+        
     }
     /**
      * @param args the command line arguments
@@ -161,11 +187,11 @@ public class AvbrytBeställning extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAvbrytB;
+    private javax.swing.JToggleButton btnAvbrytOrder;
     private javax.swing.JToggleButton btnSök;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lbTitel;
     private javax.swing.JLabel lbTitel2;
-    private javax.swing.JTextArea txaBeställningar;
+    private javax.swing.JList<String> listBeställningar;
     // End of variables declaration//GEN-END:variables
 }
