@@ -115,7 +115,7 @@ public class LoggaIn extends javax.swing.JFrame {
     {
         try
         {
-            String inmatatLosenord = Main.idb.fetchSingle("select Lösenord FROM medarbetare WHERE Epost = '" + txtAnvändarnamn.getText().toLowerCase() +"'");
+            String inmatatLosenord = Main.idb.fetchSingle("select Lösenord FROM medarbetare WHERE Epost = '" + txtAnvändarnamn.getText() +"'");
             if(inmatatLosenord == null)
             {
                 JOptionPane.showMessageDialog(null, "Användaren finns ej");
