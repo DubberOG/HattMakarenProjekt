@@ -40,7 +40,7 @@ public class LaggTillLeverantor extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lblFyllIUppgifterOmLeverantör.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblFyllIUppgifterOmLeverantör.setText("Fyll i uppgifter om leverantör:");
+        lblFyllIUppgifterOmLeverantör.setText("Fyll i uppgifter om leverantör");
 
         txtNamn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -86,7 +86,7 @@ public class LaggTillLeverantor extends javax.swing.JFrame {
                                 .addComponent(lblFöretagsnamn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtNamn, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addContainerGap(81, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(btnTillbaka)
