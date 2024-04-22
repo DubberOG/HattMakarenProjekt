@@ -175,31 +175,15 @@ public class LagerförNyttMaterial extends javax.swing.JFrame {
     
     ArrayList<HashMap<String, String>> allaTyper = Main.idb.fetchRows("SELECT Typ FROM Material");
 
-    // Lägg till varje typ i HashSeten för att se till att de är unika
     for (HashMap<String, String> enTyp : allaTyper) {
         String namnTyp = enTyp.get("Typ");
         unikaTyper.add(namnTyp);
     }
 
-    // Lägg till varje unikt element från HashSeten till ComboBoxen
     for (String typ : unikaTyper) {
         cbValjTyp.addItem(typ);
     }
-
-        
-        
-        
-//        cbValjTyp.removeAllItems();
-//        try{
-//             ArrayList<HashMap<String, String>> allaTyper = Main.idb.fetchRows("SELECT Typ FROM Material");
-//             for(HashMap<String, String> enTyp : allaTyper)
-//             {
-//                String namnTyp = enTyp.get("Typ");
-//             //cbValjTyp.addItem(namnTyp);
-//             cbValjTyp.addItem("Utsmyckning");
-//             cbValjTyp.addItem("Tyg");
-//             }
-//           
+    
         }
         catch(InfException e)
         {
