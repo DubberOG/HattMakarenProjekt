@@ -231,10 +231,12 @@ public class LaggTillBestallning extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //Denna knappen avbryter man beställningen. 
     private void btnAvbrytActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvbrytActionPerformed
         avbrytBestallning();
     }//GEN-LAST:event_btnAvbrytActionPerformed
 
+    //Denna knappen sparar man en ny beställning det man har skrivit in.
     private void btnSparaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaActionPerformed
         sparaBestallning();
     }//GEN-LAST:event_btnSparaActionPerformed
@@ -243,11 +245,13 @@ public class LaggTillBestallning extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPrisActionPerformed
 
+    //Denna knapp fyller kundID
     private void cbValjKundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbValjKundActionPerformed
         // TODO add your handling code here:
         
     }//GEN-LAST:event_cbValjKundActionPerformed
 
+    //Denna metoden ftller priset när man valt produkt.
     private void cbValjProduktActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbValjProduktActionPerformed
         // TODO add your handling code here:
         fyllPris();
@@ -262,6 +266,7 @@ public class LaggTillBestallning extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLäggTillActionPerformed
 
    
+    //Denna metoden räknar ut priset och fyller textrutan pris.
     private void fyllPris(){
         Object kollarNull = cbValjProdukt.getSelectedItem();
         if(kollarNull != null){
@@ -293,6 +298,7 @@ public class LaggTillBestallning extends javax.swing.JFrame {
         }
     }
     
+    //Denna comboboxen fyller skollrutan med KundID.
     private void fyllCbValjKund() {
             try{
                 ArrayList<HashMap<String, String>> allaKunder = Main.idb.fetchRows("SELECT KundID, Namn FROM Kund");
@@ -310,6 +316,8 @@ public class LaggTillBestallning extends javax.swing.JFrame {
         catch(InfException ettUndantag){
             JOptionPane.showMessageDialog(null, "Databasfel!");
          }}
+    
+    //Denna fyller comboboxen med namn och produktID.
      private void fyllCbValjProdukt() {
             try{
         ArrayList<HashMap<String, String>> allaProdukter = Main.idb.fetchRows("SELECT ProduktID, Namn FROM Produkt");
@@ -329,6 +337,7 @@ public class LaggTillBestallning extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Databasfel!");
          }}
      
+     //Denna metoden fyller in datumet.
      private void fylliDatum()
      {
          Date datum = new Date();
@@ -338,6 +347,7 @@ public class LaggTillBestallning extends javax.swing.JFrame {
          System.out.println("C");
      }
      
+     //Denna metoden avbryter beställningen.
      private void avbrytBestallning()
      {
           int val = JOptionPane.showConfirmDialog(null, "Vill du avbryta beställningen?", "Avbryt", JOptionPane.YES_NO_OPTION);
@@ -348,6 +358,7 @@ public class LaggTillBestallning extends javax.swing.JFrame {
           }
      }
    
+     //Denna metoden sparar beställningen.
      private void sparaBestallning() {
     try {
         // Hämta vald kund och produkt från comboboxarna

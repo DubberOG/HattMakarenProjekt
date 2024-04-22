@@ -27,7 +27,7 @@ public class SkapaFaktura1 extends javax.swing.JFrame {
     public SkapaFaktura1() {
         initComponents();
         btnSkapa.setEnabled(false);
-        fyllICombobox();
+        fylliInformation();
 
     }
 
@@ -181,28 +181,7 @@ public class SkapaFaktura1 extends javax.swing.JFrame {
           }
      }
     }
-             private void fyllcbValjOrder(){
-    
-         String fraga = "SELECT OrderID FROM Orders WHERE Status = 'Skickad'";
-         ArrayList<String> allaOrderID;
-    
-         try{
-    
-            allaOrderID = Main.idb.fetchColumn(fraga);
-            
-            for(String ettID : allaOrderID){
-            
-                cbValjOrderVal.addItem(ettID);
-            
-            }
-            
-         }catch(InfException ettUndantag){
-            
-              JOptionPane.showMessageDialog(null, " Databasfel! " );
-              System.out.println("Internt felmedelande" + ettUndantag.getMessage());     
-          }
-        }
-    private void fyllICombobox()
+    private void fylliInformation()
     {
         //SQL-fråga för att hämta OrderID från databasen
          try{
@@ -215,12 +194,19 @@ public class SkapaFaktura1 extends javax.swing.JFrame {
             String orderID = order.get("OrderID");
             String kundID = order.get("KundID");
             
+            HashMap<String, String> kundInformation = Main.idb.fetchRow("Select * from Orders where OrderID = '" + orderID + "'");
+            
+            //Se över denna 
+              String kunden = kund.getKey(KundID);
             //Lägger till OrderID i comboboxen
             if(kundID != null)
             {
                 cbValjOrderVal.addItem(orderID); 
+                txAInformation.setText(kundInformation);
             }
-        }}
+        }
+                
+         }
                     
               
         catch(InfException ettUndantag){

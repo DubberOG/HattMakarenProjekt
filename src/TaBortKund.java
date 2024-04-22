@@ -42,9 +42,10 @@ public class TaBortKund extends javax.swing.JFrame {
 
         txtFyllI.setColumns(5);
 
+        lblRubrik.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         lblRubrik.setText("Ta bort kund");
 
-        lblSkrivIn.setText("Skriv in Kund E-mail");
+        lblSkrivIn.setText("Skriv in kundens E-post för att radera kunduppgifter");
 
         btnRadera.setText("Radera");
         btnRadera.addActionListener(new java.awt.event.ActionListener() {
@@ -64,38 +65,39 @@ public class TaBortKund extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(btnTillbaka)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnRadera)
-                .addGap(61, 61, 61))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(179, 179, 179)
+                            .addComponent(txtFyllI, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(63, 63, 63)
+                            .addComponent(lblSkrivIn))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(157, 157, 157)
+                            .addComponent(lblRubrik)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(151, 151, 151)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblRubrik)
-                            .addComponent(txtFyllI, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(131, 131, 131)
-                        .addComponent(lblSkrivIn)))
-                .addContainerGap(160, Short.MAX_VALUE))
+                        .addGap(83, 83, 83)
+                        .addComponent(btnTillbaka)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnRadera)))
+                .addGap(61, 74, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(lblRubrik)
-                .addGap(44, 44, 44)
+                .addGap(38, 38, 38)
                 .addComponent(lblSkrivIn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtFyllI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRadera)
                     .addComponent(btnTillbaka))
-                .addGap(34, 34, 34))
+                .addGap(53, 53, 53))
         );
 
         pack();

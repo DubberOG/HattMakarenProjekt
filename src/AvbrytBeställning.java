@@ -156,7 +156,7 @@ public class AvbrytBeställning extends javax.swing.JFrame {
 
     private void sökBeställning()
     {
-
+        boolean hittadBekräftadOrder = false;
         try
         {
          ArrayList<HashMap<String, String>> allaBeställningar = Main.idb.fetchRows("Select OrderID from Orders where status = 'bekräftad'");
@@ -172,6 +172,12 @@ public class AvbrytBeställning extends javax.swing.JFrame {
              listBeställningar.append(information);
              
              cbVälj.addItem(orderID);
+             
+             hittadBekräftadOrder = true;
+         }
+         if(!hittadBekräftadOrder)
+         {
+             JOptionPane.showMessageDialog(null, "Det finns ingen beställning du kan avbryta!");
          }
         }
         catch(InfException e)

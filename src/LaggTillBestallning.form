@@ -44,10 +44,7 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="lbOrder" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="188" pref="188" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="lbOrder" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="txtArea" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -71,7 +68,6 @@
                       <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
           </Group>
@@ -137,7 +133,6 @@
                       <Component id="lblpris" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="txtPris" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="65" pref="65" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>

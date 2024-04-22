@@ -245,6 +245,7 @@ public class AndraBestallning extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnSparaActionPerformed
 
+    //Denna metoden avbryter beställningen
     private void btnAvbrytActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvbrytActionPerformed
         avbrytBestallning();
     }//GEN-LAST:event_btnAvbrytActionPerformed
@@ -283,19 +284,16 @@ try {
 } catch (Exception UndantagEn) {
     JOptionPane.showMessageDialog(null, "Ett fel uppstod!");
     System.out.println("Internt felmeddelande" + UndantagEn.getMessage());
-}
-
-     
-     
-     
-     
+      }   
     }//GEN-LAST:event_cbxOrderIDActionPerformed
 
+    //Denna metoden tar dig till JFrame Ändra beställning.
     private void btnÄndraStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnÄndraStatusActionPerformed
         setVisible(false);
         new ReklameraOrder().setVisible(true);
     }//GEN-LAST:event_btnÄndraStatusActionPerformed
 
+    //Denna metoden fyller comboboxen med orderID.
     private void fyllcbxOrderID() {
     String fraga = "SELECT OrderID FROM Orders";
     ArrayList<String> allaOrderID;
@@ -303,20 +301,21 @@ try {
         allaOrderID = Main.idb.fetchColumn(fraga);
         for(String ettID : allaOrderID) {
             cbxOrderID.addItem(ettID);
+           }
         }
-       
-        }
+    
       catch (InfException ettUndantag)  {
           JOptionPane.showMessageDialog(null, "Databasfel");
           System.out.println("Internt felmeddelande" + ettUndantag.getMessage());
-          
-    }
-}
-         private void avbrytBestallning()
-     {
+        }
+      }
+    
+    //Denna metoden avbryter beställningen.
+         private void avbrytBestallning(){
           int val = JOptionPane.showConfirmDialog(null, "Vill du avbryta ändring av beställningen?", "Avbryt", JOptionPane.YES_NO_OPTION);
           if(val == JOptionPane.YES_OPTION)
           {
+          
               dispose();
               new Meny().setVisible(true);
           }

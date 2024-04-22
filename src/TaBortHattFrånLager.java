@@ -36,10 +36,11 @@ public class TaBortHattFrånLager extends javax.swing.JFrame {
         cbValjProdukt = new javax.swing.JComboBox<>();
         btnRaderaProdukt = new javax.swing.JButton();
         btnTillbaka = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lblProdukt.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblProdukt.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         lblProdukt.setText("Välj produkt");
 
         cbValjProdukt.addActionListener(new java.awt.event.ActionListener() {
@@ -62,36 +63,43 @@ public class TaBortHattFrånLager extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        jLabel1.setText("Ta bort produkt från lager");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(141, Short.MAX_VALUE)
-                .addComponent(btnRaderaProdukt)
-                .addGap(138, 138, 138))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(155, 155, 155)
+                        .addGap(25, 25, 25)
+                        .addComponent(btnTillbaka))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(95, 95, 95)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(149, 149, 149)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblProdukt)
                             .addComponent(cbValjProdukt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(btnTillbaka)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(126, 126, 126)
+                        .addComponent(btnRaderaProdukt)))
+                .addContainerGap(85, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(51, 51, 51)
+                .addGap(16, 16, 16)
+                .addComponent(jLabel1)
+                .addGap(29, 29, 29)
                 .addComponent(lblProdukt)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cbValjProdukt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
+                .addGap(18, 18, 18)
                 .addComponent(btnRaderaProdukt)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
                 .addComponent(btnTillbaka)
                 .addGap(19, 19, 19))
         );
@@ -180,6 +188,7 @@ private void fyllCbValjProdukt() {
     private javax.swing.JButton btnRaderaProdukt;
     private javax.swing.JButton btnTillbaka;
     private javax.swing.JComboBox<String> cbValjProdukt;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblProdukt;
     // End of variables declaration//GEN-END:variables
 }

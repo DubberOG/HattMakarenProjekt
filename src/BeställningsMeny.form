@@ -32,13 +32,9 @@
                   <Component id="btnLäggTillBeställning" max="32767" attributes="0"/>
                   <Component id="btnÄndraBeställning" max="32767" attributes="0"/>
                   <Component id="btnAvbryt" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btnÄndraStatus" max="32767" attributes="0"/>
               </Group>
               <EmptySpace pref="179" max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="btnÄndraStatus" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -49,15 +45,15 @@
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btnLäggTillBeställning" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-              <Component id="btnÄndraStatus" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="btnÄndraBeställning" min="-2" pref="22" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="btnVisaTidigareBeställningar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-              <Component id="btnÄndraBeställning" min="-2" pref="22" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="btnÄndraStatus" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="btnAvbryt" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="14" max="32767" attributes="0"/>
+              <EmptySpace pref="51" max="32767" attributes="0"/>
               <Component id="btnTillbaka" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
           </Group>
@@ -115,7 +111,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btn&#xc4;ndraStatus">
       <Properties>
-        <Property name="text" type="java.lang.String" value="&#xc4;ndra status"/>
+        <Property name="text" type="java.lang.String" value="&#xc4;ndra status p&#xe5; en order"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn&#xc4;ndraStatusActionPerformed"/>
