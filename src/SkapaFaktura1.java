@@ -192,15 +192,19 @@ public class SkapaFaktura1 extends javax.swing.JFrame {
             String orderID = order.get("OrderID");
             String kundID = order.get("KundID");
             
-            String kundInformation = Main.idb.fetchSingle("Select * from Orders where OrderID = '" + orderID + "'");
+            HashMap<String, String> kundInformation = Main.idb.fetchRow("Select * from Orders where OrderID = '" + orderID + "'");
             
+            //Se över denna 
+              String kunden = kund.getKey(KundID);
             //Lägger till OrderID i comboboxen
             if(kundID != null)
             {
                 cbValjOrderVal.addItem(orderID); 
                 txAInformation.setText(kundInformation);
             }
-        }}
+        }
+                
+         }
                     
               
         catch(InfException ettUndantag){
