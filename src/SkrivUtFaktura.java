@@ -19,17 +19,14 @@ public class SkrivUtFaktura extends javax.swing.JFrame {
     private static String txtFakturaNr;
     
    
-<<<<<<< Updated upstream
-    public SkrivUtFaktura(cbValet, txtFakturaNr) {
-=======
     public SkrivUtFaktura(String cbValet, String txtFakturaNr ) {
->>>>>>> Stashed changes
+ 
         initComponents();
         this.cbValet = cbValet;
         this.txtFakturaNr = txtFakturaNr;
         fyllDatum();
         fyllDatumEnManad();
-        fyllILabels();
+        fyllIText();
 
     }
     
@@ -58,9 +55,8 @@ public class SkrivUtFaktura extends javax.swing.JFrame {
     // Sätt den nya datumsträngen till din lbDagensDatumVisa
     lbManadFramDatum.setText(nyttDatum);
 }   
-
     
-        private void fyllILabels()
+        private void fyllIText()
     {
         txAllinfo.setText("");
 
@@ -162,7 +158,7 @@ public class SkrivUtFaktura extends javax.swing.JFrame {
         lbOrderNummerVisa = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         txAllinfo = new javax.swing.JTextArea();
-        Produktbeskrivning = new javax.swing.JLabel();
+        lbProduktbeskrivning = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -249,7 +245,7 @@ public class SkrivUtFaktura extends javax.swing.JFrame {
         txAllinfo.setRows(5);
         jScrollPane2.setViewportView(txAllinfo);
 
-        Produktbeskrivning.setText("Produktbeskrivning:");
+        lbProduktbeskrivning.setText("Produktbeskrivning:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -286,7 +282,7 @@ public class SkrivUtFaktura extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(lbBetalningsvillkor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lbOttosHattmakeri, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Produktbeskrivning, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(lbProduktbeskrivning, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(257, 257, 257)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbFrånAdressen, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -405,8 +401,8 @@ public class SkrivUtFaktura extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(AttBetala)
                             .addComponent(lbAttBetalaVisas)
-                            .addComponent(Produktbeskrivning))
-                        .addGap(513, 513, 513)))
+                            .addComponent(lbProduktbeskrivning))
+                        .addGap(507, 507, 507)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbSumma)
                     .addComponent(lbSummaVisas))
@@ -422,7 +418,7 @@ public class SkrivUtFaktura extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbAttBetala2)
                     .addComponent(lbSummaAttBetala2Visas))
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(53, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addContainerGap(323, Short.MAX_VALUE)
@@ -462,7 +458,7 @@ public class SkrivUtFaktura extends javax.swing.JFrame {
         //</editor-fold>
 
          /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
+            java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new SkrivUtFaktura(cbValet, txtFakturaNr).setVisible(true);
             }
@@ -476,7 +472,6 @@ public class SkrivUtFaktura extends javax.swing.JFrame {
     private javax.swing.JLabel Bankgiro;
     private javax.swing.JLabel Förfallodatum;
     private javax.swing.JLabel PlusGiro;
-    private javax.swing.JLabel Produktbeskrivning;
     private javax.swing.JButton btnSkrivUT;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane2;
@@ -507,6 +502,7 @@ public class SkrivUtFaktura extends javax.swing.JFrame {
     private javax.swing.JLabel lbOttosHattmakeri;
     private javax.swing.JLabel lbOttosHattmakeriIgen;
     private javax.swing.JLabel lbPlusGiroNummer;
+    private javax.swing.JLabel lbProduktbeskrivning;
     private javax.swing.JLabel lbSumma;
     private javax.swing.JLabel lbSummaAttBetala2Visas;
     private javax.swing.JLabel lbSummaVisas;

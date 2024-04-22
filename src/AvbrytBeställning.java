@@ -112,13 +112,12 @@ public class AvbrytBeställning extends javax.swing.JFrame {
          for(HashMap <String, String> beställningar : allaBeställningar)
          {
              String orderID = beställningar.get("OrderID");
-             String namn = Main.idb.fetchSingle("Select Namn from Kund where OrderID = '" + orderID + "'");
+             String kundID = Main.idb.fetchSingle("Select KundID from Orders where OrderID = '" + orderID + "'");
+             String namn = Main.idb.fetchSingle("Select Namn from Kund where KundID = '" + kundID + "'");
              String produktID = Main.idb.fetchSingle("Select ProduktID from ProdukterIOrder where OrderID = '" + orderID + "'");
              String produktNamn = Main.idb.fetchSingle("SELECT Namn FROM Produkt WHERE ProduktID = '" + produktID + "'");
              
              txaBeställningar.append(orderID + " "+ namn + " "+ produktNamn);
-             
-             
          }
         }
         catch(InfException e)

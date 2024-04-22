@@ -84,7 +84,6 @@ public class BeställningsMeny extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
-<<<<<<< HEAD
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnTillbaka)
                     .addComponent(jLabel1)
@@ -92,15 +91,6 @@ public class BeställningsMeny extends javax.swing.JFrame {
                     .addComponent(btnLäggTillBeställning, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnÄndraBeställning, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnAvbryt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-=======
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnVisaTidigareBeställningar, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnTillbaka)
-                    .addComponent(jLabel1)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btnLäggTillBeställning, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnÄndraBeställning, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
->>>>>>> dc5321b340881db2a4064c09a51d52c475a9e9aa
                 .addContainerGap(179, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -110,17 +100,13 @@ public class BeställningsMeny extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(btnLäggTillBeställning)
-                .addGap(35, 35, 35)
+                .addGap(30, 30, 30)
+                .addComponent(btnVisaTidigareBeställningar)
+                .addGap(27, 27, 27)
                 .addComponent(btnÄndraBeställning, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-<<<<<<< HEAD
                 .addGap(27, 27, 27)
                 .addComponent(btnAvbryt)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
-=======
-                .addGap(35, 35, 35)
-                .addComponent(btnVisaTidigareBeställningar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
->>>>>>> dc5321b340881db2a4064c09a51d52c475a9e9aa
                 .addComponent(btnTillbaka)
                 .addGap(22, 22, 22))
         );
