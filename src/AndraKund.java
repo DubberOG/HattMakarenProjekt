@@ -232,7 +232,7 @@ public class AndraKund extends javax.swing.JFrame {
 
             //Koppla validering så att det inte blir dubbla värden
             String nyKund = id+",'"+namn+"',"+"'"+efternamn+"',"+"'"+email+"',"+"'"+telefonnummer+"',"+"'"+adress+"',"+"'"+ort+"',"+"'"+postnummer+"'";
-            String nyKundFraga = "INSERT INTO Kund (KundID, Namn, Efternamn, Email, Telefon, Adress, Ort, Postnummer) VALUES ("+nyKund+")";
+            String nyKundFraga = "UPDATE Kund (KundID, Namn, Efternamn, Email, Telefon, Adress, Ort, Postnummer) VALUES ("+nyKund+") WHERE KundID = ";
             Main.idb.insert(nyKundFraga);
             JOptionPane.showMessageDialog(null, "En ny kund är registrerad!");
             
@@ -272,43 +272,45 @@ public class AndraKund extends javax.swing.JFrame {
           String valdKund = cbValjKund.getSelectedItem().toString();
           String fraga = "SELECT KundID, Namn, Efternamn, Email, Telefon, Adress, Ort, Postnummer FROM Kund";
           kundLista = Main.idb.fetchRows(fraga);
+          String[] parts = valdKund.split(" - ");
+          String valdKundID = parts[0];
           
           for(HashMap<String, String> enKund : kundLista){
         
               String kundIDFranLista = enKund.get("KundID");
                  
-                if (kundIDFranLista.equals(valdKund)){
+                if (kundIDFranLista.equals(valdKundID)){
                    
                     //Sätter in datumet för orden i txt rutan.
                  txtFornamn.setText(enKund.get("Namn"));
                  }
                  
-                 if (kundIDFranLista.equals(valdKund)){
+                 if (kundIDFranLista.equals(valdKundID)){
                     //Sätter in namnet för agenten i namnrutan
                  txtEfternamn.setText(enKund.get("Efternamn"));
                  }
                  
-                if (kundIDFranLista.equals(valdKund)){
+                if (kundIDFranLista.equals(valdKundID)){
                     //Sätter in telefonnumret för agenten i telefonrutan
                  txtEpost.setText(enKund.get("Email"));
                 }
                 
-                if (kundIDFranLista.equals(valdKund)){
+                if (kundIDFranLista.equals(valdKundID)){
                     //Sätter in epost för agenten i epostrutan
                  txtTelefonnummer.setText(enKund.get("Telefon"));
                 }
                 
-                if (kundIDFranLista.equals(valdKund)){
+                if (kundIDFranLista.equals(valdKundID)){
                     //Sätter in epost för agenten i epostrutan
                  txtAdress.setText(enKund.get("Adress"));
                 }
                 
-                if (kundIDFranLista.equals(valdKund)){
+                if (kundIDFranLista.equals(valdKundID)){
                     //Sätter in epost för agenten i epostrutan
                  txtOrt.setText(enKund.get("Ort"));
                 }
                 
-                if (kundIDFranLista.equals(valdKund)){
+                if (kundIDFranLista.equals(valdKundID)){
                     //Sätter in epost för agenten i epostrutan
                  txtPostNummer.setText(enKund.get("Postnummer"));
                 }

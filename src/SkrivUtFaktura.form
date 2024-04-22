@@ -63,7 +63,7 @@
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
                           <Component id="lbBetalningsvillkor" alignment="1" max="32767" attributes="0"/>
                           <Component id="lbOttosHattmakeri" alignment="1" max="32767" attributes="0"/>
-                          <Component id="Produktbeskrivning" alignment="1" max="32767" attributes="0"/>
+                          <Component id="lbProduktbeskrivning" alignment="1" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -218,9 +218,9 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="AttBetala" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lbAttBetalaVisas" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="Produktbeskrivning" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbProduktbeskrivning" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="513" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="507" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -242,7 +242,7 @@
                   <Component id="lbAttBetala2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lbSummaAttBetala2Visas" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="47" max="32767" attributes="0"/>
+              <EmptySpace pref="53" max="32767" attributes="0"/>
           </Group>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
@@ -462,7 +462,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JLabel" name="Produktbeskrivning">
+    <Component class="javax.swing.JLabel" name="lbProduktbeskrivning">
       <Properties>
         <Property name="text" type="java.lang.String" value="Produktbeskrivning:"/>
       </Properties>
