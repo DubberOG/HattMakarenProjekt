@@ -114,7 +114,7 @@ public class AvbrytBeställning extends javax.swing.JFrame {
              String orderID = beställningar.get("OrderID");
              String kundID = Main.idb.fetchSingle("Select KundID from Orders where OrderID = '" + orderID + "'");
              String namn = Main.idb.fetchSingle("Select Namn from Kund where KundID = '" + kundID + "'");
-             String produktID = Main.idb.fetchSingle("Select ProduktID from ProdukterIOrder where OrderID = '" + orderID + "'");
+             String produktID = Main.idb.fetchSingle("Select ProduktID from ProdukterIOrder where OrdersID = '" + orderID + "'");
              String produktNamn = Main.idb.fetchSingle("SELECT Namn FROM Produkt WHERE ProduktID = '" + produktID + "'");
              
              txaBeställningar.append(orderID + " "+ namn + " "+ produktNamn);
@@ -122,7 +122,7 @@ public class AvbrytBeställning extends javax.swing.JFrame {
         }
         catch(InfException e)
         {
-            JOptionPane.showMessageDialog(null, "Error i databasen, se över att du har senaste verasionen");
+            JOptionPane.showMessageDialog(null, e);
         }
     }
     /**
