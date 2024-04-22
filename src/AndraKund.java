@@ -25,7 +25,7 @@ public class AndraKund extends javax.swing.JFrame {
         fyllCbValjKund();
         // forstätt fylla i för ev comboboxar
     }
-
+private String valdKundID;
 
 
     /**
@@ -220,7 +220,6 @@ public class AndraKund extends javax.swing.JFrame {
                   Validering.txtFaltTomt(txtAdress) && Validering.txtFaltTomt(txtPostNummer) && 
                   Validering.txtFaltTomt(txtOrt) && Validering.txtFaltTomt(txtTelefonnummer) && 
                   Validering.txtEpostKontroll(txtEpost)){
-            String id = Main.idb.getAutoIncrement("Kund", "KundID");
             String namn = txtFornamn.getText();
             String efternamn = txtEfternamn.getText();
             String adress = txtAdress.getText();
@@ -231,9 +230,8 @@ public class AndraKund extends javax.swing.JFrame {
 
 
             //Koppla validering så att det inte blir dubbla värden
-            String nyKund = id+",'"+namn+"',"+"'"+efternamn+"',"+"'"+email+"',"+"'"+telefonnummer+"',"+"'"+adress+"',"+"'"+ort+"',"+"'"+postnummer+"'";
-            String nyKundFraga = "UPDATE Kund (KundID, Namn, Efternamn, Email, Telefon, Adress, Ort, Postnummer) VALUES ("+nyKund+") WHERE KundID = ";
-            Main.idb.insert(nyKundFraga);
+            String nyKundFraga = "UPDATE Kund SET Namn = '" + namn + "', Efternamn = '" + efternamn + "', Email = '" + email + "', Telefon = '" + telefonnummer + "', Adress = '" + adress + "', Ort = '" + ort + "', Postnummer = '" + postnummer + "' WHERE KundID = " + valdKundID;
+            Main.idb.update(nyKundFraga);
             JOptionPane.showMessageDialog(null, "En ny kund är registrerad!");
             
         }}

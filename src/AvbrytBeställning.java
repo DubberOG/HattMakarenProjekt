@@ -122,7 +122,7 @@ public class AvbrytBeställning extends javax.swing.JFrame {
         }
         catch(InfException e)
         {
-            JOptionPane.showMessageDialog(null, e);
+            JOptionPane.showMessageDialog(null, "Error i databasen, se över att du har senaste verasionen");
         }
     }
     /**
