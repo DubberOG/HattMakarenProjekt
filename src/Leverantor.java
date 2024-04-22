@@ -124,25 +124,37 @@ public class Leverantor extends javax.swing.JFrame {
 
    public void fyllItextFalt(){
     try {
-        // Hämta leverantörer från databasen och lagra dem i listan
-        String query = "SELECT * FROM Leverantor";
-        ArrayList<HashMap<String, String>> leverantorer = Main.idb.fetchRows(query);
-
-        // Iterera över varje leverantör och lägg till deras data i textfältet
+        // Första delen: Hämta leverantörer från databasen och lagra dem i en ArrayList
+        ArrayList<HashMap<String, String>> leverantorer = new ArrayList<>();
+        String nyLeverantorFraga = "SELECT * FROM leverantör";
+        leverantorer = Main.idb.fetchRows(nyLeverantorFraga);
+        
+        // Loopa igenom leverantörerna och lägg till dem i textarean
         for (HashMap<String, String> leverantor : leverantorer) {
-            StringBuilder order = new StringBuilder();
             for (String key : leverantor.keySet()) {
                 String value = leverantor.get(key);
-                order.append(key).append(": ").append(value).append("\n");
+                txtAreaSeLeverantorer.append(key + ": " + value + "\n");
             }
-            txtAreaSeLeverantorer.append(order.toString());
+        }
+
+        // Andra delen: Hämta leverantörer från databasen och lagra dem i en ny ArrayList
+        ArrayList<HashMap<String, String>> leverantorer2 = new ArrayList<>();
+        String query = "SELECT * FROM Leverantor";
+        leverantorer2 = Main.idb.fetchRows(query);
+        
+        // Loopa igenom leverantörerna och lägg till dem i textarean
+        for (HashMap<String, String> leverantor : leverantorer2) {
+            for (String key : leverantor.keySet()) {
+                String value = leverantor.get(key);
+                txtAreaSeLeverantorer.append(key + ": " + value + "\n");
+            }
         }
     } catch (InfException e) {
         // Hantera eventuella databasfel
         System.out.println("Internt felmeddelande: " + e.getMessage());
     }
-   }    
-    
+}
+
     
     /**
      * @param args the command line arguments
