@@ -121,7 +121,7 @@ public class AvbrytBeställning extends javax.swing.JFrame {
     String valdOrder = cbVälj.getSelectedItem().toString();
     try
     {
-       Main.idb.update("update Orders set status 'avbruten' where OrderID = '" + valdOrder + "'" );
+       Main.idb.update("update Orders set status = 'avbruten' where OrderID = '" + valdOrder + "'" );
     }
     catch(InfException e)
     {
