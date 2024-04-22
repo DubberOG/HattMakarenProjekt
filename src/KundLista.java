@@ -47,7 +47,7 @@ public class KundLista extends javax.swing.JFrame {
         txtAreaKundLista.setRows(5);
         jScrollPane1.setViewportView(txtAreaKundLista);
 
-        btnSeKunder.setText("Se kunder");
+        btnSeKunder.setText("Visa kunder");
         btnSeKunder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSeKunderActionPerformed(evt);
@@ -99,9 +99,7 @@ public class KundLista extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSeKunderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeKunderActionPerformed
-        // TODO add your handling code here:
-      
-   
+  
    ArrayList<String> orders = new ArrayList<>();
         try{
             String nyKundFraga = "SELECT * FROM Kund";
@@ -123,8 +121,8 @@ public class KundLista extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSeKunderActionPerformed
 
     private void btnKundlistaTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKundlistaTillbakaActionPerformed
-   setVisible(false);
-        new Meny().setVisible(true);        // TODO add your handling code here:
+    setVisible(false);
+        new Meny().setVisible(true);  
     }//GEN-LAST:event_btnKundlistaTillbakaActionPerformed
     
 //     * @param args the command line arguments

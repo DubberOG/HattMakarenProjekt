@@ -2,7 +2,6 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import oru.inf.InfException;
-import javax.swing.JOptionPane;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -22,7 +21,6 @@ public class Leverantor extends javax.swing.JFrame {
      */
     public Leverantor() {
         initComponents();
- 
     }
     
      
@@ -113,44 +111,6 @@ public class Leverantor extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSeLeverantörerActionPerformed
 
-    private void btnSeLeverantörerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeLeverantörerActionPerformed
-        // TODO add your handling code here:
-        ArrayList<String> orders = new ArrayList<>();
-        try{
-            String nyLeverantorFraga = "SELECT * FROM leverantör";
-            ArrayList<HashMap<String,String>> leverantorer = Main.idb.fetchRows(nyLeverantorFraga);
-            for (HashMap<String,String> leverantor : leverantorer) {
-                for (String Leverantor : leverantor.keySet()) {
-            orders.add(leverantor + ": " + leverantor.get(leverantor));
-        }
-    }
-           for (String order : orders) {
-            txtAreaSeLeverantorer.append(order + "\n");
-    }
-
-        }catch (InfException e){
-            System.out.println ("internt felmedelande:" + e.getMessage());
-        }     
-         
-        ArrayList<HashMap<String, String>> leverantorer = new ArrayList<>();
-    try {
-        // Hämta leverantörer från databasen och lagra dem i listan
-        String query = "SELECT * FROM Leverantor";
-        leverantorer = Main.idb.fetchRows(query);
-        
-        // Iterera över varje leverantör och lägg till deras data i textfältet
-        for (HashMap<String, String> leverantor : leverantorer) {
-            for (String key : leverantor.keySet()) {
-                String value = leverantor.get(key);
-                txtAreaSeLeverantorer.append(leverantor + "\n");
-            }
-        }
-    } catch (InfException e) {
-        // Hantera eventuella databasfel
-        System.out.println("Internt felmeddelande: " + e.getMessage());
-    }
-    }//GEN-LAST:event_btnSeLeverantörerActionPerformed
-
     private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
   
     setVisible(false);
@@ -158,6 +118,44 @@ public class Leverantor extends javax.swing.JFrame {
     
     }//GEN-LAST:event_btnTillbakaActionPerformed
 
+    private void btnSeLeverantörerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeLeverantörerActionPerformed
+        fyllItextFalt();  
+    }//GEN-LAST:event_btnSeLeverantörerActionPerformed
+
+   public void fyllItextFalt(){
+    try {
+        // Första delen: Hämta leverantörer från databasen och lagra dem i en ArrayList
+        ArrayList<HashMap<String, String>> leverantorer = new ArrayList<>();
+        String nyLeverantorFraga = "SELECT * FROM leverantör";
+        leverantorer = Main.idb.fetchRows(nyLeverantorFraga);
+        
+        // Loopa igenom leverantörerna och lägg till dem i textarean
+        for (HashMap<String, String> leverantor : leverantorer) {
+            for (String key : leverantor.keySet()) {
+                String value = leverantor.get(key);
+                txtAreaSeLeverantorer.append(key + ": " + value + "\n");
+            }
+        }
+
+        // Andra delen: Hämta leverantörer från databasen och lagra dem i en ny ArrayList
+        ArrayList<HashMap<String, String>> leverantorer2 = new ArrayList<>();
+        String query = "SELECT * FROM Leverantor";
+        leverantorer2 = Main.idb.fetchRows(query);
+        
+        // Loopa igenom leverantörerna och lägg till dem i textarean
+        for (HashMap<String, String> leverantor : leverantorer2) {
+            for (String key : leverantor.keySet()) {
+                String value = leverantor.get(key);
+                txtAreaSeLeverantorer.append(key + ": " + value + "\n");
+            }
+        }
+    } catch (InfException e) {
+        // Hantera eventuella databasfel
+        System.out.println("Internt felmeddelande: " + e.getMessage());
+    }
+}
+
+    
     /**
      * @param args the command line arguments
      */
@@ -175,13 +173,13 @@ public class Leverantor extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Leverantör.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Leverantor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Leverantör.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Leverantor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Leverantör.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Leverantor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Leverantör.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Leverantor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 

@@ -194,47 +194,45 @@ public class AndraBestallning extends javax.swing.JFrame {
     //Denna metoden sparar informationen som skrevs vid eventuella ändringar.
     private void btnSparaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaActionPerformed
 //if(Validering.valideraKundID(txtKund, idb)&& Validering.txtFaltTomt(txtKund)&& Validering.valideraProduktID(txtProdukt, idb)&& Validering.txtFaltTomt(txtProdukt)&& Validering.datumKontroll(tfDatum)&& Validering.txtFaltTomt(txtStatus)){
-        try{ 
-            if(Validering.valideraKundID(txtKund, Main.idb)&& Validering.txtFaltTomt(txtKund)&& Validering.valideraProduktID(txtPris, Main.idb)&& Validering.txtFaltTomt(txtPris)&& Validering.datumKontroll(tfDatum)&& Validering.txtFaltTomt(txtStatus)){
+       try {
+        if (Validering.valideraKundID(txtKund, Main.idb) && Validering.txtFaltTomt(txtKund) && Validering.txtFaltTomt(txtPris) && Validering.datumKontroll(tfDatum) && Validering.txtFaltTomt(txtStatus)) {
+            String valdOrder = cbxOrderID.getSelectedItem().toString();
+            String nyttKund = txtKund.getText();
+            String nyttPris = txtPris.getText();
+            String nyttDatum = tfDatum.getText();
+            String nyttStatus = txtStatus.getText();
+            String produkter = txtAreaProdukter.getText();
 
-                String fragaOrder = "SELECT * FROM Orders";
-
-            ArrayList<HashMap<String, String>> Order = Main.idb.fetchRows(fragaOrder);
-
-           String valdOrder = cbxOrderID.getSelectedItem().toString();
-           String nyttKund = txtKund.getText();
-           String nyttPris = txtPris.getText();
-           String nyttDatum = tfDatum.getText();
-           String nyttStatus = txtStatus.getText();
-         
-           
-           String updateQueryDatum = "UPDATE Orders SET Datum = '" + nyttDatum + "' WHERE OrderID = '" + valdOrder + "'";
-           
-                 Main.idb.update(updateQueryDatum);
-       
+            // Uppdatera Orders-tabellen med de nya värdena
+            String updateQueryDatum = "UPDATE Orders SET Datum = '" + nyttDatum + "' WHERE OrderID = '" + valdOrder + "'";
+            Main.idb.update(updateQueryDatum);
             String updateQueryStatus = "UPDATE Orders SET Status = '" + nyttStatus + "' WHERE OrderID = '" + valdOrder + "'";
-           
-                 Main.idb.update(updateQueryStatus);
-                
+            Main.idb.update(updateQueryStatus);
             String updateQueryKund = "UPDATE Orders SET KundID = '" + nyttKund + "' WHERE OrderID = '" + valdOrder + "'";
-           
-                 Main.idb.update(updateQueryKund);
-                 
-                 
+            Main.idb.update(updateQueryKund);
             String updateQueryProdukt = "UPDATE Orders SET Pris = '" + nyttPris + "' WHERE OrderID = '" + valdOrder + "'";
-          
-                 Main.idb.update(updateQueryProdukt);
-                
-                 //Vi måste upppdatera produktid med de produkter som valdes!!!!!!!!!
-                 
-            JOptionPane.showMessageDialog(null, " Informationen har ändrats." );
-           }     
-            }catch(InfException ettUndantag){
+            Main.idb.update(updateQueryProdukt);
 
-            JOptionPane.showMessageDialog(null, "Databasfel!");
-            System.out.println("Internt felmedelande" + ettUndantag.getMessage());    
-       
-                   }
+            // Ta bort befintliga poster från ProdukterIOrder-tabellen för den valda ordern
+            String TaBort = "DELETE FROM ProdukterIOrder WHERE OrdersID = '" + valdOrder + "'";
+            Main.idb.delete(TaBort);
+
+            // Dela upp produkterna från textarean och loopa igenom dem
+            String[] produkterArray = produkter.split("\n");
+            for (String produkt : produkterArray) {
+                // Extrahera ProduktID från varje rad
+                String produktID = produkt.trim();
+                // Spara kombinationen av OrderID och ProduktID i ProdukterIOrder-tabellen
+                String insertQuery = "INSERT INTO ProdukterIOrder (OrdersID, ProduktID) VALUES ('" + valdOrder + "', '" + produktID + "')";
+                Main.idb.insert(insertQuery);
+            }
+
+            JOptionPane.showMessageDialog(null, "Informationen har ändrats.");
+        }
+    } catch (InfException ettUndantag) {
+        JOptionPane.showMessageDialog(null, "Databasfel!");
+        System.out.println("Internt felmeddelande" + ettUndantag.getMessage());
+    }
 
     }//GEN-LAST:event_btnSparaActionPerformed
 
@@ -245,7 +243,7 @@ public class AndraBestallning extends javax.swing.JFrame {
     //Denna metoden skriver in alla värden beroende på OrderID som valdes i comboboxen.
     private void cbxOrderIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxOrderIDActionPerformed
 
-     
+     txtAreaProdukter.setText("");
      ArrayList<HashMap<String, String>> orderIDLista = new ArrayList<HashMap<String, String>>();
     // ArrayList<HashMap<String, String>> produkterIOrderLista = new ArrayList<HashMap<String, String>>();
 try {
