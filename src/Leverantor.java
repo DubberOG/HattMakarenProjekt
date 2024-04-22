@@ -134,8 +134,9 @@ public class Leverantor extends javax.swing.JFrame {
             for (String key : leverantor.keySet()) {
                 String value = leverantor.get(key);
                 txtAreaSeLeverantorer.append(key + ": " + value + "\n");
-                txtAreaSeLeverantorer.append("\n");
             }
+            txtAreaSeLeverantorer.append("\n");
+
         }
 
         // Andra delen: Hämta leverantörer från databasen och lagra dem i en ny ArrayList
@@ -148,8 +149,8 @@ public class Leverantor extends javax.swing.JFrame {
             for (String key : leverantor.keySet()) {
                 String value = leverantor.get(key);
                 txtAreaSeLeverantorer.append(key + ": " + value + "\n");
-                txtAreaSeLeverantorer.append("\n");
             }
+            txtAreaSeLeverantorer.append("\n");
         }
     } catch (InfException e) {
         // Hantera eventuella databasfel
