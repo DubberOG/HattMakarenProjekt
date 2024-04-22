@@ -134,6 +134,7 @@ public class Leverantor extends javax.swing.JFrame {
             for (String key : leverantor.keySet()) {
                 String value = leverantor.get(key);
                 txtAreaSeLeverantorer.append(key + ": " + value + "\n");
+                txtAreaSeLeverantorer.append("\n");
             }
         }
 
@@ -147,6 +148,7 @@ public class Leverantor extends javax.swing.JFrame {
             for (String key : leverantor.keySet()) {
                 String value = leverantor.get(key);
                 txtAreaSeLeverantorer.append(key + ": " + value + "\n");
+                txtAreaSeLeverantorer.append("\n");
             }
         }
     } catch (InfException e) {
