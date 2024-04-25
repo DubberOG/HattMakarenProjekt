@@ -27,6 +27,8 @@ public class SeBestallningar extends javax.swing.JFrame {
 
         btnDatum = new javax.swing.JButton();
         btnStatus = new javax.swing.JButton();
+        lblKategoriseraBestallningar = new javax.swing.JLabel();
+        btnTillbaka = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -44,25 +46,48 @@ public class SeBestallningar extends javax.swing.JFrame {
             }
         });
 
+        lblKategoriseraBestallningar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblKategoriseraBestallningar.setText("Kategorisera beställningar:");
+
+        btnTillbaka.setText("Tillbaka");
+        btnTillbaka.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTillbakaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(134, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(93, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnDatum)
-                    .addComponent(btnStatus))
-                .addGap(135, 135, 135))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lblKategoriseraBestallningar)
+                        .addGap(69, 69, 69))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnDatum)
+                            .addComponent(btnStatus))
+                        .addGap(139, 139, 139))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(btnTillbaka)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(52, 52, 52)
+                .addGap(33, 33, 33)
+                .addComponent(lblKategoriseraBestallningar)
+                .addGap(27, 27, 27)
                 .addComponent(btnDatum)
-                .addGap(43, 43, 43)
+                .addGap(18, 18, 18)
                 .addComponent(btnStatus)
-                .addContainerGap(159, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
+                .addComponent(btnTillbaka)
+                .addGap(23, 23, 23))
         );
 
         pack();
@@ -79,6 +104,12 @@ public class SeBestallningar extends javax.swing.JFrame {
         setVisible(false);
         new SeBestallningarStatus().setVisible(true);
     }//GEN-LAST:event_btnStatusActionPerformed
+
+    private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+        new BeställningsMeny().setVisible(true);
+    }//GEN-LAST:event_btnTillbakaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -118,5 +149,7 @@ public class SeBestallningar extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDatum;
     private javax.swing.JButton btnStatus;
+    private javax.swing.JButton btnTillbaka;
+    private javax.swing.JLabel lblKategoriseraBestallningar;
     // End of variables declaration//GEN-END:variables
 }
