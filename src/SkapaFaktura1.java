@@ -181,11 +181,11 @@ public class SkapaFaktura1 extends javax.swing.JFrame {
        {
            String orderID = cbValjOrderVal.getSelectedItem().toString();
            try{
-               HashMap <String, String> allInfo = Main.idb.fetchRow("Select Namn, storlek, pris from Produkt where ProduktID =(select ProduktID from ProdukterIOrder where OrdersID = '" + orderID +"')");
+               HashMap <String, String> allInfo = Main.idb.fetchRow("Select Namn, Storlek, Pris from Produkt where ProduktID =(select ProduktID from ProdukterIOrder where OrdersID = '" + orderID +"')");
                
-               txAInformation.append(allInfo.get("namn"));
+               txAInformation.append(allInfo.get("Namn"));
                txAInformation.append(allInfo.get("Storlek"));
-               txAInformation.append(allInfo.get("pris"));
+               txAInformation.append(allInfo.get("Pris"));
                
                
            }catch(InfException e)
