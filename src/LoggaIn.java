@@ -38,8 +38,6 @@ public class LoggaIn extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        txtAnvändarnamn.setText("Ottohattmakaren@gmail.com");
-
         lblAnvändarnamn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblAnvändarnamn.setText("E-post");
 
@@ -52,8 +50,6 @@ public class LoggaIn extends javax.swing.JFrame {
                 btnLoggaInActionPerformed(evt);
             }
         });
-
-        pswordLösenord.setText("Hattar");
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Fyll i dina inloggningsuppgifter");

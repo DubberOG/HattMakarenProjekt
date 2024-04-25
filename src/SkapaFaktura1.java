@@ -26,7 +26,6 @@ public class SkapaFaktura1 extends javax.swing.JFrame {
      */
     public SkapaFaktura1() {
         initComponents();
-        btnSkapa.setEnabled(false);
         fylliInformation();
 
     }
@@ -146,13 +145,16 @@ public class SkapaFaktura1 extends javax.swing.JFrame {
         
         //Sparar vikten som angivits i variabeln txtVikt
         try {
+        String totalbelopp = Main.idb.fetchSingle("Select Pris from Orders where OrderID = '"+ cbValet +"'");
+        String kundID = Main.idb.fetchSingle("Select KundID from Orders where OrderID = '" + cbValet + "' ");
         String faktura = Main.idb.getAutoIncrement("Faktura", "FakturaID");
-         
+        Main.idb.update("Update Orders SET status = 'Fakturerad' where OrderID = '" + cbValet + "'");
         //Säkerställer att valet var avsiktligt
         int val = JOptionPane.showConfirmDialog(null, "Vill du skriva ut fakturan?", "Skapa faktura", JOptionPane.YES_NO_OPTION );
         
         if(val == JOptionPane.YES_OPTION)
         {
+            Main.idb.insert("INSERT INTO Faktura (FakturaID, Totalbelopp, KundID, OrderID) VALUES ('" + faktura + "','" + totalbelopp + "','" + kundID + "','" + cbValet + "')");
            //Skickar med informationen till klassen SkrivUtFraktsedel
             new SkrivUtFaktura( cbValet, faktura).setVisible(true);
             dispose();

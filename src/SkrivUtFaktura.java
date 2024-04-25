@@ -1,6 +1,8 @@
 import java.util.Date;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import javax.swing.JOptionPane;
 import oru.inf.InfException;
 
@@ -67,23 +69,19 @@ public class SkrivUtFaktura extends javax.swing.JFrame {
          String enamn = Main.idb.fetchSingle("Select Efternamn from Kund where KundID = '"+ valdKund +"'");
          String adress = Main.idb.fetchSingle("Select Adress from Kund where KundID = '"+ valdKund +"'");
          String pNummer = Main.idb.fetchSingle("Select Postnummer from Kund where KundID = '"+ valdKund +"'");
-         String ort = Main.idb.fetchSingle("Select ort from Kund where KundID = '"+ valdKund +"'");
-         String summa = Main.idb.fetchSingle("Select summa from bestallning where OrderID = '"+ cbValet +"'");
-         String faktura = Main.idb.fetchSingle("Select fakturaID from Kund where KundID = '"+ valdKund +"'");
-         String kund = Main.idb.fetchSingle("Select kund from Kund where KundID = '"+ valdKund +"'");
-         String produkt = Main.idb.fetchSingle("Select produkttyp from order where OrderID = '"+ cbValet +"'");
-         String antalProdukt = Main.idb.fetchSingle("Select antal from order where OrderID = '"+ cbValet +"'");
+         String ort = Main.idb.fetchSingle("Select Ort from Kund where KundID = '"+ valdKund +"'");
+         String summa = Main.idb.fetchSingle("Select Pris from Orders where OrderID = '"+ cbValet +"'");
+         //DENNA VART ALDRIG KLAR ArrayList<HashMap <String, String>> allaProdukter = Main.idb.fetchRows("Select ProduktID from ProdukterIOrder where OrderID ='" + cbValet +"'");
+         
         
-
-        
-        lbKundNamnVisas.setText(namn + enamn);
-        lbKundNummerVisas.setText(kund);
-        lbFaktureringsadressVisas.setText(adress + pNummer + ort);
-        lbOrderNummerVisa.setText(valdKund);
+        lbKundNamnVisas.setText(namn + " "+  enamn);
+        lbKundNummerVisas.setText(valdKund);
+        lbFaktureringsadressVisas.setText(adress +", " + pNummer + ", " + ort);
+        lbOrderNummerVisa.setText(cbValet);
         lbSummaVisas.setText(summa);
         lbAttBetalaVisas.setText(summa);
         lbSummaAttBetala2Visas.setText(summa);
-        lbFakturaNrVisasHar.setText(faktura);
+        lbFakturaNrVisasHar.setText(txtFakturaNr);
         
         double summastr = Double.parseDouble(summa);
         double svar = summastr;
@@ -98,12 +96,13 @@ public class SkrivUtFaktura extends javax.swing.JFrame {
         String MomsVisas = Double.toString(prisMoms);
         lbExklMomsVisas.setText(MomsVisas);
         
-        txAllinfo.append(produkt + " " + antalProdukt);
+       //Denna vart aldrig klar txAllinfo.append("\nTest!");
 
         }
         
         catch(InfException e)
         {
+            System.out.println(e);
             JOptionPane.showMessageDialog(null, "Kunde inte hämta kunden");
         }
        
