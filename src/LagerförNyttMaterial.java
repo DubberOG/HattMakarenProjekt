@@ -160,7 +160,6 @@ public class LagerförNyttMaterial extends javax.swing.JFrame {
 
     private void btnLäggTillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLäggTillActionPerformed
         läggTill();
-        JOptionPane.showMessageDialog(null, "Nytt material har lagts till i lagret");
     }//GEN-LAST:event_btnLäggTillActionPerformed
 
     
