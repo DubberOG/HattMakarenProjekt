@@ -105,20 +105,33 @@ public class TaBortKund extends javax.swing.JFrame {
 
     //Kollar så att textfältet inte är tomt och att det är en epost inskriven
     private void btnRaderaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRaderaActionPerformed
-        try {
-            if(Validering.txtEpostKontroll(txtFyllI)){
-                String email = txtFyllI.getText();
-                String taBortKund = "id";
-                String nyRaderarFraga = "UPDATE Kund\n" +
-    "SET Namn = NULL, Efternamn = NULL, Email = NULL, Telefon = NULL, Adress = NULL, Ort = NULL, Postnummer = NULL\n" +
-    "WHERE Email = '"+email+"'";
-                 Main.idb.update(nyRaderarFraga);
-              JOptionPane.showMessageDialog(null, "Kunduppgifter har blivit raderade!");
-          
-            }} catch (InfException e){
-            System.out.println ("internt felmedelande:" + e.getMessage());
+try {
+    if (Validering.txtEpostKontroll(txtFyllI)) {
+        String email = txtFyllI.getText();
+        
+        // SQL-fråga för att försöka hämta en rad med den angivna e-postadressen
+        String kundQuery = "SELECT * FROM Kund WHERE Email = '" + email + "'";
+        String kundInfo = Main.idb.fetchSingle(kundQuery);
+        
+        if (kundInfo != null) {
+            // Om kundInfo inte är null betyder det att en rad returnerades,
+            // vilket innebär att e-posten finns i tabellen
+            // Utför raderingsåtgärden
+            String nyRaderarFraga = "UPDATE Kund\n" +
+                "SET Namn = NULL, Efternamn = NULL, Email = NULL, Telefon = NULL, Adress = NULL, Ort = NULL, Postnummer = NULL\n" +
+                "WHERE Email = '" + email + "'";
+            Main.idb.update(nyRaderarFraga);
+            
+            JOptionPane.showMessageDialog(null, "Kunduppgifter har blivit raderade!");
+        } else {
+            // Om kundInfo är null betyder det att ingen rad returnerades,
+            // vilket innebär att e-posten inte finns i tabellen
+            JOptionPane.showMessageDialog(null, "E-postadressen finns inte i kundregistret.");
         }
-       
+    }
+} catch (InfException e) {
+    System.out.println("Internt felmeddelande: " + e.getMessage());
+}     
     }//GEN-LAST:event_btnRaderaActionPerformed
 
     private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed

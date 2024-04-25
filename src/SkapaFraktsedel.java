@@ -14,14 +14,15 @@ import oru.inf.InfException;
  * @author willi
  */
 public class SkapaFraktsedel extends javax.swing.JFrame {
-
+private boolean ordersRedoExist = false;
     /**
      * Creates new form SkapaFraktsedel
      */
     public SkapaFraktsedel() {
         initComponents();
         btnSkapa.setEnabled(false);
-        fyllICombobox();
+      //  fyllICombobox();
+        checkOrdersRedoExist();
     }
 
     /**
@@ -196,6 +197,23 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
      }
     }
     
+    private void checkOrdersRedoExist() {
+        try {
+            ArrayList<HashMap<String, String>> allaOrderar = Main.idb.fetchRows("SELECT OrderID, KundID FROM Orders WHERE Status = 'Redo'");
+            ordersRedoExist = !allaOrderar.isEmpty();
+            
+            if (!ordersRedoExist) {
+                JOptionPane.showMessageDialog(null, "Inga ordrar är redo för fraktsedel.");
+                cbValjOrder.setEnabled(false);
+                btnSkapa.setEnabled(false);
+            } else {
+                fyllICombobox(); // Om det finns "Redo"-order, fyll i comboboxen
+            }
+        } catch (InfException ettUndantag) {
+            JOptionPane.showMessageDialog(null, "Databasfel!");
+        }
+    }
+    
     private void fyllICombobox()
     {
         //SQL-fråga för att hämta OrderID från databasen
@@ -223,6 +241,7 @@ public class SkapaFraktsedel extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Databasfel!");
          }
     }
+    
     
     private void fyllTextArea()
     {
