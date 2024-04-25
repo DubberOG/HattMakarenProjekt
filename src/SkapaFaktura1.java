@@ -177,15 +177,21 @@ public class SkapaFaktura1 extends javax.swing.JFrame {
 
     private void btnValActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValActionPerformed
  
+        txAInformation.setText("");
        if(cbValjOrderVal.getSelectedItem() != null)
        {
            String orderID = cbValjOrderVal.getSelectedItem().toString();
            try{
                HashMap <String, String> allInfo = Main.idb.fetchRow("Select Namn, Storlek, Pris from Produkt where ProduktID =(select ProduktID from ProdukterIOrder where OrdersID = '" + orderID +"')");
+               String kundNamn = Main.idb.fetchSingle("Select Namn from Kund where KundID = (select KundID from Orders where OrderID ='" + orderID + "')");
+               String kundENamn = Main.idb.fetchSingle("Select Efternamn from Kund where KundID = (select KundID from Orders where OrderID ='" + orderID + "')");
+               txAInformation.append("Produkt \n");
+               txAInformation.append("Namn: " +allInfo.get("Namn") + "\n");
+               txAInformation.append("Storlek: " +allInfo.get("Storlek") + "\n");
+               txAInformation.append("Pris: " + allInfo.get("Pris") + "\n");
+               txAInformation.append("\nKund: ");
+               txAInformation.append(kundNamn +" " + kundENamn);
                
-               txAInformation.append(allInfo.get("Namn"));
-               txAInformation.append(allInfo.get("Storlek"));
-               txAInformation.append(allInfo.get("Pris"));
                
                
            }catch(InfException e)
