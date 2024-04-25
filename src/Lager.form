@@ -150,6 +150,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Lagerf&#xf6;r standardhatt"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLagerf&#xf6;rStandardhattActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnTaBortHattFr&#xe5;nLager">
       <Properties>

@@ -93,6 +93,11 @@ public class Lager extends javax.swing.JFrame {
         });
 
         btnLagerförStandardhatt.setText("Lagerför standardhatt");
+        btnLagerförStandardhatt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLagerförStandardhattActionPerformed(evt);
+            }
+        });
 
         btnTaBortHattFrånLager.setText("Ta bort hatt från lager");
         btnTaBortHattFrånLager.addActionListener(new java.awt.event.ActionListener() {
@@ -204,6 +209,11 @@ public class Lager extends javax.swing.JFrame {
         setVisible(false);
         new TaBortMaterialFrånLager().setVisible(true);
     }//GEN-LAST:event_btnTaBortMaterialFrånLagerActionPerformed
+
+    private void btnLagerförStandardhattActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLagerförStandardhattActionPerformed
+        setVisible(false);
+        new LagerförStandardhatt().setVisible(true);
+    }//GEN-LAST:event_btnLagerförStandardhattActionPerformed
 
     /**
      * @param args the command line arguments

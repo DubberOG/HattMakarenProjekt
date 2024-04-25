@@ -48,15 +48,15 @@ public class SkapaFaktura1 extends javax.swing.JFrame {
         lbOrderLista = new javax.swing.JLabel();
         lbValjKund = new javax.swing.JLabel();
         cbValjOrderVal = new javax.swing.JComboBox<>();
-        txtFakturaNummer = new javax.swing.JTextField();
         lbFakturaNummer = new javax.swing.JLabel();
+        txtFakturaNummer = new javax.swing.JLabel();
+        btnVal = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Skapa faktura");
 
-        btnSkapa.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         btnSkapa.setText("Skapa");
         btnSkapa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -64,7 +64,6 @@ public class SkapaFaktura1 extends javax.swing.JFrame {
             }
         });
 
-        btnAvbryt.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         btnAvbryt.setText("Avbryt");
         btnAvbryt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,43 +75,50 @@ public class SkapaFaktura1 extends javax.swing.JFrame {
         txAInformation.setRows(5);
         jScrollPane1.setViewportView(txAInformation);
 
-        lbOrderLista.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         lbOrderLista.setText("Information om order:");
 
-        lbValjKund.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         lbValjKund.setText("Välj order:");
 
-        txtFakturaNummer.setText("12345 EX");
-
-        lbFakturaNummer.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         lbFakturaNummer.setText("Fakturanummer:");
+
+        txtFakturaNummer.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txtFakturaNummer.setText("1234");
+
+        btnVal.setText("Visa order");
+        btnVal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnValActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(132, 132, 132)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cbValjOrderVal, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbValjKund)
+                    .addComponent(lbFakturaNummer)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(132, 132, 132)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbValjOrderVal, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbValjKund)
-                            .addComponent(txtFakturaNummer, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbFakturaNummer))
-                        .addGap(25, 25, 25)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnAvbryt)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnSkapa))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lbOrderLista)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(83, Short.MAX_VALUE))
+                        .addComponent(txtFakturaNummer, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnVal)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbOrderLista)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(btnAvbryt)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnSkapa))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(41, 41, 41))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -120,9 +126,9 @@ public class SkapaFaktura1 extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbValjKund)
-                    .addComponent(lbOrderLista, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(lbOrderLista))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -136,7 +142,9 @@ public class SkapaFaktura1 extends javax.swing.JFrame {
                         .addGap(30, 30, 30)
                         .addComponent(lbFakturaNummer)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtFakturaNummer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtFakturaNummer)
+                            .addComponent(btnVal))))
                 .addContainerGap(48, Short.MAX_VALUE))
         );
 
@@ -166,6 +174,31 @@ public class SkapaFaktura1 extends javax.swing.JFrame {
             dispose();
         }
     }//GEN-LAST:event_btnSkapaActionPerformed
+
+    private void btnValActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValActionPerformed
+ 
+       if(cbValjOrderVal.getSelectedItem() != null)
+       {
+           String orderID = cbValjOrderVal.getSelectedItem().toString();
+           try{
+               HashMap <String, String> allInfo = Main.idb.fetchRow("Select Namn, Storlek, Pris from Produkt where ProduktID =(select ProduktID from ProdukterIOrder where OrdersID = '" + orderID +"')");
+               
+               txAInformation.append(allInfo.get("Namn"));
+               txAInformation.append(allInfo.get("Storlek"));
+               txAInformation.append(allInfo.get("Pris"));
+               
+               
+           }catch(InfException e)
+           {
+               JOptionPane.showMessageDialog(null, e);
+           }
+       }
+       else
+       {
+           JOptionPane.showMessageDialog(null, "Ingen vald order!");
+       }
+       
+    }//GEN-LAST:event_btnValActionPerformed
     
     private void txtFakturaNummerKeyReleased(java.awt.event.KeyEvent evt) {                                       
     
@@ -192,18 +225,8 @@ public class SkapaFaktura1 extends javax.swing.JFrame {
                 
             // Hämta orderId från listan och sparar det i en sträng
             String orderID = order.get("OrderID");
-            String kundID = order.get("KundID");
-            
-            HashMap<String, String> kundInformation = Main.idb.fetchRow("Select * from Orders where OrderID = '" + orderID + "'");
-            
-            //Se över denna 
-              String kunden = kund.getKey(KundID);
-            //Lägger till OrderID i comboboxen
-            if(kundID != null)
-            {
-                cbValjOrderVal.addItem(orderID); 
-                txAInformation.setText(kundInformation);
-            }
+            cbValjOrderVal.addItem(orderID);
+              
         }
                 
          }
@@ -277,6 +300,7 @@ public class SkapaFaktura1 extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAvbryt;
     private javax.swing.JButton btnSkapa;
+    private javax.swing.JButton btnVal;
     private javax.swing.JComboBox<String> cbValjOrderVal;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -284,6 +308,6 @@ public class SkapaFaktura1 extends javax.swing.JFrame {
     private javax.swing.JLabel lbOrderLista;
     private javax.swing.JLabel lbValjKund;
     private javax.swing.JTextArea txAInformation;
-    private javax.swing.JTextField txtFakturaNummer;
+    private javax.swing.JLabel txtFakturaNummer;
     // End of variables declaration//GEN-END:variables
 }
