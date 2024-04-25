@@ -239,7 +239,7 @@ public class LaggTillBestallning extends javax.swing.JFrame {
     private void btnSparaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaActionPerformed
         sparaBestallning();
         txtArea.setText("");
-        txtPris.setText("");
+        lblPriset.setText("");
     }//GEN-LAST:event_btnSparaActionPerformed
 
     private void txtPrisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrisActionPerformed
@@ -400,7 +400,6 @@ public class LaggTillBestallning extends javax.swing.JFrame {
         //Vi måste lagra infon i Orders och ProdukterIOREDRS.
         
         // Meddela användaren att beställningen har sparats
-            System.out.println("funkar hit");
             System.out.println(enGång);
         if(!enGång){
             JOptionPane.showMessageDialog(null, "Beställningen har sparats!");
