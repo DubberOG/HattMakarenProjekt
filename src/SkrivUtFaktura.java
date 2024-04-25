@@ -67,19 +67,18 @@ public class SkrivUtFaktura extends javax.swing.JFrame {
          String enamn = Main.idb.fetchSingle("Select Efternamn from Kund where KundID = '"+ valdKund +"'");
          String adress = Main.idb.fetchSingle("Select Adress from Kund where KundID = '"+ valdKund +"'");
          String pNummer = Main.idb.fetchSingle("Select Postnummer from Kund where KundID = '"+ valdKund +"'");
-         String ort = Main.idb.fetchSingle("Select ort from Kund where KundID = '"+ valdKund +"'");
-         String summa = Main.idb.fetchSingle("Select summa from bestallning where OrderID = '"+ cbValet +"'");
-         String faktura = Main.idb.fetchSingle("Select fakturaID from Kund where KundID = '"+ valdKund +"'");
-         String kund = Main.idb.fetchSingle("Select kund from Kund where KundID = '"+ valdKund +"'");
-         String produkt = Main.idb.fetchSingle("Select produkttyp from order where OrderID = '"+ cbValet +"'");
-         String antalProdukt = Main.idb.fetchSingle("Select antal from order where OrderID = '"+ cbValet +"'");
+         String ort = Main.idb.fetchSingle("Select Ort from Kund where KundID = '"+ valdKund +"'");
+         String summa = Main.idb.fetchSingle("Select Pris from Orders where OrderID = '"+ cbValet +"'");
+         String faktura = Main.idb.fetchSingle("Select FakturaID from Faktura where KundID = '"+ valdKund +"'");
+         String produkt = Main.idb.fetchSingle("Select Namn from Produkt where ProduktID = (Select ProduktID from ProdukterIOrder where OrdersID ='"+ cbValet +"'");
+         String antalProdukt = Main.idb.fetchSingle("Select COUNT(*) AS antal_rader from ProdukterIOrder where OrdersID = '"+ cbValet +"'");
         
 
         
         lbKundNamnVisas.setText(namn + enamn);
-        lbKundNummerVisas.setText(kund);
+        lbKundNummerVisas.setText(valdKund);
         lbFaktureringsadressVisas.setText(adress + pNummer + ort);
-        lbOrderNummerVisa.setText(valdKund);
+        lbOrderNummerVisa.setText(cbValet);
         lbSummaVisas.setText(summa);
         lbAttBetalaVisas.setText(summa);
         lbSummaAttBetala2Visas.setText(summa);
@@ -104,6 +103,7 @@ public class SkrivUtFaktura extends javax.swing.JFrame {
         
         catch(InfException e)
         {
+            System.out.println(e);
             JOptionPane.showMessageDialog(null, "Kunde inte hämta kunden");
         }
        

@@ -26,7 +26,6 @@ public class SkapaFaktura1 extends javax.swing.JFrame {
      */
     public SkapaFaktura1() {
         initComponents();
-        btnSkapa.setEnabled(false);
         fylliInformation();
 
     }
@@ -147,7 +146,7 @@ public class SkapaFaktura1 extends javax.swing.JFrame {
         //Sparar vikten som angivits i variabeln txtVikt
         try {
         String faktura = Main.idb.getAutoIncrement("Faktura", "FakturaID");
-         
+        Main.idb.update("Update Orders SET status = 'Fakturerad' where OrderID = '" + cbValet + "'");
         //Säkerställer att valet var avsiktligt
         int val = JOptionPane.showConfirmDialog(null, "Vill du skriva ut fakturan?", "Skapa faktura", JOptionPane.YES_NO_OPTION );
         
