@@ -400,7 +400,6 @@ public class LaggTillBestallning extends javax.swing.JFrame {
         //Vi måste lagra infon i Orders och ProdukterIOREDRS.
         
         // Meddela användaren att beställningen har sparats
-            System.out.println("funkar hit");
             System.out.println(enGång);
         if(!enGång){
             JOptionPane.showMessageDialog(null, "Beställningen har sparats!");
