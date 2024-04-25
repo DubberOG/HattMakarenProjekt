@@ -48,8 +48,6 @@ public class SkapaFaktura1 extends javax.swing.JFrame {
         lbOrderLista = new javax.swing.JLabel();
         lbValjKund = new javax.swing.JLabel();
         cbValjOrderVal = new javax.swing.JComboBox<>();
-        lbFakturaNummer = new javax.swing.JLabel();
-        txtFakturaNummer = new javax.swing.JLabel();
         btnVal = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -79,11 +77,6 @@ public class SkapaFaktura1 extends javax.swing.JFrame {
 
         lbValjKund.setText("Välj order:");
 
-        lbFakturaNummer.setText("Fakturanummer:");
-
-        txtFakturaNummer.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        txtFakturaNummer.setText("1234");
-
         btnVal.setText("Visa order");
         btnVal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,12 +96,9 @@ public class SkapaFaktura1 extends javax.swing.JFrame {
                 .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cbValjOrderVal, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbValjKund)
-                    .addComponent(lbFakturaNummer)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtFakturaNummer, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnVal)))
+                    .addComponent(lbValjKund))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnVal)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbOrderLista)
@@ -137,14 +127,9 @@ public class SkapaFaktura1 extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnSkapa)
                             .addComponent(btnAvbryt)))
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(cbValjOrderVal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addComponent(lbFakturaNummer)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtFakturaNummer)
-                            .addComponent(btnVal))))
+                        .addComponent(btnVal)))
                 .addContainerGap(48, Short.MAX_VALUE))
         );
 
@@ -157,22 +142,26 @@ public class SkapaFaktura1 extends javax.swing.JFrame {
 
     private void btnSkapaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSkapaActionPerformed
         //Omvandlar resultatet från getSelectedItem() till en sträng
-        checkTxtFakturaNummer();
-
         String cbValet = (String) cbValjOrderVal.getSelectedItem();
         
         //Sparar vikten som angivits i variabeln txtVikt
-        String txtFaktura = txtFakturaNummer.getText();
-            
+        try {
+        String faktura = Main.idb.getAutoIncrement("Faktura", "FakturaID");
+         
         //Säkerställer att valet var avsiktligt
         int val = JOptionPane.showConfirmDialog(null, "Vill du skriva ut fakturan?", "Skapa faktura", JOptionPane.YES_NO_OPTION );
         
         if(val == JOptionPane.YES_OPTION)
         {
            //Skickar med informationen till klassen SkrivUtFraktsedel
-            new SkrivUtFaktura( cbValet, txtFaktura).setVisible(true);
+            new SkrivUtFaktura( cbValet, faktura).setVisible(true);
             dispose();
         }
+         }
+        catch(InfException e)
+        {
+            JOptionPane.showMessageDialog(null, e);
+        }  
     }//GEN-LAST:event_btnSkapaActionPerformed
 
     private void btnValActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValActionPerformed
@@ -206,9 +195,7 @@ public class SkapaFaktura1 extends javax.swing.JFrame {
        
     }//GEN-LAST:event_btnValActionPerformed
     
-    private void txtFakturaNummerKeyReleased(java.awt.event.KeyEvent evt) {                                       
-    
-    }
+ 
     private void avbrytFaktura()
     {
         {
@@ -243,27 +230,6 @@ public class SkapaFaktura1 extends javax.swing.JFrame {
          }
     }
     
-    
-    
-    public boolean checkTxtFakturaNummer() {
-    String fakturaNummer = txtFakturaNummer.getText();
-    ArrayList<HashMap<String, String>> listaAvExisterandeFakturaNummer = new ArrayList<>();
-
-    // Loopa igenom alla existerande fakturanummer
-    for (HashMap<String, String> faktura : listaAvExisterandeFakturaNummer) {
-         String fakturaID = faktura.get("FakturaID");
-
-        // Jämför det angivna fakturanumret med varje existerande fakturanummer
-        if (fakturaID.equals(fakturaNummer)) {
-            JOptionPane.showMessageDialog(null, "Fakturanumret finns redan. Välj ett annat fakturanummer.", "Fel", JOptionPane.ERROR_MESSAGE);
-            return false; // Fakturanumret finns redan, returnera false
-        }
-    }
-    
-    // Om loopen avslutas utan att hitta någon matchning, anses fakturanumret vara unikt
-    JOptionPane.showMessageDialog(null, "Fakturanumret godkänt.", "Rätt", JOptionPane.INFORMATION_MESSAGE);
-    return true; // Fakturanumret är unikt, returnera true
-}
 
 
  
@@ -310,10 +276,8 @@ public class SkapaFaktura1 extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbValjOrderVal;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lbFakturaNummer;
     private javax.swing.JLabel lbOrderLista;
     private javax.swing.JLabel lbValjKund;
     private javax.swing.JTextArea txAInformation;
-    private javax.swing.JLabel txtFakturaNummer;
     // End of variables declaration//GEN-END:variables
 }
