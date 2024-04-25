@@ -105,10 +105,9 @@ public class SeIntakterKostnaderOMoms extends javax.swing.JFrame {
         TextYtaAllinfo.setText("");
         //fetchcolumn, arraylist här nedan istället.
         try {
-            ArrayList<HashMap<String, String>> samtligaOrderar = Main.idb.fetchRows("SELECT pris, kostnad FROM Orders WHERE Status = 'skickad'");
+            ArrayList<HashMap<String, String>> samtligaOrderar = Main.idb.fetchRows("SELECT pris FROM Orders WHERE Status = 'skickad'");
             for(HashMap<String, String> order : samtligaOrderar){
-                String intakt = order.get("kostnad");
-                String kostnad = order.get("pris");
+                String intakt = order.get("pris");
 
                 double intakter = Double.parseDouble(intakt);
                 double svarMoms = intakter;
@@ -116,10 +115,10 @@ public class SeIntakterKostnaderOMoms extends javax.swing.JFrame {
                 double prisMoms = svarMoms * moms;
                 String prisMomsVisa = Double.toString(prisMoms);
 
-            TextYtaAllinfo.append(intakt + " " + kostnad + " " + prisMomsVisa + "\n");
+            TextYtaAllinfo.append(intakt + " " + intakt + " " + prisMomsVisa + "\n");
         }
     } catch (InfException e) {
-        JOptionPane.showMessageDialog(null, "Kunde inte hämta kunden");
+        JOptionPane.showMessageDialog(null, ".");
         }
     }
 
