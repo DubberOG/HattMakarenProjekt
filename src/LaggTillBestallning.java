@@ -28,7 +28,7 @@ public class LaggTillBestallning extends javax.swing.JFrame {
     }
 
     public Double totalpris = 0.00;
-
+    public boolean enGång = false;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -238,6 +238,7 @@ public class LaggTillBestallning extends javax.swing.JFrame {
     //Denna knappen sparar man en ny beställning det man har skrivit in.
     private void btnSparaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaActionPerformed
         sparaBestallning();
+        txtArea.setText("");
     }//GEN-LAST:event_btnSparaActionPerformed
 
     private void txtPrisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrisActionPerformed
@@ -258,7 +259,7 @@ public class LaggTillBestallning extends javax.swing.JFrame {
 
     //Denna metoden lägger till de valda produkterna i en TextArea när man trycker på lägg till.
     private void btnLäggTillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLäggTillActionPerformed
-
+         // lägger till produkt priset i det totala priset
          String valdProdukt = cbValjProdukt.getSelectedItem().toString();
          String pris = txtPris.getText().replace("null", "");
          System.out.println(pris);
@@ -398,8 +399,11 @@ public class LaggTillBestallning extends javax.swing.JFrame {
         //Vi måste lagra infon i Orders och ProdukterIOREDRS.
         
         // Meddela användaren att beställningen har sparats
-        JOptionPane.showMessageDialog(null, "Beställningen har sparats!");
-        }
+        
+        if(enGång = false){
+            JOptionPane.showMessageDialog(null, "Beställningen har sparats!");
+            enGång = true;
+        }}
     } catch (InfException ex) {
         JOptionPane.showMessageDialog(null, "Kunde inte spara beställningen!");
         System.out.println("Internt felmeddelande" + ex.getMessage());
