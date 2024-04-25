@@ -22,7 +22,7 @@ public class HattLager extends javax.swing.JFrame {
         initComponents();
         fyllCbValjTyg();
         fyllCbValjUtsmyckning();
-        fyllCbValjStandardhatt();
+
         
     }
 
@@ -285,22 +285,7 @@ public class HattLager extends javax.swing.JFrame {
             }
 
     }//GEN-LAST:event_btnSkapaHattActionPerformed
-         private void fyllCbValjStandardhatt() {
-            try{
-        ArrayList<HashMap<String, String>> allaStandardhattar = Main.idb.fetchRows("SELECT ProduktID, Namn FROM Produkt WHERE ProduktID = 331 OR ProduktID = 332 OR ProduktID = 333");
-                  
-                for(HashMap<String, String> produkt : allaStandardhattar){
-                // Hämta KundID och Namn från HashMap
-            String ProduktID = produkt.get("ProduktID");
-            String Namn = produkt.get("Namn");
-            
-            // Skapa en sträng som innehåller både KundID och namn och lägg till i comboboxen
-            cbValjStandardhatt.addItem(ProduktID + " - " + Namn);    
-           
-                }}
-            catch(InfException ettUndantag){
-            JOptionPane.showMessageDialog(null, "Databasfel!");
-         }}
+        
          
          private void fyllCbValjTyg() {
             try{
