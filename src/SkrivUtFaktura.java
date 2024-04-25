@@ -1,6 +1,8 @@
 import java.util.Date;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import javax.swing.JOptionPane;
 import oru.inf.InfException;
 
@@ -69,20 +71,17 @@ public class SkrivUtFaktura extends javax.swing.JFrame {
          String pNummer = Main.idb.fetchSingle("Select Postnummer from Kund where KundID = '"+ valdKund +"'");
          String ort = Main.idb.fetchSingle("Select Ort from Kund where KundID = '"+ valdKund +"'");
          String summa = Main.idb.fetchSingle("Select Pris from Orders where OrderID = '"+ cbValet +"'");
-         String faktura = Main.idb.fetchSingle("Select FakturaID from Faktura where KundID = '"+ valdKund +"'");
-         String produkt = Main.idb.fetchSingle("Select Namn from Produkt where ProduktID = (Select ProduktID from ProdukterIOrder where OrdersID ='"+ cbValet +"'");
-         String antalProdukt = Main.idb.fetchSingle("Select COUNT(*) AS antal_rader from ProdukterIOrder where OrdersID = '"+ cbValet +"'");
+         //DENNA VART ALDRIG KLAR ArrayList<HashMap <String, String>> allaProdukter = Main.idb.fetchRows("Select ProduktID from ProdukterIOrder where OrderID ='" + cbValet +"'");
+         
         
-
-        
-        lbKundNamnVisas.setText(namn + enamn);
+        lbKundNamnVisas.setText(namn + " "+  enamn);
         lbKundNummerVisas.setText(valdKund);
-        lbFaktureringsadressVisas.setText(adress + pNummer + ort);
+        lbFaktureringsadressVisas.setText(adress +", " + pNummer + ", " + ort);
         lbOrderNummerVisa.setText(cbValet);
         lbSummaVisas.setText(summa);
         lbAttBetalaVisas.setText(summa);
         lbSummaAttBetala2Visas.setText(summa);
-        lbFakturaNrVisasHar.setText(faktura);
+        lbFakturaNrVisasHar.setText(txtFakturaNr);
         
         double summastr = Double.parseDouble(summa);
         double svar = summastr;
@@ -97,7 +96,7 @@ public class SkrivUtFaktura extends javax.swing.JFrame {
         String MomsVisas = Double.toString(prisMoms);
         lbExklMomsVisas.setText(MomsVisas);
         
-        txAllinfo.append(produkt + " " + antalProdukt);
+       //Denna vart aldrig klar txAllinfo.append("\nTest!");
 
         }
         
