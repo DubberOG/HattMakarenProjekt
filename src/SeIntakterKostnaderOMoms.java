@@ -101,6 +101,8 @@ public class SeIntakterKostnaderOMoms extends javax.swing.JFrame {
         new Meny().setVisible(true); 
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    
+    //Jag behöver fylla på intak, Strängar i double. Sen göra en för kostnade och en för intäkter.
     private void fyllITextFalt() {
         TextYtaAllinfo.setText("");
         //fetchcolumn, arraylist här nedan istället.
